@@ -588,14 +588,11 @@ def write_plain_language_summary(summary: dict[str, Any], output_dir: Path) -> N
         "",
         "## Reconstruction note",
         "",
-        textwrap.fill(summary["memo9_note"], width=92),
+        summary["memo9_note"],
         "",
-        "The score columns are transparent proxies because the original Memo 9 embedding and perplexity",
-        "artifacts were not present in the recovered folder. Citations are used only as an audit",
-        "outcome, not as an input to the two proxy scores.",
+        "The score columns are transparent proxies because the original Memo 9 embedding and perplexity artifacts were not present in the recovered folder. Citations are used only as an audit outcome, not as an input to the two proxy scores.",
         "",
-        "The result should be read as a diagnostic audit of ranking risk, not as a final estimate",
-        "of scientific value.",
+        "The result should be read as a diagnostic audit of ranking risk, not as a final estimate of scientific value.",
     ]
     (output_dir / "summary.md").write_text("\n".join(lines) + "\n")
 
@@ -619,7 +616,7 @@ def main() -> None:
 
     df.to_csv(args.output / "chorus_audit_panel.csv", index=False)
     summary = summarize(df, meta)
-    (args.output / "summary_stats.json").write_text(json.dumps(summary, indent=2))
+    (args.output / "summary_stats.json").write_text(json.dumps(summary, indent=2) + "\n")
     write_plain_language_summary(summary, args.output)
 
     plot_title_gradient(df, args.output)

@@ -7,13 +7,8 @@
 
 ## Reconstruction note
 
-Memo 9 used an earlier audit sample. The recovered repository currently contains 467
-hypergraph document nodes; the code keeps the current raw-data sample visible rather than
-forcing the old N.
+Memo 9 used an earlier audit sample. The recovered repository currently contains 467 hypergraph document nodes; the code keeps the current raw-data sample visible rather than forcing the old N.
 
-The score columns are transparent proxies because the original Memo 9 embedding and perplexity
-artifacts were not present in the recovered folder. Citations are used only as an audit
-outcome, not as an input to the two proxy scores.
+The score columns are transparent proxies because the original Memo 9 embedding and perplexity artifacts were not present in the recovered folder. Citations are used only as an audit outcome, not as an input to the two proxy scores.
 
-The result should be read as a diagnostic audit of ranking risk, not as a final estimate
-of scientific value.
+The result should be read as a diagnostic audit of ranking risk, not as a final estimate of scientific value.
