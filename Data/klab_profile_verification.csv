@@ -1,0 +1,32 @@
+Name,Role,Institution,Has_OpenAlex_Match,Verified,Confidence,OpenAlex_Name,Works_Count,Citations,Issues
+Zhao Wang,Affiliate Faculty,University of Chicago,True,True,0.85,Zhao Wang,273,7261,
+Lingfei Wu,Affiliate Faculty,University of Pittsburgh,True,True,0.88,Lingfei Wu,71,3190,
+Ishanu Chattopadhyay,Affiliate Faculty,University of Chicago,True,True,0.83,Ishanu Chattopadhyay,115,932,
+Bowen Lou,Affiliate Faculty,USC,True,True,0.97,Bowen Lou,26,732,
+Wenxuan  Shi,PhD Student,Wuhan University,True,True,0.67,Wenxuan Shi,41,430,
+Di Tong,PhD Student,MIT,True,True,0.88,Di Tong,42,415,
+Jamshid Sourati,Affiliate Faculty,Depaul University,True,True,0.83,Jamshid Sourati,24,304,
+Bill Shi,Affiliate Researcher,Pond,True,True,0.67,Runjie Bill Shi,21,163,
+Chen Lin,PhD Student,Hong Kong University of Science and Technology,True,True,0.88,Chen Lin,11,29,
+Jake Burchard,PhD Student,University of Chicago,True,True,1.0,Jake Burchard,3,22,
+Nadav Kunievsky,Postdoctoral Scholar,University of Chicago,True,True,1.0,Nadav Kunievsky,4,9,
+Hsin-Keng Ling,Alumni,University of Michigan,True,True,1.0,Hsin-Keng Ling,3,7,
+Nicolás Torres-Echeverry,PhD Student,University of Chicago,True,True,0.88,Nicolás Torres-Echeverry,1,2,
+Partha Kadambi,Masters Student,,True,True,0.83,Partha Kadambi,1,1,
+Rui Wang,PhD Student,GW School of Business,True,False,0.55,Rui Wang,2091,69907,"Suspicious citation count (69,907) for PhD Student"
+Rui Pan,PhD Student,Northwestern University,True,False,0.73,Tingrui Pan,224,7693,"Institution mismatch: listed as 'Northwestern University', OpenAlex shows ['Chinese Academy of Sciences', 'Changshu Institute of Technology', 'University of Minnesota']"
+Xiaodi Yang,Masters Student,University of Chicago,True,False,0.57,Xiaodi Yang,150,5176,"Institution mismatch: listed as 'University of Chicago', OpenAlex shows ['Nanjing University', 'Institute of Soil Science', 'Nanjing Xiaozhuang University']"
+Ziwen Chen,PhD Student,Stanford University,True,False,0.57,Ziwen Chen,66,667,"Institution mismatch: listed as 'Stanford University', OpenAlex shows ['Tan Kah Kee Innovation Laboratory', 'Sichuan University', 'Weifang University']"
+Muhua Huang,Masters Student,University of Chicago,True,False,0.57,Muhua Huang,45,482,"Institution mismatch: listed as 'University of Chicago', OpenAlex shows ['First Affiliated Hospital of Nanchang University', 'Nanchang University', 'First Affiliated Hospital of Jiangxi Medical College']"
+Shilin Jia,Postdoctoral Scholar,Stanford University,True,False,0.57,Shilin Jia,28,171,"Institution mismatch: listed as 'Stanford University', OpenAlex shows ['Hospital of Stomatology, Sun Yat-sen University', 'Hohai University', 'Stomatology Hospital']"
+Christopher Wolfram,PhD Student,University of Chicago,True,False,0.57,Christopher Wolfram,6,141,"Institution mismatch: listed as 'University of Chicago', OpenAlex shows ['German Centre for Cardiovascular Research', 'Deutsches Herzzentrum der Charité', 'University of Maryland, College Park']"
+Hongkai Mao,PhD Student,Stanford University,True,False,0.57,Hongkai Mao,2,95,"Institution mismatch: listed as 'Stanford University', OpenAlex shows ['Yancheng Institute of Technology', 'Jiangsu University']"
+Qixin Lin,Masters Student,University of Chicago,True,False,0.57,Qixin Lin,4,57,"Institution mismatch: listed as 'University of Chicago', OpenAlex shows ['Fujian Normal University']"
+Pete Aceves,Affiliate Faculty,Johns Hopkins University,True,False,0.73,Pete Aceves,3,15,"Institution mismatch: listed as 'Johns Hopkins University', OpenAlex shows ['University of Chicago']"
+Ningzi Li,Postdoctoral Scholar,University of Chicago,True,False,0.57,Ningzi Li,1,14,"Institution mismatch: listed as 'University of Chicago', OpenAlex shows ['University of Colorado Denver']"
+Carina Kane,Undergraduate Student,University of Chicago,True,False,0.57,Carina Kane,2,1,"Institution mismatch: listed as 'University of Chicago', OpenAlex shows []"
+Lav Varshney,Affiliate Faculty,University of Illinois,True,False,0.57,Lav Varshney,1,0,"Institution mismatch: listed as 'University of Illinois', OpenAlex shows []"
+Joshua Jackson,Affiliate Faculty,University of Chicago,True,partial,0.88,Joshua Conrad Jackson,142,4296,
+Doug Guilbeault,Affiliate Faculty,Stanford University,True,partial,0.85,Douglas Guilbeault,57,1204,
+Chris Esposito,Postdoctoral Scholar,UCLA,True,partial,0.75,Christopher Esposito,11,80,
+Alejandro Sarria-Morales,Masters Student,University of Chicago,False,,0.0,,0,0,No OpenAlex match found

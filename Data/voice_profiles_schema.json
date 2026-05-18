@@ -1,0 +1,332 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Voice Profiles Schema",
+  "description": "Disposition-based voice profiles for Muse agent, derived from scientific/creative disposition taxonomy",
+
+  "definitions": {
+    "disposition_vector": {
+      "type": "object",
+      "description": "Multi-dimensional disposition profile based on Bassett/Zurn, Berlin, Dyson, Kuhn et al.",
+      "properties": {
+        "epistemic_appetite": {
+          "type": "object",
+          "properties": {
+            "curiosity_style": {
+              "type": "string",
+              "enum": ["busybody", "hunter", "dancer"],
+              "description": "Bassett & Zurn: busybody (broad/sparse), hunter (narrow/dense), dancer (loopy/unexpected)"
+            },
+            "scope": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1,
+              "description": "Berlin: 0=fox (many tools), 1=hedgehog (one big idea)"
+            },
+            "surprise_seeking": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1,
+              "description": "0=confirmation-seeking, 1=novelty-seeking"
+            }
+          }
+        },
+        "cognitive_style": {
+          "type": "object",
+          "properties": {
+            "thinking_mode": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1,
+              "description": "Guilford: 0=convergent (selects best), 1=divergent (generates possibilities)"
+            },
+            "abstraction": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1,
+              "description": "Dyson: 0=frog (details, mechanisms), 1=bird (patterns, unifications)"
+            },
+            "classification": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1,
+              "description": "Darwin/Simpson: 0=lumper (synthesizes), 1=splitter (differentiates)"
+            }
+          }
+        },
+        "methodological": {
+          "type": "object",
+          "properties": {
+            "making_style": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1,
+              "description": "Lévi-Strauss: 0=engineer (first principles), 1=bricoleur (recombination)"
+            },
+            "formalism": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1,
+              "description": "0=narrative/qualitative, 1=mathematical/quantitative"
+            },
+            "tacit_explicit": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1,
+              "description": "Polanyi: 0=intuitive (tacit), 1=explicit (codified)"
+            }
+          }
+        },
+        "social": {
+          "type": "object",
+          "properties": {
+            "disclosure": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1,
+              "description": "0=private (shares finished), 1=open (thinks out loud)"
+            },
+            "inquiry": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1,
+              "description": "0=heads-down, 1=monitors others constantly"
+            },
+            "collaboration": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1,
+              "description": "0=solitary, 0.5=dyadic, 1=collective"
+            },
+            "competition": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1,
+              "description": "0=communal (gift), 1=agonistic (priority)"
+            }
+          }
+        },
+        "temporal": {
+          "type": "object",
+          "properties": {
+            "paradigm_orientation": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1,
+              "description": "Kuhn: 0=normal science, 1=revolutionary"
+            },
+            "patience": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1,
+              "description": "0=quick iterations, 1=long-term investments"
+            },
+            "archival": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1,
+              "description": "0=present-focused, 1=historically-oriented"
+            }
+          }
+        },
+        "aesthetic": {
+          "type": "object",
+          "properties": {
+            "elegance_completeness": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1,
+              "description": "0=completeness/thoroughness, 1=elegance/parsimony"
+            },
+            "mechanism_phenomenon": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1,
+              "description": "0=phenomenological (what is it like?), 1=mechanist (how does it work?)"
+            },
+            "risk": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1,
+              "description": "0=cautious (reliable progress), 1=bold (high-variance bets)"
+            }
+          }
+        }
+      }
+    },
+
+    "critique_behavior": {
+      "type": "object",
+      "description": "Observable critique patterns derived from disposition",
+      "properties": {
+        "question_types": {
+          "type": "object",
+          "description": "Distribution of question types this voice tends to ask",
+          "properties": {
+            "clarifying": { "type": "number", "description": "Seeks definition, scope" },
+            "challenging": { "type": "number", "description": "Questions assumptions, validity" },
+            "building": { "type": "number", "description": "Extends, adds to the idea" },
+            "reframing": { "type": "number", "description": "Offers alternative lens" },
+            "connecting": { "type": "number", "description": "Links to other domains" },
+            "scaling": { "type": "number", "description": "Asks about scale effects" },
+            "mechanistic": { "type": "number", "description": "Asks how it works" },
+            "historical": { "type": "number", "description": "References past work" }
+          }
+        },
+        "critique_patterns": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Characteristic phrases and question forms"
+        },
+        "signature_moves": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Distinctive intellectual moves this voice makes"
+        },
+        "productive_tensions": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Other voice types this one productively conflicts with"
+        }
+      }
+    },
+
+    "data_sources": {
+      "type": "object",
+      "properties": {
+        "internal": {
+          "type": "object",
+          "properties": {
+            "slack_messages": {
+              "type": "object",
+              "properties": {
+                "count": { "type": "integer" },
+                "channels": { "type": "array", "items": { "type": "string" } },
+                "sample_quotes": { "type": "array", "items": { "type": "string" } }
+              }
+            },
+            "meeting_transcripts": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "event": { "type": "string" },
+                  "date": { "type": "string" },
+                  "utterance_count": { "type": "integer" },
+                  "sample_quotes": { "type": "array", "items": { "type": "string" } }
+                }
+              }
+            },
+            "papers": {
+              "type": "object",
+              "properties": {
+                "count": { "type": "integer" },
+                "topics": { "type": "array", "items": { "type": "string" } },
+                "sample_abstracts": { "type": "array", "items": { "type": "string" } }
+              }
+            },
+            "grant_drafts": {
+              "type": "array",
+              "items": { "type": "string" }
+            }
+          }
+        },
+        "external": {
+          "type": "object",
+          "properties": {
+            "openreview_reviews": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "venue": { "type": "string" },
+                  "paper_id": { "type": "string" },
+                  "review_text": { "type": "string" },
+                  "rating": { "type": "number" }
+                }
+              }
+            },
+            "talks": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "title": { "type": "string" },
+                  "venue": { "type": "string" },
+                  "url": { "type": "string" },
+                  "transcript_excerpt": { "type": "string" }
+                }
+              }
+            },
+            "interviews": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "podcast": { "type": "string" },
+                  "date": { "type": "string" },
+                  "url": { "type": "string" },
+                  "key_quotes": { "type": "array", "items": { "type": "string" } }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+
+  "type": "object",
+  "properties": {
+    "meta": {
+      "type": "object",
+      "properties": {
+        "version": { "type": "string" },
+        "created": { "type": "string", "format": "date-time" },
+        "updated": { "type": "string", "format": "date-time" },
+        "taxonomy_source": { "type": "string" }
+      }
+    },
+
+    "compound_types": {
+      "type": "object",
+      "description": "Named compound disposition patterns from the literature",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string" },
+          "description": { "type": "string" },
+          "exemplars": { "type": "array", "items": { "type": "string" } },
+          "disposition_signature": { "$ref": "#/definitions/disposition_vector" },
+          "critique_behavior": { "$ref": "#/definitions/critique_behavior" }
+        }
+      }
+    },
+
+    "individuals": {
+      "type": "object",
+      "description": "Specific people with disposition profiles",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string" },
+          "name": { "type": "string" },
+          "affiliation": { "type": "string" },
+          "compound_type": {
+            "type": "string",
+            "description": "Reference to compound_types key, if applicable"
+          },
+          "disposition": { "$ref": "#/definitions/disposition_vector" },
+          "critique_behavior": { "$ref": "#/definitions/critique_behavior" },
+          "data_sources": { "$ref": "#/definitions/data_sources" },
+          "confidence": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1,
+            "description": "Confidence in profile based on data quantity/quality"
+          }
+        },
+        "required": ["id", "name", "disposition"]
+      }
+    }
+  }
+}

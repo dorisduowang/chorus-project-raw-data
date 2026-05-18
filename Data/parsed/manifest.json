@@ -1,0 +1,523 @@
+{
+  "created_at": "2026-01-09T00:38:17.755992",
+  "files": [
+    {
+      "name": "KLAB TALK abstracts",
+      "path": "Talks/KLAB TALK abstracts",
+      "num_elements": 6
+    },
+    {
+      "name": "Knowledge Lab Analytics Jul 1 2025 to Jan 6 2026 - Jan 7 2026.csv",
+      "path": "slack/Knowledge Lab Analytics Jul 1 2025 to Jan 6 2026 - Jan 7 2026.csv",
+      "num_elements": 1
+    },
+    {
+      "name": "knowledgelab_publications_abstracts.pdf",
+      "path": "pubs/knowledgelab_publications_abstracts.pdf",
+      "num_elements": 64
+    },
+    {
+      "name": "Copy of The Chicago Center for Computational Social Science (C3S2) - Nov2025",
+      "path": "C3S2/Copy of The Chicago Center for Computational Social Science (C3S2) - Nov2025",
+      "num_elements": 85
+    },
+    {
+      "name": "Copy of AI Pillar Proposal Summaries",
+      "path": "Grants/Copy of AI Pillar Proposal Summaries",
+      "num_elements": 81
+    },
+    {
+      "name": "Copy of New Forms of Socio-Cognitive AI W1",
+      "path": "Grants/Copy of New Forms of Socio-Cognitive AI W1",
+      "num_elements": 69
+    },
+    {
+      "name": "Copy of Overview: New Forms of Socio-Cognitive AI",
+      "path": "Grants/Copy of Overview: New Forms of Socio-Cognitive AI",
+      "num_elements": 72
+    },
+    {
+      "name": "CV for James Evans .docx",
+      "path": "Grants/CVs/CV for James Evans .docx",
+      "num_elements": 44
+    },
+    {
+      "name": "Copy of CV.docx",
+      "path": "Grants/CVs/Copy of CV.docx",
+      "num_elements": 91
+    },
+    {
+      "name": "Evans CV Draft.docx",
+      "path": "Grants/CVs/Evans CV Draft.docx",
+      "num_elements": 84
+    },
+    {
+      "name": "Copy of Copy of CV.docx",
+      "path": "Grants/CVs/Copy of Copy of CV.docx",
+      "num_elements": 504
+    },
+    {
+      "name": "James Evans NIH Biosketch_2024.docx",
+      "path": "Grants/CVs/James Evans NIH Biosketch_2024.docx",
+      "num_elements": 54
+    },
+    {
+      "name": "Evans NIH Biosketch 2019.docx",
+      "path": "Grants/CVs/Evans NIH Biosketch 2019.docx",
+      "num_elements": 71
+    },
+    {
+      "name": "biosketch-12-2020-with instructions.docx",
+      "path": "Grants/CVs/biosketch-12-2020-with instructions.docx",
+      "num_elements": 42
+    },
+    {
+      "name": "biosketch-blank-format-rev-10-2021.docx",
+      "path": "Grants/CVs/biosketch-blank-format-rev-10-2021.docx",
+      "num_elements": 11
+    },
+    {
+      "name": "Copy of APTO-UChicago-Y2-Goals",
+      "path": "Grants/NSF Files/Copy of APTO-UChicago-Y2-Goals",
+      "num_elements": 1
+    },
+    {
+      "name": "NSF invests up to nearly $52M to align science and technology research and development investments with outcomes essential to U.S. competitiveness _ NSF - U.S. National Science Foundation.pdf",
+      "path": "Grants/NSF Files/NSF invests up to nearly $52M to align science and technology research and development investments with outcomes essential to U.S. competitiveness _ NSF - U.S. National Science Foundation.pdf",
+      "num_elements": 32
+    },
+    {
+      "name": "NSF awards $20 million to build AI models that predict scientific discoveries and technological advancements _ University of Chicago News.pdf",
+      "path": "Grants/NSF Files/NSF awards $20 million to build AI models that predict scientific discoveries and technological advancements _ University of Chicago News.pdf",
+      "num_elements": 100
+    },
+    {
+      "name": "Copy of APTO Schematic Diagram",
+      "path": "Grants/NSF Files/Copy of APTO Schematic Diagram",
+      "num_elements": 48
+    },
+    {
+      "name": "Full proposal 10-30-23 410pm.pdf",
+      "path": "Grants/NSF Files/Full proposal 10-30-23 410pm.pdf",
+      "num_elements": 250
+    },
+    {
+      "name": "GrantProposals.pdf",
+      "path": "Grants/NSF Files/GrantProposals.pdf",
+      "num_elements": 77
+    },
+    {
+      "name": "bartik09192024.pdf",
+      "path": "Grants/NSF Files/bartik09192024.pdf",
+      "num_elements": 63
+    },
+    {
+      "name": "APTO___Network.pdf",
+      "path": "Grants/NSF Files/APTO___Network.pdf",
+      "num_elements": 637
+    },
+    {
+      "name": "Y1 APTO Annual Report.pdf",
+      "path": "Grants/NSF Files/Y1 APTO Annual Report.pdf",
+      "num_elements": 535
+    },
+    {
+      "name": "UChicago - NSF-APTO - Newsletter - January 25 - v17 (4).pdf",
+      "path": "Grants/NSF Files/UChicago - NSF-APTO - Newsletter - January 25 - v17 (4).pdf",
+      "num_elements": 381
+    },
+    {
+      "name": "The NSF APTO Nine Month Report (04 30 2025 F).pdf",
+      "path": "Grants/NSF Files/The NSF APTO Nine Month Report (04 30 2025 F).pdf",
+      "num_elements": 231
+    },
+    {
+      "name": "Evans CPS 08-03-22.pdf",
+      "path": "Grants/NSF Files/Evans CPS 08-03-22.pdf",
+      "num_elements": 628
+    },
+    {
+      "name": "Evans Biosketch[1] copy.pdf",
+      "path": "Grants/NSF Files/Evans Biosketch[1] copy.pdf",
+      "num_elements": 39
+    },
+    {
+      "name": "Evans Biosketch[1].pdf",
+      "path": "Grants/NSF Files/Evans Biosketch[1].pdf",
+      "num_elements": 39
+    },
+    {
+      "name": "10.1.1_Cover_Memo_Approval of a grant for the International Conference on the Science of Science and Innovation 2025.docx",
+      "path": "Grants/NNF ICSSI/10.1.1_Cover_Memo_Approval of a grant for the International Conference on the Science of Science and Innovation 2025.docx",
+      "num_elements": 49
+    },
+    {
+      "name": "Proposal 4.pdf",
+      "path": "Grants/DAPRA UIUIC/Proposal 4.pdf",
+      "num_elements": 7
+    },
+    {
+      "name": "Pages from N0001424SF002 - James Evans, University of Chicago, FY25 MURI Submission.pdf",
+      "path": "Grants/MURI/Pages from N0001424SF002 - James Evans, University of Chicago, FY25 MURI Submission.pdf",
+      "num_elements": 122
+    },
+    {
+      "name": "N0001424SF002 - James Evans, University of Chicago, FY25 MURI Submission.pdf",
+      "path": "Grants/MURI/N0001424SF002 - James Evans, University of Chicago, FY25 MURI Submission.pdf",
+      "num_elements": 641
+    },
+    {
+      "name": "Complementary AI Pitch.docx",
+      "path": "Grants/DSI Research Grant/Complementary AI Pitch.docx",
+      "num_elements": 43
+    },
+    {
+      "name": "AFOSR Reporting Format.docx",
+      "path": "Grants/NU Minerva/AFOSR Reporting Format.docx",
+      "num_elements": 92
+    },
+    {
+      "name": "Copy of Revised Novo Nordisk Pitch(1).docx",
+      "path": "Grants/NNF Proposal/Copy of Revised Novo Nordisk Pitch(1).docx",
+      "num_elements": 147
+    },
+    {
+      "name": "Current Grants.docx",
+      "path": "Grants/Current Grants.docx",
+      "num_elements": 11
+    },
+    {
+      "name": "Logo.png",
+      "path": "Identity and Logos/Logo.png",
+      "num_elements": 1
+    },
+    {
+      "name": "UChicago-NSF-APTO-Q4-Newsletter-v14.pdf",
+      "path": "KLab Asst Folder/NSF Reports/UChicago-NSF-APTO-Q4-Newsletter-v14.pdf",
+      "num_elements": 142
+    },
+    {
+      "name": "UChicago - NSF-APTO - Newsletter - January 25 - v14.pdf",
+      "path": "KLab Asst Folder/NSF Reports/UChicago - NSF-APTO - Newsletter - January 25 - v14.pdf",
+      "num_elements": 384
+    },
+    {
+      "name": "Report for NSF-APTO (01 27 2025 G).pdf",
+      "path": "KLab Asst Folder/NSF Reports/Report for NSF-APTO (01 27 2025 G).pdf",
+      "num_elements": 296
+    },
+    {
+      "name": "Introduction Transcript.pdf",
+      "path": "Events/APTO Retreat/Meeting Recordings/Introduction Transcript.pdf",
+      "num_elements": 283
+    },
+    {
+      "name": "Wang Lab Transcript.docx",
+      "path": "Events/APTO Retreat/Meeting Recordings/Wang Lab Transcript.docx",
+      "num_elements": 561
+    },
+    {
+      "name": "Engler Presentation Transcript.txt",
+      "path": "Events/APTO Retreat/Meeting Recordings/Engler Presentation Transcript.txt",
+      "num_elements": 1
+    },
+    {
+      "name": "Introduction Transcript.docx",
+      "path": "Events/APTO Retreat/Meeting Recordings/Introduction Transcript.docx",
+      "num_elements": 814
+    },
+    {
+      "name": "GMT20241101-135055_Recording.transcript.vtt",
+      "path": "Events/APTO Retreat/Meeting Recordings/GMT20241101-135055_Recording.transcript.vtt",
+      "num_elements": 765
+    },
+    {
+      "name": "GMT20241102-140158_Recording.transcript (1).vtt",
+      "path": "Events/APTO Retreat/Meeting Recordings/GMT20241102-140158_Recording.transcript (1).vtt",
+      "num_elements": 3096
+    },
+    {
+      "name": "GMT20241102-140158_Recording.transcript.vtt",
+      "path": "Events/APTO Retreat/Meeting Recordings/GMT20241102-140158_Recording.transcript.vtt",
+      "num_elements": 3096
+    },
+    {
+      "name": "Notes on Presentations.docx",
+      "path": "Events/AI Workshop - October 20/Notes on Presentations.docx",
+      "num_elements": 49
+    },
+    {
+      "name": "New Forms of Socio-Cognitive AI Schedule.docx",
+      "path": "Events/AI Workshop - October 20/New Forms of Socio-Cognitive AI Schedule.docx",
+      "num_elements": 3
+    },
+    {
+      "name": "Copy of KLab Weekly Meeting (Fall 2025)",
+      "path": "Communications/Copy of KLab Weekly Meeting (Fall 2025)",
+      "num_elements": 76
+    },
+    {
+      "name": "Copy of KLab Weekly Meeting (Winter 2026)",
+      "path": "Communications/Copy of KLab Weekly Meeting (Winter 2026)",
+      "num_elements": 75
+    },
+    {
+      "name": "KnowledgeLab_Initiatives.pdf",
+      "path": "Communications/KnowledgeLab_Initiatives.pdf",
+      "num_elements": 273
+    },
+    {
+      "name": "Knowledge Lab Team _ Knowledge Lab at The University of Chicago.pdf",
+      "path": "Communications/Website/Knowledge Lab Team _ Knowledge Lab at The University of Chicago.pdf",
+      "num_elements": 150
+    },
+    {
+      "name": "Cresposito.png",
+      "path": "Communications/Website/Old Headshots/Cresposito.png",
+      "num_elements": 1
+    },
+    {
+      "name": "Wenxuan Shi.jpg",
+      "path": "Communications/Website/Old Headshots/Wenxuan Shi.jpg",
+      "num_elements": 1
+    },
+    {
+      "name": "img_2354.jpg",
+      "path": "Communications/Website/Old Headshots/img_2354.jpg",
+      "num_elements": 1
+    },
+    {
+      "name": "soc_labs50.jpg",
+      "path": "Communications/Website/Old Headshots/soc_labs50.jpg",
+      "num_elements": 1
+    },
+    {
+      "name": "2.png",
+      "path": "Communications/Website/Old Headshots/2.png",
+      "num_elements": 1
+    },
+    {
+      "name": "headshot_nl.jpg",
+      "path": "Communications/Website/Old Headshots/headshot_nl.jpg",
+      "num_elements": 1
+    },
+    {
+      "name": "img_6319.jpg",
+      "path": "Communications/Website/Old Headshots/img_6319.jpg",
+      "num_elements": 1
+    },
+    {
+      "name": "Wolfram, Christopher.jpeg",
+      "path": "Communications/Website/New Headshots/Wolfram, Christopher.jpeg",
+      "num_elements": 1
+    },
+    {
+      "name": "Lai, Shiyang.jpg",
+      "path": "Communications/Website/New Headshots/Lai, Shiyang.jpg",
+      "num_elements": 1
+    },
+    {
+      "name": "Wu, Lingfei.jpeg",
+      "path": "Communications/Website/New Headshots/Wu, Lingfei.jpeg",
+      "num_elements": 1
+    },
+    {
+      "name": "Sourati, Jamshid.jpeg",
+      "path": "Communications/Website/New Headshots/Sourati, Jamshid.jpeg",
+      "num_elements": 0
+    },
+    {
+      "name": "Shi, Haohan.png",
+      "path": "Communications/Website/New Headshots/Shi, Haohan.png",
+      "num_elements": 1
+    },
+    {
+      "name": "Mao, Hongkai.jpg",
+      "path": "Communications/Website/New Headshots/Mao, Hongkai.jpg",
+      "num_elements": 1
+    },
+    {
+      "name": "Li, Ningzi.jpg",
+      "path": "Communications/Website/New Headshots/Li, Ningzi.jpg",
+      "num_elements": 1
+    },
+    {
+      "name": "Kwon, Hyunku.jpeg",
+      "path": "Communications/Website/New Headshots/Kwon, Hyunku.jpeg",
+      "num_elements": 1
+    },
+    {
+      "name": "Jia, Shilin.jpg",
+      "path": "Communications/Website/New Headshots/Jia, Shilin.jpg",
+      "num_elements": 1
+    },
+    {
+      "name": "Cay del Junco.jpeg",
+      "path": "Communications/Website/New Headshots/Cay del Junco.jpeg",
+      "num_elements": 0
+    },
+    {
+      "name": "Bao, Honglin.jpg",
+      "path": "Communications/Website/New Headshots/Bao, Honglin.jpg",
+      "num_elements": 1
+    },
+    {
+      "name": "Wang, Rui.jpg",
+      "path": "Communications/Website/New Headshots/Wang, Rui.jpg",
+      "num_elements": 1
+    },
+    {
+      "name": "Foster, Ian.jpeg",
+      "path": "Communications/Website/New Headshots/Foster, Ian.jpeg",
+      "num_elements": 1
+    },
+    {
+      "name": "Varshney, Lav.jpeg",
+      "path": "Communications/Website/New Headshots/Varshney, Lav.jpeg",
+      "num_elements": 1
+    },
+    {
+      "name": "Blaiszik, Ben.jpeg",
+      "path": "Communications/Website/New Headshots/Blaiszik, Ben.jpeg",
+      "num_elements": 1
+    },
+    {
+      "name": "Tan, Chenhao.png",
+      "path": "Communications/Website/New Headshots/Tan, Chenhao.png",
+      "num_elements": 1
+    },
+    {
+      "name": "Ahn, YY.jpg",
+      "path": "Communications/Website/New Headshots/Ahn, YY.jpg",
+      "num_elements": 1
+    },
+    {
+      "name": "Potter, Yujin.jpg",
+      "path": "Communications/Website/New Headshots/Potter, Yujin.jpg",
+      "num_elements": 1
+    },
+    {
+      "name": "Wolpert, David.png",
+      "path": "Communications/Website/New Headshots/Wolpert, David.png",
+      "num_elements": 1
+    },
+    {
+      "name": "Chattopadhyay, Ishanu.jpeg",
+      "path": "Communications/Website/New Headshots/Chattopadhyay, Ishanu.jpeg",
+      "num_elements": 1
+    },
+    {
+      "name": "Brinkmann, Levin.png",
+      "path": "Communications/Website/New Headshots/Brinkmann, Levin.png",
+      "num_elements": 1
+    },
+    {
+      "name": "Aceves, Pete.jpg",
+      "path": "Communications/Website/New Headshots/Aceves, Pete.jpg",
+      "num_elements": 1
+    },
+    {
+      "name": "Xu, Fengli.jpg",
+      "path": "Communications/Website/New Headshots/Xu, Fengli.jpg",
+      "num_elements": 0
+    },
+    {
+      "name": "Schein, Aaron.jpeg",
+      "path": "Communications/Website/New Headshots/Schein, Aaron.jpeg",
+      "num_elements": 1
+    },
+    {
+      "name": "Lockhart, Jeffrey.jpg",
+      "path": "Communications/Website/New Headshots/Lockhart, Jeffrey.jpg",
+      "num_elements": 1
+    },
+    {
+      "name": "Jackson, Joshua.jpeg",
+      "path": "Communications/Website/New Headshots/Jackson, Joshua.jpeg",
+      "num_elements": 0
+    },
+    {
+      "name": "Torres-Echeverry, Nicolas.jpg",
+      "path": "Communications/Website/New Headshots/Torres-Echeverry, Nicolas.jpg",
+      "num_elements": 1
+    },
+    {
+      "name": "Burchard, Jake.jpg",
+      "path": "Communications/Website/New Headshots/Burchard, Jake.jpg",
+      "num_elements": 1
+    },
+    {
+      "name": "Kunievsky, Nadav.jpeg",
+      "path": "Communications/Website/New Headshots/Kunievsky, Nadav.jpeg",
+      "num_elements": 1
+    },
+    {
+      "name": "Kane, Carina.jpeg",
+      "path": "Communications/Website/New Headshots/Kane, Carina.jpeg",
+      "num_elements": 1
+    },
+    {
+      "name": "Desikan, Bhargav.jpeg",
+      "path": "Communications/Website/New Headshots/Desikan, Bhargav.jpeg",
+      "num_elements": 1
+    },
+    {
+      "name": "Kadambi, Partha.jpg",
+      "path": "Communications/Website/New Headshots/Kadambi, Partha.jpg",
+      "num_elements": 1
+    },
+    {
+      "name": "Chen, Ziwen.jpg",
+      "path": "Communications/Website/New Headshots/Chen, Ziwen.jpg",
+      "num_elements": 1
+    },
+    {
+      "name": "Akcigit, Ufuk.jpg",
+      "path": "Communications/Website/New Headshots/Akcigit, Ufuk.jpg",
+      "num_elements": 1
+    },
+    {
+      "name": "Huang, Muhua.HEIC",
+      "path": "Communications/Website/New Headshots/Huang, Muhua.HEIC",
+      "num_elements": 1
+    },
+    {
+      "name": "Ling, Hsin-Keng.jpg",
+      "path": "Communications/Website/New Headshots/Ling, Hsin-Keng.jpg",
+      "num_elements": 1
+    },
+    {
+      "name": "Jia.jpg",
+      "path": "Communications/Website/New Headshots/Jia.jpg",
+      "num_elements": 1
+    },
+    {
+      "name": "del junco.jpg",
+      "path": "Communications/Website/New Headshots/del junco.jpg",
+      "num_elements": 0
+    },
+    {
+      "name": "Mao.jpg",
+      "path": "Communications/Website/New Headshots/Mao.jpg",
+      "num_elements": 1
+    },
+    {
+      "name": "Tong.jpg",
+      "path": "Communications/Website/New Headshots/Tong.jpg",
+      "num_elements": 1
+    },
+    {
+      "name": "Misha_Teplitskiy_headshot_umsi.jpg",
+      "path": "Communications/Website/New Headshots/Misha_Teplitskiy_headshot_umsi.jpg",
+      "num_elements": 1
+    },
+    {
+      "name": "Lewis.jpg",
+      "path": "Communications/Website/New Headshots/Lewis.jpg",
+      "num_elements": 1
+    }
+  ],
+  "total_elements": 15561,
+  "total_chunks": 4201,
+  "total_chars": 1981894
+}

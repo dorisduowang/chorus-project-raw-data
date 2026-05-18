@@ -1,0 +1,36 @@
+services:
+  jupyter:
+    build: .
+    ports:
+      - "8888:8888"
+      - "8765:8765"
+    volumes:
+      - /Users/robertward/Documents/GitHub.nosync/chorus:/app
+    environment:
+      - JUPYTER_ENABLE_LAB=yes
+    command: bash /app/start_services.sh
+
+  rag-server:
+    build: .
+    ports:
+      - "8765:8765"
+    volumes:
+      - /Users/robertward/Documents/GitHub.nosync/chorus:/app
+    command: python /app/rag_server_fastapi.py
+    profiles:
+      - rag
+
+  slack-bot:
+    build: .
+    volumes:
+      - /Users/robertward/Documents/GitHub.nosync/chorus:/app
+    environment:
+      - SLACK_BOT_TOKEN=${SLACK_BOT_TOKEN}
+      - SLACK_APP_TOKEN=${SLACK_APP_TOKEN}
+      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
+      - RAG_SERVER_URL=http://rag-server:8765
+    command: python /app/slack_bot.py
+    depends_on:
+      - rag-server
+    profiles:
+      - slack

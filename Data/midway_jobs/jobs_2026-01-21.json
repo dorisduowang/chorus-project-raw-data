@@ -1,0 +1,77 @@
+{
+  "date": "2026-01-21",
+  "export_timestamp": "2026-01-22T17:28:04.053057",
+  "midway_cluster": "midway3-login3.rcc.local",
+  "accounts": [
+    "pi-jevans",
+    "pi-rwevans"
+  ],
+  "job_count": 5,
+  "jobs": [
+    {
+      "job_id": "44356368",
+      "user": "rbward",
+      "account": "pi-jevans",
+      "job_name": "inst_simp",
+      "partition": "caslake",
+      "start": "2026-01-21T11:32:47",
+      "end": "2026-01-21T11:32:47",
+      "state": "CANCELLED by 388886934",
+      "nodes": 1,
+      "cpus": 0,
+      "gpus": 0
+    },
+    {
+      "job_id": "44357715",
+      "user": "rbward",
+      "account": "pi-jevans",
+      "job_name": "quick_check",
+      "partition": "caslake",
+      "start": "2026-01-21T11:35:24",
+      "end": "2026-01-21T11:35:50",
+      "state": "OUT_OF_MEMORY",
+      "nodes": 1,
+      "cpus": 1,
+      "gpus": 0
+    },
+    {
+      "job_id": "44357723",
+      "user": "rbward",
+      "account": "pi-jevans",
+      "job_name": "inst_simp",
+      "partition": "caslake",
+      "start": "2026-01-21T11:36:13",
+      "end": "2026-01-21T11:41:59",
+      "state": "CANCELLED by 388886934",
+      "nodes": 1,
+      "cpus": 4,
+      "gpus": 0
+    },
+    {
+      "job_id": "44366275",
+      "user": "rbward",
+      "account": "pi-jevans",
+      "job_name": "merge_wos",
+      "partition": "caslake",
+      "start": "2026-01-21T14:12:03",
+      "end": "2026-01-21T14:13:18",
+      "state": "FAILED",
+      "nodes": 1,
+      "cpus": 4,
+      "gpus": 0
+    },
+    {
+      "job_id": "44366277",
+      "user": "rbward",
+      "account": "pi-jevans",
+      "job_name": "merge_wos",
+      "partition": "caslake",
+      "start": "2026-01-21T14:13:03",
+      "end": "2026-01-21T14:13:03",
+      "state": "CANCELLED by 388886934",
+      "nodes": 1,
+      "cpus": 0,
+      "gpus": 0
+    }
+  ]
+}

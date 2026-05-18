@@ -1,0 +1,395 @@
+{
+  "summary": {
+    "total": 30,
+    "passed": 20,
+    "failed": 10,
+    "duration_seconds": 11.54
+  },
+  "results": [
+    {
+      "category": "infrastructure",
+      "test": "server_health",
+      "passed": true,
+      "details": {
+        "status": "ok",
+        "chunks": 11470,
+        "llm_reformulation_enabled": true,
+        "reranking_enabled": true,
+        "rerank_model": "cross-encoder/ms-marco-MiniLM-L-6-v2",
+        "mmr_enabled": true,
+        "mmr_lambda": 0.7
+      },
+      "timestamp": "2026-01-17T13:14:37.947842"
+    },
+    {
+      "category": "person_lookup",
+      "test": "person_James_Evans",
+      "passed": true,
+      "details": {
+        "query": "Who is James Evans?",
+        "response_time_ms": 51.63,
+        "has_structured_results": true,
+        "has_person_data": true,
+        "person_found": "James Evans",
+        "has_openalex": true,
+        "semantic_results_count": 0
+      },
+      "timestamp": "2026-01-17T13:14:37.999573"
+    },
+    {
+      "category": "person_lookup",
+      "test": "person_Bhargav_Srinivasa_Desikan",
+      "passed": true,
+      "details": {
+        "query": "Who is Bhargav Srinivasa Desikan?",
+        "response_time_ms": 14.06,
+        "has_structured_results": true,
+        "has_person_data": true,
+        "person_found": "Bhargav Desikan",
+        "has_openalex": true,
+        "semantic_results_count": 0
+      },
+      "timestamp": "2026-01-17T13:14:38.013672"
+    },
+    {
+      "category": "person_lookup",
+      "test": "person_Hyunin_Yoon",
+      "passed": false,
+      "details": {
+        "query": "Who is Hyunin Yoon?",
+        "response_time_ms": 12.84,
+        "has_structured_results": false,
+        "has_person_data": false,
+        "person_found": null,
+        "has_openalex": false,
+        "semantic_results_count": 0
+      },
+      "timestamp": "2026-01-17T13:14:38.026552"
+    },
+    {
+      "category": "person_lookup",
+      "test": "person_Ziwen_Chen",
+      "passed": true,
+      "details": {
+        "query": "Who is Ziwen Chen?",
+        "response_time_ms": 3.47,
+        "has_structured_results": true,
+        "has_person_data": true,
+        "person_found": "Ziwen Chen",
+        "has_openalex": true,
+        "semantic_results_count": 0
+      },
+      "timestamp": "2026-01-17T13:14:38.030070"
+    },
+    {
+      "category": "project_lookup",
+      "test": "project_APTO",
+      "passed": true,
+      "details": {
+        "query": "What is the APTO project?",
+        "response_time_ms": 8.38,
+        "structured_results_count": 1,
+        "semantic_results_count": 0
+      },
+      "timestamp": "2026-01-17T13:14:38.038483"
+    },
+    {
+      "category": "project_lookup",
+      "test": "project_C3S2",
+      "passed": true,
+      "details": {
+        "query": "What is the C3S2 project?",
+        "response_time_ms": 2.07,
+        "structured_results_count": 1,
+        "semantic_results_count": 0
+      },
+      "timestamp": "2026-01-17T13:14:38.040586"
+    },
+    {
+      "category": "project_lookup",
+      "test": "project_Socio-Cognitive_AI",
+      "passed": true,
+      "details": {
+        "query": "What is the Socio-Cognitive AI project?",
+        "response_time_ms": 5.53,
+        "structured_results_count": 1,
+        "semantic_results_count": 0
+      },
+      "timestamp": "2026-01-17T13:14:38.046152"
+    },
+    {
+      "category": "resource_lookup",
+      "test": "resource_GPU",
+      "passed": true,
+      "details": {
+        "query": "What GPU resources are available?",
+        "response_time_ms": 23.56,
+        "structured_results_count": 1,
+        "semantic_results_count": 0
+      },
+      "timestamp": "2026-01-17T13:14:38.069762"
+    },
+    {
+      "category": "resource_lookup",
+      "test": "resource_compute",
+      "passed": true,
+      "details": {
+        "query": "What compute resources are available?",
+        "response_time_ms": 5.96,
+        "structured_results_count": 1,
+        "semantic_results_count": 0
+      },
+      "timestamp": "2026-01-17T13:14:38.075798"
+    },
+    {
+      "category": "resource_lookup",
+      "test": "resource_storage",
+      "passed": true,
+      "details": {
+        "query": "What storage resources are available?",
+        "response_time_ms": 6321.95,
+        "structured_results_count": 1,
+        "semantic_results_count": 5
+      },
+      "timestamp": "2026-01-17T13:14:44.397818"
+    },
+    {
+      "category": "resource_lookup",
+      "test": "resource_data",
+      "passed": true,
+      "details": {
+        "query": "What data resources are available?",
+        "response_time_ms": 4.58,
+        "structured_results_count": 12,
+        "semantic_results_count": 0
+      },
+      "timestamp": "2026-01-17T13:14:44.402517"
+    },
+    {
+      "category": "semantic_search",
+      "test": "semantic_machine_learning",
+      "passed": false,
+      "details": {
+        "query": "Research on machine learning",
+        "response_time_ms": 0.0,
+        "results_count": 0,
+        "top_scores": []
+      },
+      "timestamp": "2026-01-17T13:14:44.406312"
+    },
+    {
+      "category": "semantic_search",
+      "test": "semantic_natural_language_processing",
+      "passed": false,
+      "details": {
+        "query": "Research on natural language processing",
+        "response_time_ms": 0.0,
+        "results_count": 0,
+        "top_scores": []
+      },
+      "timestamp": "2026-01-17T13:14:44.407657"
+    },
+    {
+      "category": "semantic_search",
+      "test": "semantic_network_science",
+      "passed": false,
+      "details": {
+        "query": "Research on network science",
+        "response_time_ms": 0.0,
+        "results_count": 0,
+        "top_scores": []
+      },
+      "timestamp": "2026-01-17T13:14:44.408671"
+    },
+    {
+      "category": "semantic_search",
+      "test": "semantic_computational_social_science",
+      "passed": false,
+      "details": {
+        "query": "Research on computational social science",
+        "response_time_ms": 0.0,
+        "results_count": 0,
+        "top_scores": []
+      },
+      "timestamp": "2026-01-17T13:14:44.409587"
+    },
+    {
+      "category": "bm25_search",
+      "test": "bm25_knowledge_lab",
+      "passed": false,
+      "details": {
+        "query": "knowledge lab",
+        "response_time_ms": 0.0,
+        "results_count": 0,
+        "top_scores": []
+      },
+      "timestamp": "2026-01-17T13:14:44.410325"
+    },
+    {
+      "category": "bm25_search",
+      "test": "bm25_publications",
+      "passed": false,
+      "details": {
+        "query": "publications",
+        "response_time_ms": 0.0,
+        "results_count": 0,
+        "top_scores": []
+      },
+      "timestamp": "2026-01-17T13:14:44.410907"
+    },
+    {
+      "category": "bm25_search",
+      "test": "bm25_grants_funding",
+      "passed": false,
+      "details": {
+        "query": "grants funding",
+        "response_time_ms": 0.0,
+        "results_count": 0,
+        "top_scores": []
+      },
+      "timestamp": "2026-01-17T13:14:44.411460"
+    },
+    {
+      "category": "bm25_search",
+      "test": "bm25_university_chicago",
+      "passed": false,
+      "details": {
+        "query": "university chicago",
+        "response_time_ms": 0.0,
+        "results_count": 0,
+        "top_scores": []
+      },
+      "timestamp": "2026-01-17T13:14:44.412136"
+    },
+    {
+      "category": "hybrid_search",
+      "test": "hybrid_8434",
+      "passed": true,
+      "details": {
+        "query": "Who works on NLP at Knowledge Lab?",
+        "response_time_ms": 1860.77,
+        "structured_results_count": 0,
+        "semantic_results_count": 5,
+        "query_classification": {}
+      },
+      "timestamp": "2026-01-17T13:14:46.272940"
+    },
+    {
+      "category": "hybrid_search",
+      "test": "hybrid_8166",
+      "passed": true,
+      "details": {
+        "query": "What funding does James Evans have?",
+        "response_time_ms": 44.37,
+        "structured_results_count": 3,
+        "semantic_results_count": 0,
+        "query_classification": {}
+      },
+      "timestamp": "2026-01-17T13:14:46.317348"
+    },
+    {
+      "category": "hybrid_search",
+      "test": "hybrid_4911",
+      "passed": true,
+      "details": {
+        "query": "How do I use Midway GPU resources?",
+        "response_time_ms": 1356.14,
+        "structured_results_count": 1,
+        "semantic_results_count": 5,
+        "query_classification": {}
+      },
+      "timestamp": "2026-01-17T13:14:47.673520"
+    },
+    {
+      "category": "hybrid_search",
+      "test": "hybrid_7280",
+      "passed": false,
+      "details": {
+        "query": "Tell me about recent publications",
+        "response_time_ms": 5.26,
+        "structured_results_count": 0,
+        "semantic_results_count": 0,
+        "query_classification": {}
+      },
+      "timestamp": "2026-01-17T13:14:47.678811"
+    },
+    {
+      "category": "edge_cases",
+      "test": "empty_query",
+      "passed": true,
+      "details": {
+        "response_time_ms": 1729.21,
+        "handled_gracefully": true
+      },
+      "timestamp": "2026-01-17T13:14:49.464180"
+    },
+    {
+      "category": "edge_cases",
+      "test": "long_query",
+      "passed": true,
+      "details": {
+        "query_length": 422,
+        "response_time_ms": 45.08,
+        "handled_gracefully": true
+      },
+      "timestamp": "2026-01-17T13:14:49.464189"
+    },
+    {
+      "category": "edge_cases",
+      "test": "special_chars",
+      "passed": true,
+      "details": {
+        "response_time_ms": 2.77,
+        "handled_gracefully": true
+      },
+      "timestamp": "2026-01-17T13:14:49.464193"
+    },
+    {
+      "category": "edge_cases",
+      "test": "nonexistent_person",
+      "passed": true,
+      "details": {
+        "response_time_ms": 8.2,
+        "found_results": false,
+        "handled_gracefully": true
+      },
+      "timestamp": "2026-01-17T13:14:49.464195"
+    },
+    {
+      "category": "quality",
+      "test": "quality_James_Evans",
+      "passed": true,
+      "details": {
+        "query": "Tell me about James Evans",
+        "response_time_ms": 1.98,
+        "quality_checks": {
+          "has_person_data": true,
+          "has_name": true,
+          "has_role": true,
+          "has_openalex": true,
+          "has_email": false
+        },
+        "quality_score": 0.8
+      },
+      "timestamp": "2026-01-17T13:14:49.466211"
+    },
+    {
+      "category": "quality",
+      "test": "quality_Bhargav_Srinivasa_Desikan",
+      "passed": true,
+      "details": {
+        "query": "Tell me about Bhargav Srinivasa Desikan",
+        "response_time_ms": 1.97,
+        "quality_checks": {
+          "has_person_data": true,
+          "has_name": true,
+          "has_role": true,
+          "has_openalex": true,
+          "has_email": false
+        },
+        "quality_score": 0.8
+      },
+      "timestamp": "2026-01-17T13:14:49.468210"
+    }
+  ]
+}

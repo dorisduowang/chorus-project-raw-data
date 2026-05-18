@@ -1,0 +1,455 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "lab_registry_schema.json",
+  "title": "KLab Registry Schema",
+  "description": "Schema for the Knowledge Lab structured registry",
+  "type": "object",
+  "required": ["meta", "projects", "funding", "datasets", "code_repos", "compute", "events", "guides"],
+
+  "properties": {
+    "meta": {
+      "type": "object",
+      "required": ["version", "last_updated"],
+      "properties": {
+        "version": { "type": "string" },
+        "last_updated": { "type": "string", "format": "date" },
+        "updated_by": { "type": "string" }
+      }
+    },
+
+    "people": {
+      "type": "object",
+      "description": "Reference to external people data",
+      "properties": {
+        "_note": { "type": "string" },
+        "_source": { "type": "string" }
+      }
+    },
+
+    "projects": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "name", "status"],
+        "properties": {
+          "id": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+          "name": { "type": "string" },
+          "status": { "type": "string", "enum": ["active", "completed", "paused", "proposed"] },
+          "description": { "type": "string" },
+          "start_date": { "type": ["string", "null"] },
+          "end_date": { "type": ["string", "null"] },
+          "funding": { "type": "array", "items": { "type": "string" } },
+          "leads": { "type": "array", "items": { "type": "string" } },
+          "members": { "type": "array", "items": { "type": "string" } },
+          "papers": { "type": "array", "items": { "type": "string" } },
+          "code_repos": { "type": "array", "items": { "type": "string" } },
+          "datasets": { "type": "array", "items": { "type": "string" } },
+          "tags": { "type": "array", "items": { "type": "string" } }
+        }
+      }
+    },
+
+    "funding": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "name", "source", "status"],
+        "properties": {
+          "id": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+          "name": { "type": "string" },
+          "source": { "type": "string" },
+          "type": { "type": "string", "enum": ["research_grant", "fellowship", "conference_grant", "gift", "contract"] },
+          "amount": { "type": ["number", "null"] },
+          "currency": { "type": "string", "default": "USD" },
+          "pi": { "type": "string" },
+          "co_pis": { "type": "array", "items": { "type": "string" } },
+          "start_date": { "type": ["string", "null"] },
+          "end_date": { "type": ["string", "null"] },
+          "status": { "type": "string", "enum": ["active", "completed", "submitted", "planned", "rejected"] },
+          "projects": { "type": "array", "items": { "type": "string" } },
+          "documents": { "type": "array", "items": { "type": "string" } }
+        }
+      }
+    },
+
+    "papers": {
+      "type": "object",
+      "properties": {
+        "_note": { "type": "string" },
+        "_source": { "type": "string" },
+        "drafts": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["id", "title"],
+            "properties": {
+              "id": { "type": "string" },
+              "title": { "type": "string" },
+              "authors": { "type": "array", "items": { "type": "string" } },
+              "status": { "type": "string", "enum": ["drafting", "internal_review", "submitted", "revision", "accepted"] },
+              "target_venue": { "type": "string" },
+              "drive_link": { "type": "string" },
+              "projects": { "type": "array", "items": { "type": "string" } }
+            }
+          }
+        },
+        "preprints": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": { "type": "string" },
+              "title": { "type": "string" },
+              "arxiv_id": { "type": "string" },
+              "doi": { "type": "string" }
+            }
+          }
+        },
+        "published": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "openalex_id": { "type": "string" },
+              "doi": { "type": "string" }
+            }
+          }
+        }
+      }
+    },
+
+    "datasets": {
+      "type": "array",
+      "description": "Dataset cards following standard data documentation format",
+      "items": {
+        "type": "object",
+        "required": ["id", "name"],
+        "properties": {
+          "id": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+          "name": { "type": "string" },
+          "description": { "type": "string" },
+          "version": { "type": ["string", "null"] },
+
+          "provenance": {
+            "type": "object",
+            "description": "Data source and collection information",
+            "properties": {
+              "source": { "type": "string", "description": "Original data source/provider" },
+              "collection_method": { "type": "string", "description": "How data was collected" },
+              "collection_date": { "type": ["string", "null"], "description": "When data was collected/snapshotted" },
+              "update_frequency": { "type": "string", "enum": ["static", "daily", "weekly", "monthly", "quarterly", "annual", "biannual", "periodic", "irregular"] },
+              "original_url": { "type": ["string", "null"], "format": "uri" },
+              "license": { "type": ["string", "null"] },
+              "citation": { "type": ["string", "null"], "description": "How to cite this dataset" }
+            }
+          },
+
+          "technical": {
+            "type": "object",
+            "description": "Technical specifications",
+            "properties": {
+              "format": { "type": ["string", "null"], "description": "File format (parquet, json, csv, etc.)" },
+              "size_gb": { "type": ["number", "null"] },
+              "num_records": { "type": ["integer", "null"] },
+              "num_files": { "type": ["integer", "null"] },
+              "location": { "type": ["string", "null"], "description": "Path on Midway" },
+              "schema_doc": { "type": ["string", "null"], "description": "Path to schema documentation" }
+            }
+          },
+
+          "variables": {
+            "type": "array",
+            "description": "Key fields/columns in the dataset",
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": { "type": "string" },
+                "type": { "type": "string" },
+                "description": { "type": "string" },
+                "example": { "type": ["string", "null"] },
+                "missing_rate": { "type": ["number", "null"], "description": "Percentage of missing values" }
+              }
+            }
+          },
+
+          "intended_use": {
+            "type": "object",
+            "properties": {
+              "primary_use": { "type": "string", "description": "Main intended purpose" },
+              "use_cases": { "type": "array", "items": { "type": "string" } },
+              "out_of_scope": { "type": "array", "items": { "type": "string" }, "description": "Uses this data is NOT suitable for" }
+            }
+          },
+
+          "limitations": {
+            "type": "object",
+            "properties": {
+              "known_issues": { "type": "array", "items": { "type": "string" } },
+              "biases": { "type": "array", "items": { "type": "string" } },
+              "coverage_gaps": { "type": "array", "items": { "type": "string" } },
+              "temporal_limitations": { "type": ["string", "null"] }
+            }
+          },
+
+          "access": {
+            "type": "object",
+            "properties": {
+              "level": { "type": "string", "enum": ["public", "internal", "restricted", "confidential"] },
+              "requirements": { "type": "array", "items": { "type": "string" }, "description": "What's needed to access (DUA, account, etc.)" },
+              "contact": { "type": ["string", "null"], "description": "Who to contact for access" }
+            }
+          },
+
+          "usage": {
+            "type": "object",
+            "description": "How this dataset has been used",
+            "properties": {
+              "publications": { "type": "array", "items": { "type": "string" }, "description": "Papers using this dataset" },
+              "projects": { "type": "array", "items": { "type": "string" } },
+              "derived_datasets": { "type": "array", "items": { "type": "string" } }
+            }
+          },
+
+          "maintainer": {
+            "type": "object",
+            "properties": {
+              "name": { "type": ["string", "null"] },
+              "contact": { "type": ["string", "null"] },
+              "last_verified": { "type": ["string", "null"], "format": "date" }
+            }
+          },
+
+          "sensitivity": {
+            "type": ["object", "null"],
+            "description": "Privacy, ethics, and sensitivity classification (Data Cards framework)",
+            "properties": {
+              "contains_pii": { "type": ["boolean", "null"], "description": "Whether dataset contains personally identifiable information" },
+              "pii_categories": { "type": "array", "items": { "type": "string" }, "description": "Types of PII present (e.g., names, emails, usernames)" },
+              "consent_status": { "type": ["string", "null"], "description": "Consent model (e.g., informed_consent, terms_of_service, public_data_no_consent_required)" },
+              "risk_level": { "type": ["string", "null"], "enum": ["low", "medium", "high", null], "description": "Overall sensitivity risk level" },
+              "ethical_review": { "type": ["string", "null"], "description": "IRB or ethics review status" },
+              "data_subjects": { "type": ["string", "null"], "description": "Description of data subjects (e.g., researchers, patients, platform users)" }
+            }
+          },
+
+          "creators": {
+            "type": "array",
+            "description": "Who built or curated this dataset (Data Cards framework)",
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": { "type": ["string", "null"] },
+                "affiliation": { "type": ["string", "null"] },
+                "contact": { "type": ["string", "null"] },
+                "role": { "type": ["string", "null"], "description": "Role in dataset creation (e.g., lead, contributor, curator)" }
+              }
+            }
+          },
+
+          "preprocessing": {
+            "type": ["object", "null"],
+            "description": "Cleaning and transformation steps applied to raw data",
+            "properties": {
+              "steps": { "type": "array", "items": { "type": "string" }, "description": "Ordered list of preprocessing steps" },
+              "raw_data_available": { "type": ["boolean", "null"], "description": "Whether the raw/unprocessed data is still available" },
+              "tools_used": { "type": "array", "items": { "type": "string" }, "description": "Software/tools used for preprocessing" }
+            }
+          },
+
+          "example_data_points": {
+            "type": "array",
+            "description": "Sample records illustrating dataset content (Data Cards framework)",
+            "items": {
+              "type": "object",
+              "additionalProperties": true
+            }
+          },
+
+          "annotation": {
+            "type": ["object", "null"],
+            "description": "Human labeling and annotation details (Data Cards framework)",
+            "properties": {
+              "is_annotated": { "type": ["boolean", "null"], "description": "Whether dataset contains human annotations" },
+              "annotation_type": { "type": ["string", "null"], "description": "Type of annotation (e.g., expert, crowdsourced, automated)" },
+              "annotator_count": { "type": ["integer", "null"], "description": "Number of annotators" },
+              "inter_annotator_agreement": { "type": ["number", "null"], "description": "IAA score if measured" },
+              "label_schema": { "type": "array", "items": { "type": "string" }, "description": "List of label fields/categories" }
+            }
+          },
+
+          "sampling": {
+            "type": ["object", "null"],
+            "description": "Sampling methodology and population coverage",
+            "properties": {
+              "methodology": { "type": ["string", "null"], "description": "Sampling approach (e.g., full population, random sample, stratified)" },
+              "population": { "type": ["string", "null"], "description": "Target population the dataset represents" },
+              "known_exclusions": { "type": "array", "items": { "type": "string" }, "description": "Known groups or categories excluded from sampling" },
+              "temporal_range": { "type": ["string", "null"], "description": "Time period covered by the data" }
+            }
+          },
+
+          "known_models_and_benchmarks": {
+            "type": ["object", "null"],
+            "description": "ML models trained on this data and benchmark results",
+            "properties": {
+              "models_trained": { "type": "array", "items": { "type": "string" }, "description": "Known models trained on this dataset" },
+              "benchmark_results": { "type": "array", "items": { "type": "string" }, "description": "Benchmark evaluations using this dataset" },
+              "leaderboard_url": { "type": ["string", "null"], "description": "URL to leaderboard or benchmark page" }
+            }
+          },
+
+          "lifecycle": {
+            "type": ["object", "null"],
+            "description": "Retention, deprecation, and versioning information",
+            "properties": {
+              "retention_policy": { "type": ["string", "null"], "description": "How long data is retained" },
+              "deprecation_date": { "type": ["string", "null"], "description": "When dataset was or will be deprecated" },
+              "deprecation_notes": { "type": ["string", "null"], "description": "Reason or context for deprecation" },
+              "version_history": { "type": "array", "items": { "type": "string" }, "description": "Previous versions of this dataset" },
+              "update_plan": { "type": ["string", "null"], "description": "Plans for future updates" }
+            }
+          },
+
+          "social_impact": {
+            "type": ["object", "null"],
+            "description": "Societal considerations for dataset use (Data Cards framework)",
+            "properties": {
+              "beneficial_uses": { "type": "array", "items": { "type": "string" }, "description": "Positive societal applications" },
+              "potential_harms": { "type": "array", "items": { "type": "string" }, "description": "Potential negative impacts or misuse scenarios" },
+              "affected_groups": { "type": "array", "items": { "type": "string" }, "description": "Groups potentially affected by dataset use" },
+              "considerations": { "type": ["string", "null"], "description": "Additional ethical/social considerations" }
+            }
+          },
+
+          "data_card_completeness": {
+            "type": ["object", "null"],
+            "description": "Documentation audit trail for data card completeness",
+            "properties": {
+              "last_reviewed": { "type": ["string", "null"], "description": "Date of last documentation review" },
+              "reviewed_by": { "type": ["string", "null"], "description": "Who reviewed the data card" },
+              "sections_documented": { "type": "array", "items": { "type": "string" }, "description": "Which sections have been filled in" }
+            }
+          },
+
+          "tags": { "type": "array", "items": { "type": "string" } }
+        }
+      }
+    },
+
+    "code_repos": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "name"],
+        "properties": {
+          "id": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+          "name": { "type": "string" },
+          "description": { "type": "string" },
+          "url": { "type": "string", "format": "uri" },
+          "language": { "type": "string" },
+          "status": { "type": "string", "enum": ["active", "archived", "deprecated"] },
+          "maintainers": { "type": "array", "items": { "type": "string" } },
+          "projects": { "type": "array", "items": { "type": "string" } },
+          "tags": { "type": "array", "items": { "type": "string" } }
+        }
+      }
+    },
+
+    "compute": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "name", "type"],
+        "properties": {
+          "id": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+          "name": { "type": "string" },
+          "type": { "type": "string", "enum": ["hpc_cluster", "cloud", "api", "local_server", "workstation", "bare_metal_server"] },
+          "provider": { "type": "string" },
+          "description": { "type": "string" },
+          "access": { "type": "string" },
+          "specs": { "type": "object" },
+          "documentation": { "type": "string", "format": "uri" },
+          "contact": { "type": ["string", "null"] }
+        }
+      }
+    },
+
+    "events": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "name", "type"],
+        "properties": {
+          "id": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+          "name": { "type": "string" },
+          "type": { "type": "string", "enum": ["recurring_meeting", "seminar", "workshop", "conference", "retreat", "defense", "one_time"] },
+          "date": { "type": ["string", "null"] },
+          "frequency": { "type": "string", "enum": ["weekly", "biweekly", "monthly", "quarterly", "annual", "one_time"] },
+          "description": { "type": "string" },
+          "schedule_doc": { "type": "string" },
+          "recordings": { "type": "array", "items": { "type": "string" } },
+          "notes": { "type": "array", "items": { "type": "string" } },
+          "funding": { "type": "array", "items": { "type": "string" } }
+        }
+      }
+    },
+
+    "tools": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "name", "type"],
+        "properties": {
+          "id": { "type": "string" },
+          "name": { "type": "string" },
+          "type": { "type": "string", "enum": ["database", "software", "communication", "cloud_service", "hardware", "data_processing", "development_environment", "job_scheduler", "monitoring"] },
+          "url": { "type": ["string", "null"] },
+          "description": { "type": "string" },
+          "access": { "type": "string" }
+        }
+      }
+    },
+
+    "decisions": {
+      "type": "array",
+      "description": "Documented decisions for institutional memory",
+      "items": {
+        "type": "object",
+        "required": ["id", "title", "decision"],
+        "properties": {
+          "id": { "type": "string" },
+          "date": { "type": ["string", "null"], "format": "date" },
+          "title": { "type": "string" },
+          "description": { "type": "string" },
+          "context": { "type": "string" },
+          "options_considered": { "type": "array", "items": { "type": "string" } },
+          "decision": { "type": "string" },
+          "rationale": { "type": "string" },
+          "made_by": { "type": "array", "items": { "type": "string" } },
+          "related_projects": { "type": "array", "items": { "type": "string" } },
+          "source_docs": { "type": "array", "items": { "type": "string" } }
+        }
+      }
+    },
+
+    "guides": {
+      "type": "array",
+      "description": "How-to guides and technical documentation",
+      "items": {
+        "type": "object",
+        "required": ["id", "title", "category", "content"],
+        "properties": {
+          "id": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+          "title": { "type": "string" },
+          "category": { "type": "string", "enum": ["compute", "data", "software", "access", "general"] },
+          "keywords": { "type": "array", "items": { "type": "string" } },
+          "content": { "type": "string" },
+          "steps": { "type": "array", "items": { "type": "string" } },
+          "prerequisites": { "type": "array", "items": { "type": "string" } },
+          "related_guides": { "type": "array", "items": { "type": "string" } },
+          "source_doc": { "type": "string" }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,52 @@
+[
+  {
+    "test": "Person query",
+    "success": true,
+    "rag_time_ms": 15.45,
+    "claude_time_ms": 4093.76,
+    "total_time_ms": 4109.21,
+    "response_length": 439,
+    "structured_results": 1,
+    "semantic_results": 0
+  },
+  {
+    "test": "Project query",
+    "success": true,
+    "rag_time_ms": 3.4,
+    "claude_time_ms": 2950.27,
+    "total_time_ms": 2953.67,
+    "response_length": 313,
+    "structured_results": 1,
+    "semantic_results": 0
+  },
+  {
+    "test": "Resource query",
+    "success": true,
+    "rag_time_ms": 7.19,
+    "claude_time_ms": 3099.97,
+    "total_time_ms": 3107.16,
+    "response_length": 433,
+    "structured_results": 1,
+    "semantic_results": 0
+  },
+  {
+    "test": "Research topic",
+    "success": true,
+    "rag_time_ms": 1740.71,
+    "claude_time_ms": 3968.59,
+    "total_time_ms": 5709.3,
+    "response_length": 416,
+    "structured_results": 8,
+    "semantic_results": 5
+  },
+  {
+    "test": "General info",
+    "success": true,
+    "rag_time_ms": 5.94,
+    "claude_time_ms": 3246.99,
+    "total_time_ms": 3252.93,
+    "response_length": 421,
+    "structured_results": 0,
+    "semantic_results": 0
+  }
+]

@@ -1,0 +1,2172 @@
+{
+  "timestamp": "2026-01-15T12:09:20.865476",
+  "total_queries": 100,
+  "results": [
+    {
+      "query": "Who is James Evans?",
+      "category": "people",
+      "expected_type": "lookup",
+      "complexity": "low",
+      "response_preview": "[1 structured, 0 semantic] **James Evans**\n- Role: Director\n- Institution: University of Chicago\n- Publications: 325 works, 9776 citations\n- h-index: 42",
+      "latency_ms": 1.7960071563720703,
+      "classification": {
+        "type": "structured",
+        "entity_types": [
+          "people"
+        ],
+        "confidence": 0.9500000000000001,
+        "is_compound": false,
+        "compound_filters": {}
+      },
+      "structured_results": 1,
+      "semantic_results": 0,
+      "success": true,
+      "error": null
+    },
+    {
+      "query": "Tell me about Jake Burchard",
+      "category": "people",
+      "expected_type": "lookup",
+      "complexity": "low",
+      "response_preview": "[1 structured, 0 semantic] **Jake Burchard**\n- Role: PhD Student\n- Institution: University of Chicago\n- Email: jburchard@uchicago.edu\n- Publications: 3 works, 22 citations\n- h-index: 2",
+      "latency_ms": 2.146005630493164,
+      "classification": {
+        "type": "structured",
+        "entity_types": [
+          "people"
+        ],
+        "confidence": 0.9500000000000001,
+        "is_compound": false,
+        "compound_filters": {}
+      },
+      "structured_results": 1,
+      "semantic_results": 0,
+      "success": true,
+      "error": null
+    },
+    {
+      "query": "What is Honglin Bao's research focus?",
+      "category": "people",
+      "expected_type": "lookup",
+      "complexity": "low",
+      "response_preview": "[1 structured, 0 semantic] **Honglin Bao**\n- Role: PhD Student\n- Institution: University of Chicago\n- Publications: 21 works, 47 citations\n- h-index: 4",
+      "latency_ms": 2.817869186401367,
+      "classification": {
+        "type": "structured",
+        "entity_types": [
+          "people",
+          "topics"
+        ],
+        "confidence": 1.0,
+        "is_compound": false,
+        "compound_filters": {}
+      },
+      "structured_results": 1,
+      "semantic_results": 0,
+      "success": true,
+      "error": null
+    },
+    {
+      "query": "Who are the PhD students in the lab?",
+      "category": "people",
+      "expected_type": "lookup",
+      "complexity": "low",
+      "response_preview": "[No results]",
+      "latency_ms": 2.0437240600585938,
+      "classification": {
+        "type": "structured",
+        "entity_types": [
+          "people",
+          "topics"
+        ],
+        "confidence": 0.95,
+        "is_compound": true,
+        "compound_filters": {
+          "role": "student",
+          "topic": "the lab"
+        }
+      },
+      "structured_results": 0,
+      "semantic_results": 0,
+      "success": true,
+      "error": null
+    },
+    {
+      "query": "List the postdocs at Knowledge Lab",
+      "category": "people",
+      "expected_type": "lookup",
+      "complexity": "low",
+      "response_preview": "[9 structured, 0 semantic] Found 9 people:\n\n- **Haochuan Cui** (Postdoctoral Scholar) - Stanford University\n- **Chris Esposito** (Postdoctoral Scholar) - UCLA\n- **Hongbo Fang** (Postdoctoral Scholar) ",
+      "latency_ms": 5.018949508666992,
+      "classification": {
+        "type": "structured",
+        "entity_types": [
+          "people"
+        ],
+        "confidence": 0.85,
+        "is_compound": false,
+        "compound_filters": {}
+      },
+      "structured_results": 9,
+      "semantic_results": 0,
+      "success": true,
+      "error": null
+    },
+    {
+      "query": "What is Hyejin Youn's h-index?",
+      "category": "people",
+      "expected_type": "lookup",
+      "complexity": "low",
+      "response_preview": "[No results]",
+      "latency_ms": 5.572795867919922,
+      "classification": {
+        "type": "structured",
+        "entity_types": [
+          "people",
+          "stats"
+        ],
+        "confidence": 1.0,
+        "is_compound": false,
+        "compound_filters": {}
+      },
+      "structured_results": 0,
+      "semantic_results": 0,
+      "success": true,
+      "error": null
+    },
+    {
+      "query": "Who has the most publications?",
+      "category": "people",
+      "expected_type": "lookup",
+      "complexity": "low",
+      "response_preview": "[5 semantic] et to this in a very initial rudimentary step. First, st we check the Microsoft Academic graph data. This gives us about 74 million publications and the citation information of these publ",
+      "latency_ms": 2004.906177520752,
+      "classification": {
+        "type": "hybrid",
+        "entity_types": [
+          "people",
+          "publications",
+          "stats"
+        ],
+        "confidence": 0.85,
+        "is_compound": false,
+        "compound_filters": {}
+      },
+      "structured_results": 0,
+      "semantic_results": 5,
+      "success": true,
+      "error": null
+    },
+    {
+      "query": "Find researchers working on AI",
+      "category": "people",
+      "expected_type": "lookup",
+      "complexity": "low",
+      "response_preview": "[5 structured, 0 semantic] Found 5 researchers (researchers) working on ai:\n\n- **Bhargav Desikan** (Affiliate Researcher) - Institute for Public Policy Research (IPPR)\n  Topics: machine learning in ma",
+      "latency_ms": 3.8280487060546875,
+      "classification": {
+        "type": "structured",
+        "entity_types": [
+          "people",
+          "topics"
+        ],
+        "confidence": 0.95,
+        "is_compound": true,
+        "compound_filters": {
+          "role": "researcher",
+          "topic": "ai"
+        }
+      },
+      "structured_results": 5,
+      "semantic_results": 0,
+      "success": true,
+      "error": null
+    },
+    {
+      "query": "Who is the lab director?",
+      "category": "people",
+      "expected_type": "lookup",
+      "complexity": "low",
+      "response_preview": "[No results]",
+      "latency_ms": 2.8531551361083984,
+      "classification": {
+        "type": "structured",
+        "entity_types": [
+          "people"
+        ],
+        "confidence": 0.9500000000000001,
+        "is_compound": false,
+        "compound_filters": {}
+      },
+      "structured_results": 0,
+      "semantic_results": 0,
+      "success": true,
+      "error": null
+    },
+    {
+      "query": "What's Eamon Duede's email?",
+      "category": "people",
+      "expected_type": "lookup",
+      "complexity": "low",
+      "response_preview": "[1 structured, 0 semantic] **Eamon Duede**\n- Role: Affiliate Faculty\n- Institution: Purdue University\n- Publications: 38 works, 382 citations\n- h-index: 10",
+      "latency_ms": 2.5200843811035156,
+      "classification": {
+        "type": "structured",
+        "entity_types": [
+          "people",
+          "contact"
+        ],
+        "confidence": 1.0,
+        "is_compound": false,
+        "compound_filters": {}
+      },
+      "structured_results": 1,
+      "semantic_results": 0,
+      "success": true,
+      "error": null
+    },
+    {
+      "query": "What is the APTO project?",
+      "category": "projects",
+      "expected_type": "lookup",
+      "complexity": "low",
+      "response_preview": "[1 structured, 0 semantic] **APTO - Advancing the Prediction of Technological Outcomes** (active)\n\nNSF-funded project to build AI models that predict scientific discoveries and technological advanceme",
+      "latency_ms": 2.4890899658203125,
+      "classification": {
+        "type": "structured",
+        "entity_types": [
+          "projects"
+        ],
+        "confidence": 0.9,
+        "is_compound": false,
+        "compound_filters": {}
+      },
+      "structured_results": 1,
+      "semantic_results": 0,
+      "success": true,
+      "error": null
+    },
+    {
+      "query": "Tell me about C3S2",
+      "category": "projects",
+      "expected_type": "lookup",
+      "complexity": "low",
+      "response_preview": "[1 structured, 0 semantic] **Chicago Center for Computational Social Science** (active)\n\nCenter for computational approaches to social science research\n\n- Leads: James Evans\n- Topics: computational so",
+      "latency_ms": 2.0852088928222656,
+      "classification": {
+        "type": "structured",
+        "entity_types": [
+          "projects"
+        ],
+        "confidence": 0.9,
+        "is_compound": false,
+        "compound_filters": {}
+      },
+      "structured_results": 1,
+      "semantic_results": 0,
+      "success": true,
+      "error": null
+    },
+    {
+      "query": "What grants does the lab have?",
+      "category": "projects",
+      "expected_type": "lookup",
+      "complexity": "low",
+      "response_preview": "[3 structured, 0 semantic] Found 3 results:\n\n- [Funding] NSF APTO Grant\n- [Funding] FY25 MURI Submission\n- [Funding] Novo Nordisk Foundation - ICSSI 2025",
+      "latency_ms": 4.461765289306641,
+      "classification": {
+        "type": "hybrid",
+        "entity_types": [
+          "funding"
+        ],
+        "confidence": 0.8,
+        "is_compound": false,
+        "compound_filters": {}
+      },
+      "structured_results": 3,
+      "semantic_results": 0,
+      "success": true,
+      "error": null
+    },
+    {
+      "query": "What is Socio-Cognitive AI?",
+      "category": "projects",
+      "expected_type": "lookup",
+      "complexity": "low",
+      "response_preview": "[1 structured, 0 semantic] **New Forms of Socio-Cognitive AI** (active)\n\nResearch on AI systems that reason through simulated social interaction and collective intelligence\n\n- Leads: James Evans\n- Top",
+      "latency_ms": 2.0220279693603516,
+      "classification": {
+        "type": "structured",
+        "entity_types": [
+          "projects"
+        ],
+        "confidence": 0.9,
+        "is_compound": false,
+        "compound_filters": {}
+      },
+      "structured_results": 1,
+      "semantic_results": 0,
+      "success": true,
+      "error": null
+    },
+    {
+      "query": "List active research projects",
+      "category": "projects",
+      "expected_type": "lookup",
+      "complexity": "low",
+      "response_preview": "[4 structured, 0 semantic] Found 4 results:\n\n- [Person] Bhargav Desikan (Affiliate Researcher)\n- [Project] APTO - Advancing the Prediction of Technological Outcomes\n- [Project] New Forms of Socio-Cogn",
+      "latency_ms": 8.168935775756836,
+      "classification": {
+        "type": "structured",
+        "entity_types": [
+          "people",
+          "projects"
+        ],
+        "confidence": 0.9,
+        "is_compound": false,
+        "compound_filters": {}
+      },
+      "structured_results": 4,
+      "semantic_results": 0,
+      "success": true,
+      "error": null
+    },
+    {
+      "query": "What's the MURI project about?",
+      "category": "projects",
+      "expected_type": "lookup",
+      "complexity": "low",
+      "response_preview": "[No results]",
+      "latency_ms": 4.208803176879883,
+      "classification": {
+        "type": "structured",
+        "entity_types": [
+          "people",
+          "projects"
+        ],
+        "confidence": 0.9,
+        "is_compound": false,
+        "compound_filters": {}
+      },
+      "structured_results": 0,
+      "semantic_results": 0,
+      "success": true,
+      "error": null
+    },
+    {
+      "query": "Who leads the APTO project?",
+      "category": "projects",
+      "expected_type": "lookup",
+      "complexity": "low",
+      "response_preview": "[1 structured, 0 semantic] **APTO - Advancing the Prediction of Technological Outcomes** (active)\n\nNSF-funded project to build AI models that predict scientific discoveries and technological advanceme",
+      "latency_ms": 3.6687850952148438,
+      "classification": {
+        "type": "structured",
+        "entity_types": [
+          "people",
+          "projects"
+        ],
+        "confidence": 0.9,
+        "is_compound": false,
+        "compound_filters": {}
+      },
+      "structured_results": 1,
+      "semantic_results": 0,
+      "success": true,
+      "error": null
+    },
+    {
+      "query": "What funding sources does the lab have?",
+      "category": "projects",
+      "expected_type": "lookup",
+      "complexity": "low",
+      "response_preview": "[3 structured, 0 semantic] Found 3 results:\n\n- [Funding] NSF APTO Grant\n- [Funding] FY25 MURI Submission\n- [Funding] Novo Nordisk Foundation - ICSSI 2025",
+      "latency_ms": 11.712074279785156,
+      "classification": {
+        "type": "hybrid",
+        "entity_types": [
+          "funding"
+        ],
+        "confidence": 0.8,
+        "is_compound": false,
+        "compound_filters": {}
+      },
+      "structured_results": 3,
+      "semantic_results": 0,
+      "success": true,
+      "error": null
+    },
+    {
+      "query": "Is there an NSF grant?",
+      "category": "projects",
+      "expected_type": "lookup",
+      "complexity": "low",
+      "response_preview": "[1 structured, 0 semantic] Found 1 results:\n\n- [Funding] NSF APTO Grant",
+      "latency_ms": 2.5701522827148438,
+      "classification": {
+        "type": "hybrid",
+        "entity_types": [
+          "funding"
+        ],
+        "confidence": 0.7,
+        "is_compound": false,
+        "compound_filters": {}
+      },
+      "structured_results": 1,
+      "semantic_results": 0,
+      "success": true,
+      "error": null
+    },
+    {
+      "query": "What are the main research themes?",
+      "category": "projects",
+      "expected_type": "lookup",
+      "complexity": "low",
+      "response_preview": "[5 semantic] mat [focus area].[theme] - [theme name]. Overview of NNF strategic themes can be found on NovoLocus. Provide between 1 to 5 strategic themes (it is recommended to keep it simple).\\nPlease",
+      "latency_ms": 2424.346923828125,
+      "classification": {
+        "type": "semantic",
+        "entity_types": [],
+        "confidence": 0.5,
+        "is_compound": false,
+        "compound_filters": {}
+      },
+      "structured_results": 0,
+      "semantic_results": 5,
+      "success": true,
+      "error": null
+    },
+    {
+      "query": "What datasets are available on Midway?",
+      "category": "datasets",
+      "expected_type": "lookup",
+      "complexity": "low",
+      "response_preview": "[10 structured, 0 semantic] Found 10 results:\n\n- [dataset] Microsoft Academic Graph (Dec 2021)\n- [dataset] OpenAlex (October 2023)\n- [dataset] Web of Science (2023)\n- [dataset] IRIS Umetrics\n- [datase",
+      "latency_ms": 6.402015686035156,
+      "classification": {
+        "type": "structured",
+        "entity_types": [
+          "datasets"
+        ],
+        "confidence": 0.9,
+        "is_compound": false,
+        "compound_filters": {}
+      },
+      "structured_results": 10,
+      "semantic_results": 0,
+      "success": true,
+      "error": null
+    },
+    {
+      "query": "Do we have access to OpenAlex data?",
+      "category": "datasets",
+      "expected_type": "lookup",
+      "complexity": "low",
+      "response_preview": "[15 structured, 0 semantic] Found 15 researcher directories on Midway:\n\n- **jerryluo8** - 100-500MB\n  Focus: Embeddings (OpenAlex, patents, MeSH), patent analysis, persistent homology\n  Path: `/projec",
+      "latency_ms": 2.9807090759277344,
+      "classification": {
+        "type": "structured",
+        "entity_types": [
+          "people",
+          "midway_researchers"
+        ],
+        "confidence": 0.85,
+        "is_compound": false,
+        "compound_filters": {}
+      },
+      "structured_results": 15,
+      "semantic_results": 0,
+      "success": true,
+      "error": null
+    },
+    {
+      "query": "Where is the Reddit data stored?",
+      "category": "datasets",
+      "expected_type": "lookup",
+      "complexity": "low",
+      "response_preview": "[2 structured, 0 semantic] Found 2 results:\n\n- [Snapshot] OpenAlex Snapshot (2024-12)\n- [Precomputed] Longitudinal Ambiguity Analysis Dataset",
+      "latency_ms": 2.4890899658203125,
+      "classification": {
+        "type": "structured",
+        "entity_types": [
+          "midway_snapshots",
+          "midway_precomputed"
+        ],
+        "confidence": 0.9,
+        "is_compound": false,
+        "compound_filters": {}
+      },
+      "structured_results": 2,
+      "semantic_results": 0,
+      "success": true,
+      "error": null
+    },
+    {
+      "query": "What's in the patent similarity dataset?",
+      "category": "datasets",
+      "expected_type": "lookup",
+      "complexity": "low",
+      "response_preview": "[2 structured, 5 semantic] Found 2 precomputed resources on Midway:\n\n- **Patent Description and Summary Similarity Matrices** \u26a0\ufe0f IRREPLACEABLE\n  Size: 695 GB\n  Path: `/project/jevans/esposito`\n- **Lon",
+      "latency_ms": 1598.618984222412,
+      "classification": {
+        "type": "structured",
+        "entity_types": [
+          "midway_precomputed"
+        ],
+        "confidence": 0.85,
+        "is_compound": false,
+        "compound_filters": {}
+      },
+      "structured_results": 2,
+      "semantic_results": 5,
+      "success": true,
+      "error": null
+    },
+    {
+      "query": "How do I access the Twitter data?",
+      "category": "datasets",
+      "expected_type": "technical",
+      "complexity": "low",
+      "response_preview": "[1 structured, 5 semantic] Found 1 data snapshots on Midway:\n\n- **OpenAlex Snapshot**\n  Date: 2024-12\n  Path: `/project/jevans/openalex-snapshot`",
+      "latency_ms": 2594.511032104492,
+      "classification": {
+        "type": "structured",
+        "entity_types": [
+          "midway_social"
+        ],
+        "confidence": 0.85,
+        "is_compound": false,
+        "compound_filters": {},
+        "fallback_used": true
+      },
+      "structured_results": 1,
+      "semantic_results": 5,
+      "success": true,
+      "error": null
+    },
+    {
+      "query": "Is there Web of Science data?",
+      "category": "datasets",
+      "expected_type": "lookup",
+      "complexity": "low",
+      "response_preview": "[2 structured, 0 semantic] Found 2 data snapshots on Midway:\n\n- **DBLP Computer Science Bibliography January 2025**\n  Date: 2025-01\n  Size: 10 GB\n  Path: `/project/jevans/DBLP_2025_Jan`\n- **OpenAlex S",
+      "latency_ms": 2.330780029296875,
+      "classification": {
+        "type": "structured",
+        "entity_types": [
+          "midway_snapshots"
+        ],
+        "confidence": 0.9,
+        "is_compound": false,
+        "compound_filters": {}
+      },
+      "structured_results": 2,
+      "semantic_results": 0,
+      "success": true,
+      "error": null
+    },
+    {
+      "query": "What embeddings are precomputed?",
+      "category": "datasets",
+      "expected_type": "lookup",
+      "complexity": "low",
+      "response_preview": "[14 structured, 0 semantic] Found 14 results:\n\n- [compute] Midway3 HPC Cluster\n- [compute] Knowledge Garden\n- [compute] K-Garden 1080\n- [compute] SSCS Acropolis\n- [compute] OpenAI API\n- [compute] Anth",
+      "latency_ms": 2.7799606323242188,
+      "classification": {
+        "type": "hybrid",
+        "entity_types": [
+          "compute",
+          "midway_precomputed",
+          "midway_embeddings"
+        ],
+        "confidence": 0.85,
+        "is_compound": false,
+        "compound_filters": {}
+      },
+      "structured_results": 14,
+      "semantic_results": 0,
+      "success": true,
+      "error": null
+    },
+    {
+      "query": "Where is the MAG data?",
+      "category": "datasets",
+      "expected_type": "lookup",
+      "complexity": "low",
+      "response_preview": "[2 structured, 0 semantic] Found 2 data snapshots on Midway:\n\n- **Microsoft Academic Graph December 2021**\n  Date: 2021-12\n  Path: `/project/jevans/MAG_Dec_2021_snapshot`\n- **OpenAlex Snapshot**\n  Dat",
+      "latency_ms": 2.0682811737060547,
+      "classification": {
+        "type": "structured",
+        "entity_types": [
+          "midway_snapshots"
+        ],
+        "confidence": 0.9,
+        "is_compound": false,
+        "compound_filters": {}
+      },
+      "structured_results": 2,
+      "semantic_results": 0,
+      "success": true,
+      "error": null
+    },
+    {
+      "query": "List social media datasets",
+      "category": "datasets",
+      "expected_type": "lookup",
+      "complexity": "low",
+      "response_preview": "[6 structured, 5 semantic] Found 6 social media datasets on Midway:\n\n- **Reddit and Telegram Social Media Data** [['reddit', 'telegram']]\n  Size: 76 GB\n  Path: `/project/jevans/adarshm/data`\n- **4chan",
+      "latency_ms": 2056.382894515991,
+      "classification": {
+        "type": "structured",
+        "entity_types": [
+          "midway_social"
+        ],
+        "confidence": 0.85,
+        "is_compound": false,
+        "compound_filters": {}
+      },
+      "structured_results": 6,
+      "semantic_results": 5,
+      "success": true,
+      "error": null
+    },
+    {
+      "query": "What bibliometric data do we have?",
+      "category": "datasets",
+      "expected_type": "lookup",
+      "complexity": "low",
+      "response_preview": "[13 structured, 0 semantic] Found 13 researcher directories on Midway:\n\n- **hachicui94** - 166GB\n  Focus: Bibliometrics, physics (APS), computational linguistics (ACL), author careers\n  Path: `/projec",
+      "latency_ms": 5.9680938720703125,
+      "classification": {
+        "type": "structured",
+        "entity_types": [
+          "people",
+          "midway_researchers"
+        ],
+        "confidence": 0.85,
+        "is_compound": false,
+        "compound_filters": {}
+      },
+      "structured_results": 13,
+      "semantic_results": 0,
+      "success": true,
+      "error": null
+    },
+    {
+      "query": "How do I connect to Midway?",
+      "category": "technical",
+      "expected_type": "technical",
+      "complexity": "low",
+      "response_preview": "[No results]",
+      "latency_ms": 5.875110626220703,
+      "classification": {
+        "type": "structured",
+        "entity_types": [
+          "people",
+          "midway_researchers"
+        ],
+        "confidence": 0.85,
+        "is_compound": false,
+        "compound_filters": {}
+      },
+      "structured_results": 0,
+      "semantic_results": 0,
+      "success": true,
+      "error": null
+    },
+    {
+      "query": "What's the command to check GPU status?",
+      "category": "technical",
+      "expected_type": "technical",
+      "complexity": "low",
+      "response_preview": "[6 structured, 0 semantic] Found 6 results:\n\n- [compute] Midway3 HPC Cluster\n- [compute] Knowledge Garden\n- [compute] K-Garden 1080\n- [compute] SSCS Acropolis\n- [compute] OpenAI API\n- [compute] Anthro",
+      "latency_ms": 7.721900939941406,
+      "classification": {
+        "type": "hybrid",
+        "entity_types": [
+          "compute"
+        ],
+        "confidence": 0.6,
+        "is_compound": false,
+        "compound_filters": {}
+      },
+      "structured_results": 6,
+      "semantic_results": 0,
+      "success": true,
+      "error": null
+    },
+    {
+      "query": "How do I submit a batch job?",
+      "category": "technical",
+      "expected_type": "technical",
+      "complexity": "low",
+      "response_preview": "[5 semantic] d January 2026\n\n#### Interactive vs Batch Jobs\n\n**Batch Jobs** (`sbatch`): Set-and-forget execution. Best for production runs. ```bash\nsbatch ./job_script.sbatch\n```\n\n**Interactive Jobs**",
+      "latency_ms": 1559.3509674072266,
+      "classification": {
+        "type": "semantic",
+        "entity_types": [],
+        "confidence": 0.5,
+        "is_compound": false,
+        "compound_filters": {}
+      },
+      "structured_results": 0,
+      "semantic_results": 5,
+      "success": true,
+      "error": null
+    },
+    {
+      "query": "What Python environment should I use?",
+      "category": "technical",
+      "expected_type": "technical",
+      "complexity": "low",
+      "response_preview": "[No results]",
+      "latency_ms": 9.422063827514648,
+      "classification": {
+        "type": "hybrid",
+        "entity_types": [
+          "people"
+        ],
+        "confidence": 0.6,
+        "is_compound": false,
+        "compound_filters": {}
+      },
+      "structured_results": 0,
+      "semantic_results": 0,
+      "success": true,
+      "error": null
+    },
+    {
+      "query": "How do I load the sentence transformer model?",
+      "category": "technical",
+      "expected_type": "technical",
+      "complexity": "low",
+      "response_preview": "[No results]",
+      "latency_ms": 11.236906051635742,
+      "classification": {
+        "type": "hybrid",
+        "entity_types": [
+          "funding"
+        ],
+        "confidence": 0.6,
+        "is_compound": false,
+        "compound_filters": {}
+      },
+      "structured_results": 0,
+      "semantic_results": 0,
+      "success": true,
+      "error": null
+    },
+    {
+      "query": "Where are the shared scripts?",
+      "category": "technical",
+      "expected_type": "technical",
+      "complexity": "low",
+      "response_preview": "[1 structured, 0 semantic] Found 1 data snapshots on Midway:\n\n- **Semantic Scholar Academic Graph December 2024**\n  Date: 2024-12\n  Size: 50 GB\n  Path: `/project/jevans/S2AG_Dec_2024_snapshot`",
+      "latency_ms": 4.345893859863281,
+      "classification": {
+        "type": "structured",
+        "entity_types": [
+          "midway_snapshots",
+          "midway_precomputed"
+        ],
+        "confidence": 0.9,
+        "is_compound": false,
+        "compound_filters": {}
+      },
+      "structured_results": 1,
+      "semantic_results": 0,
+      "success": true,
+      "error": null
+    },
+    {
+      "query": "How much storage quota do I have?",
+      "category": "technical",
+      "expected_type": "technical",
+      "complexity": "low",
+      "response_preview": "[5 semantic] ** [Appendix B: SLURM Command Reference](#appendix-b-slurm-command-reference) for complete examples. ### Storage Space\n\n| Location | Quota | Backup | Purpose |\n|----------|-------|-------",
+      "latency_ms": 1641.148328781128,
+      "classification": {
+        "type": "structured",
+        "entity_types": [
+          "midway_researchers"
+        ],
+        "confidence": 0.85,
+        "is_compound": false,
+        "compound_filters": {}
+      },
+      "structured_results": 0,
+      "semantic_results": 5,
+      "success": true,
+      "error": null
+    },
+    {
+      "query": "What's the syntax for slurm jobs?",
+      "category": "technical",
+      "expected_type": "technical",
+      "complexity": "low",
+      "response_preview": "[8 structured, 5 semantic] Found 8 results:\n\n- [tool] OpenAlex\n- [tool] Slack Workspace\n- [tool] SLURM\n- [tool] PySpark\n- [tool] MySQL on Midway\n- [tool] Jupyter Lab on Midway\n- [tool] nvitop\n- [tool]",
+      "latency_ms": 1747.7350234985352,
+      "classification": {
+        "type": "hybrid",
+        "entity_types": [
+          "tools"
+        ],
+        "confidence": 0.6,
+        "is_compound": false,
+        "compound_filters": {}
+      },
+      "structured_results": 8,
+      "semantic_results": 5,
+      "success": true,
+      "error": null
+    },
+    {
+      "query": "How do I install packages on Midway?",
+      "category": "technical",
+      "expected_type": "technical",
+      "complexity": "low",
+      "response_preview": "[25 structured, 0 semantic] Found 25 researcher directories on Midway:\n\n- **akozlo** - 214GB\n  Focus: AI psychometrics, digital doubles, Common Crawl processing, transformer models\n  Path: `/project/j",
+      "latency_ms": 9.547710418701172,
+      "classification": {
+        "type": "structured",
+        "entity_types": [
+          "people",
+          "midway_researchers"
+        ],
+        "confidence": 0.85,
+        "is_compound": false,
+        "compound_filters": {}
+      },
+      "structured_results": 25,
+      "semantic_results": 0,
+      "success": true,
+      "error": null
+    },
+    {
+      "query": "What GPUs are available?",
+      "category": "technical",
+      "expected_type": "technical",
+      "complexity": "low",
+      "response_preview": "[6 structured, 0 semantic] Found 6 results:\n\n- [compute] Midway3 HPC Cluster\n- [compute] Knowledge Garden\n- [compute] K-Garden 1080\n- [compute] SSCS Acropolis\n- [compute] OpenAI API\n- [compute] Anthro",
+      "latency_ms": 3.7508010864257812,
+      "classification": {
+        "type": "hybrid",
+        "entity_types": [
+          "compute"
+        ],
+        "confidence": 0.7,
+        "is_compound": false,
+        "compound_filters": {}
+      },
+      "structured_results": 6,
+      "semantic_results": 0,
+      "success": true,
+      "error": null
+    },
+    {
+      "query": "What is the Knowledge Lab?",
+      "category": "general",
+      "expected_type": "lookup",
+      "complexity": "low",
+      "response_preview": "[No results]",
+      "latency_ms": 3.0059814453125,
+      "classification": {
+        "type": "hybrid",
+        "entity_types": [
+          "people"
+        ],
+        "confidence": 0.6,
+        "is_compound": false,
+        "compound_filters": {}
+      },
+      "structured_results": 0,
+      "semantic_results": 0,
+      "success": true,
+      "error": null
+    },
+    {
+      "query": "Where is the lab located?",
+      "category": "general",
+      "expected_type": "lookup",
+      "complexity": "low",
+      "response_preview": "[No results]",
+      "latency_ms": 2.889871597290039,
+      "classification": {
+        "type": "structured",
+        "entity_types": [
+          "midway_snapshots",
+          "midway_precomputed"
+        ],
+        "confidence": 0.9,
+        "is_compound": false,
+        "compound_filters": {}
+      },
+      "structured_results": 0,
+      "semantic_results": 0,
+      "success": true,
+      "error": null
+    },
+    {
+      "query": "What topics does the lab study?",
+      "category": "general",
+      "expected_type": "lookup",
+      "complexity": "low",
+      "response_preview": "[5 semantic] atories institutions\n\njournals governments and funding agencies discovery is born and ideas diffuse. Research at Knowledge Lab advances the Science of Science by analyzing networks\n\nof co",
+      "latency_ms": 1587.6810550689697,
+      "classification": {
+        "type": "hybrid",
+        "entity_types": [
+          "funding",
+          "topics"
+        ],
+        "confidence": 0.8,
+        "is_compound": false,
+        "compound_filters": {}
+      },
+      "structured_results": 0,
+      "semantic_results": 5,
+      "success": true,
+      "error": null
+    },
+    {
+      "query": "How many people are in the lab?",
+      "category": "general",
+      "expected_type": "lookup",
+      "complexity": "low",
+      "response_preview": "[No results]",
+      "latency_ms": 4.2171478271484375,
+      "classification": {
+        "type": "structured",
+        "entity_types": [
+          "people",
+          "topics"
+        ],
+        "confidence": 0.95,
+        "is_compound": true,
+        "compound_filters": {
+          "role": "people",
+          "topic": "lab"
+        }
+      },
+      "structured_results": 0,
+      "semantic_results": 0,
+      "success": true,
+      "error": null
+    },
+    {
+      "query": "What department is the lab in?",
+      "category": "general",
+      "expected_type": "lookup",
+      "complexity": "low",
+      "response_preview": "[5 semantic] ers, and government\",\n    \"organizations to tackle some of the most pressing challenges of our time. By blending academic rigor and cutting-edge technology, our team generates novel insig",
+      "latency_ms": 1914.2017364501953,
+      "classification": {
+        "type": "semantic",
+        "entity_types": [],
+        "confidence": 0.5,
+        "is_compound": false,
+        "compound_filters": {}
+      },
+      "structured_results": 0,
+      "semantic_results": 5,
+      "success": true,
+      "error": null
+    },
+    {
+      "query": "When was the lab founded?",
+      "category": "general",
+      "expected_type": "lookup",
+      "complexity": "low",
+      "response_preview": "[5 semantic] tion. 2015\u2014\tFounding Faculty Director, Computational Social Science Programs, University of Chicago. 2013\u2014\tFounding Director, Knowledge Lab, University of Chicago. 2016\u2014\tProfessor. Depart",
+      "latency_ms": 1680.3078651428223,
+      "classification": {
+        "type": "semantic",
+        "entity_types": [],
+        "confidence": 0.5,
+        "is_compound": false,
+        "compound_filters": {}
+      },
+      "structured_results": 0,
+      "semantic_results": 5,
+      "success": true,
+      "error": null
+    },
+    {
+      "query": "What is computational social science?",
+      "category": "general",
+      "expected_type": "lookup",
+      "complexity": "low",
+      "response_preview": "[6 structured, 0 semantic] Found 6 results:\n\n- [compute] Midway3 HPC Cluster\n- [compute] Knowledge Garden\n- [compute] K-Garden 1080\n- [compute] SSCS Acropolis\n- [compute] OpenAI API\n- [compute] Anthro",
+      "latency_ms": 2.747774124145508,
+      "classification": {
+        "type": "hybrid",
+        "entity_types": [
+          "compute"
+        ],
+        "confidence": 0.6,
+        "is_compound": false,
+        "compound_filters": {}
+      },
+      "structured_results": 6,
+      "semantic_results": 0,
+      "success": true,
+      "error": null
+    },
+    {
+      "query": "What is science of science?",
+      "category": "general",
+      "expected_type": "lookup",
+      "complexity": "low",
+      "response_preview": "[5 semantic] l effective funding vehicles, and identification of promising regions along the scientific frontier. The science of science uses large-scale data on the production of science to search fo",
+      "latency_ms": 1750.432014465332,
+      "classification": {
+        "type": "semantic",
+        "entity_types": [],
+        "confidence": 0.5,
+        "is_compound": false,
+        "compound_filters": {}
+      },
+      "structured_results": 0,
+      "semantic_results": 5,
+      "success": true,
+      "error": null
+    },
+    {
+      "query": "What's the lab's mission?",
+      "category": "general",
+      "expected_type": "lookup",
+      "complexity": "low",
+      "response_preview": "[5 semantic] ned technology science and technology leadership\\nin an increasingly competitive global environment. The Innovation Policy Lab\",\n    \"initiative in collaboration with our Global Science &",
+      "latency_ms": 1636.2009048461914,
+      "classification": {
+        "type": "semantic",
+        "entity_types": [],
+        "confidence": 0.5,
+        "is_compound": false,
+        "compound_filters": {}
+      },
+      "structured_results": 0,
+      "semantic_results": 5,
+      "success": true,
+      "error": null
+    },
+    {
+      "query": "What universities collaborate with us?",
+      "category": "general",
+      "expected_type": "lookup",
+      "complexity": "low",
+      "response_preview": "[5 semantic] r partner universities in the NSF-APTO Program, and potentially even some of our corporate partners. 5: Public Engagement with Science and Technology\n\nThe NSF-APTO Program includes collab",
+      "latency_ms": 1686.633825302124,
+      "classification": {
+        "type": "hybrid",
+        "entity_types": [
+          "collaboration"
+        ],
+        "confidence": 0.6,
+        "is_compound": false,
+        "compound_filters": {}
+      },
+      "structured_results": 0,
+      "semantic_results": 5,
+      "success": true,
+      "error": null
+    },
+    {
+      "query": "Compare James Evans and Hyejin Youn's research areas and publication metrics",
+      "category": "compound",
+      "expected_type": "compound",
+      "complexity": "high",
+      "response_preview": "[2 structured, 5 semantic] Found 2 people:\n\n- **James Evans** (Director) - University of Chicago\n- **Bhargav Desikan** (Affiliate Researcher) - Institute for Public Policy Research (IPPR)",
+      "latency_ms": 2327.6638984680176,
+      "classification": {
+        "type": "structured",
+        "entity_types": [
+          "people",
+          "comparison"
+        ],
+        "confidence": 0.95,
+        "is_compound": false,
+        "compound_filters": {}
+      },
+      "structured_results": 2,
+      "semantic_results": 5,
+      "success": true,
+      "error": null
+    },
+    {
+      "query": "Who are the most cited researchers and what topics do they work on?",
+      "category": "compound",
+      "expected_type": "compound",
+      "complexity": "high",
+      "response_preview": "[No results]",
+      "latency_ms": 4.4879913330078125,
+      "classification": {
+        "type": "structured",
+        "entity_types": [
+          "people",
+          "topics"
+        ],
+        "confidence": 0.95,
+        "is_compound": true,
+        "compound_filters": {
+          "role": "researcher",
+          "topic": "most cited"
+        }
+      },
+      "structured_results": 0,
+      "semantic_results": 0,
+      "success": true,
+      "error": null
+    },
+    {
+      "query": "List PhD students working on network science along with their advisors",
+      "category": "compound",
+      "expected_type": "compound",
+      "complexity": "medium",
+      "response_preview": "[No results]",
+      "latency_ms": 8.495807647705078,
+      "classification": {
+        "type": "structured",
+        "entity_types": [
+          "people",
+          "topics"
+        ],
+        "confidence": 0.95,
+        "is_compound": true,
+        "compound_filters": {
+          "role": "student",
+          "topic": "network science along with their advisors"
+        }
+      },
+      "structured_results": 0,
+      "semantic_results": 0,
+      "success": true,
+      "error": null
+    },
+    {
+      "query": "What datasets would be useful for someone studying science of science?",
+      "category": "compound",
+      "expected_type": "compound",
+      "complexity": "medium",
+      "response_preview": "[7 structured, 0 semantic] Found 7 results:\n\n- [Person] Chen Lin (PhD Student)\n- [Researcher Dir] cassietang - 3.5GB\n- [Researcher Dir] nadavkunievsky - 1-5GB\n- [Researcher Dir] jsourati - 1-5GB\n- [Re",
+      "latency_ms": 8.957147598266602,
+      "classification": {
+        "type": "structured",
+        "entity_types": [
+          "people",
+          "midway_researchers"
+        ],
+        "confidence": 0.85,
+        "is_compound": false,
+        "compound_filters": {}
+      },
+      "structured_results": 7,
+      "semantic_results": 0,
+      "success": true,
+      "error": null
+    },
+    {
+      "query": "Find people who work on both NLP and social science",
+      "category": "compound",
+      "expected_type": "compound",
+      "complexity": "medium",
+      "response_preview": "[5 semantic] RaM, a text embedding model fine-tuned to capture the movement of researchers across semantic space. Early analyses suggest that GRaM outperforms SPECTER (our prior model) and other Sente",
+      "latency_ms": 1915.8010482788086,
+      "classification": {
+        "type": "structured",
+        "entity_types": [
+          "people",
+          "topics"
+        ],
+        "confidence": 0.95,
+        "is_compound": true,
+        "compound_filters": {
+          "role": "people",
+          "topic": "both nlp and social science"
+        }
+      },
+      "structured_results": 0,
+      "semantic_results": 5,
+      "success": true,
+      "error": null
+    },
+    {
+      "query": "Who has published on AI ethics and what were their main findings?",
+      "category": "compound",
+      "expected_type": "compound",
+      "complexity": "high",
+      "response_preview": "[5 semantic] lished AI papers by mining the metadata of AI publications identified using keyword search (Data 5). We further performed name disambiguation of AI experts with the help from several exte",
+      "latency_ms": 1979.2771339416504,
+      "classification": {
+        "type": "hybrid",
+        "entity_types": [
+          "people",
+          "publications"
+        ],
+        "confidence": 0.7,
+        "is_compound": false,
+        "compound_filters": {}
+      },
+      "structured_results": 0,
+      "semantic_results": 5,
+      "success": true,
+      "error": null
+    },
+    {
+      "query": "Compare the APTO and MURI projects in terms of goals and team members",
+      "category": "compound",
+      "expected_type": "compound",
+      "complexity": "high",
+      "response_preview": "[5 semantic] erent cross-disciplinary collaborations that work towards achieving our shared goals and objectives. He will also build strategic alliances between universities and corporations as we bri",
+      "latency_ms": 2601.9210815429688,
+      "classification": {
+        "type": "structured",
+        "entity_types": [
+          "people",
+          "topics"
+        ],
+        "confidence": 0.95,
+        "is_compound": true,
+        "compound_filters": {
+          "role": "people",
+          "topic": "terms of goals and team"
+        }
+      },
+      "structured_results": 0,
+      "semantic_results": 5,
+      "success": true,
+      "error": null
+    },
+    {
+      "query": "What grants fund machine learning research and who are the PIs?",
+      "category": "compound",
+      "expected_type": "compound",
+      "complexity": "medium",
+      "response_preview": "[10 structured, 0 semantic] Found 10 results:\n\n- [Person] Bhargav Desikan (Affiliate Researcher)\n- [Funding] NSF APTO Grant\n- [Funding] FY25 MURI Submission\n- [Funding] Novo Nordisk Foundation - ICSSI",
+      "latency_ms": 5.037784576416016,
+      "classification": {
+        "type": "hybrid",
+        "entity_types": [
+          "people",
+          "funding",
+          "compute"
+        ],
+        "confidence": 0.85,
+        "is_compound": false,
+        "compound_filters": {}
+      },
+      "structured_results": 10,
+      "semantic_results": 0,
+      "success": true,
+      "error": null
+    },
+    {
+      "query": "List all researchers from University of Chicago with their topics",
+      "category": "compound",
+      "expected_type": "compound",
+      "complexity": "medium",
+      "response_preview": "[1 structured, 0 semantic] Found 1 researchers at University of Chicago (researchers) working on all:\n\n- **Donghyun Kang** (Postdoctoral Scholar) - University of Chicago\n  Topics: parallel computing a",
+      "latency_ms": 2.432107925415039,
+      "classification": {
+        "type": "structured",
+        "entity_types": [
+          "people",
+          "topics"
+        ],
+        "confidence": 0.95,
+        "is_compound": true,
+        "compound_filters": {
+          "institution": "University of Chicago",
+          "role": "researcher",
+          "topic": "all"
+        }
+      },
+      "structured_results": 1,
+      "semantic_results": 0,
+      "success": true,
+      "error": null
+    },
+    {
+      "query": "Who collaborates with James Evans and on what topics?",
+      "category": "compound",
+      "expected_type": "compound",
+      "complexity": "high",
+      "response_preview": "[1 structured, 0 semantic] **James Evans**\n- Role: Director\n- Institution: University of Chicago\n- Publications: 325 works, 9776 citations\n- h-index: 42",
+      "latency_ms": 5.646228790283203,
+      "classification": {
+        "type": "structured",
+        "entity_types": [
+          "people",
+          "collaboration"
+        ],
+        "confidence": 1.0,
+        "is_compound": false,
+        "compound_filters": {}
+      },
+      "structured_results": 1,
+      "semantic_results": 0,
+      "success": true,
+      "error": null
+    },
+    {
+      "query": "I want to study scientific collaboration patterns. What data and methods should I use?",
+      "category": "reasoning",
+      "expected_type": "explore",
+      "complexity": "high",
+      "response_preview": "[16 structured, 0 semantic] Found 16 researcher directories on Midway:\n\n- **giochoi** - 100-500MB\n  Focus: Scientific integrity (dishonesty), publication patterns, causal inference\n  Path: `/project/j",
+      "latency_ms": 6.871700286865234,
+      "classification": {
+        "type": "structured",
+        "entity_types": [
+          "people",
+          "midway_researchers"
+        ],
+        "confidence": 0.85,
+        "is_compound": false,
+        "compound_filters": {}
+      },
+      "structured_results": 16,
+      "semantic_results": 0,
+      "success": true,
+      "error": null
+    },
+    {
+      "query": "How can I replicate the analysis from the APTO project proposal?",
+      "category": "reasoning",
+      "expected_type": "compound",
+      "complexity": "high",
+      "response_preview": "[1 structured, 0 semantic] **APTO - Advancing the Prediction of Technological Outcomes** (active)\n\nNSF-funded project to build AI models that predict scientific discoveries and technological advanceme",
+      "latency_ms": 6.561756134033203,
+      "classification": {
+        "type": "structured",
+        "entity_types": [
+          "projects"
+        ],
+        "confidence": 0.85,
+        "is_compound": false,
+        "compound_filters": {}
+      },
+      "structured_results": 1,
+      "semantic_results": 0,
+      "success": true,
+      "error": null
+    },
+    {
+      "query": "What's the best approach to analyze patent citation networks?",
+      "category": "reasoning",
+      "expected_type": "explore",
+      "complexity": "medium",
+      "response_preview": "[No results]",
+      "latency_ms": 11.922836303710938,
+      "classification": {
+        "type": "structured",
+        "entity_types": [
+          "people",
+          "stats"
+        ],
+        "confidence": 1.0,
+        "is_compound": false,
+        "compound_filters": {}
+      },
+      "structured_results": 0,
+      "semantic_results": 0,
+      "success": true,
+      "error": null
+    },
+    {
+      "query": "I need to preprocess Twitter data for sentiment analysis. What steps should I take?",
+      "category": "reasoning",
+      "expected_type": "technical",
+      "complexity": "medium",
+      "response_preview": "[22 structured, 5 semantic] Found 22 results:\n\n- [Snapshot] OpenAlex Snapshot (2024-12)\n- [Snapshot] Semantic Scholar January 2025 (2025-01-31)\n- [Snapshot] Semantic Scholar Academic Graph December 20",
+      "latency_ms": 1985.0492477416992,
+      "classification": {
+        "type": "structured",
+        "entity_types": [
+          "midway_social"
+        ],
+        "confidence": 0.85,
+        "is_compound": false,
+        "compound_filters": {},
+        "fallback_used": true
+      },
+      "structured_results": 22,
+      "semantic_results": 5,
+      "success": true,
+      "error": null
+    },
+    {
+      "query": "How would I build a knowledge graph from the lab's publications?",
+      "category": "reasoning",
+      "expected_type": "explore",
+      "complexity": "high",
+      "response_preview": "[No results]",
+      "latency_ms": 6.439924240112305,
+      "classification": {
+        "type": "structured",
+        "entity_types": [
+          "publications"
+        ],
+        "confidence": 0.9500000000000001,
+        "is_compound": false,
+        "compound_filters": {}
+      },
+      "structured_results": 0,
+      "semantic_results": 0,
+      "success": true,
+      "error": null
+    },
+    {
+      "query": "What machine learning models work best for predicting research impact?",
+      "category": "reasoning",
+      "expected_type": "explore",
+      "complexity": "medium",
+      "response_preview": "[6 structured, 5 semantic] Found 6 results:\n\n- [compute] Midway3 HPC Cluster\n- [compute] Knowledge Garden\n- [compute] K-Garden 1080\n- [compute] SSCS Acropolis\n- [compute] OpenAI API\n- [compute] Anthro",
+      "latency_ms": 1789.0539169311523,
+      "classification": {
+        "type": "hybrid",
+        "entity_types": [
+          "compute",
+          "publications",
+          "stats"
+        ],
+        "confidence": 0.8,
+        "is_compound": false,
+        "compound_filters": {}
+      },
+      "structured_results": 6,
+      "semantic_results": 5,
+      "success": true,
+      "error": null
+    },
+    {
+      "query": "Design a study to measure scientific novelty using our datasets",
+      "category": "reasoning",
+      "expected_type": "explore",
+      "complexity": "high",
+      "response_preview": "[6 structured, 0 semantic] Found 6 results:\n\n- [Person] Jamshid Sourati (Affiliate Faculty)\n- [Researcher Dir] jsourati - 1-5GB\n- [Researcher Dir] giochoi - 100-500MB\n- [Researcher Dir] jlockhart - 1-",
+      "latency_ms": 2.0732879638671875,
+      "classification": {
+        "type": "structured",
+        "entity_types": [
+          "people",
+          "midway_researchers"
+        ],
+        "confidence": 0.85,
+        "is_compound": false,
+        "compound_filters": {}
+      },
+      "structured_results": 6,
+      "semantic_results": 0,
+      "success": true,
+      "error": null
+    },
+    {
+      "query": "How can I use embeddings to find similar research papers?",
+      "category": "reasoning",
+      "expected_type": "technical",
+      "complexity": "medium",
+      "response_preview": "[16 structured, 0 semantic] Found 16 results:\n\n- [Snapshot] Semantic Scholar Academic Graph December 2024 (2024-12)\n- [Snapshot] Dimensions Database Snapshot (2025-06)\n- [Snapshot] iCite Bulk Snapshot",
+      "latency_ms": 7.470846176147461,
+      "classification": {
+        "type": "structured",
+        "entity_types": [
+          "publications"
+        ],
+        "confidence": 0.9,
+        "is_compound": false,
+        "compound_filters": {},
+        "fallback_used": true
+      },
+      "structured_results": 16,
+      "semantic_results": 0,
+      "success": true,
+      "error": null
+    },
+    {
+      "query": "What preprocessing is needed before training on the OpenAlex data?",
+      "category": "reasoning",
+      "expected_type": "technical",
+      "complexity": "medium",
+      "response_preview": "[16 structured, 0 semantic] Found 16 researcher directories on Midway:\n\n- **jerryluo8** - 100-500MB\n  Focus: Embeddings (OpenAlex, patents, MeSH), patent analysis, persistent homology\n  Path: `/projec",
+      "latency_ms": 14.119863510131836,
+      "classification": {
+        "type": "structured",
+        "entity_types": [
+          "people",
+          "midway_researchers"
+        ],
+        "confidence": 0.85,
+        "is_compound": false,
+        "compound_filters": {}
+      },
+      "structured_results": 16,
+      "semantic_results": 0,
+      "success": true,
+      "error": null
+    },
+    {
+      "query": "How do I evaluate the quality of my document embeddings?",
+      "category": "reasoning",
+      "expected_type": "technical",
+      "complexity": "medium",
+      "response_preview": "[1 structured, 5 semantic] Found 1 embedding resources on Midway:\n\n- **Google News Word2Vec Embeddings** (general_language)\n  Path: `/project/jevans/cassietang`",
+      "latency_ms": 1916.6648387908936,
+      "classification": {
+        "type": "hybrid",
+        "entity_types": [
+          "midway_embeddings"
+        ],
+        "confidence": 0.7,
+        "is_compound": false,
+        "compound_filters": {}
+      },
+      "structured_results": 1,
+      "semantic_results": 5,
+      "success": true,
+      "error": null
+    },
+    {
+      "query": "Connect me with someone who knows about both NLP and sociology",
+      "category": "cross-domain",
+      "expected_type": "connect",
+      "complexity": "medium",
+      "response_preview": "[No results]",
+      "latency_ms": 13.554096221923828,
+      "classification": {
+        "type": "structured",
+        "entity_types": [
+          "people",
+          "topics"
+        ],
+        "confidence": 0.9,
+        "is_compound": false,
+        "compound_filters": {}
+      },
+      "structured_results": 0,
+      "semantic_results": 0,
+      "success": true,
+      "error": null
+    },
+    {
+      "query": "What datasets on Midway would help study the spread of misinformation?",
+      "category": "cross-domain",
+      "expected_type": "compound",
+      "complexity": "medium",
+      "response_preview": "[1 structured, 0 semantic] Found 1 researcher directories on Midway:\n\n- **cassietang** - 3.5GB\n  Focus: NLP, sentiment analysis, Word2Vec, atypical combinations\n  Path: `/project/jevans/cassietang`",
+      "latency_ms": 9.859085083007812,
+      "classification": {
+        "type": "structured",
+        "entity_types": [
+          "people",
+          "midway_researchers"
+        ],
+        "confidence": 0.85,
+        "is_compound": false,
+        "compound_filters": {}
+      },
+      "structured_results": 1,
+      "semantic_results": 0,
+      "success": true,
+      "error": null
+    },
+    {
+      "query": "Who in the lab could help with a project combining network science and machine learning?",
+      "category": "cross-domain",
+      "expected_type": "connect",
+      "complexity": "high",
+      "response_preview": "[2 structured, 0 semantic] Found 2 results:\n\n- [Person] Chen Lin (PhD Student)\n- [Project] Chicago Center for Computational Social Science",
+      "latency_ms": 8.000612258911133,
+      "classification": {
+        "type": "structured",
+        "entity_types": [
+          "people",
+          "projects"
+        ],
+        "confidence": 0.85,
+        "is_compound": false,
+        "compound_filters": {}
+      },
+      "structured_results": 2,
+      "semantic_results": 0,
+      "success": true,
+      "error": null
+    },
+    {
+      "query": "Find papers that combine computational linguistics with cultural analysis",
+      "category": "cross-domain",
+      "expected_type": "compound",
+      "complexity": "high",
+      "response_preview": "[No results]",
+      "latency_ms": 13.404130935668945,
+      "classification": {
+        "type": "structured",
+        "entity_types": [
+          "people"
+        ],
+        "confidence": 0.9500000000000001,
+        "is_compound": false,
+        "compound_filters": {}
+      },
+      "structured_results": 0,
+      "semantic_results": 0,
+      "success": true,
+      "error": null
+    },
+    {
+      "query": "What research bridges computer science and the social sciences?",
+      "category": "cross-domain",
+      "expected_type": "explore",
+      "complexity": "medium",
+      "response_preview": "[6 structured, 0 semantic] Found 6 results:\n\n- [compute] Midway3 HPC Cluster\n- [compute] Knowledge Garden\n- [compute] K-Garden 1080\n- [compute] SSCS Acropolis\n- [compute] OpenAI API\n- [compute] Anthro",
+      "latency_ms": 7.558107376098633,
+      "classification": {
+        "type": "hybrid",
+        "entity_types": [
+          "compute"
+        ],
+        "confidence": 0.6,
+        "is_compound": false,
+        "compound_filters": {}
+      },
+      "structured_results": 6,
+      "semantic_results": 0,
+      "success": true,
+      "error": null
+    },
+    {
+      "query": "Are there any collaborations between economists and data scientists here?",
+      "category": "cross-domain",
+      "expected_type": "connect",
+      "complexity": "medium",
+      "response_preview": "[17 structured, 0 semantic] Found 17 results:\n\n- [Person] Alejandro Sarria-Morales (Masters Student)\n- [Researcher Dir] akozlo - 214GB\n- [Researcher Dir] hachicui94 - 166GB\n- [Researcher Dir] danqingc",
+      "latency_ms": 14.493942260742188,
+      "classification": {
+        "type": "structured",
+        "entity_types": [
+          "people",
+          "midway_researchers"
+        ],
+        "confidence": 0.85,
+        "is_compound": false,
+        "compound_filters": {}
+      },
+      "structured_results": 17,
+      "semantic_results": 0,
+      "success": true,
+      "error": null
+    },
+    {
+      "query": "How does the lab combine qualitative and quantitative methods?",
+      "category": "cross-domain",
+      "expected_type": "explore",
+      "complexity": "medium",
+      "response_preview": "[5 semantic] ll track these efforts using a mixed methodology that combines quantitative and qualitative metrics. We will track direct usage of the research products (e.g., citations, data-set and das",
+      "latency_ms": 1921.8323230743408,
+      "classification": {
+        "type": "hybrid",
+        "entity_types": [
+          "funding"
+        ],
+        "confidence": 0.6,
+        "is_compound": false,
+        "compound_filters": {}
+      },
+      "structured_results": 0,
+      "semantic_results": 5,
+      "success": true,
+      "error": null
+    },
+    {
+      "query": "What interdisciplinary grants does the lab have?",
+      "category": "cross-domain",
+      "expected_type": "lookup",
+      "complexity": "low",
+      "response_preview": "[No results]",
+      "latency_ms": 4.3239593505859375,
+      "classification": {
+        "type": "hybrid",
+        "entity_types": [
+          "funding"
+        ],
+        "confidence": 0.8,
+        "is_compound": false,
+        "compound_filters": {}
+      },
+      "structured_results": 0,
+      "semantic_results": 0,
+      "success": true,
+      "error": null
+    },
+    {
+      "query": "Find expertise overlaps between Knowledge Lab and Santa Fe Institute",
+      "category": "cross-domain",
+      "expected_type": "compound",
+      "complexity": "high",
+      "response_preview": "[No results]",
+      "latency_ms": 13.214111328125,
+      "classification": {
+        "type": "structured",
+        "entity_types": [
+          "people",
+          "topics"
+        ],
+        "confidence": 0.95,
+        "is_compound": false,
+        "compound_filters": {}
+      },
+      "structured_results": 0,
+      "semantic_results": 0,
+      "success": true,
+      "error": null
+    },
+    {
+      "query": "Who works at the intersection of AI and philosophy of science?",
+      "category": "cross-domain",
+      "expected_type": "connect",
+      "complexity": "medium",
+      "response_preview": "[1 structured, 5 semantic] **Chen Lin**\n- Role: PhD Student\n- Institution: Hong Kong University of Science and Technology\n- Email: lchencu@connect.ust.hk\n- Publications: 11 works, 29 citations\n- h-ind",
+      "latency_ms": 1604.034185409546,
+      "classification": {
+        "type": "hybrid",
+        "entity_types": [
+          "people",
+          "publications",
+          "stats"
+        ],
+        "confidence": 0.85,
+        "is_compound": false,
+        "compound_filters": {}
+      },
+      "structured_results": 1,
+      "semantic_results": 5,
+      "success": true,
+      "error": null
+    },
+    {
+      "query": "What are the recent trends in science of science research beyond our lab?",
+      "category": "temporal",
+      "expected_type": "external",
+      "complexity": "medium",
+      "response_preview": "[5 semantic] orks\",\n    \"of collaboration citation and concept propagation as they evolve across space and\\ntime. Our work aims to identify the conditions under which science thrives or\\nflounders to ",
+      "latency_ms": 2052.251100540161,
+      "classification": {
+        "type": "semantic",
+        "entity_types": [],
+        "confidence": 0.5,
+        "is_compound": false,
+        "compound_filters": {}
+      },
+      "structured_results": 0,
+      "semantic_results": 5,
+      "success": true,
+      "error": null
+    },
+    {
+      "query": "How has the lab's research focus evolved over time?",
+      "category": "temporal",
+      "expected_type": "explore",
+      "complexity": "high",
+      "response_preview": "[No results]",
+      "latency_ms": 9.63902473449707,
+      "classification": {
+        "type": "structured",
+        "entity_types": [
+          "people",
+          "topics"
+        ],
+        "confidence": 0.95,
+        "is_compound": false,
+        "compound_filters": {}
+      },
+      "structured_results": 0,
+      "semantic_results": 0,
+      "success": true,
+      "error": null
+    },
+    {
+      "query": "What are the latest developments in LLM-based research tools?",
+      "category": "temporal",
+      "expected_type": "external",
+      "complexity": "medium",
+      "response_preview": "[8 structured, 5 semantic] Found 8 results:\n\n- [tool] OpenAlex\n- [tool] Slack Workspace\n- [tool] SLURM\n- [tool] PySpark\n- [tool] MySQL on Midway\n- [tool] Jupyter Lab on Midway\n- [tool] nvitop\n- [tool]",
+      "latency_ms": 2140.155076980591,
+      "classification": {
+        "type": "hybrid",
+        "entity_types": [
+          "tools"
+        ],
+        "confidence": 0.7,
+        "is_compound": false,
+        "compound_filters": {}
+      },
+      "structured_results": 8,
+      "semantic_results": 5,
+      "success": true,
+      "error": null
+    },
+    {
+      "query": "Compare our approach to others in the field of computational social science",
+      "category": "temporal",
+      "expected_type": "external",
+      "complexity": "high",
+      "response_preview": "[2 structured, 0 semantic] Found 2 people:\n\n- **Jamshid Sourati** (Affiliate Faculty) - Depaul University\n- **Chen Lin** (PhD Student) - Hong Kong University of Science and Technology",
+      "latency_ms": 5.227088928222656,
+      "classification": {
+        "type": "structured",
+        "entity_types": [
+          "people",
+          "comparison"
+        ],
+        "confidence": 0.95,
+        "is_compound": false,
+        "compound_filters": {}
+      },
+      "structured_results": 2,
+      "semantic_results": 0,
+      "success": true,
+      "error": null
+    },
+    {
+      "query": "What new datasets have been added in the past year?",
+      "category": "temporal",
+      "expected_type": "lookup",
+      "complexity": "low",
+      "response_preview": "[1 structured, 0 semantic] Found 1 researcher directories on Midway:\n\n- **cassietang** - 3.5GB\n  Focus: NLP, sentiment analysis, Word2Vec, atypical combinations\n  Path: `/project/jevans/cassietang`",
+      "latency_ms": 5.181312561035156,
+      "classification": {
+        "type": "structured",
+        "entity_types": [
+          "people",
+          "midway_researchers"
+        ],
+        "confidence": 0.85,
+        "is_compound": false,
+        "compound_filters": {}
+      },
+      "structured_results": 1,
+      "semantic_results": 0,
+      "success": true,
+      "error": null
+    },
+    {
+      "query": "Which recent publications have had the most impact?",
+      "category": "temporal",
+      "expected_type": "compound",
+      "complexity": "medium",
+      "response_preview": "[5 semantic] 2021.\\n101. Lin Y, Evans JA, Wu L. New directions in science emerge from disconnection and discord. J Informetr. 2022;16(1):101234.\",\n    \"102. Sugimoto CR, Larivi\u00e8re V. Altmetrics: Broad",
+      "latency_ms": 1791.8157577514648,
+      "classification": {
+        "type": "hybrid",
+        "entity_types": [
+          "publications",
+          "stats"
+        ],
+        "confidence": 0.85,
+        "is_compound": false,
+        "compound_filters": {}
+      },
+      "structured_results": 0,
+      "semantic_results": 5,
+      "success": true,
+      "error": null
+    },
+    {
+      "query": "What's the current state of the art in scientific knowledge discovery?",
+      "category": "temporal",
+      "expected_type": "external",
+      "complexity": "high",
+      "response_preview": "[5 semantic] science. Sociol. Compass 16, (2022).\\n11.\\tRzhetsky, A., Foster, J. G., Foster, I. T. & Evans, J. A. Choosing experiments to accelerate collective discovery. Proc. Natl. Acad. Sci. U. S. ",
+      "latency_ms": 1926.0241985321045,
+      "classification": {
+        "type": "semantic",
+        "entity_types": [],
+        "confidence": 0.5,
+        "is_compound": false,
+        "compound_filters": {}
+      },
+      "structured_results": 0,
+      "semantic_results": 5,
+      "success": true,
+      "error": null
+    },
+    {
+      "query": "How do our methods compare to the latest OpenAI research tools?",
+      "category": "temporal",
+      "expected_type": "external",
+      "complexity": "high",
+      "response_preview": "[8 structured, 5 semantic] Found 8 results:\n\n- [tool] OpenAlex\n- [tool] Slack Workspace\n- [tool] SLURM\n- [tool] PySpark\n- [tool] MySQL on Midway\n- [tool] Jupyter Lab on Midway\n- [tool] nvitop\n- [tool]",
+      "latency_ms": 2113.724946975708,
+      "classification": {
+        "type": "hybrid",
+        "entity_types": [
+          "comparison",
+          "tools"
+        ],
+        "confidence": 0.8,
+        "is_compound": false,
+        "compound_filters": {}
+      },
+      "structured_results": 8,
+      "semantic_results": 5,
+      "success": true,
+      "error": null
+    },
+    {
+      "query": "What conferences should lab members attend this year?",
+      "category": "temporal",
+      "expected_type": "external",
+      "complexity": "medium",
+      "response_preview": "[3 structured, 0 semantic] Found 3 results:\n\n- [event] KLab Weekly Meeting\n- [event] APTO Retreat 2024\n- [event] International Conference on Science of Science and Innovation 2025",
+      "latency_ms": 8.973836898803711,
+      "classification": {
+        "type": "hybrid",
+        "entity_types": [
+          "people",
+          "events"
+        ],
+        "confidence": 0.85,
+        "is_compound": false,
+        "compound_filters": {}
+      },
+      "structured_results": 3,
+      "semantic_results": 0,
+      "success": true,
+      "error": null
+    },
+    {
+      "query": "What emerging topics should we consider for future research?",
+      "category": "temporal",
+      "expected_type": "explore",
+      "complexity": "high",
+      "response_preview": "[5 semantic] allows us to not only identify emerging technology areas, but country leadership within those areas. Our pilot of this model embeds more and less probable research pathways through an evo",
+      "latency_ms": 1947.04008102417,
+      "classification": {
+        "type": "hybrid",
+        "entity_types": [
+          "topics"
+        ],
+        "confidence": 0.7,
+        "is_compound": false,
+        "compound_filters": {}
+      },
+      "structured_results": 0,
+      "semantic_results": 5,
+      "success": true,
+      "error": null
+    },
+    {
+      "query": "Summarize the lab's key contributions to science of science",
+      "category": "synthesis",
+      "expected_type": "explore",
+      "complexity": "high",
+      "response_preview": "[1 structured, 0 semantic] **Chen Lin**\n- Role: PhD Student\n- Institution: Hong Kong University of Science and Technology\n- Email: lchencu@connect.ust.hk\n- Publications: 11 works, 29 citations\n- h-ind",
+      "latency_ms": 10.51783561706543,
+      "classification": {
+        "type": "hybrid",
+        "entity_types": [
+          "people"
+        ],
+        "confidence": 0.6,
+        "is_compound": false,
+        "compound_filters": {}
+      },
+      "structured_results": 1,
+      "semantic_results": 0,
+      "success": true,
+      "error": null
+    },
+    {
+      "query": "What are the common themes across all our active projects?",
+      "category": "synthesis",
+      "expected_type": "compound",
+      "complexity": "high",
+      "response_preview": "[4 structured, 0 semantic] Found 4 results:\n\n- [Person] Jamshid Sourati (Affiliate Faculty)\n- [Project] APTO - Advancing the Prediction of Technological Outcomes\n- [Project] New Forms of Socio-Cogniti",
+      "latency_ms": 9.795665740966797,
+      "classification": {
+        "type": "structured",
+        "entity_types": [
+          "people",
+          "projects"
+        ],
+        "confidence": 0.9,
+        "is_compound": false,
+        "compound_filters": {}
+      },
+      "structured_results": 4,
+      "semantic_results": 0,
+      "success": true,
+      "error": null
+    },
+    {
+      "query": "Create a research landscape map of Knowledge Lab's expertise",
+      "category": "synthesis",
+      "expected_type": "explore",
+      "complexity": "high",
+      "response_preview": "[No results]",
+      "latency_ms": 12.328147888183594,
+      "classification": {
+        "type": "structured",
+        "entity_types": [
+          "people",
+          "topics"
+        ],
+        "confidence": 1.0,
+        "is_compound": false,
+        "compound_filters": {}
+      },
+      "structured_results": 0,
+      "semantic_results": 0,
+      "success": true,
+      "error": null
+    },
+    {
+      "query": "What methodological innovations has the lab developed?",
+      "category": "synthesis",
+      "expected_type": "explore",
+      "complexity": "medium",
+      "response_preview": "[5 semantic] characterizes how the novelty of a current work has become appreciated by the scientific community. Unlike the other two approaches, which look prospectively at work that leads toward new",
+      "latency_ms": 2174.3998527526855,
+      "classification": {
+        "type": "semantic",
+        "entity_types": [],
+        "confidence": 0.5,
+        "is_compound": false,
+        "compound_filters": {}
+      },
+      "structured_results": 0,
+      "semantic_results": 5,
+      "success": true,
+      "error": null
+    },
+    {
+      "query": "Identify gaps in our current research portfolio",
+      "category": "synthesis",
+      "expected_type": "explore",
+      "complexity": "high",
+      "response_preview": "[2 structured, 0 semantic] Found 2 people:\n\n- **Jamshid Sourati** (Affiliate Faculty) - Depaul University\n- **Bhargav Desikan** (Affiliate Researcher) - Institute for Public Policy Research (IPPR)",
+      "latency_ms": 11.896133422851562,
+      "classification": {
+        "type": "hybrid",
+        "entity_types": [
+          "people"
+        ],
+        "confidence": 0.6,
+        "is_compound": false,
+        "compound_filters": {}
+      },
+      "structured_results": 2,
+      "semantic_results": 0,
+      "success": true,
+      "error": null
+    },
+    {
+      "query": "What makes Knowledge Lab's approach unique?",
+      "category": "synthesis",
+      "expected_type": "explore",
+      "complexity": "medium",
+      "response_preview": "[No results]",
+      "latency_ms": 4.748821258544922,
+      "classification": {
+        "type": "hybrid",
+        "entity_types": [
+          "people"
+        ],
+        "confidence": 0.6,
+        "is_compound": false,
+        "compound_filters": {}
+      },
+      "structured_results": 0,
+      "semantic_results": 0,
+      "success": true,
+      "error": null
+    },
+    {
+      "query": "Summarize the data infrastructure available to lab members",
+      "category": "synthesis",
+      "expected_type": "compound",
+      "complexity": "medium",
+      "response_preview": "[17 structured, 0 semantic] Found 17 researcher directories on Midway:\n\n- **nwrim** - 175GB\n  Focus: Psychology, behavioral game theory, social technology\n  Path: `/project/jevans/nwrim`\n- **hongkai**",
+      "latency_ms": 5.717039108276367,
+      "classification": {
+        "type": "structured",
+        "entity_types": [
+          "people",
+          "midway_researchers"
+        ],
+        "confidence": 0.85,
+        "is_compound": false,
+        "compound_filters": {}
+      },
+      "structured_results": 17,
+      "semantic_results": 0,
+      "success": true,
+      "error": null
+    },
+    {
+      "query": "What skills are most valuable for new lab members to learn?",
+      "category": "synthesis",
+      "expected_type": "explore",
+      "complexity": "medium",
+      "response_preview": "[No results]",
+      "latency_ms": 11.694192886352539,
+      "classification": {
+        "type": "hybrid",
+        "entity_types": [
+          "people"
+        ],
+        "confidence": 0.7,
+        "is_compound": false,
+        "compound_filters": {}
+      },
+      "structured_results": 0,
+      "semantic_results": 0,
+      "success": true,
+      "error": null
+    },
+    {
+      "query": "Create a reading list for someone new to computational social science",
+      "category": "synthesis",
+      "expected_type": "explore",
+      "complexity": "high",
+      "response_preview": "[7 structured, 0 semantic] Found 7 results:\n\n- [Person] Chen Lin (PhD Student)\n- [compute] Midway3 HPC Cluster\n- [compute] Knowledge Garden\n- [compute] K-Garden 1080\n- [compute] SSCS Acropolis\n- [comp",
+      "latency_ms": 7.263898849487305,
+      "classification": {
+        "type": "hybrid",
+        "entity_types": [
+          "people",
+          "compute"
+        ],
+        "confidence": 0.7,
+        "is_compound": false,
+        "compound_filters": {}
+      },
+      "structured_results": 7,
+      "semantic_results": 0,
+      "success": true,
+      "error": null
+    },
+    {
+      "query": "What are the ethical considerations in our research areas?",
+      "category": "synthesis",
+      "expected_type": "explore",
+      "complexity": "high",
+      "response_preview": "[1 structured, 0 semantic] **Jamshid Sourati**\n- Role: Affiliate Faculty\n- Institution: Depaul University\n- Email: nan\n- Publications: 24 works, 304 citations\n- h-index: 9",
+      "latency_ms": 7.596731185913086,
+      "classification": {
+        "type": "structured",
+        "entity_types": [
+          "people",
+          "topics"
+        ],
+        "confidence": 1.0,
+        "is_compound": false,
+        "compound_filters": {}
+      },
+      "structured_results": 1,
+      "semantic_results": 0,
+      "success": true,
+      "error": null
+    }
+  ]
+}

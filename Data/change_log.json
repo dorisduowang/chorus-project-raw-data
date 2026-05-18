@@ -1,0 +1,188 @@
+{
+  "changes": [
+    {
+      "date": "2026-01-15",
+      "old_timestamp": "2026-01-13T21:23:40.267185",
+      "new_timestamp": "2026-01-15T08:11:28.447188",
+      "added": [],
+      "removed": [],
+      "modified": [
+        "Dawoon",
+        "interp_group",
+        "reddit_data",
+        "tzhang3"
+      ],
+      "grown": [],
+      "shrunk": [],
+      "owner_changed": [],
+      "summary": {
+        "added_count": 0,
+        "removed_count": 0,
+        "modified_count": 4,
+        "grown_count": 0,
+        "shrunk_count": 0,
+        "has_changes": true
+      }
+    },
+    {
+      "date": "2026-01-16",
+      "old_timestamp": "2026-01-15T08:11:28.447188",
+      "new_timestamp": "2026-01-16T02:00:05.653288",
+      "added": [],
+      "removed": [],
+      "modified": [
+        "Dawoon",
+        "renli_shared"
+      ],
+      "grown": [],
+      "shrunk": [],
+      "owner_changed": [],
+      "summary": {
+        "added_count": 0,
+        "removed_count": 0,
+        "modified_count": 2,
+        "grown_count": 0,
+        "shrunk_count": 0,
+        "has_changes": true
+      }
+    },
+    {
+      "date": "2026-01-17",
+      "old_timestamp": "2026-01-16T02:00:05.653288",
+      "new_timestamp": "2026-01-17T02:00:03.526278",
+      "added": [],
+      "removed": [],
+      "modified": [
+        "LLMs",
+        "renli_shared",
+        "Dawoon",
+        "tzhang3"
+      ],
+      "grown": [],
+      "shrunk": [],
+      "owner_changed": [],
+      "summary": {
+        "added_count": 0,
+        "removed_count": 0,
+        "modified_count": 4,
+        "grown_count": 0,
+        "shrunk_count": 0,
+        "has_changes": true
+      }
+    },
+    {
+      "date": "2026-01-18",
+      "old_timestamp": "2026-01-17T02:00:03.526278",
+      "new_timestamp": "2026-01-18T02:00:03.019035",
+      "added": [],
+      "removed": [],
+      "modified": [
+        "Dawoon",
+        "robbie",
+        "renli_shared"
+      ],
+      "grown": [],
+      "shrunk": [],
+      "owner_changed": [],
+      "summary": {
+        "added_count": 0,
+        "removed_count": 0,
+        "modified_count": 3,
+        "grown_count": 0,
+        "shrunk_count": 0,
+        "has_changes": true
+      }
+    },
+    {
+      "date": "2026-01-19",
+      "old_timestamp": "2026-01-18T02:00:03.019035",
+      "new_timestamp": "2026-01-19T02:00:04.288272",
+      "added": [],
+      "removed": [],
+      "modified": [
+        "maxzhuyt",
+        "Dawoon"
+      ],
+      "grown": [],
+      "shrunk": [],
+      "owner_changed": [],
+      "summary": {
+        "added_count": 0,
+        "removed_count": 0,
+        "modified_count": 2,
+        "grown_count": 0,
+        "shrunk_count": 0,
+        "has_changes": true
+      }
+    },
+    {
+      "date": "2026-01-20",
+      "old_timestamp": "2026-01-19T02:00:04.288272",
+      "new_timestamp": "2026-01-20T02:00:04.135739",
+      "added": [],
+      "removed": [],
+      "modified": [
+        "Dawoon",
+        "renli_shared"
+      ],
+      "grown": [],
+      "shrunk": [],
+      "owner_changed": [],
+      "summary": {
+        "added_count": 0,
+        "removed_count": 0,
+        "modified_count": 2,
+        "grown_count": 0,
+        "shrunk_count": 0,
+        "has_changes": true
+      }
+    },
+    {
+      "date": "2026-01-21",
+      "old_timestamp": "2026-01-20T02:00:04.135739",
+      "new_timestamp": "2026-01-21T02:00:05.730304",
+      "added": [],
+      "removed": [],
+      "modified": [
+        "likun",
+        "renli",
+        "tzhang3",
+        "Dawoon"
+      ],
+      "grown": [],
+      "shrunk": [],
+      "owner_changed": [],
+      "summary": {
+        "added_count": 0,
+        "removed_count": 0,
+        "modified_count": 4,
+        "grown_count": 0,
+        "shrunk_count": 0,
+        "has_changes": true
+      }
+    },
+    {
+      "date": "2026-01-22",
+      "old_timestamp": "2026-01-21T02:00:05.730304",
+      "new_timestamp": "2026-01-22T02:00:08.245925",
+      "added": [],
+      "removed": [],
+      "modified": [
+        "maxzhuyt",
+        "Dawoon"
+      ],
+      "grown": [],
+      "shrunk": [],
+      "owner_changed": [],
+      "summary": {
+        "added_count": 0,
+        "removed_count": 0,
+        "modified_count": 2,
+        "grown_count": 0,
+        "shrunk_count": 0,
+        "has_changes": true
+      }
+    }
+  ],
+  "last_updated": "2026-01-22T02:00:08.245890"
+}

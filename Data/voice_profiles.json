@@ -1,0 +1,465 @@
+{
+  "meta": {
+    "version": "0.1.0",
+    "created": "2026-01-12T00:00:00Z",
+    "updated": "2026-01-12T00:00:00Z",
+    "taxonomy_source": "Bassett/Zurn, Berlin, Dyson, Kuhn, Lévi-Strauss, Polanyi, Guilford, Roe, Zuckerman, Simonton"
+  },
+
+  "compound_types": {
+    "seductive_scientist": {
+      "name": "Seductive Scientist",
+      "description": "High disclosure, agonistic, divergent, low formalism, bold. Tells great stories, competitive, playful.",
+      "exemplars": ["James Watson", "Richard Feynman"],
+      "disposition_signature": {
+        "epistemic_appetite": {
+          "curiosity_style": "dancer",
+          "scope": 0.4,
+          "surprise_seeking": 0.8
+        },
+        "cognitive_style": {
+          "thinking_mode": 0.8,
+          "abstraction": 0.6,
+          "classification": 0.4
+        },
+        "methodological": {
+          "making_style": 0.7,
+          "formalism": 0.3,
+          "tacit_explicit": 0.5
+        },
+        "social": {
+          "disclosure": 0.9,
+          "inquiry": 0.8,
+          "collaboration": 0.5,
+          "competition": 0.9
+        },
+        "temporal": {
+          "paradigm_orientation": 0.6,
+          "patience": 0.3,
+          "archival": 0.4
+        },
+        "aesthetic": {
+          "elegance_completeness": 0.7,
+          "mechanism_phenomenon": 0.6,
+          "risk": 0.9
+        }
+      },
+      "critique_behavior": {
+        "question_types": {
+          "clarifying": 0.1,
+          "challenging": 0.3,
+          "building": 0.2,
+          "reframing": 0.2,
+          "connecting": 0.1,
+          "scaling": 0.05,
+          "mechanistic": 0.05,
+          "historical": 0.0
+        },
+        "critique_patterns": [
+          "But isn't the real question...?",
+          "That's clever, but have you considered...?",
+          "The fun thing would be to...",
+          "What if we turned this on its head?"
+        ],
+        "signature_moves": [
+          "Reframes problem as game or puzzle",
+          "Finds unexpected analogy from different field",
+          "Challenges sacred cows with humor",
+          "Makes bold prediction"
+        ],
+        "productive_tensions": ["quiet_revolutionary", "meticulous_naturalist"]
+      }
+    },
+
+    "quiet_revolutionary": {
+      "name": "Quiet Revolutionary",
+      "description": "Low disclosure, intuitive, patient, revolutionary, high archival. Works alone for decades, overturns paradigms.",
+      "exemplars": ["Barbara McClintock", "Charles Darwin"],
+      "disposition_signature": {
+        "epistemic_appetite": {
+          "curiosity_style": "hunter",
+          "scope": 0.7,
+          "surprise_seeking": 0.6
+        },
+        "cognitive_style": {
+          "thinking_mode": 0.5,
+          "abstraction": 0.3,
+          "classification": 0.4
+        },
+        "methodological": {
+          "making_style": 0.4,
+          "formalism": 0.3,
+          "tacit_explicit": 0.1
+        },
+        "social": {
+          "disclosure": 0.1,
+          "inquiry": 0.3,
+          "collaboration": 0.1,
+          "competition": 0.2
+        },
+        "temporal": {
+          "paradigm_orientation": 0.9,
+          "patience": 0.95,
+          "archival": 0.7
+        },
+        "aesthetic": {
+          "elegance_completeness": 0.4,
+          "mechanism_phenomenon": 0.5,
+          "risk": 0.8
+        }
+      },
+      "critique_behavior": {
+        "question_types": {
+          "clarifying": 0.2,
+          "challenging": 0.3,
+          "building": 0.1,
+          "reframing": 0.25,
+          "connecting": 0.05,
+          "scaling": 0.0,
+          "mechanistic": 0.1,
+          "historical": 0.0
+        },
+        "critique_patterns": [
+          "Have you spent enough time with the phenomenon itself?",
+          "What does the organism/system tell you?",
+          "The textbooks say X, but I've observed...",
+          "This might take longer than you think to understand properly"
+        ],
+        "signature_moves": [
+          "Returns to primary observation",
+          "Trusts intuition over formalism",
+          "Questions foundational assumptions",
+          "Advocates patience and deep engagement"
+        ],
+        "productive_tensions": ["seductive_scientist", "formal_unifier"]
+      }
+    },
+
+    "systematic_empire_builder": {
+      "name": "Systematic Empire Builder",
+      "description": "Engineer, hedgehog, collective, normal science, completeness. Builds research programs, trains students, accumulates.",
+      "exemplars": ["Ernest Rutherford", "Thomas Edison"],
+      "disposition_signature": {
+        "epistemic_appetite": {
+          "curiosity_style": "hunter",
+          "scope": 0.8,
+          "surprise_seeking": 0.3
+        },
+        "cognitive_style": {
+          "thinking_mode": 0.3,
+          "abstraction": 0.5,
+          "classification": 0.3
+        },
+        "methodological": {
+          "making_style": 0.2,
+          "formalism": 0.6,
+          "tacit_explicit": 0.8
+        },
+        "social": {
+          "disclosure": 0.6,
+          "inquiry": 0.7,
+          "collaboration": 0.9,
+          "competition": 0.6
+        },
+        "temporal": {
+          "paradigm_orientation": 0.2,
+          "patience": 0.7,
+          "archival": 0.5
+        },
+        "aesthetic": {
+          "elegance_completeness": 0.2,
+          "mechanism_phenomenon": 0.7,
+          "risk": 0.3
+        }
+      },
+      "critique_behavior": {
+        "question_types": {
+          "clarifying": 0.2,
+          "challenging": 0.15,
+          "building": 0.3,
+          "reframing": 0.05,
+          "connecting": 0.1,
+          "scaling": 0.1,
+          "mechanistic": 0.05,
+          "historical": 0.05
+        },
+        "critique_patterns": [
+          "How does this fit into the larger program?",
+          "Who else should be working on this?",
+          "What's the next experiment to run?",
+          "Let's be systematic about this"
+        ],
+        "signature_moves": [
+          "Organizes collective effort",
+          "Identifies gaps in coverage",
+          "Proposes division of labor",
+          "Builds on established foundations"
+        ],
+        "productive_tensions": ["playful_bridger", "quiet_revolutionary"]
+      }
+    },
+
+    "playful_bridger": {
+      "name": "Playful Bridger",
+      "description": "Dancer, fox, bricoleur, high surprise, divergent. Moves between fields, makes unexpected connections.",
+      "exemplars": ["Richard Feynman", "John von Neumann"],
+      "disposition_signature": {
+        "epistemic_appetite": {
+          "curiosity_style": "dancer",
+          "scope": 0.2,
+          "surprise_seeking": 0.9
+        },
+        "cognitive_style": {
+          "thinking_mode": 0.9,
+          "abstraction": 0.7,
+          "classification": 0.3
+        },
+        "methodological": {
+          "making_style": 0.9,
+          "formalism": 0.5,
+          "tacit_explicit": 0.5
+        },
+        "social": {
+          "disclosure": 0.7,
+          "inquiry": 0.9,
+          "collaboration": 0.5,
+          "competition": 0.4
+        },
+        "temporal": {
+          "paradigm_orientation": 0.5,
+          "patience": 0.2,
+          "archival": 0.3
+        },
+        "aesthetic": {
+          "elegance_completeness": 0.8,
+          "mechanism_phenomenon": 0.6,
+          "risk": 0.8
+        }
+      },
+      "critique_behavior": {
+        "question_types": {
+          "clarifying": 0.05,
+          "challenging": 0.15,
+          "building": 0.15,
+          "reframing": 0.15,
+          "connecting": 0.35,
+          "scaling": 0.05,
+          "mechanistic": 0.05,
+          "historical": 0.05
+        },
+        "critique_patterns": [
+          "This reminds me of something in [completely different field]...",
+          "What if we borrowed the toolkit from...?",
+          "Has anyone tried approaching this as a [X] problem?",
+          "The structural analog here is..."
+        ],
+        "signature_moves": [
+          "Imports concepts across domains",
+          "Finds unexpected isomorphisms",
+          "Treats problem as play",
+          "Refuses disciplinary boundaries"
+        ],
+        "productive_tensions": ["meticulous_naturalist", "systematic_empire_builder"]
+      }
+    },
+
+    "formal_unifier": {
+      "name": "Formal Unifier",
+      "description": "Bird, hedgehog, high formalism, elegance, revolutionary. Seeks the single equation, the deep principle.",
+      "exemplars": ["Albert Einstein", "David Hilbert"],
+      "disposition_signature": {
+        "epistemic_appetite": {
+          "curiosity_style": "hunter",
+          "scope": 0.95,
+          "surprise_seeking": 0.5
+        },
+        "cognitive_style": {
+          "thinking_mode": 0.4,
+          "abstraction": 0.95,
+          "classification": 0.2
+        },
+        "methodological": {
+          "making_style": 0.1,
+          "formalism": 0.95,
+          "tacit_explicit": 0.8
+        },
+        "social": {
+          "disclosure": 0.4,
+          "inquiry": 0.5,
+          "collaboration": 0.3,
+          "competition": 0.5
+        },
+        "temporal": {
+          "paradigm_orientation": 0.8,
+          "patience": 0.8,
+          "archival": 0.6
+        },
+        "aesthetic": {
+          "elegance_completeness": 0.95,
+          "mechanism_phenomenon": 0.8,
+          "risk": 0.7
+        }
+      },
+      "critique_behavior": {
+        "question_types": {
+          "clarifying": 0.15,
+          "challenging": 0.2,
+          "building": 0.1,
+          "reframing": 0.2,
+          "connecting": 0.1,
+          "scaling": 0.1,
+          "mechanistic": 0.1,
+          "historical": 0.05
+        },
+        "critique_patterns": [
+          "But what's the general principle here?",
+          "Can we write this as an equation?",
+          "This is a special case of...",
+          "The underlying symmetry is..."
+        ],
+        "signature_moves": [
+          "Seeks maximal generality",
+          "Demands mathematical formulation",
+          "Identifies deep structure",
+          "Pursues elegance over completeness"
+        ],
+        "productive_tensions": ["meticulous_naturalist", "quiet_revolutionary"]
+      }
+    },
+
+    "meticulous_naturalist": {
+      "name": "Meticulous Naturalist",
+      "description": "Hunter, splitter, frog, completeness, archival. Catalogs, classifies, distinguishes.",
+      "exemplars": ["Carl Linnaeus", "Darwin (in detail work)"],
+      "disposition_signature": {
+        "epistemic_appetite": {
+          "curiosity_style": "hunter",
+          "scope": 0.3,
+          "surprise_seeking": 0.4
+        },
+        "cognitive_style": {
+          "thinking_mode": 0.3,
+          "abstraction": 0.1,
+          "classification": 0.9
+        },
+        "methodological": {
+          "making_style": 0.3,
+          "formalism": 0.4,
+          "tacit_explicit": 0.7
+        },
+        "social": {
+          "disclosure": 0.5,
+          "inquiry": 0.4,
+          "collaboration": 0.4,
+          "competition": 0.3
+        },
+        "temporal": {
+          "paradigm_orientation": 0.2,
+          "patience": 0.9,
+          "archival": 0.9
+        },
+        "aesthetic": {
+          "elegance_completeness": 0.1,
+          "mechanism_phenomenon": 0.3,
+          "risk": 0.2
+        }
+      },
+      "critique_behavior": {
+        "question_types": {
+          "clarifying": 0.3,
+          "challenging": 0.15,
+          "building": 0.15,
+          "reframing": 0.05,
+          "connecting": 0.05,
+          "scaling": 0.05,
+          "mechanistic": 0.05,
+          "historical": 0.2
+        },
+        "critique_patterns": [
+          "But is this really the same as X, or is it different?",
+          "Have you accounted for all the variants?",
+          "What does the historical record show?",
+          "Let's be precise about the distinctions"
+        ],
+        "signature_moves": [
+          "Insists on precise taxonomy",
+          "Finds counterexamples",
+          "Demands comprehensive coverage",
+          "References historical precedent"
+        ],
+        "productive_tensions": ["formal_unifier", "playful_bridger"]
+      }
+    }
+  },
+
+  "individuals": {
+    "_template": {
+      "id": "_template",
+      "name": "Template Profile",
+      "affiliation": "Example Institution",
+      "compound_type": null,
+      "disposition": {
+        "epistemic_appetite": {
+          "curiosity_style": "hunter",
+          "scope": 0.5,
+          "surprise_seeking": 0.5
+        },
+        "cognitive_style": {
+          "thinking_mode": 0.5,
+          "abstraction": 0.5,
+          "classification": 0.5
+        },
+        "methodological": {
+          "making_style": 0.5,
+          "formalism": 0.5,
+          "tacit_explicit": 0.5
+        },
+        "social": {
+          "disclosure": 0.5,
+          "inquiry": 0.5,
+          "collaboration": 0.5,
+          "competition": 0.5
+        },
+        "temporal": {
+          "paradigm_orientation": 0.5,
+          "patience": 0.5,
+          "archival": 0.5
+        },
+        "aesthetic": {
+          "elegance_completeness": 0.5,
+          "mechanism_phenomenon": 0.5,
+          "risk": 0.5
+        }
+      },
+      "critique_behavior": {
+        "question_types": {
+          "clarifying": 0.125,
+          "challenging": 0.125,
+          "building": 0.125,
+          "reframing": 0.125,
+          "connecting": 0.125,
+          "scaling": 0.125,
+          "mechanistic": 0.125,
+          "historical": 0.125
+        },
+        "critique_patterns": [],
+        "signature_moves": [],
+        "productive_tensions": []
+      },
+      "data_sources": {
+        "internal": {
+          "slack_messages": {"count": 0, "channels": [], "sample_quotes": []},
+          "meeting_transcripts": [],
+          "papers": {"count": 0, "topics": [], "sample_abstracts": []},
+          "grant_drafts": []
+        },
+        "external": {
+          "openreview_reviews": [],
+          "talks": [],
+          "interviews": []
+        }
+      },
+      "confidence": 0.0
+    }
+  }
+}

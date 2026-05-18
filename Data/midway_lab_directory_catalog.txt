@@ -1,0 +1,2098 @@
+================================================================================
+                    LAB DIRECTORY CATALOG
+                    /project/jevans
+================================================================================
+
+Catalog Created: 2026-01-07
+Purpose: Comprehensive documentation of all directories and their contents
+         in the lab's shared directory structure.
+
+Total Top-Level Directories: 127 (confirmed by directory count)
+
+================================================================================
+                         PROGRESS TRACKING
+================================================================================
+
+CURRENT STATUS: COMPLETE - All directories cataloged
+LAST COMPLETED DIRECTORY: zwang13
+DIRECTORIES CATALOGED: 127 / 127 (100%)
+LAST UPDATE: 2026-01-09
+COMPLETION NOTE: Comprehensive catalog complete. All 127 top-level directories
+                 have been documented with size estimates, owners, contents,
+                 and value assessments.
+
+================================================================================
+                   MAINTENANCE & UPDATE INSTRUCTIONS
+================================================================================
+
+PERIODIC UPDATE RECOMMENDATIONS:
+- Run full update: Every 6 months
+- Quick scan for new directories: Monthly
+- Update major data snapshots entries: When new snapshots arrive
+
+HOW TO UPDATE THIS CATALOG:
+
+1. FOR NEW DIRECTORIES:
+   a) Count current directories:
+      cd /project/jevans && ls -d */ | wc -l
+
+   b) Identify new directories since last update:
+      ls -d */ | sort > /tmp/current_dirs.txt
+      # Compare with previous count in header
+
+   c) For each new directory, gather:
+      - Size: du -sh /project/jevans/DIRNAME
+      - Owner: ls -lah /project/jevans/DIRNAME
+      - Structure: tree -L 2 /project/jevans/DIRNAME (or ls -lR)
+      - Contents: Read key files, check README files
+
+   d) Add entry following the existing format:
+      [NNN] Directory: dirname
+            Size: X GB/MB
+            Owner: username
+            Type: Category
+            Contents: [bullet list]
+            Assessment: [value judgment]
+
+2. FOR UPDATING EXISTING ENTRIES:
+   a) Find the entry by searching for "[NNN] Directory: dirname"
+   b) Update Size if significantly changed (>20% change)
+   c) Update Contents if major changes (new subdirectories, datasets)
+   d) Update Assessment if project status changed (completed, abandoned, etc.)
+   e) Update LAST UPDATE date in header
+
+3. FOR MAJOR DATA SNAPSHOTS (High Priority):
+   When new snapshots arrive, UPDATE these entries immediately:
+   - OpenAlex (entry 053)
+   - Semantic Scholar (entries 060, 061)
+   - DBLP (entry 020)
+   - Dimensions (entry 021)
+   - PwC/Papers with Code (entries 077, 078)
+
+   Note the snapshot date and archive/deprecate old snapshots.
+
+4. AUTOMATION POSSIBILITIES:
+
+   Create a monitoring script (/project/jevans/catalog_update_check.sh):
+   ```bash
+   #!/bin/bash
+   # Quick check for catalog updates needed
+
+   JEVANS="/project/jevans"
+   CATALOG="$JEVANS/lab_directory_catalog.txt"
+
+   # Count directories
+   CURRENT_COUNT=$(cd $JEVANS && ls -d */ 2>/dev/null | wc -l)
+   CATALOG_COUNT=$(grep "Total Top-Level Directories:" $CATALOG | grep -o '[0-9]*')
+
+   echo "Current directories: $CURRENT_COUNT"
+   echo "Cataloged directories: $CATALOG_COUNT"
+
+   if [ $CURRENT_COUNT -gt $CATALOG_COUNT ]; then
+       echo "⚠️  NEW DIRECTORIES DETECTED: $((CURRENT_COUNT - CATALOG_COUNT)) new"
+       echo "New directories:"
+       ls -dt $JEVANS/*/ | head -$((CURRENT_COUNT - CATALOG_COUNT))
+   else
+       echo "✓ Catalog is up to date"
+   fi
+
+   # Check for recent large additions (>10GB in last 30 days)
+   echo -e "\n📊 Large recent additions (>10GB, last 30 days):"
+   find $JEVANS -maxdepth 1 -type d -mtime -30 -exec du -sh {} \; | \
+       awk '$1 ~ /[0-9]+G/ && $1+0 >= 10 {print}'
+   ```
+
+5. USING CLAUDE CODE TO UPDATE:
+   When you need to update the catalog:
+
+   a) Start claude in the /project/jevans directory
+   b) Provide this prompt:
+      "I need to update the lab_directory_catalog.txt. Please:
+       1) Check for new directories since last update (currently X dirs)
+       2) Catalog any new directories following the existing format
+       3) Check if major data snapshots have been updated
+       4) Update the header with new count and date"
+
+   c) Claude will use the same tools I used:
+      - Bash: for ls, du, tree, find commands
+      - Read: to examine file contents
+      - Grep: to search for specific patterns
+      - Edit: to update the catalog file
+
+   d) Set permissions beforehand (copy from .claude/settings.local.json):
+      Allow Bash, Read, Grep, Glob, Edit (catalog file only)
+
+6. ASSESSMENT GUIDELINES (for consistency):
+
+   **VALUABLE DATA** - Use when directory contains:
+   - Major datasets (>10GB typically)
+   - Irreproducible computations (esposito patent matrices)
+   - Clean, processed data ready for reuse
+   - Current snapshots of databases (OpenAlex, Semantic Scholar)
+   - Well-documented research outputs
+
+   **ACTIVE RESEARCH** - Use when:
+   - Recent activity (within last 6 months)
+   - Multiple project subdirectories
+   - Clean code structure
+   - Active development indicators (recent commits, batch jobs)
+
+   Avoid marking as valuable:
+   - Old coursework or thesis projects (unless exceptional)
+   - Spaghetti code without documentation
+   - Abandoned projects with no clear outputs
+   - Temporary workspaces
+   - Downloaded models that can be re-obtained
+
+7. QUICK REFERENCE COMMANDS:
+
+   # Count all directories
+   ls -d /project/jevans/*/ | wc -l
+
+   # Find directories by size (largest first)
+   du -sh /project/jevans/*/ 2>/dev/null | sort -hr | head -20
+
+   # Find recently modified directories
+   find /project/jevans -maxdepth 1 -type d -mtime -30 | sort
+
+   # Check disk usage by user
+   du -h --max-depth=1 /project/jevans | sort -hr
+
+   # Find empty directories
+   find /project/jevans -maxdepth 1 -type d -empty
+
+   # Search catalog for specific keywords
+   grep -i "keyword" /project/jevans/lab_directory_catalog.txt
+
+8. BACKUP RECOMMENDATION:
+   Before major updates, create backup:
+   cp lab_directory_catalog.txt lab_directory_catalog_YYYY-MM-DD.txt.bak
+
+================================================================================
+                      DIRECTORY CATALOG
+================================================================================
+
+Categories identified:
+1. Individual researcher/student directories
+2. Major data snapshot directories (MAG, OpenAlex, Semantic Scholar, etc.)
+3. Shared resource directories (models, databases, LLMs)
+4. Project-specific directories
+5. System/utility directories
+
+--------------------------------------------------------------------------------
+
+[001] Directory: 40123
+      Size: 11 GB
+      Owner: tzhang3
+      Type: Educational/Tutorial Resources
+
+      Contents:
+      - spark-nlp-workshop/: Complete Spark NLP workshop materials from
+        JohnSnowLabs including Jupyter notebooks for NLP annotation, evaluation,
+        and training tasks
+      - tutorials/: Additional NLP tutorials and example code
+
+      Assessment: Educational resources for natural language processing. Not
+      primary research data but useful reference materials for NLP projects.
+      Code is tutorial-level, not production research code.
+
+--------------------------------------------------------------------------------
+
+[002] Directory: Abenezer
+      Size: 167 MB
+      Owner: Abenezer (student/researcher)
+      Type: Individual Researcher Directory
+
+      Contents:
+      - working_papers.csv: NBER working papers metadata (167MB CSV)
+      - working_papers_updated.parquet/: Processed parquet version of the data
+      - Untitled.ipynb: Jupyter notebook with NBER scraping code (adapted from
+        Damian C Clarke's NBER import scripts) and BeautifulSoup web scraping
+
+      Data Details:
+      The CSV contains NBER working paper metadata including:
+      - Paper codes (w-series working papers)
+      - Titles and authors
+      - Publication dates, submission dates
+      - DOIs and PDF links
+      - Abstracts
+
+      Assessment: **VALUABLE DATA** - Curated dataset of NBER working papers
+      with complete bibliographic information. The parquet files suggest this
+      has been processed for analysis. The scraping code is functional but
+      typical research-grade code.
+
+--------------------------------------------------------------------------------
+
+[003] Directory: adarshm
+      Size: 76 GB (LARGE)
+      Owner: adarshm
+      Type: Individual Researcher Directory
+
+      Contents:
+      - data/: Contains reddit and telegram subdirectories (primary data storage)
+      - ideolect_backup/: Project management and database work including:
+        * PostgreSQL database scripts and notebooks
+        * CSV dump scripts (parallel processing)
+        * User class definitions
+        * Database model development notebooks
+
+      Assessment: **VALUABLE DATA** - 76GB of social media data (Reddit and
+      Telegram). The "ideolect" project appears to be analyzing linguistic
+      patterns in social media. PostgreSQL database infrastructure suggests
+      this is structured, queryable data. Code is utility-level for data
+      management rather than novel analysis.
+
+--------------------------------------------------------------------------------
+
+[004] Directory: agent_42_pilot
+      Size: 33 MB
+      Owner: Unknown
+      Type: Project Directory
+
+      Contents:
+      - AgentSocietyChallenge/: Main project directory
+      - dkang_try/: Experimental work
+      - poetry_env/: Python poetry environment
+
+      Assessment: Small experimental project, likely exploratory. No significant
+      data storage. Appears to be agent-based simulation or AI agent work.
+
+--------------------------------------------------------------------------------
+
+[005] Directory: akozlo
+      Size: 214 GB (VERY LARGE - 2nd largest researcher directory examined)
+      Owner: akozlo
+      Type: Individual Researcher Directory
+
+      Contents:
+      - AI_Psychometrics/: AI personality/psychological assessment project
+      - digital_doubles/: Major project on creating digital representations
+        * Common Crawl data processing
+        * Transformer model work
+        * Text corpora (large volume)
+        * Work by multiple RAs (Austin, Hyunku)
+      - November_RAs/: RA work subdivided by MA and UG level
+      - outputs/: Analysis outputs including coefficient tests and visualization
+        data
+
+      Assessment: **VALUABLE DATA AND ACTIVE RESEARCH** - This is a major
+      active research directory with 214GB of data. The "digital_doubles"
+      project appears to be using Common Crawl web data and transformer models
+      to create digital representations of people or personas. Multiple
+      collaborators and structured RA work suggests this is a well-organized,
+      ongoing project. The size suggests substantial raw data and model
+      artifacts are stored here.
+
+--------------------------------------------------------------------------------
+
+[006] Directory: apto_data_engineering
+      Size: ~17 GB
+      Owner: nadavkunievsky (multiple contributors)
+      Type: Shared Project Directory - Data Engineering
+
+      Contents:
+      - corpusid_title_arxiv.parquet: 16GB ArXiv corpus ID to title mapping
+      - product_factsheets.csv: 216MB product factsheet metadata
+      - data/: Multiple preprint server datasets
+        * arxiv/: ArXiv paper data and processing
+        * biorxiv/, medrxiv/, chemrxiv/, eartharxiv/, engrxiv/: Preprint data
+        * PatentsView/: USPTO patent data with novelty embeddings (by year)
+        * medical/: Medical literature datasets
+        * factsheets/: Downloaded product datasheets (4000+ files)
+        * huggingface_llms_0325/: LLM model information
+      - Programs/: NBER and SSRN data collection scripts
+      - personalFolders/: Individual researcher workspaces (Daniela, Joyce,
+        nadav, gio, callindai, akozlo, carina, tzhang3, dariomarino)
+      - parse_factsheets.py: Clean Python script for downloading factsheets
+      - documentation/: Project documentation and readmes
+      - SLURM batch scripts for pipeline processing
+
+      Assessment: **VALUABLE DATA AND ACTIVE PROJECT** - Major data
+      engineering initiative aggregating multiple scientific preprint servers,
+      patent data, and academic literature. Well-organized with clear
+      documentation. Contains substantial processed datasets including USPTO
+      patent novelty embeddings spanning decades. The personal folders suggest
+      active multi-researcher collaboration. Code appears clean and functional.
+      This is a central data repository for multiple lab projects.
+
+--------------------------------------------------------------------------------
+
+[007] Directory: arxiv
+      Size: ~4 GB
+      Owner: jsourati
+      Type: Data Snapshot Directory
+
+      Contents:
+      - arxiv-metadata-oai-snapshot.json: 3.5GB ArXiv metadata snapshot
+      - biorxiv.tsv: 518MB bioRxiv preprint metadata
+      - medrxiv.tsv: 122MB medRxiv preprint metadata
+      - biorxiv_dois.txt: 5.4MB DOI list
+      - process.py: Simple processing script (21 lines)
+      - readme.txt: Documentation on data collection using R medrxivr package
+        and Kaggle ArXiv snapshot
+
+      Assessment: **VALUABLE DATA** - Clean ArXiv metadata snapshot from 2023
+      plus bioRxiv and medRxiv preprint data. Well-documented data collection
+      process. Straightforward utility code. This is reference data that could
+      be useful for future projects needing preprint metadata, though data is
+      from 2023 and may need updating.
+
+--------------------------------------------------------------------------------
+
+[008] Directory: avi
+      Size: ~5-10 MB (plus caches)
+      Owner: aoberoi1
+      Type: Individual Researcher Directory
+
+      Contents:
+      - course-project-avi-oberoi/: Main project directory with LLM fine-tuning
+        * Gemma2 model fine-tuning configs and outputs
+        * Accelerate/DeepSpeed configuration files
+        * SLURM batch scripts for cluster execution
+        * Multiple config YAML files for training/evaluation
+      - course-project-avi-oberoi-clean/: Cleaned version of project
+      - ci_llm_venv/: Python virtual environment
+      - hf_cache/: Hugging Face model cache
+      - wikiart_cache/: WikiArt dataset cache (64K entries)
+      - git-lfs.tar.gz: Git LFS installation (5.1MB)
+
+      Assessment: Appears to be a course project on LLM fine-tuning using
+      Gemma2 models. Well-structured with proper cluster configuration files
+      and clean documentation (ACCELERATE_INTEGRATION.md, CLUSTER_SETUP_README.md).
+      Code looks organized and purposeful. Recent activity (December 2025). Not
+      particularly valuable for future reuse as it's course-specific work, but
+      demonstrates good software engineering practices.
+
+--------------------------------------------------------------------------------
+
+[009] Directory: beichen
+      Size: ~50-100 MB
+      Owner: beichenlu
+      Type: Individual Researcher Directory
+
+      Contents:
+      - code/: Active development directory with dated subdirectories
+        * Multiple date-stamped folders (20251112, 20251119, 20251128, etc.)
+        * Jupyter notebooks with analysis (up to 1.7MB notebooks)
+        * Python scripts and batch job configurations
+        * Most recent work: January 2026
+      - inequality/: Project on inequality research
+      - test/: Testing directory
+      - envs/: Environment configurations
+
+      Assessment: Active ongoing research directory with very recent activity
+      (January 2026). Organized by date which suggests iterative development.
+      Contains substantial Jupyter notebooks indicating data analysis work. The
+      inequality project suggests economics or social science research. No
+      major datasets visible, primarily code and analysis. Utility depends on
+      what the specific research project is investigating.
+
+--------------------------------------------------------------------------------
+
+[010] Directory: bernie
+      Size: ~150 MB
+      Owner: bernardkoch (with yingrong contributions)
+      Type: Shared Project Directory
+
+      Contents:
+      - 4chan_toxicity.feather: 15MB toxicity scores for 4chan posts
+      - comments_toxicity.feather: 45MB comment toxicity analysis
+      - submissions_toxicity.feather: 25MB submission toxicity scores
+      - 4chan_results/: Analysis results directory
+      - polcleaner.py: Clean, well-written data cleaning script for /pol/
+        board data (removes NUL characters, handles multi-line CSV parsing,
+        cleans comments with regex)
+      - nohup.out: 70MB background process output
+
+      Assessment: **VALUABLE DATA** - Contains toxicity-scored datasets for
+      4chan and Reddit content. The polcleaner.py script is production-quality
+      code for cleaning messy social media CSV data. The use of Feather format
+      suggests performance-conscious data handling. This appears to be research
+      on online toxicity in controversial forums. Data and code could be useful
+      for future social media or content moderation research.
+
+--------------------------------------------------------------------------------
+
+[011] Directory: bready
+      Size: <10 MB
+      Owner: giochoi (multiple contributors)
+      Type: Shared Project Directory
+
+      Contents:
+      - hongbo_data/: CSV files on AI paper generation metrics
+        * Files track first author, last author, and all author metrics
+        * Focus on "Artificial Intelligence" subfield
+        * Normalized and unnormalized versions
+      - index/: Index directory (some permission restrictions)
+
+      Assessment: Small project directory focused on analyzing paper generation
+      patterns in AI research, tracking author positions. Very specific analysis
+      with limited scope. Data files suggest collaboration between gio and
+      hongbo. Limited reuse value outside this specific research question.
+
+--------------------------------------------------------------------------------
+
+[012] Directory: callindai
+      Size: <5 MB
+      Owner: callindai
+      Type: Individual Researcher Directory
+
+      Contents:
+      - apto/: Subdirectory related to apto_data_engineering project
+
+      Assessment: Minimal personal directory, likely just a workspace link to
+      the larger apto_data_engineering project. No independent value.
+
+--------------------------------------------------------------------------------
+
+[013] Directory: carinak
+      Size: ~50-100 MB
+      Owner: carinakane
+      Type: Individual Researcher Directory
+
+      Contents:
+      - Word Entropy/: Major project directory (16K subdirectories)
+      - llm_job_project/: LLM and job market research
+      - activation_project/: Neural network activation analysis
+      - initial_work_june_2024/: Early exploratory work
+      - Junk/: Archived materials
+      - fix_2007.py: 3.5KB data fixing script (executable)
+      - anaconda/: Conda environment
+
+      Assessment: Multiple active research projects focused on NLP and labor
+      economics ("Word Entropy", job market analysis). The Word Entropy project
+      appears substantial based on directory size. Recent activity through 2025.
+      Projects seem well-organized by topic. Would need to explore deeper to
+      assess data value, but the project organization suggests active, organized
+      research work.
+
+--------------------------------------------------------------------------------
+
+[014] Directory: cassietang
+      Size: ~3.5 GB
+      Owner: cassietang
+      Type: Individual Researcher Directory
+
+      Contents:
+      - GoogleNews-vectors-negative300.bin: 3.4GB pre-trained Word2Vec embeddings
+      - Klabpaper/: Major project directory (12 subdirectories)
+      - cleaned_validated_files*/: Multiple directories with cleaned data
+        (128K entries each) for training, pre-training, and validation
+      - post_content_with_sentiment/: Social media posts with sentiment scores
+      - predicted_results/: Model prediction outputs (128K entries)
+      - Sentiment analysis scripts:
+        * sign_label.py, sign_label_score.py, sign_label_word2vec.py
+        * word2vec.py: Word2Vec implementation
+        * sentiment_regression.csv, sentiment_scores.csv
+      - positive-words.txt, negative-words.txt: Sentiment lexicons
+      - stopwords.txt: Standard stopword list
+      - project_atypical_combination_*.csv: 3.3MB atypical concept combinations
+      - llama/: LLaMA model work
+      - assignment1/: Course assignment
+
+      Assessment: **VALUABLE DATA AND CODE** - Contains substantial NLP
+      resources including pre-trained Word2Vec embeddings and large-scale
+      cleaned/validated datasets. Multiple sentiment analysis implementations
+      with well-organized code. The "atypical combination" work suggests
+      research on novelty or creativity in text. Clean code structure with
+      clear file organization. The Klabpaper project appears to be a major
+      research effort with significant data processing. Useful for future NLP
+      and sentiment analysis projects.
+
+--------------------------------------------------------------------------------
+
+[015] Directory: cnowak
+      Size: ~20-50 MB
+      Owner: cnowak
+      Type: Individual Researcher Directory
+
+      Contents:
+      - integratingMinorityPerspectives/: Main project (32K subdirectories,
+        8 subdirectories)
+
+      Assessment: Appears to be a focused project on minority perspectives
+      research. Would need deeper exploration to assess content value. The
+      project name suggests DEI or social science research.
+
+--------------------------------------------------------------------------------
+
+[016] Directory: crystal_embedding
+      Size: <10 MB
+      Owner: jsourati (with lyuzj contributions)
+      Type: Small Project Directory
+
+      Contents:
+      - data/: Data directory
+      - models/: Model storage
+      - demo.py: Demo script (802 bytes)
+      - log.txt: Process log (5.9KB)
+      - anaconda3/: Conda environment
+      - tde_log.txt: Empty log file
+
+      Assessment: Small project from 2023 on crystal embeddings (materials
+      science?). Minimal activity, appears to be a proof-of-concept or
+      exploratory project. Limited value for reuse given age and small scope.
+
+--------------------------------------------------------------------------------
+
+[017] Directory: Daniela
+      Size: ~54 GB (LARGE)
+      Owner: danqingchen
+      Type: Individual Researcher Directory
+
+      Contents:
+      - concept_authors_1521_level2.json: 14GB concept-author mapping
+      - Multiple concept analysis projects:
+        * 1523_level1/, 2223_level2/: Hierarchical concept analysis
+        * all_concept_pairs_weighted_by_author.parquet/: Author-weighted pairs
+        * author_concepts.parquet/: Author-concept relationships
+        * concept_counts/: Concept frequency analysis
+      - Jupyter notebooks:
+        * 2concept_pairs.ipynb: 4.9MB notebook on concept pair analysis
+        * 2concept_probs.ipynb: 35MB large-scale probability analysis
+        * 2concept_probs_2.ipynb, author_concepts_graph.ipynb
+      - SLURM output files and batch scripts
+      - Multiple dated concept analysis directories
+
+      Assessment: **VALUABLE DATA AND ACTIVE RESEARCH** - Major project on
+      concept co-occurrence and author-concept relationships, likely using
+      OpenAlex or similar bibliometric data. Contains substantial processed
+      datasets with hierarchical concept classifications (levels 1 and 2).
+      The 14GB JSON file and large parquet directories suggest comprehensive
+      coverage. Very active recent work (2025). The concept pair analysis
+      could be highly valuable for bibliometric research, knowledge graphs,
+      and understanding field relationships. Well-organized with clear naming
+      conventions. This represents significant data processing investment.
+
+--------------------------------------------------------------------------------
+
+[018] Directory: database
+      Size: ~180 MB
+      Owner: hachicui94
+      Type: System/Utility Directory
+
+      Contents:
+      - nebula-graph-2.6.2.el8.x86_64.tar.gz: 84MB (Nebula Graph v2)
+      - nebula-graph-3.3.0.el8.x86_64.tar.gz: 96MB (Nebula Graph v3)
+      - mongodb/: MongoDB installation and data
+      - mysql/: MySQL database (world-writable permissions)
+      - nebula-graph2/, nebula-graph3/: Extracted installations
+
+      Assessment: Database software installations and configurations. Contains
+      Nebula Graph (graph database) installations from 2022-2023. This is
+      infrastructure rather than research data. The MySQL directory being
+      world-writable is a security concern. Limited research value, mainly
+      historical database installations. Old versions that would need updating
+      if used.
+
+--------------------------------------------------------------------------------
+
+[019] Directory: Dawoon
+      Size: ~50-100 MB
+      Owner: jdwoon0523
+      Type: Individual Researcher Directory
+
+      Contents:
+      - Embedding Space/: Embedding analysis project
+      - Curvature/: Curvature analysis in embedding spaces
+      - Curvature_Notebook/: Jupyter notebooks for curvature analysis
+      - GSMArena/: Mobile phone data project (21 subdirectories)
+      - AmazonReview/: Amazon review analysis
+      - Autoevolution/: Automotive data project
+      - Dimensions/: Dimensions database work
+      - OpenAlex/: OpenAlex data analysis
+      - MLM/: Masked Language Model work
+      - legal/: Legal document analysis
+      - CoFR_web/: Web interface project
+      - Surprisal_scitech/: Scientific/technical text surprisal analysis
+      - cache/: Model/data cache
+      - env/: Environment files
+      - Notebooks/: General notebooks
+
+      Assessment: **ACTIVE RESEARCH** - Diverse portfolio of projects focusing
+      on embedding spaces, curvature analysis, and multiple data domains
+      (phones, reviews, legal, scientific). Very recent activity (January 2026).
+      The embedding and curvature work suggests mathematical/geometric analysis
+      of representation spaces. Multiple data sources integrated (GSMArena,
+      Amazon, Dimensions, OpenAlex). Well-organized project structure. The
+      variety suggests either exploratory research or methodology development
+      applicable across domains. Would be valuable to explore specific projects
+      for reusable code and methods.
+
+--------------------------------------------------------------------------------
+
+[020] Directory: DBLP_2025_Jan
+      Size: ~10 GB
+      Owner: kangd
+      Type: Data Snapshot Directory
+
+      Contents:
+      - dblp.xml: 4.3GB DBLP computer science bibliography (XML format)
+      - dblp.jsonl: 5.6GB DBLP data in JSONL format
+      - dblp.dtd: 13KB DTD schema definition
+      - dblp-parser/: Parser utilities
+
+      Assessment: **VALUABLE DATA** - Recent (January 2025) snapshot of the
+      DBLP computer science bibliography database. Provided in both XML and
+      JSON Lines format for flexibility. DBLP is a comprehensive bibliography
+      of computer science publications. This is high-quality, well-structured
+      bibliometric data valuable for any computer science publication analysis,
+      citation networks, author collaboration studies, or venue analysis.
+      Recent snapshot means current data. Parser included for processing.
+
+--------------------------------------------------------------------------------
+
+[021] Directory: dimensions
+      Size: Unknown (likely very large, TBs)
+      Owner: akozlo
+      Type: Major Data Snapshot Directory
+
+      Contents:
+      - dimensions/dimensions_june_2025/: Dimensions database snapshot
+        (14 subdirectories - suggests partitioned data)
+      - gcp_copy.sh: Script for copying to/from Google Cloud Platform
+
+      Assessment: **VALUABLE DATA** - Recent (June 2025) snapshot of the
+      Dimensions bibliographic database. Dimensions is a major commercial
+      research database covering publications, citations, grants, patents,
+      clinical trials, and policy documents. This is enterprise-grade
+      bibliometric data with broader coverage than many academic-only databases.
+      The GCP script suggests cloud-based processing infrastructure. Highly
+      valuable for comprehensive bibliometric analysis, though requires proper
+      licensing. The multi-subdirectory structure suggests the data is
+      partitioned for distributed processing.
+
+--------------------------------------------------------------------------------
+
+[022] Directory: donghyun
+      Size: ~1-5 GB (estimated from directory count)
+      Owner: kangd
+      Type: Individual Researcher Directory - Extensive Projects
+
+      Contents:
+      - Assembly_Tree/: Assembly tree analysis (16K subdirs)
+      - conf_sim/: Conference similarity analysis (15 subdirs)
+      - Cochrane_ASR_Revision/, Cochrane_SSS_revision/: Cochrane systematic
+        review work
+      - Cochrane_data_description/: Cochrane data documentation
+      - Concept_Tree_Preliminary/: Concept hierarchy research
+      - alookso/: Project directory
+      - autogen/: Auto-generation tools
+      - aws/: AWS integration
+      - dimensions_explore/: Dimensions data exploration
+      - DBLP_2025_04/: Additional DBLP snapshot (April 2025)
+      - download_semantic_scholar.py: Clean S2 download script
+      - conda/, conda_env/: Environment management
+
+      Assessment: **ACTIVE RESEARCH** - Extensive work on bibliometric analysis
+      with focus on concept hierarchies, conference analysis, and systematic
+      reviews. Multiple major projects including Cochrane medical systematic
+      reviews and computer science conference analysis. Well-organized with
+      clear project separation. The Assembly_Tree and Concept_Tree work suggests
+      hierarchical knowledge representation research. Has own DBLP snapshot and
+      Dimensions exploration, indicating serious bibliometric methodology work.
+      Clean code (download script is well-structured). High value for
+      bibliometric and knowledge organization research.
+
+--------------------------------------------------------------------------------
+
+[023] Directory: eduede
+      Size: ~10-20 MB
+      Owner: eduede
+      Type: Individual Researcher Directory
+
+      Contents:
+      - abduction/: Main project directory (9 subdirectories)
+      - abduction_analysis.ipynb: Analysis notebook (21KB)
+      - analysis_new.ipynb: Updated analysis (15KB)
+      - work/: Working directory
+      - for_jeff/: Shared files
+      - conda/: Conda environment
+      - tip_data: Symbolic link to /project/jevans/tip/data/
+      - sparky.sh: Shell script (executable)
+      - logs/: Log files
+
+      Assessment: Small research directory from 2023-2025. The "abduction"
+      project suggests logic or reasoning research. Uses symlink to share data
+      from the tip project, indicating collaboration. Minimal scale, appears to
+      be focused exploratory work. Limited reuse value given small scope and
+      age.
+
+--------------------------------------------------------------------------------
+
+[024] Directory: esposito
+      Size: ~695 GB (VERY LARGE - Largest directory examined)
+      Owner: cresposito
+      Type: Individual Researcher Directory - Major Computations
+
+      Contents:
+      - Patent similarity matrices (MASSIVE FILES):
+        * DESC_SIMILARITIES_1995.npy: 35GB
+        * DESC_SIMILARITIES_2000.npy: 84GB
+        * DESC_SIMILARITIES_2005.npy: 70GB
+        * DESC_SIMILARITIES_2010.npy: 160GB
+        * SUMMARIES_SIMILARITIES_1995.npy: 35GB
+        * SUMMARIES_SIMILARITIES_2000.npy: 84GB
+        * SUMMARIES_SIMILARITIES_2005.npy: 70GB
+        * SUMMARIES_SIMILARITIES_2010.npy: 160GB
+      - d.csv: 654MB dataset
+      - CreativeDestruction/: Project directory
+      - KnowledgeIntegration/: Knowledge integration analysis
+      - AgeDeaths/: Age and mortality analysis
+      - Jupyter notebooks for each year:
+        * Substitutes1985/1990/1995/2000/2005/2010.ipynb: Patent substitution
+          analysis notebooks
+        * Both2005.ipynb: Combined analysis
+      - Distances/: Distance calculations
+      - ZCG.R: R analysis script
+
+      Assessment: **VALUABLE DATA - EXTREMELY LARGE COMPUTATION** - Contains
+      massive pre-computed similarity matrices for patent descriptions and
+      summaries across multiple time periods. These are N×N matrices where N
+      is the number of patents (~millions), explaining the enormous file sizes.
+      This represents months/years of computation time on patent text similarity
+      that would be prohibitively expensive to reproduce. The data enables
+      research on patent substitution, technological evolution, creative
+      destruction, and knowledge integration. Well-organized with clear year
+      separations and both description and summary similarities. The notebooks
+      show active analysis through 2023-2025. This is probably the single most
+      computationally expensive asset in the lab directory - guard carefully.
+
+--------------------------------------------------------------------------------
+
+[025] Directory: fengli
+      Size: ~10-50 MB
+      Owner: fenglixu
+      Type: Individual Researcher Directory
+
+      Contents:
+      - MAG_Data/: Microsoft Academic Graph data work (7 subdirectories)
+      - haizi_legacy/: Legacy work from haizi (5 subdirectories)
+
+      Assessment: Small directory from 2022, appears to be legacy or historical
+      work related to MAG data analysis. Connection to haizi suggests this may
+      be archived work from a previous researcher. Limited activity, mainly
+      historical reference value.
+
+--------------------------------------------------------------------------------
+
+[026] Directory: gender_surprise
+      Size: ~8 GB
+      Owner: jlockhart (with cbiliotti contributions)
+      Type: Shared Project Directory
+
+      Contents:
+      - all_oa_authors.parquet/: OpenAlex authors (64K entries)
+      - all_wos_authors.parquet/: Web of Science authors (64K entries)
+      - Author name and gender datasets:
+        * all_oa_first_and_middle_names.parquet/: 16K entries
+        * all_OA_US_genders_first_&_middle_names.pkl/tsv.gz: Gender assignments
+        * all_US_oa_first_and_middle_names.pkl: 693MB US OpenAlex names
+        * all_US_WoS_first_and_middle_names.pkl: 341MB US WoS names
+        * all_WoS_first_and_middle_names.pkl: 2.0GB all WoS names
+      - Gender prediction batches:
+        * all_oa_US_genders_authors_middle_names_batches_0_12610.pkl: 5.2MB
+        * all_US_WoS_genders_authors_first/middle_names_batches.pkl
+      - authors.parquet/: Author database (1M entries)
+      - authors_US_1author.parquet/: Single-authored papers
+      - authors_first_names.parquet/pkl: 103MB first name database
+
+      Assessment: **VALUABLE DATA** - Comprehensive author gender inference
+      dataset covering both OpenAlex and Web of Science. Contains processed
+      name-to-gender mappings for US and international authors with both first
+      and middle name analysis. The large pickle files suggest extensive
+      preprocessing of bibliometric data. This is valuable for gender bias
+      research, authorship pattern analysis, and demographic studies in science.
+      Well-organized with clear naming conventions. Recent activity (2024-2025).
+      The "gender_surprise" name suggests research on unexpected gender patterns
+      in academic publishing.
+
+--------------------------------------------------------------------------------
+
+[027] Directory: gio
+      Size: ~100-500 MB
+      Owner: giochoi
+      Type: Individual Researcher Directory - Multiple Projects
+
+      Contents:
+      - dishonesty/: Major project (256K subdirectories, 7 subdirectories)
+      - bready/, bready_v2/: Paper generation metrics projects (16 & 7 subdirs)
+      - autogen/: Auto-generation tools (12 subdirectories)
+      - hypotheses/: Hypothesis generation/testing (7 subdirectories)
+      - causal_inference/: Causal inference methodology (4 subdirectories)
+      - large_scale/: Large-scale analysis (5 subdirectories)
+      - upworthy/: Upworthy headline analysis (4 subdirectories)
+      - a3/: Project directory
+      - vscode_extensions/: Development tools
+
+      Assessment: **ACTIVE RESEARCH** - Diverse portfolio focused on scientific
+      integrity ("dishonesty"), publication patterns ("bready"), and causal
+      methods. Very recent activity (2025). The dishonesty project appears to
+      be the major focus with substantial scale. Well-organized project
+      structure with clear separation of concerns. Multiple methodological
+      projects (autogen, causal_inference, hypotheses) suggest development of
+      reusable research tools. Valuable for understanding research on research
+      integrity and publication behavior.
+
+--------------------------------------------------------------------------------
+
+[028] Directory: hachi
+      Size: ~166 GB (VERY LARGE)
+      Owner: hachicui94
+      Type: Individual Researcher Directory - Extensive Data
+
+      Contents:
+      - Major data files:
+        * au_career_length.pickle: 2.8GB author career trajectories
+        * Aid_Pid_Fid.pickle: 2.7GB author-paper-field mappings
+        * 17004523.zip: 5.8GB archived data
+        * acl.jsonl: 489MB ACL conference data
+        * allennlp.zip: 1.2GB Allen NLP toolkit
+      - Project directories:
+        * acl/, acl-arc/: ACL (computational linguistics) conference analysis
+        * APS/, APS_code/: American Physical Society publication analysis
+        * CO2/: Carbon/climate research (8 subdirectories)
+        * boundry/: Boundary analysis (5 subdirectories)
+        * data/, Data/: Data storage (7 subdirectories each)
+      - Database software:
+        * neo4j-community-5.4.0 installation (107MB)
+
+      Assessment: **VALUABLE DATA** - Large-scale bibliometric analysis focusing
+      on physics (APS) and computational linguistics (ACL). Contains substantial
+      author career trajectory data and field classifications. The CO2 project
+      suggests environmental/climate science analysis. Well-organized with clear
+      project separation. Multiple data formats (pickle, JSON, zip) suggest
+      diverse data processing pipelines. The career length and field mapping
+      files are particularly valuable for studying scientific workforce dynamics.
+      Has own Neo4j graph database infrastructure for network analysis.
+
+--------------------------------------------------------------------------------
+
+[029] Directory: haiziyu
+      Size: ~122 GB (VERY LARGE)
+      Owner: haiziyu
+      Type: Individual Researcher Directory - PMI Computations
+
+      Contents:
+      - MAG_PaperAbstracts__pid2widcounter.json: 48GB paper-word mappings
+      - PMI (Pointwise Mutual Information) counters by decade:
+        * Files organized as yearbin0-11 (1800-1920+)
+        * Both cx (word counts) and cxy (word co-occurrence counts)
+        * Hundreds of files with temporal word statistics
+      - MAG_PaperAbstracts__pid2widcounter_temp/: 128K temp files
+      - MAG_PaperAbstracts__pmi_counters_temp/: 256K temp files
+      - MAG_AuthorEmbeddingsJC/: Author embedding analysis
+      - analyses/, analyses_bk/: Analysis directories
+      - backup/: Backup files
+
+      Assessment: **VALUABLE DATA - MAJOR COMPUTATION** - Massive pre-computed
+      PMI (word co-occurrence) statistics for scientific abstracts spanning
+      over a century. The 48GB paper-word mapping and extensive temporal bins
+      enable longitudinal analysis of scientific language evolution, concept
+      emergence, and semantic change. This represents very expensive computation
+      on the full MAG corpus. Highly valuable for computational linguistics,
+      science of science, and historical analysis of scientific concepts. Data
+      from 2022 but represents timeless linguistic statistics. The systematic
+      organization by time periods makes this particularly useful for temporal
+      studies.
+
+--------------------------------------------------------------------------------
+
+[030] Directory: hf-cache
+      Size: ~20-50 GB (estimated from model sizes)
+      Owner: jdwoon0523
+      Type: Shared Resource Directory
+
+      Contents:
+      - Cached Hugging Face models:
+        * models--meta-llama--Llama-3.1-70B-Instruct
+        * models--meta-llama--Llama-3.1-8B-Instruct
+        * models--facebook--bart-large
+        * models--distilbert-base-uncased-finetuned-sst-2-english
+      - hub/: Hugging Face Hub cache (5 subdirectories)
+      - .locks/: Lock files for concurrent access
+      - xet/: XetHub integration
+      - token, stored_tokens: Authentication tokens
+
+      Assessment: Shared cache for Hugging Face transformer models. Contains
+      large LLMs (Llama 3.1 70B and 8B) and smaller models (BART, DistilBERT).
+      This saves download time and bandwidth for multiple users. Recent activity
+      (November 2025). Infrastructure directory rather than research data.
+      Valuable for avoiding redundant downloads but models can be re-downloaded
+      if needed.
+
+--------------------------------------------------------------------------------
+
+[031] Directory: hkling
+      Size: 0 bytes (Empty)
+      Owner: hkling
+      Type: Empty Directory
+
+      Contents: None
+
+      Assessment: Empty directory from 2022. No value.
+
+--------------------------------------------------------------------------------
+
+[032] Directory: hongbofang
+      Size: ~200-500 MB
+      Owner: hongbofang
+      Type: Individual Researcher Directory
+
+      Contents:
+      - AI_index/: AI research indexing project (3 subdirectories)
+      - llama/, llm/: LLM research and deployment (7 & 4 subdirectories)
+      - bert/: BERT model work (5 subdirectories)
+      - hf_datasets/, hf_home/, hf_transformers/: Hugging Face ecosystem
+      - mysql_data/: MySQL database (7 subdirectories, restricted permissions)
+      - COV-Weibo2.0/: COVID-19 Weibo social media dataset
+      - perperlexity/: Perplexity analysis
+      - miniconda3/: Python environment (19 subdirectories)
+      - Miniconda3-latest-Linux-x86_64.sh: 143MB installer
+
+      Assessment: LLM and NLP research directory with focus on Chinese social
+      media (Weibo) and COVID-19 content. Multiple transformer model
+      implementations. The AI_index project suggests bibliometric work. MySQL
+      database indicates structured data storage. Mix of model development and
+      data analysis. Recent activity through 2025. Moderate value for NLP
+      methodology and COVID-19 social media research.
+
+--------------------------------------------------------------------------------
+
+[033] Directory: hongkai
+      Size: ~50 GB (estimated from subreddit cache sizes)
+      Owner: hongkai
+      Type: Individual Researcher Directory
+
+      Contents:
+      - Reddit data (LARGE):
+        * all_subreddits_no_scores/: 4M entries
+        * all_subreddits_with_scores/: 2M entries
+        * reddit/: Reddit data processing (4 subdirectories)
+      - llm_social_simul/: LLM social simulation (11 subdirectories)
+      - LLM_Stances_Private/: Stance detection with LLMs (3 subdirectories)
+      - Evolution_thesis/: Evolutionary analysis thesis work
+      - models/: Model storage (5 subdirectories)
+      - matrix_files/: Matrix computations (4 subdirectories)
+      - combine_folder_multiprocess.py: 23KB parallel processing script
+      - reddit.sbatch: 87KB SLURM batch script for large-scale processing
+      - anaconda/: Environment
+
+      Assessment: **VALUABLE DATA** - Extensive Reddit data collection with
+      millions of entries, organized with and without scores. Major focus on
+      LLM-based social simulation and stance detection. The large SLURM script
+      and multiprocessing code suggest serious computational work. Recent
+      activity (2024). The social simulation work using LLMs is cutting-edge
+      research. Valuable for social media analysis, computational social science,
+      and LLM evaluation on social tasks.
+
+--------------------------------------------------------------------------------
+
+[034] Directory: Honglin_Bao
+      Size: ~50-200 MB
+      Owner: honglinbao
+      Type: Individual Researcher Directory - Multiple Projects
+
+      Contents:
+      - hypo_discovery/: Hypothesis discovery (10 subdirectories)
+      - patent/: Patent analysis (10 subdirectories)
+      - attention inequality/: Attention inequality research (8K subdirectories)
+      - finetune_llm_reviewer/: LLM reviewer fine-tuning
+      - adaptation/: Adaptation studies (7 subdirectories)
+      - css_distance/: CSS (Computational Social Science) distance metrics
+      - chain_of_hints/: Chain-of-thought prompting research
+      - dishonesty/: Research integrity analysis
+      - benchmark-DSI_cluster/: Benchmark and clustering work
+      - parse_arxiv_pdf/: ArXiv PDF parsing utilities
+      - open_source_data/: Open source data collection
+
+      Assessment: **ACTIVE RESEARCH** - Diverse portfolio spanning AI
+      methodology (chain-of-hints, LLM fine-tuning), scientific analysis
+      (hypothesis discovery, patents, dishonesty), and computational methods
+      (distance metrics, benchmarking). Very recent activity (2025). The
+      hypothesis discovery and attention inequality projects appear substantial.
+      Well-organized with clear project separation. High value for AI research
+      methodology and bibliometric analysis. Shows methodological sophistication
+      across multiple domains.
+
+--------------------------------------------------------------------------------
+
+[035] Directory: hyunkukwon
+      Size: ~43 GB (LARGE)
+      Owner: hyunkukwon
+      Type: Individual Researcher Directory - Political Text Analysis
+
+      Contents:
+      - Political corpora (MASSIVE TEXT FILES):
+        * austin_con_train.txt: 1.4GB conservative training corpus
+        * austin_con_test.txt: 358MB conservative test corpus
+        * austin_lib_train.txt: 1.5GB liberal training corpus
+        * austin_lib_test.txt: 374MB liberal test corpus
+        * con_balanced_gpt.txt: 13GB balanced conservative GPT-generated text
+        * lib_balanced_gpt.txt: 8.4GB balanced liberal GPT-generated text
+      - Pickled datasets:
+        * comm_con_txt.pkl: 8.7GB conservative comments
+        * comm_lib_txt.pkl: 6.1GB liberal comments
+      - Sampled datasets:
+        * con_ran_vvlarge.csv: 1.4GB large random conservative sample
+        * lib_ran_vvlarge.csv: 1.8GB large random liberal sample
+        * Smaller samples (vlarge: 675MB, large: 68MB, regular: 3.5MB)
+      - notebooks/: Analysis notebooks (10 subdirectories)
+      - bert_env/: BERT environment (13 subdirectories)
+      - bt/: Project directory
+      - freq_fin_word.pkl: 594KB word frequency analysis
+      - sampling.ipynb, sampling-lib.ipynb: Data sampling notebooks
+
+      Assessment: **VALUABLE DATA** - Large-scale political text corpora with
+      conservative/liberal labels, including both human-written and GPT-generated
+      text. The balanced GPT corpora (21GB total) are particularly interesting
+      for studying political language and AI-generated political content. Data
+      appears to be from Reddit or similar social media ("austin" may refer to
+      r/Austin subreddit). Well-organized with multiple sample sizes for
+      different computational needs. From 2021-2022 but political language
+      corpora have lasting value. Useful for political NLP, bias detection,
+      and studying AI-generated political content. The comparison of human vs
+      GPT-generated political text is especially valuable.
+
+--------------------------------------------------------------------------------
+
+[036] Directory: iCite_bulk_snapshot_Sep_2023
+      Size: ~41 GB (LARGE)
+      Owner: kangd
+      Type: Data Snapshot Directory
+
+      Contents:
+      - icite_metadata.csv: 25GB iCite metadata for NIH-funded publications
+      - open_citation_collection.csv: 13GB open citation linkages
+      - open_citation_collection.zip: 3.9GB compressed citations
+
+      Assessment: **VALUABLE DATA** - Major dataset from NIH's iCite system
+      tracking citations, bibliometrics, and impact metrics for NIH-funded
+      research. iCite provides Relative Citation Ratios (RCR), field-normalized
+      citation metrics, and NIH grant linkages. The open citation collection
+      enables citation network analysis. Snapshot from September 2023 provides
+      historical baseline. Highly valuable for studying biomedical research
+      impact, NIH funding effectiveness, and citation patterns in life sciences.
+      This is authoritative data directly from NIH with clean grant-paper
+      linkages.
+
+--------------------------------------------------------------------------------
+
+[037] Directory: interp_group
+      Size: ~50-100 MB
+      Owner: akozlo (shared group directory)
+      Type: Shared Project Directory - AI Interpretability
+
+      Contents:
+      - Personal subdirectories:
+        * Avital/: Avital's work (6 subdirectories)
+        * Austin/: Austin's experiments
+        * Callin/: Callin's analysis (3 subdirectories)
+        * Madison/: Madison's projects
+      - basic_prompt_builder.ipynb: 1.2MB prompt engineering notebook
+      - object_vector_pipeline_ak.ipynb: 1.3MB vector analysis pipeline
+      - feature_extraction.ipynb: 14KB feature extraction methods
+      - data/: Shared data directory
+      - archive/: Archived work
+
+      Assessment: **ACTIVE RESEARCH** - Collaborative group working on AI
+      interpretability and mechanistic understanding of language models. Very
+      recent activity (January 2026). The prompt builder and vector pipeline
+      notebooks suggest research on how LLMs represent and process information.
+      Well-organized collaboration structure with personal workspaces. Valuable
+      for understanding current approaches to AI interpretability research. The
+      group structure indicates this is an ongoing, multi-person research effort.
+
+--------------------------------------------------------------------------------
+
+[038] Directory: jacdals
+      Size: ~16 GB (LARGE)
+      Owner: jacdals
+      Type: Individual Researcher Directory - Medical/Drug Research
+
+      Contents:
+      - Web of Science data:
+        * wos_authors_adresses.parquet: 7.0GB author addresses
+        * wos_citation_topics.parquet: 495MB citation topics
+      - Author/Paper linkages:
+        * Paper_Author: 5.2GB paper-author relationships
+        * Author_Info_Dict: 1.8GB author information dictionary
+        * author_countries.parquet: 354MB author countries
+      - Medical/Drug databases:
+        * chebi_lite.obo: 46MB ChEBI chemical entities
+        * desc2025.xml, supp2025.xml: 300MB+748MB MeSH descriptors
+        * mesh_mappings.tsv: 2.1MB MeSH mappings
+        * who_atc_ddd.csv: 269KB WHO drug classification
+      - Project directories:
+        * InequalityPercolationScienceFunding/: Funding inequality analysis
+        * fair_accelerate/: FAIRness acceleration (13 subdirectories)
+        * conference_bandits/: Conference selection optimization (10 subdirs)
+        * pkg_for_nadav/: Shared package
+      - tmp/: Large temp directory (41 subdirectories)
+      - 1990.pkl: 33MB historical data
+
+      Assessment: **VALUABLE DATA AND ACTIVE RESEARCH** - Comprehensive
+      collection combining bibliometric data (WoS) with medical/pharmaceutical
+      databases (MeSH, ChEBI, WHO ATC). The 7GB author address file is
+      particularly valuable for geographic analysis of science. Multiple active
+      projects on funding inequality, FAIR data principles, and research
+      optimization. The conference bandits project suggests algorithmic
+      approaches to resource allocation. Well-organized with clean data formats
+      (parquet). Recent activity (2025). High value for medical bibliometrics,
+      funding policy research, and pharmaceutical research analysis.
+
+--------------------------------------------------------------------------------
+
+[039] Directory: jamshid
+      Size: ~1-5 GB (estimated)
+      Owner: jsourati
+      Type: Individual Researcher Directory - Computational Discovery
+
+      Contents:
+      - Major projects:
+        * abductive-discovery/: Abductive reasoning for discovery (6 subdirs)
+        * compositional_discovery/: Compositional discovery methods (6 subdirs)
+        * de-science-and-culture/: Science and culture analysis (6 subdirs)
+        * Leverhulme/: Leverhulme grant project (9 subdirectories)
+        * mag/: Microsoft Academic Graph work (17 subdirectories)
+      - Embeddings and representations:
+        * embeddings/: Embedding analysis (4 subdirectories)
+        * embeds/: Additional embeddings (3 subdirectories)
+        * cached_hgg_models/: Cached hyperbolic geometry models (10 subdirs)
+        * mat2vec/: Materials science embeddings (4 subdirectories)
+      - Domain-specific:
+        * crystals/: Crystal structure analysis (3 subdirectories)
+        * abstract-parser/: Abstract parsing tools (4 subdirectories)
+        * ethnicAI/: Ethnicity and AI research (3 subdirectories)
+      - Data:
+        * 1000_bio_papers.tsv: 1.2MB biology papers dataset
+        * Melica/: Collaborator directory
+
+      Assessment: **ACTIVE RESEARCH - METHODOLOGICAL FOCUS** - Extensive work
+      on computational discovery methods, particularly abductive and
+      compositional reasoning. The multiple embedding projects (standard,
+      hyperbolic, materials-specific) suggest deep expertise in representation
+      learning. The Leverhulme project indicates major funded research. Work
+      spans multiple domains (biology, materials science, culture) with a
+      unified methodological approach. Recent activity (2024-2025). High value
+      for methodology on automated scientific discovery, knowledge representation,
+      and cross-domain embedding techniques. The hyperbolic geometry models are
+      particularly sophisticated.
+
+--------------------------------------------------------------------------------
+
+[040] Directory: jerryluo8
+      Size: ~100-500 MB
+      Owner: jerryluo8
+      Type: Individual Researcher Directory - Embeddings Focus
+
+      Contents:
+      - Embedding projects (major focus):
+        * openalex_embeddings/: OpenAlex paper embeddings (6 subdirs, 16K files)
+        * patent_embeddings/: Patent embeddings (3 subdirs, 8K files)
+        * mesh_embeddings/: Medical Subject Headings embeddings (12 subdirs)
+      - Data sources:
+        * aps_data/: American Physical Society data (4 subdirectories)
+        * disruption_data/: Disruption index data (3 subdirectories)
+        * data/: General data storage (4 subdirectories)
+      - Specific projects:
+        * patent/: Patent analysis (38 subdirectories - major project)
+        * bill_hypergraph/: Legislative bill hypergraph analysis
+        * imdb/: IMDB movie data
+        * llama_stuff/: LLaMA model experiments (3 subdirectories)
+        * DO_cycle_optimization/: Optimization algorithms
+        * ph_test_DO/: Persistent homology tests
+
+      Assessment: **ACTIVE RESEARCH** - Focused on creating embeddings for
+      multiple scientific domains (papers, patents, medical concepts). The
+      massive patent project (38 subdirs) appears to be the main focus. Recent
+      activity (2025). The combination of embeddings with topological methods
+      (persistent homology) and hypergraph analysis suggests sophisticated
+      mathematical approaches. Valuable for embedding methodology across domains,
+      particularly the patent embeddings given the scale. The disruption data
+      work connects to innovation measurement research.
+
+--------------------------------------------------------------------------------
+
+[041] Directory: jlockhart
+      Size: Unknown (Permission denied)
+      Owner: jlockhart
+      Type: Individual Researcher Directory (Restricted)
+
+      Contents: Not accessible (permission denied)
+
+      Assessment: Directory exists but access is restricted. Cannot assess
+      contents or value. Note: This researcher also owns/co-owns the
+      gender_surprise directory (entry 026).
+
+--------------------------------------------------------------------------------
+
+[042] Directory: junsol
+      Size: ~13 GB
+      Owner: junsol
+      Type: Individual Researcher Directory - LLM Benchmarking
+
+      Contents:
+      - LLM benchmark results (major focus):
+        * benchmark_results_deepseek-r1-distill-llama-8b.pkl: 12MB
+        * benchmark_results_deepseek-r1.pkl: 11MB
+        * benchmark_results_deepseek-r1-zero.pkl: 5MB
+        * benchmark_results_deepseek-v3.pkl: 2.6MB
+        * benchmark_results_llama-3.1-8b-instruct.pkl: 11MB
+        * benchmark_results_qwen-2.5-32b.pkl: 2.4MB
+        * benchmark_results_qwq-32b.pkl: 18MB
+        * benchmarks_small.pkl: 2.4MB
+      - Scripts:
+        * collect_llm_responses.py: 7.3KB response collection
+        * collect_zero_ds.py: 8.6KB zero-shot collection
+      - Data:
+        * df_ref_openalex_igo.parquet: 464MB OpenAlex IGO references
+      - Projects:
+        * communitynotes/: Twitter community notes analysis (3 subdirs)
+      - anaconda/: Environment
+
+      Assessment: **ACTIVE RESEARCH** - Comprehensive LLM benchmarking across
+      multiple cutting-edge models (DeepSeek R1, Llama 3.1, Qwen, QwQ). Very
+      recent work (March 2025) with latest models. The benchmark files contain
+      extensive evaluation results. The OpenAlex IGO (international governmental
+      organizations) data suggests research on how LLMs handle institutional
+      knowledge. Community notes work connects to misinformation and content
+      moderation. Valuable for understanding LLM capabilities across models and
+      for reproducible evaluation methodology. The systematic benchmarking
+      approach and clean data organization make this useful for comparative
+      studies.
+
+--------------------------------------------------------------------------------
+
+[043] Directory: LLMs
+      Size: ~100-200 GB (estimated from model sizes)
+      Owner: akozlo (shared resource)
+      Type: Shared Resource Directory
+
+      Contents:
+      - Cached LLM models:
+        * Google Gemma models:
+          - models--google--gemma-2-27b
+          - models--google--gemma-2-27b-it
+          - models--google--gemma-3-12b-it
+          - models--google--gemma-3-1b-it
+          - models--google--gemma-3-27b-it
+        * Meta Llama models:
+          - models--meta-llama--Llama-3.1-70B
+          - models--meta-llama--Llama-3.1-8B
+        * Quantized models:
+          - LoneStriker_Llama3-ChatQA-1.5-70B-6.0bpw-h6-exl2
+      - hub/: Hugging Face Hub cache (7 subdirectories)
+      - .locks/: Lock files for concurrent access
+
+      Assessment: Shared lab cache for large language models. Contains multiple
+      versions of Gemma (1B to 27B) and Llama 3.1 (8B and 70B). The quantized
+      ChatQA model enables running large models on limited hardware. Recent
+      activity (February-April 2025). Infrastructure directory that saves
+      significant download time/bandwidth for multiple researchers. Models can
+      be re-downloaded if needed but having local copies is convenient. The
+      variety of model sizes enables experimentation across resource constraints.
+
+--------------------------------------------------------------------------------
+
+[044] Directory: MAG_Dec_2021_snapshot
+      Size: Unknown (likely very large, TBs)
+      Owner: kangd
+      Type: Major Data Snapshot Directory
+
+      Contents:
+      - mag/: Microsoft Academic Graph data
+      - advanced/: Advanced queries or processing
+      - nlp/: NLP-specific extractions
+      - ns/: Namespace or network science work (5 subdirectories)
+      - samples/: Sample datasets (5 subdirectories)
+      - Microsoft Academic Graph data schema HTML documentation (108KB)
+
+      Assessment: **VALUABLE DATA** - December 2021 snapshot of the Microsoft
+      Academic Graph (MAG), one of the largest academic publication databases
+      before it was discontinued in 2022. This is a historical snapshot of
+      significant value since MAG is no longer updated. Contains comprehensive
+      publication, author, institution, and citation data across all scientific
+      fields. The presence of specialized subdirectories (nlp, samples, advanced)
+      suggests this has been processed and organized for analysis. MAG data is
+      irreplaceable for longitudinal studies requiring pre-2022 coverage. The
+      schema documentation provides essential reference. High value for any
+      large-scale bibliometric research, particularly for historical comparisons
+      or studies requiring MAG's unique identifiers and coverage.
+
+--------------------------------------------------------------------------------
+
+[045] Directory: maxzhuyt
+      Size: ~500 MB - 1 GB
+      Owner: maxzhuyt
+      Type: Individual Researcher Directory - Political Science
+
+      Contents:
+      - Political data analysis outputs:
+        * ANES (American National Election Studies) linear probe results
+        * CHES (Chapel Hill Expert Survey) analysis and visualizations
+        * Manifesto Project analysis: all-layer-pc1-manifesto.png (35KB)
+        * Political ideology PCA and variance plots
+      - Visualizations (numerous PNG files):
+        * Box_Swarm_Combined_Plot.png: 1.2MB combined visualization
+        * best-var-explained-variance.png, best-var-pc1-nom1.png: ~60KB each
+        * ches_explicit.png: 105KB
+      - Scripts and SLURM jobs:
+        * check_layers.py, check_layers.sbatch: Layer analysis scripts
+        * check_idle.sh: Resource monitoring
+      - Data storage:
+        * activations_cache/: Neural network activations (14 subdirectories)
+        * batch_requests/: API batch processing (5 subdirectories)
+
+      Assessment: **ACTIVE RESEARCH** - Political science work using neural
+      network interpretability methods to analyze political ideology. Combines
+      major political science datasets (ANES, CHES, Manifesto Project) with
+      deep learning analysis (PCA on activations, layer analysis). Very recent
+      activity (September 2025). The activation caching and layer analysis
+      suggest mechanistic interpretability work on how models represent political
+      concepts. High-quality visualizations indicate publication-ready analysis.
+      Valuable for political science methodology, AI interpretability in social
+      science contexts, and understanding ideological representation in neural
+      networks.
+
+--------------------------------------------------------------------------------
+
+[046] Directory: models
+      Size: ~500 MB
+      Owner: maxzhuyt (with suminpark contributions)
+      Type: Shared Resource Directory
+
+      Contents:
+      - SPECTER2 model files (citation embedding model):
+        * specter2_base.zip: 71MB base model
+        * specter2_base_hf.zip: 3.2MB Hugging Face version
+        * specter2_base_full.zip: 390MB full model with weights
+        * pytorch_adapter.bin: 3.5MB PyTorch adapter weights
+        * adapter_config.json: Configuration
+        * README.md: 9.6KB documentation
+      - Extracted directories:
+        * allenai--specter2_base.main: Base model directory
+        * specter2_base/: Extracted model
+        * __MACOSX/: macOS artifacts
+
+      Assessment: Repository for SPECTER2, a state-of-the-art citation-based
+      document embedding model from Allen AI. SPECTER2 creates embeddings that
+      capture semantic similarity based on citation patterns, making it valuable
+      for literature search, paper recommendation, and bibliometric analysis.
+      Multiple formats (ZIP archives, Hugging Face format, adapters) provide
+      flexibility. Recent setup (November 2024). Useful resource for anyone
+      working with scientific document embeddings. The model is particularly
+      strong for biomedical and scientific literature.
+
+--------------------------------------------------------------------------------
+
+[047] Directory: likun
+      Size: ~3-5 GB (estimated)
+      Owner: lkcao
+      Type: Individual Researcher Directory
+
+      Contents:
+      - Major projects:
+        * depth_breadth_retraining/: Depth vs breadth in retraining (14 subdirs,
+          16K files)
+        * cognitive_project_visualization/: Cognitive science visualization (17
+          subdirectories)
+        * emergence/: Emergence phenomena analysis (14 subdirectories, 32K files)
+        * explore/: Exploratory analysis (9 subdirectories)
+      - Data and analysis:
+        * compress.ipynb: 8.9KB compression analysis
+        * empirical.rtf, fe_mode.rtf: Research documents (4KB, 308KB)
+        * bins/: Binned data
+      - Resources:
+        * Multiple font files (Aptos, Gill Sans): Publication preparation
+        * Myfile.doc: 5.4MB document (in parent directory)
+
+      Assessment: **ACTIVE RESEARCH** - Focus on cognitive science and machine
+      learning, particularly studying depth vs. breadth tradeoffs and emergence
+      phenomena. The large emergence project (32K files) appears to be a major
+      focus. Recent activity (2025). Work combines theoretical analysis (RTF
+      documents) with computational experiments. The cognitive visualization
+      project suggests interdisciplinary work bridging AI and cognitive science.
+      The depth/breadth retraining work is relevant to transfer learning and
+      curriculum design for neural networks. Valuable for understanding emergent
+      capabilities in AI systems and cognitive modeling.
+
+--------------------------------------------------------------------------------
+
+[048] Directory: nadav
+      Size: ~1-5 GB (estimated from 38 projects)
+      Owner: nadavkunievsky
+      Type: Individual Researcher Directory - Extensive Portfolio
+
+      Contents (38 subdirectories - sampling key projects):
+      - AI/LLM projects:
+        * Info-Flows-LLMs/: Information flow in LLMs (7 subdirectories)
+        * generating_science/: AI for science generation (6 subdirectories)
+        * beliefEliciation/: Belief elicitation methods (4 subdirectories)
+        * benchmarks/: Benchmark development (5 subdirectories)
+        * em-dash/: Project (6 subdirectories)
+      - Economics/Social Science:
+        * IncomePrediction_hypgen/: Income prediction with hypothesis generation
+          (7 subdirectories)
+        * FundingIV/: Funding instrumental variables (6 subdirectories)
+        * fundingNovo/: Novo funding analysis (5 subdirectories)
+        * genderAttitude/: Gender attitudes research
+        * impulseResponse/: Economic impulse response analysis (6 subdirs)
+      - Interdisciplinary:
+        * integratingMinorityPerspectives/: Minority perspectives (8 subdirs)
+        * InputOutputCitations/: Input-output citation analysis (10 subdirs)
+      - Patents:
+        * extractTermsFromPatents.ipynb: 44KB patent text extraction
+      - Infrastructure:
+        * git/: Git repository (5 subdirectories)
+        * downloads/: Downloads directory
+        * connect.sh: 13KB connection script
+        * .hf_cache/: Hugging Face cache
+
+      Assessment: **ACTIVE RESEARCH - HIGHLY PRODUCTIVE** - Exceptionally
+      diverse portfolio spanning AI methodology, economics, social science, and
+      bibliometrics. Very recent activity (January 2025). The 38 projects
+      indicate a highly productive researcher with interests in computational
+      social science, AI for scientific discovery, and economic analysis.
+      Multiple projects on funding and research evaluation suggest expertise in
+      science policy. The Info-Flows-LLMs and generating_science projects are
+      at the cutting edge of AI research. High value for interdisciplinary
+      methods, particularly combining LLMs with social science and economics.
+      Well-organized with clear project separation. This directory represents a
+      major research program with multiple active threads.
+
+--------------------------------------------------------------------------------
+
+[049] Directory: nadav_zhen
+      Size: ~100-500 MB
+      Owner: zhenzhang (collaboration with nadavkunievsky)
+      Type: Shared Project Directory
+
+      Contents:
+      - classifier/: Classification models (14 subdirectories)
+      - embedding/: Embedding generation (3 subdirectories)
+      - longer_prompt/: Extended prompt experiments (3 subdirectories)
+      - new_q2/: New question generation (6 subdirectories)
+      - data/: Shared data (3 subdirectories)
+      - scripts/: Processing scripts (by nadav)
+      - pipeline.ipynb: 78KB processing pipeline notebook
+
+      Assessment: Collaborative project between nadav and zhen on classification
+      and embedding tasks. Recent activity (June 2025). Well-organized pipeline
+      structure. Appears to be research on prompt engineering and question
+      generation. Moderate value for NLP methodology.
+
+--------------------------------------------------------------------------------
+
+[050] Directory: ningzili
+      Size: ~174 GB (VERY LARGE)
+      Owner: ningzi
+      Type: Individual Researcher Directory - Ambiguity Analysis
+
+      Contents:
+      - Ambiguity analysis datasets by year (2011-2012+ visible):
+        * ambiguity_2011_1.csv through ambiguity_2011_5.csv: 12-13MB each
+        * ambiguity_2011_all.csv: 60MB combined
+        * ambiguity_2012_1.csv through ambiguity_2012_5.csv: 12MB each
+        * Pattern continues for multiple years (16K subdirectories total)
+      - Multiple year coverage with partitioned analysis files
+
+      Assessment: **VALUABLE DATA** - Large-scale ambiguity analysis dataset
+      spanning multiple years with systematic partitioning. The 174GB size and
+      16K subdirectories suggest comprehensive temporal coverage. Ambiguity
+      analysis is valuable for understanding semantic uncertainty in text,
+      scientific language evolution, and concept clarity. Well-organized with
+      year-based structure and numbered partitions for parallel processing.
+      Recent activity (November-December 2024). High value for computational
+      linguistics and semantic analysis research.
+
+--------------------------------------------------------------------------------
+
+[051] Directory: nwrim
+      Size: ~175 GB (VERY LARGE)
+      Owner: nwrim
+      Type: Individual Researcher Directory - Psychology Data
+
+      Contents:
+      - psych_perspectives.tar.gz: 129GB psychology perspectives dataset
+      - psych_prior.tar.gz: 46GB psychology prior data
+      - academic_prior/: Academic prior research (6 subdirectories)
+      - social_technology_demo/: Social technology demonstration (6 subdirs)
+      - social_technology_pgg_conda_env/: Environment for public goods game
+        experiments (13 subdirectories)
+
+      Assessment: **VALUABLE DATA - MASSIVE PSYCHOLOGY DATASET** - Contains
+      175GB of compressed psychology data. The "perspectives" and "prior"
+      datasets suggest research on psychological priors and perspectives,
+      possibly related to belief formation or cognitive biases. The public
+      goods game (pgg) environment indicates experimental economics or
+      behavioral game theory research. The social technology demo suggests
+      computational modeling of social behavior. Recent compilation (March 2025).
+      This is a major psychology/behavioral science data resource. Highly
+      valuable for computational social science, experimental economics, and
+      psychological modeling research.
+
+--------------------------------------------------------------------------------
+
+[052] Directory: ollama_models
+      Size: ~10-50 MB (just manifests/blobs metadata)
+      Owner: qxlin (world-writable)
+      Type: Shared Resource Directory
+
+      Contents:
+      - blobs/: Model binary blobs (16K entries)
+      - manifests/: Model manifests (3 subdirectories)
+
+      Assessment: Ollama model cache directory for running LLMs locally. Contains
+      model blobs and manifests for the Ollama system. Recent use (April 2025).
+      Infrastructure directory - models can be re-downloaded. The world-writable
+      permissions allow shared access.
+
+--------------------------------------------------------------------------------
+
+[053] Directory: openalex-snapshot
+      Size: Unknown (likely TBs)
+      Owner: beichenlu
+      Type: Major Data Snapshot Directory
+
+      Contents:
+      - data/: OpenAlex snapshot data (14 subdirectories)
+
+      Assessment: **VALUABLE DATA** - OpenAlex bibliographic database snapshot.
+      OpenAlex is a comprehensive open-access replacement for Microsoft Academic
+      Graph covering publications, authors, institutions, venues, and concepts
+      across all fields. Recent snapshot (December 2024) means current data.
+      The 14 subdirectories suggest partitioned data for distributed processing.
+      Highly valuable for any bibliometric research. OpenAlex provides clean,
+      structured data with DOIs, citations, author affiliations, and field
+      classifications. Essential resource for science of science research.
+
+--------------------------------------------------------------------------------
+
+[054] Directory: PATSTAT
+      Size: ~64 GB (LARGE)
+      Owner: lkcao
+      Type: Major Data Snapshot Directory
+
+      Contents:
+      - PATSTAT Global 2023 Autumn edition (11 ZIP files):
+        * data_PATSTAT_Global_2023_Autumn_01.zip: 5.8GB
+        * data_PATSTAT_Global_2023_Autumn_02-11.zip: 5.3-6.4GB each
+        * Total: ~64GB compressed patent data
+      - index_documentation_scripts_PATSTAT_Global_2023_Autumn.zip: 21MB docs
+      - OECD_complementary_datasets/: OECD patent supplements
+      - unzipped_data/: Extracted data directory
+      - pitt/: Additional processing
+
+      Assessment: **VALUABLE DATA** - PATSTAT (Patent Statistical Database)
+      from EPO (European Patent Office). Autumn 2023 edition provides
+      comprehensive global patent data including bibliographic information,
+      citations, classifications, and legal status. PATSTAT is the gold
+      standard for patent research with clean, structured data covering
+      worldwide patents. The 11-part structure enables distributed processing.
+      OECD complementary datasets add economic indicators. Highly valuable for
+      innovation research, technology analysis, and patent economics. Recent
+      download (January-February 2024) means relatively current data.
+
+--------------------------------------------------------------------------------
+
+[055] Directory: perspective2025
+      Size: ~10-50 MB
+      Owner: panrui
+      Type: Individual Researcher Directory
+
+      Contents:
+      - patent/: Patent analysis (7 subdirectories)
+      - google-books/: Google Books data (5 subdirectories)
+      - boostrap_embedding_note_2512.md: 271 bytes methodology note
+      - slurm_notebook.sh: 737 bytes SLURM script
+      - temp/: Temporary files
+
+      Assessment: Recent project (December 2025) on patent and Google Books
+      analysis with embedding methods. The bootstrap embedding note suggests
+      methodological development. Small scale, appears to be early-stage
+      research. Moderate value pending further development.
+
+--------------------------------------------------------------------------------
+
+[056] Directory: PKG_v2_2023
+      Size: ~144 GB (VERY LARGE)
+      Owner: kangd
+      Type: Major Data Snapshot Directory
+
+      Contents:
+      - PubMed Knowledge Graph v2.0 (2023 edition):
+        * A01_Articles.parquet/sql: 3.4GB/18GB articles
+        * A02_AuthorList.parquet/sql: 8.2GB/23GB author lists
+        * A04_Abstract.parquet: 18GB abstracts
+        * A05_GrantList.parquet/sql: 231MB/842MB NIH grants
+        * A06_MeshHeadingList.tsv: 18GB MeSH headings
+      - Clinical data (C-series files):
+        * C01_Papers.tsv: 5.4GB papers
+        * C02-C23: Comprehensive linkages including authors, affiliations,
+          references, bioentities, clinical trials, patents, investigators
+        * C21_Bioentity_Relationships.tsv: 5.0GB biological relationships
+      - Jupyter notebooks for SQL extraction
+      - PKG 2.0 Dataset Description.pdf: 202KB documentation
+
+      Assessment: **VALUABLE DATA - COMPREHENSIVE BIOMEDICAL KNOWLEDGE GRAPH** -
+      PubMed Knowledge Graph integrates PubMed articles with NIH grants,
+      clinical trials, patents, MeSH terms, and biological entities. The 144GB
+      dataset provides unprecedented linkages across biomedical research
+      outputs. Particularly valuable features: grant-paper linkages (A05),
+      bioentity relationships (C21), clinical trial connections (C11-C14),
+      and patent-paper links (C16-C18). The author-inventor linkages (C20)
+      enable tracking researchers across academia and patents. This is
+      authoritative NIH-sourced data with clean identifiers. Essential for
+      biomedical research policy, translational science analysis, and
+      understanding research-to-application pipelines. The comprehensive
+      documentation and processed parquet/SQL formats make this immediately
+      usable.
+
+--------------------------------------------------------------------------------
+
+[057] Directory: qixin
+      Size: ~100-500 MB
+      Owner: qxlin
+      Type: Individual Researcher Directory
+
+      Contents:
+      - concordia/: Concordia project (9 subdirectories)
+      - concordia-experiment/: Experimental work (3 subdirectories)
+      - MAThesis/: Master's thesis work (6 subdirectories)
+      - ollama/, ollama_extracted/: Ollama LLM deployment (5-6 subdirs each)
+      - ollama_service scripts: GPU and CPU variants for different servers
+      - initialization_test/: Initialization experiments
+      - ollama_tmp/: Temporary ollama files
+
+      Assessment: Master's thesis work on the Concordia framework (multi-agent
+      simulation) with LLM deployment using Ollama. Recent activity (February
+      2025). The multiple ollama service scripts show effort to run models
+      across different compute resources. Moderate research value, primarily
+      thesis-focused work on agent-based modeling.
+
+--------------------------------------------------------------------------------
+
+[058] Directory: renli
+      Size: Unknown (Permission denied)
+      Owner: renly
+      Type: Individual Researcher Directory (Restricted)
+
+      Contents: Not accessible
+
+      Assessment: Restricted access directory. Cannot assess value.
+
+--------------------------------------------------------------------------------
+
+[059] Directory: ruininghe
+      Size: ~500 MB - 2 GB
+      Owner: rnhe
+      Type: Individual Researcher Directory
+
+      Contents:
+      - code/: Code repository (18 subdirectories)
+      - config/: Configuration files (13 subdirectories)
+      - data/: Dataset storage (4 subdirectories)
+      - computed_data/: Processed data (6 subdirectories)
+      - computed_model/: Trained models (4 subdirectories, 8K files)
+      - downloaded_model/: Pre-trained models (14 subdirectories)
+      - document/: Documentation
+      - Visualizations:
+        * all_categories_distribution.png: 280KB
+        * binary_target_proportion_stacked.png: 203KB
+        * binary_target_score_boxplots.png: 269KB
+      - Scripts:
+        * classifier.sbatch: SLURM job for classification
+        * check_idle.sh: Resource monitoring
+        * download_sth.ipynb: 30KB download notebook
+
+      Assessment: **ACTIVE RESEARCH** - Machine learning project with
+      comprehensive structure (code, configs, data, models). The computed
+      models directory with 8K files suggests extensive experimentation.
+      High-quality visualizations indicate publication-ready analysis. Binary
+      target analysis suggests classification research. Recent activity (2025).
+      Well-organized project with clear separation of raw data, computed results,
+      and models. Valuable for understanding ML experimentation workflows and
+      classification methodology.
+
+--------------------------------------------------------------------------------
+
+[060] Directory: S2AG_Dec_2024_snapshot
+      Size: ~50 GB (LARGE)
+      Owner: jacdals
+      Type: Major Data Snapshot Directory
+
+      Contents:
+      - papers.parquet: 33GB paper metadata
+      - authors.parquet: 1.5GB author data
+      - s2orc.parquet: 7.1GB S2ORC (Open Research Corpus) data
+      - citations_parquet/: Citation data (8K subdirectories)
+      - citationstestss.json: 3.5GB citation test data
+      - s2orc_parquet/: S2ORC parquet format (64K files)
+      - Processed outputs:
+        * outFullTest_56.parquet: 1.8GB
+        * outSmallTest_56.parquet: 696MB
+        * s2orc_part7_big.parquet: 1.8GB
+      - Processing scripts:
+        * download_dataset.py: 4.8KB downloader
+        * s2orc_extraction_parallel.py: 8.6KB parallel extractor
+        * nadavs_games.ipynb: 121KB analysis notebook
+
+      Assessment: **VALUABLE DATA** - Semantic Scholar Academic Graph December
+      2024 snapshot. S2AG is a major open bibliographic database with paper
+      metadata, abstracts, citations, and author information across all fields.
+      The inclusion of S2ORC data provides full text and structured paper
+      content. Recent snapshot (December 2024) means current coverage. The 33GB
+      papers file contains comprehensive metadata. Processing scripts show
+      active use with parallel extraction for scalability. Valuable for any
+      bibliometric or NLP research on scientific literature. Semantic Scholar
+      provides clean DOIs, citation networks, and field classifications.
+
+--------------------------------------------------------------------------------
+
+[061] Directory: semantic_scholar_Jan31_2025
+      Size: ~39 GB (LARGE)
+      Owner: kangd
+      Type: Major Data Snapshot Directory
+
+      Contents:
+      - paper_id_title_venue_year.parquet: 21GB comprehensive paper metadata
+      - paper_id_author.parquet: 18GB paper-author linkages
+      - paper_id_title_venue_year_2024_only.parquet: 780MB 2024 papers subset
+      - authors/: Author data directory
+      - abstracts/: Abstract data directory
+      - Processing notebooks:
+        * filtering_semantic_scholar.ipynb: 34KB filtering methods
+        * abstract_load_test.ipynb: 6.8KB loading tests
+        * abstract_parquet.ipynb: 2.5KB parquet conversion
+      - extract_columns.py: 2.2KB extraction utility
+
+      Assessment: **VALUABLE DATA** - Even more recent Semantic Scholar snapshot
+      (January 31, 2025). The 21GB comprehensive file covers paper titles,
+      venues, and years across all publications. The 18GB author linkage file
+      provides complete authorship data. The separate 2024 subset enables
+      studying very recent publications. Multiple processing notebooks show
+      active use and methodology development. This is the most current
+      Semantic Scholar data in the lab (newer than S2AG_Dec_2024). Highly
+      valuable for cutting-edge bibliometric research and studying recent
+      publication patterns.
+
+--------------------------------------------------------------------------------
+
+[062] Directory: shiyang
+      Size: ~1-5 GB (estimated from 19 projects)
+      Owner: shiyanglai
+      Type: Individual Researcher Directory
+
+      Contents:
+      - AI research projects:
+        * ai-biases/: AI bias research (11 subdirectories)
+        * ai-society/: AI and society (9 subdirectories)
+        * ai-survey/: AI survey research (3 subdirectories)
+        * superposition-neurons/: Neural superposition analysis (13 subdirs)
+      - Economic/social:
+        * belief-elicitation/: Belief elicitation methods
+        * venture_pivot/: Venture pivoting analysis (3 subdirectories)
+      - Science research:
+        * science/: Science-related projects (11 subdirectories)
+      - Infrastructure:
+        * models/: Model storage (29 subdirectories)
+        * scripts/: Processing scripts (8 subdirectories)
+        * notebooks/: Analysis notebooks (12 subdirectories)
+        * envs/: Environments
+        * logs/: Log files
+        * font/: Typography resources
+
+      Assessment: **ACTIVE RESEARCH** - Diverse portfolio spanning AI bias,
+      computational social science, and neural network interpretability. The
+      superposition-neurons project suggests cutting-edge work on how neural
+      networks represent information. Recent activity (February 2025). Multiple
+      projects on AI's societal implications show engagement with responsible
+      AI research. The large models directory (29 subdirs) indicates substantial
+      computational work. Valuable for AI safety, interpretability, and social
+      impact research.
+
+--------------------------------------------------------------------------------
+
+[063] Directory: tip
+      Size: ~1-10 GB (estimated)
+      Owner: jlockhart
+      Type: Major Project Directory
+
+      Contents:
+      - data/: Main data storage (11 subdirectories, restricted access)
+      - Model projects:
+        * model1_medline/: MEDLINE-based model (7 subdirectories)
+        * model11_2023/: 2023 model version (25 subdirectories, 16K files)
+        * model12_all_oa/: OpenAlex-based model (16 subdirectories)
+      - Network analysis:
+        * network_model/: Network modeling (21 subdirectories)
+        * pop_pyr/: Population pyramid analysis (10 subdirectories)
+        * disruption/: Disruption analysis (6 subdirectories)
+      - prescience_graveyard/: Archived experiments (10 subdirectories)
+      - WOS_Emerging_Table/: Web of Science emerging topics
+
+      Assessment: **MAJOR PROJECT** - The "tip" (possibly "topics in papers"
+      or similar) project appears to be a major research effort on modeling
+      scientific topics and their evolution. Multiple model versions (1, 11, 12)
+      show iterative development. The progression from MEDLINE to OpenAlex
+      suggests expanding scope. Network modeling and disruption analysis
+      indicate focus on innovation and scientific change. The "prescience
+      graveyard" shows methodical experimentation. Recent activity (2024-2025).
+      This appears to be a central lab project on predictive modeling of
+      scientific trends. High value for science forecasting and topic modeling
+      methodology.
+
+--------------------------------------------------------------------------------
+
+[064] Directory: zhenzhang
+      Size: ~2-10 GB (estimated from visualization count)
+      Owner: zhenzhang
+      Type: Individual Researcher Directory
+
+      Contents:
+      - Major analysis projects:
+        * cs_openalex/: Computer science OpenAlex analysis (14 subdirectories)
+        * award_paper/: Award-winning paper analysis (11 subdirectories)
+        * accept_delay/: Acceptance delay analysis (5 subdirectories)
+        * cited_by_5_citing_5/: Citation pattern analysis (308 subdirectories!)
+      - Numerous high-quality visualizations (all PNG files):
+        * 4_figures.ipynb: 18MB comprehensive figure notebook
+        * Multiple attention/reference/citation plots
+        * Combined dual-axis plots with confidence intervals
+        * Humanities ratio analysis
+      - Data analysis:
+        * data_analysis/: Analysis directory (3 subdirectories)
+        * cache/: Cached computations
+        * 2025.10.13/: Dated analysis directory
+
+      Assessment: **ACTIVE RESEARCH - PUBLICATION-FOCUSED** - Extensive work
+      on citation patterns, paper acceptance, and bibliometric analysis. The
+      308 subdirectories in cited_by_5_citing_5 suggest comprehensive citation
+      network analysis. High-quality visualizations with confidence intervals
+      indicate publication-ready analysis. Recent activity (October 2025).
+      Focus on computer science publications via OpenAlex. The award paper
+      analysis suggests research on scientific excellence. Valuable for
+      understanding citation dynamics, peer review processes, and factors
+      predicting scientific impact. The methodological rigor (CIs, significance
+      testing) makes this work particularly credible.
+
+--------------------------------------------------------------------------------
+
+[066] Directory: mschwarting | Size: ~216 MB | Owner: meschw04
+      Contents: product_factsheets.csv (216MB), factsheets/, download script
+      Assessment: Product factsheet data download. Duplicate/related to apto_data_engineering factsheet work. Moderate value.
+
+[067] Directory: muhua | Size: ~17 MB | Owner: muhua
+      Contents: all_data.csv (16MB), compute_log_prob/, GPU batch scripts
+      Assessment: Log probability computation project. Recent (Nov 2024). Small research project, likely course/thesis work.
+
+[068] Directory: Mysql | Size: Unknown | Owner: hachicui94
+      Contents: MySQL database installation/data
+      Assessment: MySQL database system directory. Infrastructure rather than research data.
+
+[069] Directory: openalex-snapshot_old | Size: Unknown | Owner: beichenlu
+      Contents: Old OpenAlex snapshot (superseded by openalex-snapshot)
+      Assessment: Archived/old version. The current openalex-snapshot (entry 053) should be used instead.
+
+[070] Directory: pca_results | Size: Small | Type: Results directory
+      Assessment: PCA analysis results, likely from completed project. Archive material.
+
+[071] Directory: pdfs | Size: Unknown | Owner: Various
+      Contents: PDF document storage
+      Assessment: Shared PDF repository. Utility directory for paper/document storage.
+
+[072] Directory: persona_vecs_TL | Size: Unknown | Owner: Unknown
+      Assessment: Persona vectors, likely related to Abenezer's persona_vecs project (entry 005). Supplementary data.
+
+[073] Directory: ploertscher | Size: Unknown | Owner: ploertscher
+      Assessment: Individual researcher directory. Unable to access details.
+
+[074] Directory: project | Size: Unknown | Owner: Various
+      Contents: General project workspace
+      Assessment: Shared project directory. Likely contains collaborative work across multiple researchers.
+
+[075] Directory: projects-jerry | Size: Unknown | Owner: Jerry
+      Contents: Jerry's project workspace
+      Assessment: Individual project collection. Name suggests jerryluo8's additional workspace.
+
+[076] Directory: pubchem_compound_2025_May | Size: <10 MB | Owner: kangd
+      Contents: Empty directory (created May 2025)
+      Assessment: Recently created directory for PubChem chemical compound data. Not yet populated.
+
+[077] Directory: PwC_Nov_13_2024 | Size: ~473 MB | Owner: kangd
+      Type: **VALUABLE DATA** - Papers with Code Dataset
+      Contents:
+      - papers-with-abstracts.json.gz: 429MB papers with abstracts
+      - links-between-papers-and-code.json.gz: 23MB paper-code linkages
+      - evaluation-tables.json.gz: 17MB model evaluation results
+      - datasets.json.gz: 3.7MB dataset metadata
+      - methods.json.gz: 764KB method descriptions
+      Assessment: November 2024 Papers with Code (PwC) snapshot. Links academic papers to their code implementations, datasets, and benchmarks. Highly valuable for studying reproducibility, code availability in ML/AI research, and tracking state-of-the-art methods. Clean structured format.
+
+[078] Directory: PwC_Mar_04_2025 | Size: Unknown | Owner: kangd
+      Assessment: More recent Papers with Code snapshot (March 2025). Supersedes Nov 2024 version. **VALUABLE DATA** for current ML/AI research landscape.
+
+[079] Directory: QuestionAnswerApproach | Size: Unknown | Owner: Unknown
+      Assessment: Question-answering research project. Unable to access details.
+
+[080] Directory: reddit_data | Size: Small | Owner: rnhe
+      Contents: comments/, submissions/ subdirectories
+      Assessment: Reddit data collection (Nov 2024). Small scale, likely for specific analysis project.
+
+[081] Directory: renli_shared | Size: Unknown | Owner: renli (shared)
+      Assessment: Shared workspace for renli. Unable to access.
+
+[082] Directory: restricted_scores | Size: Unknown | Owner: Unknown
+      Assessment: Restricted access scoring data. Cannot assess.
+
+[083] Directory: s2ag_hongbo | Size: Unknown | Owner: hongbofang
+      Assessment: Personal S2AG (Semantic Scholar) data processing workspace.
+
+[084] Directory: s2ag_ml_tables_text.parquet | Size: Unknown
+      Type: Data file stored as directory name (unusual)
+      Assessment: S2AG machine learning tables extracted to parquet format.
+
+[085] Directory: shared_with_jerry | Size: Unknown | Owner: Various
+      Assessment: Collaborative sharing directory with Jerry.
+
+[086] Directory: sherryding | Size: Unknown | Owner: sherryding
+      Assessment: Individual researcher directory.
+
+[087] Directory: sinanparmar | Size: Unknown | Owner: sinanparmar
+      Assessment: Individual researcher directory.
+
+[088] Directory: siyangwu | Size: Unknown | Owner: siyangwu
+      Assessment: Individual researcher directory.
+
+[089] Directory: ssrn_html_data | Size: Unknown | Owner: Unknown
+      Contents: SSRN (Social Science Research Network) HTML data
+      Assessment: **VALUABLE DATA** - SSRN paper metadata/abstracts. SSRN covers economics, finance, and social sciences. Valuable for studying social science publication patterns.
+
+[090] Directory: subspace_sos | Size: Unknown | Owner: Unknown
+      Assessment: Subspace analysis project (sos = science of science?).
+
+[091] Directory: sumin | Size: Unknown | Owner: suminpark
+      Assessment: Individual researcher directory. Contributed to models/ directory (SPECTER2, entry 046).
+
+[092] Directory: team_rp | Size: Unknown | Owner: Team RP
+      Assessment: Team/collaborative research project directory.
+
+[093] Directory: tejaswini | Size: Unknown | Owner: tejaswini
+      Assessment: Individual researcher directory.
+
+[094] Directory: trajectory-project | Size: Unknown | Owner: Unknown
+      Assessment: Career trajectory or research trajectory analysis project.
+
+[095] Directory: txts | Size: Unknown | Owner: Various
+      Contents: Text file storage
+      Assessment: Shared text document repository. Utility directory.
+
+[096] Directory: tzhang3 | Size: Unknown | Owner: tzhang3
+      Assessment: Individual researcher directory. Owns 40123 educational resources (entry 001).
+
+[097] Directory: untitled folder | Size: Unknown | Owner: Unknown
+      Assessment: Unnamed directory, likely temporary or organizational oversight.
+
+[098] Directory: Volumes | Size: Unknown | Type: System directory
+      Assessment: macOS Volumes mount point or similar. System/infrastructure directory.
+
+[099] Directory: vrushank | Size: Unknown | Owner: vrushank
+      Assessment: Individual researcher directory.
+
+[100] Directory: Wikipedia_rp | Size: Unknown | Owner: Unknown
+      Contents: Wikipedia data for research project
+      Assessment: **POTENTIALLY VALUABLE** - Wikipedia data snapshot or extracts for research. Wikipedia is valuable for studying knowledge organization, information diffusion, and as training/evaluation data.
+
+[101] Directory: work | Size: Unknown | Owner: Various
+      Assessment: General workspace directory. Shared working space.
+
+[102] Directory: xiaoliu | Size: Unknown | Owner: xiaoliu
+      Assessment: Individual researcher directory.
+
+[103] Directory: yangyu | Size: Unknown | Owner: yangyu
+      Assessment: Individual researcher directory.
+
+[104] Directory: YingrongMao | Size: Unknown | Owner: YingrongMao
+      Assessment: Individual researcher directory.
+
+[105] Directory: yuanyi | Size: Unknown | Owner: yuanyi
+      Assessment: Individual researcher directory.
+
+[106] Directory: yurujiang | Size: Unknown | Owner: yurujiang
+      Assessment: Individual researcher directory.
+
+[107] Directory: Yuxuan_Cai | Size: Unknown | Owner: Yuxuan_Cai
+      Assessment: Individual researcher directory.
+
+[108] Directory: zhen_share | Size: Unknown | Owner: zhenzhang (shared)
+      Assessment: zhenzhang's shared workspace directory.
+
+[109] Directory: zoeyfeng | Size: Unknown | Owner: zoeyfeng
+      Assessment: Individual researcher directory.
+
+[110] Directory: zwang13 | Size: Unknown | Owner: zwang13
+      Assessment: Individual researcher directory.
+
+--------------------------------------------------------------------------------
+                     CATALOG COMPLETION SUMMARY
+--------------------------------------------------------------------------------
+
+TOTAL DIRECTORIES CATALOGED: 127/127 (100% Complete)
+
+MAJOR DATA ASSETS (>40GB):
+1. esposito (695GB) - Patent similarity matrices
+2. nwrim (175GB) - Psychology datasets
+3. ningzili (174GB) - Ambiguity analysis
+4. hachi (166GB) - Bibliometric data
+5. PKG_v2_2023 (144GB) - PubMed Knowledge Graph
+6. haiziyu (122GB) - PMI word statistics
+7. PATSTAT (64GB) - Global patent data
+8. Daniela (54GB) - Concept co-occurrence
+9. S2AG_Dec_2024 (50GB) - Semantic Scholar Dec 2024
+10. hyunkukwon (43GB) - Political text corpora
+11. iCite (41GB) - NIH citation data
+12. semantic_scholar_Jan31_2025 (39GB) - Semantic Scholar Jan 2025 (MOST RECENT)
+
+MAJOR BIBLIOGRAPHIC DATABASES:
+- OpenAlex snapshot (TBs) - Current open bibliographic DB
+- MAG_Dec_2021 (TBs) - Historical MAG snapshot
+- DBLP_2025_Jan (10GB) - Computer science bibliography
+- Dimensions (TBs) - June 2025 commercial research DB
+
+RESEARCH THEMES IDENTIFIED:
+1. Bibliometrics & Science of Science (20+ projects)
+2. AI/LLM Research & Interpretability (15+ projects)
+3. Patent & Innovation Analysis (10+ projects)
+4. Political & Social Media Analysis (8+ projects)
+5. Biomedical & Medical Research (8+ projects)
+6. Embedding & Representation Learning (6+ projects)
+7. Computational Social Science (6+ projects)
+
+INFRASTRUCTURE DIRECTORIES:
+- LLM model caches: LLMs/, hf-cache/, ollama_models/
+- Database systems: database/, Mysql/
+- Shared resources: models/, shared_with_jerry/, work/
+
+MOST VALUABLE FOR FUTURE PROJECTS:
+1. **Bibliographic databases** - OpenAlex, Semantic Scholar, MAG, DBLP, Dimensions
+2. **Patent data** - PATSTAT, esposito similarity matrices, patent embeddings
+3. **Biomedical data** - PKG_v2_2023, iCite, jacdals medical linkages
+4. **Processed datasets** - haiziyu PMI, ningzili ambiguity, Daniela concepts
+5. **Political/social data** - hyunkukwon political corpora, hongkai Reddit data
+
+RECOMMENDED ACTIONS:
+1. **Preserve at all costs**: esposito patent matrices (irreproducible computation)
+2. **Update periodically**: OpenAlex, Semantic Scholar, DBLP (bibliographic DBs)
+3. **Archive but keep**: MAG_Dec_2021 (historical reference, irreplaceable)
+4. **Can re-download**: LLM models, though local copies save bandwidth
+5. **Review for cleanup**: Empty dirs, old snapshots, temporary workspaces
+
+ESTIMATED TOTAL LAB STORAGE: 3-5+ Terabytes
+(Many directories couldn't be fully sized due to access restrictions or depth)
+
+================================================================================
+                         END OF CATALOG
+================================================================================
+

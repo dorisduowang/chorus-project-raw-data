@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Knowledge Lab Hypergraph</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #1a1a2e;
+            color: #eee;
+            overflow: hidden;
+        }
+        #container {
+            display: flex;
+            height: 100vh;
+        }
+        #sidebar {
+            width: 280px;
+            background: #16213e;
+            padding: 20px;
+            overflow-y: auto;
+            border-right: 1px solid #0f3460;
+        }
+        #graph {
+            flex: 1;
+            position: relative;
+        }
+        svg {
+            width: 100%;
+            height: 100%;
+        }
+        h1 {
+            font-size: 1.3em;
+            margin-bottom: 20px;
+            color: #e94560;
+        }
+        h2 {
+            font-size: 1em;
+            margin: 15px 0 10px;
+            color: #0f3460;
+            border-bottom: 1px solid #0f3460;
+            padding-bottom: 5px;
+            color: #94a3b8;
+        }
+        .filter-group {
+            margin-bottom: 15px;
+        }
+        .filter-item {
+            display: flex;
+            align-items: center;
+            margin: 5px 0;
+            cursor: pointer;
+        }
+        .filter-item input {
+            margin-right: 8px;
+        }
+        .filter-item label {
+            cursor: pointer;
+            font-size: 0.9em;
+        }
+        .color-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-right: 8px;
+            display: inline-block;
+        }
+        .stats {
+            background: #0f3460;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            font-size: 0.85em;
+        }
+        .stats div {
+            margin: 4px 0;
+        }
+        .stats span {
+            color: #e94560;
+            font-weight: bold;
+        }
+        #tooltip {
+            position: absolute;
+            background: rgba(22, 33, 62, 0.95);
+            border: 1px solid #e94560;
+            border-radius: 8px;
+            padding: 12px;
+            font-size: 0.85em;
+            max-width: 350px;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.2s;
+            z-index: 1000;
+        }
+        #tooltip.visible {
+            opacity: 1;
+        }
+        #tooltip h3 {
+            color: #e94560;
+            margin-bottom: 8px;
+            font-size: 1em;
+        }
+        #tooltip .type-badge {
+            display: inline-block;
+            background: #0f3460;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.8em;
+            margin-bottom: 8px;
+        }
+        #tooltip .attrs {
+            font-size: 0.85em;
+            color: #94a3b8;
+        }
+        #search {
+            width: 100%;
+            padding: 8px 12px;
+            border: 1px solid #0f3460;
+            border-radius: 6px;
+            background: #1a1a2e;
+            color: #eee;
+            margin-bottom: 15px;
+        }
+        #search:focus {
+            outline: none;
+            border-color: #e94560;
+        }
+        .link {
+            stroke-opacity: 0.4;
+        }
+        .link.highlighted {
+            stroke-opacity: 1;
+            stroke-width: 2px !important;
+        }
+        .node {
+            cursor: pointer;
+        }
+        .node.dimmed {
+            opacity: 0.2;
+        }
+        .node.highlighted {
+            opacity: 1;
+        }
+        .node-label {
+            font-size: 10px;
+            fill: #eee;
+            pointer-events: none;
+        }
+        .controls {
+            margin-top: 15px;
+        }
+        button {
+            background: #e94560;
+            border: none;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            margin: 4px;
+            font-size: 0.85em;
+        }
+        button:hover {
+            background: #ff6b6b;
+        }
+        #info-panel {
+            background: #0f3460;
+            padding: 12px;
+            border-radius: 8px;
+            margin-top: 15px;
+            font-size: 0.85em;
+            display: none;
+        }
+        #info-panel.visible {
+            display: block;
+        }
+        #info-panel h3 {
+            color: #e94560;
+            margin-bottom: 8px;
+        }
+        #info-panel .connections {
+            max-height: 150px;
+            overflow-y: auto;
+            margin-top: 8px;
+        }
+        #info-panel .connection-item {
+            padding: 4px 0;
+            border-bottom: 1px solid #16213e;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="sidebar">
+            <h1>Knowledge Lab Hypergraph</h1>
+
+            <input type="text" id="search" placeholder="Search nodes...">
+
+            <div class="stats" id="stats">
+                Loading...
+            </div>
+
+            <h2>Node Types</h2>
+            <div class="filter-group" id="node-filters"></div>
+
+            <h2>Edge Types</h2>
+            <div class="filter-group" id="edge-filters"></div>
+
+            <div class="controls">
+                <button onclick="resetView()">Reset View</button>
+                <button onclick="toggleLabels()">Toggle Labels</button>
+            </div>
+
+            <div id="info-panel">
+                <h3 id="info-title">Selected Node</h3>
+                <div id="info-content"></div>
+                <div class="connections" id="info-connections"></div>
+            </div>
+        </div>
+        <div id="graph">
+            <div id="tooltip"></div>
+        </div>
+    </div>
+
+    <script>
+        // Color scheme for node types
+        const nodeColors = {
+            'Person': '#e94560',
+            'Document': '#4a90d9',
+            'Concept': '#50c878',
+            'Venue': '#ffa500',
+            'Dataset': '#9b59b6',
+            'Project': '#f1c40f',
+            'Code': '#1abc9c',
+            'Institution': '#e67e22'
+        };
+
+        const edgeColors = {
+            'publication': '#4a90d9',
+            'collaboration': '#e94560',
+            'funding': '#f1c40f',
+            'derivation': '#9b59b6',
+            'usage': '#50c878'
+        };
+
+        let simulation, svg, g, link, node, label;
+        let nodes = [], links = [];
+        let hypergraphData = null;
+        let showLabels = false;
+        let activeFilters = {
+            nodeTypes: new Set(),
+            edgeTypes: new Set()
+        };
+
+        // Load and process the hypergraph data
+        async function loadData() {
+            try {
+                const response = await fetch('../Data/hypergraph.json');
+                hypergraphData = await response.json();
+                processData();
+                initFilters();
+                updateStats();
+                initGraph();
+            } catch (error) {
+                console.error('Error loading hypergraph:', error);
+                document.getElementById('stats').innerHTML =
+                    'Error loading data. Make sure hypergraph.json exists in Data folder.';
+            }
+        }
+
+        function processData() {
+            // Create node objects
+            const nodeMap = new Map();
+            hypergraphData.nodes.forEach(n => {
+                const node = {
+                    id: n.id,
+                    name: n.name,
+                    type: n.type,
+                    attributes: n.attributes || {},
+                    connections: 0
+                };
+                nodeMap.set(n.id, node);
+                nodes.push(node);
+            });
+
+            // Convert hyperedges to links
+            // For visualization, we connect agents to outputs (main production relationship)
+            // and show collaboration through shared edges
+            const linkSet = new Set();
+
+            hypergraphData.edges.forEach(edge => {
+                const agents = edge.agents || [];
+                const outputs = edge.outputs || [];
+                const inputs = edge.inputs || [];
+
+                // Connect agents to outputs (who produced what)
+                agents.forEach(agentId => {
+                    outputs.forEach(outputId => {
+                        const key = `${agentId}-${outputId}`;
+                        if (!linkSet.has(key) && nodeMap.has(agentId) && nodeMap.has(outputId)) {
+                            linkSet.add(key);
+                            links.push({
+                                source: agentId,
+                                target: outputId,
+                                type: edge.edge_type,
+                                edgeId: edge.id
+                            });
+                            nodeMap.get(agentId).connections++;
+                            nodeMap.get(outputId).connections++;
+                        }
+                    });
+                });
+
+                // Connect agents to each other (collaboration)
+                if (agents.length > 1) {
+                    for (let i = 0; i < agents.length; i++) {
+                        for (let j = i + 1; j < agents.length; j++) {
+                            const key = `collab-${agents[i]}-${agents[j]}`;
+                            if (!linkSet.has(key) && nodeMap.has(agents[i]) && nodeMap.has(agents[j])) {
+                                linkSet.add(key);
+                                links.push({
+                                    source: agents[i],
+                                    target: agents[j],
+                                    type: 'collaboration',
+                                    edgeId: edge.id
+                                });
+                            }
+                        }
+                    }
+                }
+
+                // Connect agents to inputs (who used what concepts)
+                agents.forEach(agentId => {
+                    inputs.slice(0, 3).forEach(inputId => { // Limit to avoid clutter
+                        const key = `input-${agentId}-${inputId}`;
+                        if (!linkSet.has(key) && nodeMap.has(agentId) && nodeMap.has(inputId)) {
+                            linkSet.add(key);
+                            links.push({
+                                source: agentId,
+                                target: inputId,
+                                type: 'usage',
+                                edgeId: edge.id
+                            });
+                        }
+                    });
+                });
+            });
+        }
+
+        function initFilters() {
+            // Node type filters
+            const nodeTypes = [...new Set(nodes.map(n => n.type))].sort();
+            const nodeFiltersEl = document.getElementById('node-filters');
+
+            nodeTypes.forEach(type => {
+                activeFilters.nodeTypes.add(type);
+                const count = nodes.filter(n => n.type === type).length;
+                nodeFiltersEl.innerHTML += `
+                    <div class="filter-item">
+                        <input type="checkbox" id="node-${type}" checked onchange="toggleNodeType('${type}')">
+                        <span class="color-dot" style="background: ${nodeColors[type] || '#888'}"></span>
+                        <label for="node-${type}">${type} (${count})</label>
+                    </div>
+                `;
+            });
+
+            // Edge type filters
+            const edgeTypes = [...new Set(links.map(l => l.type))].sort();
+            const edgeFiltersEl = document.getElementById('edge-filters');
+
+            edgeTypes.forEach(type => {
+                activeFilters.edgeTypes.add(type);
+                const count = links.filter(l => l.type === type).length;
+                edgeFiltersEl.innerHTML += `
+                    <div class="filter-item">
+                        <input type="checkbox" id="edge-${type}" checked onchange="toggleEdgeType('${type}')">
+                        <span class="color-dot" style="background: ${edgeColors[type] || '#888'}"></span>
+                        <label for="edge-${type}">${type} (${count})</label>
+                    </div>
+                `;
+            });
+        }
+
+        function updateStats() {
+            const visibleNodes = nodes.filter(n => activeFilters.nodeTypes.has(n.type));
+            const visibleLinks = links.filter(l =>
+                activeFilters.edgeTypes.has(l.type) &&
+                activeFilters.nodeTypes.has(nodes.find(n => n.id === (l.source.id || l.source))?.type) &&
+                activeFilters.nodeTypes.has(nodes.find(n => n.id === (l.target.id || l.target))?.type)
+            );
+
+            document.getElementById('stats').innerHTML = `
+                <div>Nodes: <span>${visibleNodes.length}</span> / ${nodes.length}</div>
+                <div>Links: <span>${visibleLinks.length}</span> / ${links.length}</div>
+                <div>Time: <span>${hypergraphData.meta?.saved_at?.split('T')[0] || 'N/A'}</span></div>
+            `;
+        }
+
+        function initGraph() {
+            const container = document.getElementById('graph');
+            const width = container.clientWidth;
+            const height = container.clientHeight;
+
+            svg = d3.select('#graph')
+                .append('svg')
+                .attr('width', width)
+                .attr('height', height);
+
+            // Add zoom behavior
+            const zoom = d3.zoom()
+                .scaleExtent([0.1, 10])
+                .on('zoom', (event) => {
+                    g.attr('transform', event.transform);
+                });
+
+            svg.call(zoom);
+
+            g = svg.append('g');
+
+            // Create links
+            link = g.append('g')
+                .attr('class', 'links')
+                .selectAll('line')
+                .data(links)
+                .enter().append('line')
+                .attr('class', 'link')
+                .attr('stroke', d => edgeColors[d.type] || '#666')
+                .attr('stroke-width', 0.5);
+
+            // Create nodes
+            node = g.append('g')
+                .attr('class', 'nodes')
+                .selectAll('circle')
+                .data(nodes)
+                .enter().append('circle')
+                .attr('class', 'node')
+                .attr('r', d => Math.max(4, Math.min(15, 3 + Math.sqrt(d.connections))))
+                .attr('fill', d => nodeColors[d.type] || '#888')
+                .on('mouseover', showTooltip)
+                .on('mouseout', hideTooltip)
+                .on('click', selectNode)
+                .call(d3.drag()
+                    .on('start', dragStarted)
+                    .on('drag', dragged)
+                    .on('end', dragEnded));
+
+            // Create labels (hidden by default)
+            label = g.append('g')
+                .attr('class', 'labels')
+                .selectAll('text')
+                .data(nodes)
+                .enter().append('text')
+                .attr('class', 'node-label')
+                .attr('dx', 12)
+                .attr('dy', 4)
+                .text(d => d.name.length > 25 ? d.name.substring(0, 25) + '...' : d.name)
+                .style('display', 'none');
+
+            // Initialize simulation
+            simulation = d3.forceSimulation(nodes)
+                .force('link', d3.forceLink(links).id(d => d.id).distance(50))
+                .force('charge', d3.forceManyBody().strength(-30))
+                .force('center', d3.forceCenter(width / 2, height / 2))
+                .force('collision', d3.forceCollide().radius(10))
+                .on('tick', ticked);
+
+            // Search functionality
+            document.getElementById('search').addEventListener('input', handleSearch);
+        }
+
+        function ticked() {
+            link
+                .attr('x1', d => d.source.x)
+                .attr('y1', d => d.source.y)
+                .attr('x2', d => d.target.x)
+                .attr('y2', d => d.target.y);
+
+            node
+                .attr('cx', d => d.x)
+                .attr('cy', d => d.y);
+
+            label
+                .attr('x', d => d.x)
+                .attr('y', d => d.y);
+        }
+
+        function dragStarted(event, d) {
+            if (!event.active) simulation.alphaTarget(0.3).restart();
+            d.fx = d.x;
+            d.fy = d.y;
+        }
+
+        function dragged(event, d) {
+            d.fx = event.x;
+            d.fy = event.y;
+        }
+
+        function dragEnded(event, d) {
+            if (!event.active) simulation.alphaTarget(0);
+            d.fx = null;
+            d.fy = null;
+        }
+
+        function showTooltip(event, d) {
+            const tooltip = document.getElementById('tooltip');
+            let attrsHtml = '';
+
+            if (d.attributes) {
+                const attrs = Object.entries(d.attributes)
+                    .filter(([k, v]) => v && v !== 'None' && !Array.isArray(v))
+                    .slice(0, 5);
+                if (attrs.length > 0) {
+                    attrsHtml = '<div class="attrs">' +
+                        attrs.map(([k, v]) => `<div>${k}: ${String(v).substring(0, 50)}</div>`).join('') +
+                        '</div>';
+                }
+            }
+
+            tooltip.innerHTML = `
+                <h3>${d.name}</h3>
+                <span class="type-badge">${d.type}</span>
+                <div>Connections: ${d.connections}</div>
+                ${attrsHtml}
+            `;
+
+            tooltip.style.left = (event.pageX + 15) + 'px';
+            tooltip.style.top = (event.pageY - 10) + 'px';
+            tooltip.classList.add('visible');
+
+            // Highlight connected nodes
+            highlightConnections(d);
+        }
+
+        function hideTooltip() {
+            document.getElementById('tooltip').classList.remove('visible');
+            resetHighlight();
+        }
+
+        function highlightConnections(d) {
+            const connectedIds = new Set([d.id]);
+
+            link.each(function(l) {
+                if (l.source.id === d.id || l.target.id === d.id) {
+                    connectedIds.add(l.source.id);
+                    connectedIds.add(l.target.id);
+                    d3.select(this).classed('highlighted', true);
+                }
+            });
+
+            node.classed('dimmed', n => !connectedIds.has(n.id));
+            node.classed('highlighted', n => connectedIds.has(n.id));
+        }
+
+        function resetHighlight() {
+            node.classed('dimmed', false).classed('highlighted', false);
+            link.classed('highlighted', false);
+        }
+
+        function selectNode(event, d) {
+            const panel = document.getElementById('info-panel');
+            document.getElementById('info-title').textContent = d.name;
+
+            let content = `<div><strong>Type:</strong> ${d.type}</div>`;
+            content += `<div><strong>ID:</strong> ${d.id}</div>`;
+
+            if (d.attributes) {
+                Object.entries(d.attributes)
+                    .filter(([k, v]) => v && v !== 'None')
+                    .forEach(([k, v]) => {
+                        const val = Array.isArray(v) ? v.join(', ') : String(v).substring(0, 100);
+                        content += `<div><strong>${k}:</strong> ${val}</div>`;
+                    });
+            }
+
+            document.getElementById('info-content').innerHTML = content;
+
+            // Find connections
+            const connections = [];
+            links.forEach(l => {
+                const sourceId = l.source.id || l.source;
+                const targetId = l.target.id || l.target;
+                if (sourceId === d.id) {
+                    const target = nodes.find(n => n.id === targetId);
+                    if (target) connections.push({ node: target, type: l.type, direction: 'to' });
+                } else if (targetId === d.id) {
+                    const source = nodes.find(n => n.id === sourceId);
+                    if (source) connections.push({ node: source, type: l.type, direction: 'from' });
+                }
+            });
+
+            let connHtml = `<div><strong>Connections (${connections.length}):</strong></div>`;
+            connections.slice(0, 20).forEach(c => {
+                connHtml += `<div class="connection-item">
+                    <span style="color: ${nodeColors[c.node.type]}">${c.node.type}</span>:
+                    ${c.node.name.substring(0, 40)}${c.node.name.length > 40 ? '...' : ''}
+                </div>`;
+            });
+            if (connections.length > 20) {
+                connHtml += `<div>... and ${connections.length - 20} more</div>`;
+            }
+
+            document.getElementById('info-connections').innerHTML = connHtml;
+            panel.classList.add('visible');
+        }
+
+        function toggleNodeType(type) {
+            if (activeFilters.nodeTypes.has(type)) {
+                activeFilters.nodeTypes.delete(type);
+            } else {
+                activeFilters.nodeTypes.add(type);
+            }
+            updateVisibility();
+            updateStats();
+        }
+
+        function toggleEdgeType(type) {
+            if (activeFilters.edgeTypes.has(type)) {
+                activeFilters.edgeTypes.delete(type);
+            } else {
+                activeFilters.edgeTypes.add(type);
+            }
+            updateVisibility();
+            updateStats();
+        }
+
+        function updateVisibility() {
+            node.style('display', d => activeFilters.nodeTypes.has(d.type) ? null : 'none');
+            label.style('display', d => {
+                if (!showLabels) return 'none';
+                return activeFilters.nodeTypes.has(d.type) ? null : 'none';
+            });
+
+            link.style('display', d => {
+                const sourceType = nodes.find(n => n.id === (d.source.id || d.source))?.type;
+                const targetType = nodes.find(n => n.id === (d.target.id || d.target))?.type;
+                return activeFilters.edgeTypes.has(d.type) &&
+                       activeFilters.nodeTypes.has(sourceType) &&
+                       activeFilters.nodeTypes.has(targetType) ? null : 'none';
+            });
+        }
+
+        function handleSearch(event) {
+            const query = event.target.value.toLowerCase();
+            if (query.length < 2) {
+                node.attr('opacity', 1);
+                return;
+            }
+
+            node.attr('opacity', d => {
+                const match = d.name.toLowerCase().includes(query) ||
+                              d.id.toLowerCase().includes(query);
+                return match ? 1 : 0.1;
+            });
+        }
+
+        function resetView() {
+            svg.transition().duration(750).call(
+                d3.zoom().transform,
+                d3.zoomIdentity
+            );
+            document.getElementById('search').value = '';
+            node.attr('opacity', 1);
+        }
+
+        function toggleLabels() {
+            showLabels = !showLabels;
+            label.style('display', d => {
+                if (!showLabels) return 'none';
+                return activeFilters.nodeTypes.has(d.type) ? null : 'none';
+            });
+        }
+
+        // Initialize
+        loadData();
+    </script>
+</body>
+</html>

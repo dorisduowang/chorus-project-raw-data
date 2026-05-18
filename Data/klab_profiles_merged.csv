@@ -1,0 +1,69 @@
+Name,Role,Institution,Google_Scholar_ID,Google_Scholar_URL,GS_Citations,OA_Works,OA_Citations,Match_Status,Notes
+Yong-Yeol Ahn,Affiliate Faculty,Indiana University,US7OSNgAAAAJ,https://scholar.google.com/citations?user=US7OSNgAAAAJ,15801,,,GS Found - Needs Verification,GS: 15801 citations
+Ufuk Akcigit,Affiliate Faculty,University of Chicago,7xsyvJMAAAAJ,https://scholar.google.com/citations?user=7xsyvJMAAAAJ,High,,,GS Found - Needs Verification,GS: High citations
+Jacy Anthis,PhD Student,University of Chicago,lRhxKSAAAAAJ,https://scholar.google.com/citations?user=lRhxKSAAAAAJ,Moderate,,,GS Found - Needs Verification,GS: Moderate citations
+Honglin Bao,PhD Student,University of Chicago,,,,,,No Match Found,Early career or common name
+Carolina Biliotti,PhD Student,"IMT School for Advanced Studies Lucca, Italy",,,,,,No Match Found,Early career or common name
+Ben Blaiszik,Affiliate Faculty,University of Chicago,J-x5n7IAAAAJ,https://scholar.google.com/citations?user=J-x5n7IAAAAJ,9036,,,GS Found - Needs Verification,GS: 9036 citations
+Levin Brinkmann,Affiliate Faculty,MPG-Berlin,cu1vsgEAAAAJ,https://scholar.google.com/citations?user=cu1vsgEAAAAJ,,,,GS Found - Needs Verification,GS profile found
+Jake Burchard,PhD Student,University of Chicago,,,,3.0,22.0,Verified (OpenAlex),"OA: 3 works, 22 citations"
+Ishanu Chattopadhyay,Affiliate Faculty,University of Chicago,JpUbOmsAAAAJ,https://scholar.google.com/citations?user=JpUbOmsAAAAJ,730,115.0,932.0,Verified (OpenAlex),"OA: 115 works, 932 citations"
+Ziwen Chen,PhD Student,Stanford University,5GWXZ2sAAAAJ,https://scholar.google.com/citations?user=5GWXZ2sAAAAJ,Low,66.0,667.0,GS Found / OA Mismatch,"Institution mismatch: listed as 'Stanford University', OpenAlex shows ['Tan Kah Kee Innovation Laboratory', 'Sichuan University', 'Weifang University']"
+Haochuan Cui,Postdoctoral Scholar,Stanford University,ol3DebgAAAAJ,https://scholar.google.com/citations?user=ol3DebgAAAAJ,52,,,GS Found - Needs Verification,GS: 52 citations
+Cay del Junco,Alumni,,,,,,,No Match Found,Early career or common name
+Bhargav Desikan,Affiliate Researcher,Institute for Public Policy Research (IPPR),JSMnASoAAAAJ,https://scholar.google.com/citations?user=JSMnASoAAAAJ,,,,GS Found - Needs Verification,GS profile found
+Doug Downey,Affiliate Faculty,Allen Institute for AI,E8evkcQAAAAJ,https://scholar.google.com/citations?user=E8evkcQAAAAJ,14111,,,GS Found - Needs Verification,GS: 14111 citations
+Eamon Duede,Affiliate Faculty,Purdue University,xjLKbBcAAAAJ,https://scholar.google.com/citations?user=xjLKbBcAAAAJ,912,,,GS Found - Needs Verification,GS: 912 citations
+Chris Esposito,Postdoctoral Scholar,UCLA,,,,11.0,80.0,Partial Match,OA name: Christopher Esposito
+Hongbo Fang,Postdoctoral Scholar,University of Chicago,tMNsrlQAAAAJ,https://scholar.google.com/citations?user=tMNsrlQAAAAJ,500,,,GS Found - Needs Verification,GS: 500 citations
+Ian Foster,Affiliate Faculty,University of Chicago,VGoSakQAAAAJ,https://scholar.google.com/citations?user=VGoSakQAAAAJ,151694,,,GS Found - Needs Verification,GS: 151694 citations
+Doug Guilbeault,Affiliate Faculty,Stanford University,PDZ9tyAAAAAJ,https://scholar.google.com/citations?user=PDZ9tyAAAAAJ,1832,57.0,1204.0,Partial Match,OA name: Douglas Guilbeault
+Daniel Holz,Affiliate Faculty,University of Chicago,Yx4yXaUAAAAJ,https://scholar.google.com/citations?user=Yx4yXaUAAAAJ,143211,,,GS Found - Needs Verification,GS: 143211 citations
+Muhua Huang,Masters Student,University of Chicago,,Not Found,Unknown,45.0,482.0,Wrong Match,"Institution mismatch: listed as 'University of Chicago', OpenAlex shows ['First Affiliated Hospital of Nanchang University', 'Nanchang University', 'First Affiliated Hospital of Jiangxi Medical College']"
+Joshua Jackson,Affiliate Faculty,University of Chicago,cqmbIlIAAAAJ,https://scholar.google.com/citations?user=cqmbIlIAAAAJ,2954,142.0,4296.0,Partial Match,OA name: Joshua Conrad Jackson
+Shilin Jia,Postdoctoral Scholar,Stanford University,,Not Found - has website but no GS,Unknown,28.0,171.0,Wrong Match,"Institution mismatch: listed as 'Stanford University', OpenAlex shows ['Hospital of Stomatology, Sun Yat-sen University', 'Hohai University', 'Stomatology Hospital']"
+Partha Kadambi,Masters Student,,,,,1.0,1.0,Verified (OpenAlex),"OA: 1 works, 1 citations"
+Carina Kane,Undergraduate Student,University of Chicago,,Not Found - early career,Unknown,2.0,1.0,Wrong Match,"Institution mismatch: listed as 'University of Chicago', OpenAlex shows []"
+Donghyun Kang,Postdoctoral Scholar,University of Chicago,YAvBYYoAAAAJ,https://scholar.google.com/citations?user=YAvBYYoAAAAJ,135,,,GS Found - Needs Verification,GS: 135 citations
+Bernard Koch,Affiliate Faculty,University of Chicago,cBc_sIEAAAAJ,https://scholar.google.com/citations?user=cBc_sIEAAAAJ,1369,,,GS Found - Needs Verification,GS: 1369 citations
+Austin Kozlowski,Assistant Director,University of Chicago,1DYGGpMAAAAJ,https://scholar.google.com/citations?user=1DYGGpMAAAAJ,,,,GS Found - Needs Verification,GS profile found
+Nadav Kunievsky,Postdoctoral Scholar,University of Chicago,,,,4.0,9.0,Verified (OpenAlex),"OA: 4 works, 9 citations"
+Hyunku Kwon,PhD Student,University of Chicago,,,,,,No Match Found,Early career or common name
+Shiyang Lai,PhD Student,,,,,,,No Match Found,Early career or common name
+Molly Lewis,Affiliate Researcher,Meta,kckOzCAAAAAJ,https://scholar.google.com/citations?user=kckOzCAAAAAJ,951,,,GS Found - Needs Verification,GS: 951 citations
+Ningzi Li,Postdoctoral Scholar,University of Chicago,,Not Found,Unknown,1.0,14.0,Wrong Match,"Institution mismatch: listed as 'University of Chicago', OpenAlex shows ['University of Colorado Denver']"
+Qixin Lin,Masters Student,University of Chicago,,Not Found,Unknown,4.0,57.0,Wrong Match,"Institution mismatch: listed as 'University of Chicago', OpenAlex shows ['Fujian Normal University']"
+Chen Lin,PhD Student,Hong Kong University of Science and Technology,,,,11.0,29.0,Verified (OpenAlex),"OA: 11 works, 29 citations"
+Hsin-Keng Ling,Alumni,University of Michigan,,,,3.0,7.0,Verified (OpenAlex),"OA: 3 works, 7 citations"
+Bowen Lou,Affiliate Faculty,USC,2b1qCj8AAAAJ,https://scholar.google.com/citations?user=2b1qCj8AAAAJ,1077,26.0,732.0,Verified (OpenAlex),"OA: 26 works, 732 citations"
+Jar-Der Luo,Affiliate Faculty,Tsinghua University,,,,,,No Match Found,Early career or common name
+Hongkai Mao,PhD Student,Stanford University,,Not Found,Unknown,2.0,95.0,Wrong Match,"Institution mismatch: listed as 'Stanford University', OpenAlex shows ['Yancheng Institute of Technology', 'Jiangsu University']"
+Rui Pan,PhD Student,Northwestern University,,Not Found - common name,Unknown,224.0,7693.0,Wrong Match,"Institution mismatch: listed as 'Northwestern University', OpenAlex shows ['Chinese Academy of Sciences', 'Changshu Institute of Technology', 'University of Minnesota']"
+Yujin Potter,Postdoctoral Scholar,UC Berkeley,ZDG9RD8AAAAJ,https://scholar.google.com/citations?user=ZDG9RD8AAAAJ,1363,,,GS Found - Needs Verification,GS: 1363 citations
+Iyad Rahwan,Affiliate Faculty,MPG-Berlin,yKCX2IUAAAAJ,https://scholar.google.com/citations?user=yKCX2IUAAAAJ,High,,,GS Found - Needs Verification,GS: High citations
+Nakwon Rim,PhD Student,University of Chicago,,,,,,No Match Found,Early career or common name
+Alejandro Sarria-Morales,Masters Student,University of Chicago,,Not Found,Unknown,,,No Match Found,Early career or common name
+Bill Shi,Affiliate Researcher,Pond,,,,21.0,163.0,Verified (OpenAlex),"OA: 21 works, 163 citations"
+Wenxuan  Shi,PhD Student,Wuhan University,,,,41.0,430.0,Verified (OpenAlex),"OA: 41 works, 430 citations"
+Haohan Shi,Alumni,Northwestern University,-MZ5LSEAAAAJ,https://scholar.google.com/citations?user=-MZ5LSEAAAAJ,6,,,GS Found - Needs Verification,GS: 6 citations
+Jamshid Sourati,Affiliate Faculty,Depaul University,JeVyxh4AAAAJ,https://scholar.google.com/citations?user=JeVyxh4AAAAJ,515,24.0,304.0,Verified (OpenAlex),"OA: 24 works, 304 citations"
+Chenhao Tan,Affiliate Faculty,University of Chicago,KGMaP18AAAAJ,https://scholar.google.com/citations?user=KGMaP18AAAAJ,10406,,,GS Found - Needs Verification,GS: 10406 citations
+Misha Teplitskiy,Affiliate Faculty,University of Michigan,DzSXZd9yYy8C,https://scholar.google.com/citations?user=DzSXZd9yYy8C,1136,,,GS Found - Needs Verification,GS: 1136 citations
+Di Tong,PhD Student,MIT,,,,42.0,415.0,Verified (OpenAlex),"OA: 42 works, 415 citations"
+Nicolás Torres-Echeverry,PhD Student,University of Chicago,,,,1.0,2.0,Verified (OpenAlex),"OA: 1 works, 2 citations"
+Lav Varshney,Affiliate Faculty,University of Illinois,JIJGu30AAAAJ,https://scholar.google.com/citations?user=JIJGu30AAAAJ,High,1.0,,GS Found / OA Mismatch,"Institution mismatch: listed as 'University of Illinois', OpenAlex shows []"
+Dashun Wang,Affiliate Faculty,Northwestern University,uQJAkBoAAAAJ,https://scholar.google.com/citations?user=uQJAkBoAAAAJ,13302,,,GS Found - Needs Verification,GS: 13302 citations
+Zhao Wang,Affiliate Faculty,University of Chicago,iqF0jskAAAAJ,https://scholar.google.com/citations?user=iqF0jskAAAAJ,325,273.0,7261.0,Verified (OpenAlex),"OA: 273 works, 7261 citations"
+Dan Weld,Affiliate Faculty,Allen Institute,IUZgJogAAAAJ,https://scholar.google.com/citations?user=IUZgJogAAAAJ,60598,,,GS Found - Needs Verification,GS: 60598 citations
+David Wolpert,Affiliate Faculty,Santa Fe Institute,PRjgI8kAAAAJ,https://scholar.google.com/citations?user=PRjgI8kAAAAJ,47000,,,GS Found - Needs Verification,GS: 47000 citations
+Renli Wu,PhD Student,Wuhan University,,,,,,No Match Found,Early career or common name
+Lingfei Wu,Affiliate Faculty,University of Pittsburgh,NoDUFVUAAAAJ,https://scholar.google.com/citations?user=NoDUFVUAAAAJ,3190,71.0,3190.0,Verified (OpenAlex),"OA: 71 works, 3190 citations"
+Xiaodi Yang,Masters Student,University of Chicago,,Not Found,Unknown,150.0,5176.0,Wrong Match,"Institution mismatch: listed as 'University of Chicago', OpenAlex shows ['Nanjing University', 'Institute of Soil Science', 'Nanjing Xiaozhuang University']"
+Haizi Yu,Affiliate Researcher,University of Chicago,,,,,,No Match Found,Early career or common name
+Yuanyi Zhen,PhD Student,Tsinghua University,tQm_0ZAAAAAJ,https://scholar.google.com/citations?user=tQm_0ZAAAAAJ,367,,,GS Found - Needs Verification,GS: 367 citations
+Jeffrey Lockhart,Postdoctoral Scholar,University of Chicago,ptcuwrcAAAAJ,https://scholar.google.com/citations?user=ptcuwrcAAAAJ,Moderate,,,GS Found - Needs Verification,GS: Moderate citations
+Aaron Schein,Affiliate Faculty,University of Chicago,CaHuRsgAAAAJ,https://scholar.google.com/citations?user=CaHuRsgAAAAJ,634,,,GS Found - Needs Verification,GS: 634 citations
+Rui Wang,PhD Student,GW School of Business,,Not Found - common name,Unknown,2091.0,69907.0,Wrong Match,"Suspicious citation count (69,907) for PhD Student"
+Fengli Xu,Affiliate Faculty,Tsinghua University,UJrlw1cAAAAJ,https://scholar.google.com/citations?user=UJrlw1cAAAAJ,4147,,,GS Found - Needs Verification,GS: 4147 citations
+Pete Aceves,Affiliate Faculty,Johns Hopkins University,Gp8RrvMAAAAJ,https://scholar.google.com/citations?user=Gp8RrvMAAAAJ,15,3.0,15.0,GS Found / OA Mismatch,"Institution mismatch: listed as 'Johns Hopkins University', OpenAlex shows ['University of Chicago']"
+Christopher Wolfram,PhD Student,University of Chicago,0j-LaCUAAAAJ,https://scholar.google.com/citations?user=0j-LaCUAAAAJ,107,6.0,141.0,GS Found / OA Mismatch,"Institution mismatch: listed as 'University of Chicago', OpenAlex shows ['German Centre for Cardiovascular Research', 'Deutsches Herzzentrum der Charité', 'University of Maryland, College Park']"

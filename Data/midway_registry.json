@@ -1,0 +1,866 @@
+{
+  "$schema": "./midway_registry_schema.json",
+  "meta": {
+    "version": "1.0.0",
+    "last_updated": "2026-01-12",
+    "updated_by": "catalog_extraction",
+    "base_path": "/project/jevans",
+    "source_catalog": "midway_lab_directory_catalog.txt",
+    "catalog_date": "2026-01-09",
+    "total_directories": 127,
+    "estimated_total_storage_tb": "3-5+"
+  },
+
+  "data_snapshots": {
+    "_note": "Major bibliographic and research databases",
+    "_source": "midway_lab_directory_catalog.txt entries 020, 021, 044, 053, 060, 061, 077, 078",
+    "items": [
+      {
+        "id": "openalex-snapshot-dec-2024",
+        "name": "OpenAlex Snapshot",
+        "path": "/project/jevans/openalex-snapshot",
+        "size_gb": null,
+        "size_estimate": "TBs",
+        "vintage": "2024-12",
+        "owner": "beichenlu",
+        "description": "Comprehensive open-access bibliographic database covering publications, authors, institutions, venues, and concepts across all scientific fields. Replacement for Microsoft Academic Graph.",
+        "entity_types": ["publications", "authors", "institutions", "venues", "concepts", "citations"],
+        "format": "partitioned (14 subdirectories)",
+        "update_frequency": "periodic"
+      },
+      {
+        "id": "semantic-scholar-jan-2025",
+        "name": "Semantic Scholar January 2025",
+        "path": "/project/jevans/semantic_scholar_Jan31_2025",
+        "size_gb": 39,
+        "vintage": "2025-01-31",
+        "owner": "kangd",
+        "description": "Most recent Semantic Scholar snapshot with comprehensive paper metadata, venues, years, and author linkages. Includes 2024-only subset for studying recent publications.",
+        "entity_types": ["papers", "authors", "venues", "abstracts"],
+        "format": "parquet",
+        "update_frequency": "periodic",
+        "files": {
+          "paper_id_title_venue_year.parquet": "21GB",
+          "paper_id_author.parquet": "18GB",
+          "paper_id_title_venue_year_2024_only.parquet": "780MB"
+        }
+      },
+      {
+        "id": "s2ag-dec-2024",
+        "name": "Semantic Scholar Academic Graph December 2024",
+        "path": "/project/jevans/S2AG_Dec_2024_snapshot",
+        "size_gb": 50,
+        "vintage": "2024-12",
+        "owner": "jacdals",
+        "description": "S2AG snapshot with papers, authors, citations, and S2ORC (Open Research Corpus) full text data. Includes processing scripts for parallel extraction.",
+        "entity_types": ["papers", "authors", "citations", "full_text"],
+        "format": "parquet, json",
+        "update_frequency": "periodic",
+        "files": {
+          "papers.parquet": "33GB",
+          "authors.parquet": "1.5GB",
+          "s2orc.parquet": "7.1GB"
+        }
+      },
+      {
+        "id": "mag-dec-2021",
+        "name": "Microsoft Academic Graph December 2021",
+        "path": "/project/jevans/MAG_Dec_2021_snapshot",
+        "size_gb": null,
+        "size_estimate": "TBs",
+        "vintage": "2021-12",
+        "owner": "kangd",
+        "description": "Final snapshot of Microsoft Academic Graph before discontinuation in 2022. Irreplaceable historical data with comprehensive publication, author, institution, and citation coverage. Includes schema documentation.",
+        "entity_types": ["publications", "authors", "institutions", "citations", "fields_of_study"],
+        "format": "various (mag/, advanced/, nlp/, samples/)",
+        "update_frequency": "historical (discontinued)",
+        "irreplaceable": true
+      },
+      {
+        "id": "dblp-jan-2025",
+        "name": "DBLP Computer Science Bibliography January 2025",
+        "path": "/project/jevans/DBLP_2025_Jan",
+        "size_gb": 10,
+        "vintage": "2025-01",
+        "owner": "kangd",
+        "description": "Comprehensive computer science publication bibliography in both XML and JSON Lines format. Includes parser utilities.",
+        "entity_types": ["publications", "authors", "venues", "conferences"],
+        "format": "xml, jsonl",
+        "update_frequency": "periodic",
+        "files": {
+          "dblp.xml": "4.3GB",
+          "dblp.jsonl": "5.6GB",
+          "dblp.dtd": "13KB"
+        }
+      },
+      {
+        "id": "dimensions-june-2025",
+        "name": "Dimensions Database Snapshot",
+        "path": "/project/jevans/dimensions",
+        "size_gb": null,
+        "size_estimate": "TBs",
+        "vintage": "2025-06",
+        "owner": "akozlo",
+        "description": "Commercial research database snapshot covering publications, citations, grants, patents, clinical trials, and policy documents. Enterprise-grade bibliometric data with broader coverage than academic-only databases.",
+        "entity_types": ["publications", "citations", "grants", "patents", "clinical_trials", "policy_documents"],
+        "format": "partitioned (14 subdirectories)",
+        "update_frequency": "periodic",
+        "license_required": true
+      },
+      {
+        "id": "pkg-v2-2023",
+        "name": "PubMed Knowledge Graph v2.0",
+        "path": "/project/jevans/PKG_v2_2023",
+        "size_gb": 144,
+        "vintage": "2023",
+        "owner": "kangd",
+        "description": "Comprehensive biomedical knowledge graph integrating PubMed articles with NIH grants, clinical trials, patents, MeSH terms, biological entities, and author-inventor linkages. Authoritative NIH-sourced data.",
+        "entity_types": ["articles", "authors", "grants", "clinical_trials", "patents", "mesh_terms", "bioentities", "investigators"],
+        "format": "parquet, sql, tsv",
+        "update_frequency": "periodic",
+        "files": {
+          "A01_Articles.parquet": "3.4GB",
+          "A02_AuthorList.parquet": "8.2GB",
+          "A04_Abstract.parquet": "18GB",
+          "A05_GrantList.parquet": "231MB",
+          "A06_MeshHeadingList.tsv": "18GB",
+          "C01_Papers.tsv": "5.4GB",
+          "C21_Bioentity_Relationships.tsv": "5.0GB"
+        }
+      },
+      {
+        "id": "icite-sep-2023",
+        "name": "iCite Bulk Snapshot",
+        "path": "/project/jevans/iCite_bulk_snapshot_Sep_2023",
+        "size_gb": 41,
+        "vintage": "2023-09",
+        "owner": "kangd",
+        "description": "NIH iCite system data tracking citations, Relative Citation Ratios (RCR), field-normalized metrics, and NIH grant linkages for biomedical research. Authoritative data for studying biomedical research impact.",
+        "entity_types": ["publications", "citations", "grants", "impact_metrics"],
+        "format": "csv",
+        "update_frequency": "periodic",
+        "files": {
+          "icite_metadata.csv": "25GB",
+          "open_citation_collection.csv": "13GB"
+        }
+      },
+      {
+        "id": "patstat-autumn-2023",
+        "name": "PATSTAT Global Patent Database",
+        "path": "/project/jevans/PATSTAT",
+        "size_gb": 64,
+        "vintage": "2023-autumn",
+        "owner": "lkcao",
+        "description": "European Patent Office PATSTAT database with global patent bibliographic information, citations, classifications, and legal status. Gold standard for patent research. Includes OECD complementary datasets.",
+        "entity_types": ["patents", "citations", "classifications", "legal_status", "inventors", "applicants"],
+        "format": "zip archives (11 parts)",
+        "update_frequency": "biannual (spring/autumn editions)"
+      },
+      {
+        "id": "pwc-mar-2025",
+        "name": "Papers with Code March 2025",
+        "path": "/project/jevans/PwC_Mar_04_2025",
+        "size_gb": null,
+        "size_estimate": "~500MB",
+        "vintage": "2025-03-04",
+        "owner": "kangd",
+        "description": "Most recent Papers with Code snapshot linking academic papers to code implementations, datasets, and benchmarks. Valuable for reproducibility and state-of-the-art tracking in ML/AI.",
+        "entity_types": ["papers", "code_repos", "datasets", "methods", "benchmarks"],
+        "format": "json.gz",
+        "update_frequency": "periodic"
+      },
+      {
+        "id": "pwc-nov-2024",
+        "name": "Papers with Code November 2024",
+        "path": "/project/jevans/PwC_Nov_13_2024",
+        "size_gb": 0.473,
+        "vintage": "2024-11-13",
+        "owner": "kangd",
+        "description": "Papers with Code dataset with paper-code linkages, evaluation tables, and method descriptions.",
+        "entity_types": ["papers", "code_repos", "datasets", "methods", "benchmarks"],
+        "format": "json.gz",
+        "update_frequency": "periodic",
+        "files": {
+          "papers-with-abstracts.json.gz": "429MB",
+          "links-between-papers-and-code.json.gz": "23MB",
+          "evaluation-tables.json.gz": "17MB",
+          "datasets.json.gz": "3.7MB"
+        }
+      },
+      {
+        "id": "arxiv-preprints-2023",
+        "name": "ArXiv and Preprint Metadata",
+        "path": "/project/jevans/arxiv",
+        "size_gb": 4,
+        "vintage": "2023",
+        "owner": "jsourati",
+        "description": "ArXiv metadata snapshot plus bioRxiv and medRxiv preprint data. Documentation on data collection using R medrxivr package and Kaggle ArXiv snapshot.",
+        "entity_types": ["preprints", "dois", "metadata"],
+        "format": "json, tsv",
+        "update_frequency": "may need updating",
+        "files": {
+          "arxiv-metadata-oai-snapshot.json": "3.5GB",
+          "biorxiv.tsv": "518MB",
+          "medrxiv.tsv": "122MB"
+        }
+      }
+    ]
+  },
+
+  "precomputed_resources": {
+    "_note": "Expensive-to-reproduce computations and processed datasets",
+    "_source": "midway_lab_directory_catalog.txt entries 024, 029, 050, etc.",
+    "items": [
+      {
+        "id": "esposito-patent-similarity",
+        "name": "Patent Description and Summary Similarity Matrices",
+        "path": "/project/jevans/esposito",
+        "size_gb": 695,
+        "owner": "cresposito",
+        "description": "Massive pre-computed N x N similarity matrices for patent descriptions and summaries across multiple time periods (1995-2010). Represents months/years of computation on patent text similarity. Enables research on technological evolution, creative destruction, and knowledge integration.",
+        "years_covered": "1985-2010",
+        "irreplaceable": true,
+        "computation_time_estimate": "months to years",
+        "files": {
+          "DESC_SIMILARITIES_1995.npy": "35GB",
+          "DESC_SIMILARITIES_2000.npy": "84GB",
+          "DESC_SIMILARITIES_2005.npy": "70GB",
+          "DESC_SIMILARITIES_2010.npy": "160GB",
+          "SUMMARIES_SIMILARITIES_1995.npy": "35GB",
+          "SUMMARIES_SIMILARITIES_2000.npy": "84GB",
+          "SUMMARIES_SIMILARITIES_2005.npy": "70GB",
+          "SUMMARIES_SIMILARITIES_2010.npy": "160GB"
+        },
+        "warning": "GUARD CAREFULLY - Single most computationally expensive asset in lab directory"
+      },
+      {
+        "id": "haiziyu-pmi-counters",
+        "name": "MAG Abstract PMI Word Statistics",
+        "path": "/project/jevans/haiziyu",
+        "size_gb": 122,
+        "owner": "haiziyu",
+        "description": "Massive pre-computed Pointwise Mutual Information (PMI) word co-occurrence statistics for scientific abstracts spanning over a century. Organized by temporal bins (1800-1920+). Enables longitudinal analysis of scientific language evolution, concept emergence, and semantic change.",
+        "years_covered": "1800-2020+",
+        "irreplaceable": true,
+        "computation_time_estimate": "weeks to months",
+        "files": {
+          "MAG_PaperAbstracts__pid2widcounter.json": "48GB"
+        },
+        "temporal_organization": "yearbin0-11 files with cx (word counts) and cxy (word co-occurrence counts)"
+      },
+      {
+        "id": "ningzili-ambiguity-analysis",
+        "name": "Longitudinal Ambiguity Analysis Dataset",
+        "path": "/project/jevans/ningzili",
+        "size_gb": 174,
+        "owner": "ningzi",
+        "description": "Large-scale ambiguity analysis dataset spanning multiple years with systematic partitioning. Valuable for semantic uncertainty in text, scientific language evolution, and concept clarity research.",
+        "years_covered": "2011-present",
+        "irreplaceable": false,
+        "computation_time_estimate": "weeks",
+        "organization": "Year-based structure with numbered partitions (ambiguity_YYYY_N.csv)"
+      },
+      {
+        "id": "daniela-concept-cooccurrence",
+        "name": "Concept Co-occurrence and Author-Concept Mappings",
+        "path": "/project/jevans/Daniela",
+        "size_gb": 54,
+        "owner": "danqingchen",
+        "description": "Comprehensive concept pair analysis and author-concept relationships from bibliometric data. Hierarchical concept classifications (levels 1 and 2). Valuable for knowledge graphs and field relationship analysis.",
+        "years_covered": null,
+        "irreplaceable": false,
+        "computation_time_estimate": "days to weeks",
+        "files": {
+          "concept_authors_1521_level2.json": "14GB"
+        }
+      },
+      {
+        "id": "hachi-career-trajectories",
+        "name": "Author Career Length and Field Classifications",
+        "path": "/project/jevans/hachi",
+        "size_gb": 166,
+        "owner": "hachicui94",
+        "description": "Large-scale bibliometric analysis with author career trajectories and author-paper-field mappings. Focus on physics (APS) and computational linguistics (ACL) publications.",
+        "years_covered": null,
+        "irreplaceable": false,
+        "computation_time_estimate": "days to weeks",
+        "files": {
+          "au_career_length.pickle": "2.8GB",
+          "Aid_Pid_Fid.pickle": "2.7GB",
+          "acl.jsonl": "489MB"
+        }
+      },
+      {
+        "id": "gender-surprise-author-gender",
+        "name": "Author Gender Inference Dataset",
+        "path": "/project/jevans/gender_surprise",
+        "size_gb": 8,
+        "owner": "jlockhart",
+        "description": "Comprehensive author gender inference dataset covering OpenAlex and Web of Science. Contains processed name-to-gender mappings for US and international authors with first and middle name analysis.",
+        "years_covered": null,
+        "irreplaceable": false,
+        "computation_time_estimate": "days",
+        "files": {
+          "all_oa_authors.parquet": "64K entries",
+          "all_wos_authors.parquet": "64K entries",
+          "all_WoS_first_and_middle_names.pkl": "2.0GB",
+          "authors.parquet": "1M entries"
+        }
+      },
+      {
+        "id": "jacdals-wos-author-data",
+        "name": "Web of Science Author and Citation Data",
+        "path": "/project/jevans/jacdals",
+        "size_gb": 16,
+        "owner": "jacdals",
+        "description": "WoS bibliometric data with author addresses, citation topics, paper-author relationships, and medical/pharmaceutical database linkages (MeSH, ChEBI, WHO ATC).",
+        "years_covered": null,
+        "irreplaceable": false,
+        "computation_time_estimate": "days",
+        "files": {
+          "wos_authors_adresses.parquet": "7.0GB",
+          "Paper_Author": "5.2GB",
+          "Author_Info_Dict": "1.8GB",
+          "wos_citation_topics.parquet": "495MB"
+        }
+      }
+    ]
+  },
+
+  "embeddings": {
+    "_note": "Pre-trained embedding models and generated embeddings",
+    "_source": "midway_lab_directory_catalog.txt entries 014, 039, 040, 046",
+    "items": [
+      {
+        "id": "specter2-models",
+        "name": "SPECTER2 Citation Embedding Models",
+        "path": "/project/jevans/models",
+        "size_estimate": "~500MB",
+        "type": "model",
+        "domain": "scientific_literature",
+        "model_name": "allenai/specter2",
+        "description": "State-of-the-art citation-based document embedding model from Allen AI. Creates embeddings capturing semantic similarity based on citation patterns. Multiple formats available (base, HuggingFace, full with weights).",
+        "files": {
+          "specter2_base.zip": "71MB",
+          "specter2_base_full.zip": "390MB",
+          "specter2_base_hf.zip": "3.2MB"
+        }
+      },
+      {
+        "id": "cassietang-word2vec",
+        "name": "Google News Word2Vec Embeddings",
+        "path": "/project/jevans/cassietang",
+        "size_estimate": "3.4GB",
+        "type": "model",
+        "domain": "general_language",
+        "model_name": "GoogleNews-vectors-negative300",
+        "description": "Pre-trained Word2Vec embeddings trained on Google News corpus. 300-dimensional vectors for general language tasks.",
+        "files": {
+          "GoogleNews-vectors-negative300.bin": "3.4GB"
+        }
+      },
+      {
+        "id": "jamshid-mat2vec",
+        "name": "Materials Science Embeddings (mat2vec)",
+        "path": "/project/jevans/jamshid/mat2vec",
+        "size_estimate": "unknown",
+        "type": "model",
+        "domain": "materials_science",
+        "model_name": "mat2vec",
+        "description": "Domain-specific embeddings for materials science applications including crystal structure analysis."
+      },
+      {
+        "id": "jamshid-hyperbolic-models",
+        "name": "Hyperbolic Geometry Models",
+        "path": "/project/jevans/jamshid/cached_hgg_models",
+        "size_estimate": "unknown",
+        "type": "model",
+        "domain": "hierarchical_representations",
+        "description": "Cached hyperbolic geometry models for hierarchical knowledge representation. Sophisticated approach to embedding hierarchical structures."
+      },
+      {
+        "id": "jerryluo-openalex-embeddings",
+        "name": "OpenAlex Paper Embeddings",
+        "path": "/project/jevans/jerryluo8/openalex_embeddings",
+        "size_estimate": "unknown",
+        "type": "generated",
+        "domain": "scientific_literature",
+        "description": "Generated embeddings for OpenAlex papers. 16K files across 6 subdirectories."
+      },
+      {
+        "id": "jerryluo-patent-embeddings",
+        "name": "Patent Embeddings",
+        "path": "/project/jevans/jerryluo8/patent_embeddings",
+        "size_estimate": "unknown",
+        "type": "generated",
+        "domain": "patents",
+        "description": "Generated embeddings for patent documents. 8K files across 3 subdirectories."
+      },
+      {
+        "id": "jerryluo-mesh-embeddings",
+        "name": "MeSH (Medical Subject Headings) Embeddings",
+        "path": "/project/jevans/jerryluo8/mesh_embeddings",
+        "size_estimate": "unknown",
+        "type": "generated",
+        "domain": "biomedical",
+        "description": "Generated embeddings for Medical Subject Headings. 12 subdirectories."
+      },
+      {
+        "id": "apto-patent-novelty-embeddings",
+        "name": "PatentsView Novelty Embeddings",
+        "path": "/project/jevans/apto_data_engineering/data/PatentsView",
+        "size_estimate": "unknown",
+        "type": "generated",
+        "domain": "patents",
+        "description": "USPTO patent data with pre-computed novelty embeddings organized by year. Part of the apto data engineering pipeline.",
+        "years_covered": "multi-decade"
+      }
+    ]
+  },
+
+  "social_media_datasets": {
+    "_note": "Social media data collections",
+    "_source": "midway_lab_directory_catalog.txt entries 003, 010, 032, 033, 035",
+    "items": [
+      {
+        "id": "adarshm-reddit-telegram",
+        "name": "Reddit and Telegram Social Media Data",
+        "path": "/project/jevans/adarshm/data",
+        "size_gb": 76,
+        "platform": ["reddit", "telegram"],
+        "content_description": "Social media data for the 'ideolect' project analyzing linguistic patterns. PostgreSQL database infrastructure for structured queries.",
+        "time_range": "unknown"
+      },
+      {
+        "id": "bernie-toxicity-scores",
+        "name": "4chan and Reddit Toxicity Datasets",
+        "path": "/project/jevans/bernie",
+        "size_gb": 0.15,
+        "platform": ["4chan", "reddit"],
+        "content_description": "Toxicity-scored datasets for 4chan (/pol/ board) and Reddit content. Includes production-quality data cleaning scripts.",
+        "time_range": "unknown",
+        "files": {
+          "4chan_toxicity.feather": "15MB",
+          "comments_toxicity.feather": "45MB",
+          "submissions_toxicity.feather": "25MB"
+        }
+      },
+      {
+        "id": "hongbofang-weibo-covid",
+        "name": "COVID-19 Weibo Dataset",
+        "path": "/project/jevans/hongbofang/COV-Weibo2.0",
+        "size_gb": null,
+        "platform": "weibo",
+        "content_description": "COVID-19 related Chinese social media (Weibo) dataset.",
+        "time_range": "COVID-19 pandemic period"
+      },
+      {
+        "id": "hongkai-reddit-large",
+        "name": "Large-Scale Reddit Data Collection",
+        "path": "/project/jevans/hongkai",
+        "size_gb": 50,
+        "platform": "reddit",
+        "content_description": "Extensive Reddit data with millions of entries (4M without scores, 2M with scores). Used for LLM social simulation and stance detection research.",
+        "time_range": "unknown",
+        "files": {
+          "all_subreddits_no_scores": "4M entries",
+          "all_subreddits_with_scores": "2M entries"
+        }
+      },
+      {
+        "id": "hyunkukwon-political-corpora",
+        "name": "Political Text Corpora (Conservative/Liberal)",
+        "path": "/project/jevans/hyunkukwon",
+        "size_gb": 43,
+        "platform": ["reddit", "gpt_generated"],
+        "content_description": "Large-scale political text corpora with conservative/liberal labels, including both human-written and GPT-generated text. Valuable for political NLP, bias detection, and studying AI-generated political content.",
+        "time_range": "2021-2022",
+        "files": {
+          "austin_con_train.txt": "1.4GB (conservative training)",
+          "austin_lib_train.txt": "1.5GB (liberal training)",
+          "con_balanced_gpt.txt": "13GB (GPT-generated conservative)",
+          "lib_balanced_gpt.txt": "8.4GB (GPT-generated liberal)",
+          "comm_con_txt.pkl": "8.7GB (conservative comments)",
+          "comm_lib_txt.pkl": "6.1GB (liberal comments)"
+        }
+      },
+      {
+        "id": "nwrim-psychology-data",
+        "name": "Psychology Perspectives and Priors Data",
+        "path": "/project/jevans/nwrim",
+        "size_gb": 175,
+        "platform": "research_experiments",
+        "content_description": "Massive compressed psychology datasets on perspectives, priors, and behavioral game theory (public goods games). Computational modeling of social behavior.",
+        "time_range": "unknown",
+        "files": {
+          "psych_perspectives.tar.gz": "129GB",
+          "psych_prior.tar.gz": "46GB"
+        }
+      }
+    ]
+  },
+
+  "shared_infrastructure": {
+    "_note": "LLM caches, databases, and shared resources",
+    "_source": "midway_lab_directory_catalog.txt entries 018, 030, 043, 052",
+    "items": [
+      {
+        "id": "llms-shared-cache",
+        "name": "Shared LLM Model Cache",
+        "path": "/project/jevans/LLMs",
+        "type": "model_cache",
+        "contents": [
+          "google/gemma-2-27b",
+          "google/gemma-2-27b-it",
+          "google/gemma-3-12b-it",
+          "google/gemma-3-1b-it",
+          "google/gemma-3-27b-it",
+          "meta-llama/Llama-3.1-70B",
+          "meta-llama/Llama-3.1-8B",
+          "LoneStriker_Llama3-ChatQA-1.5-70B-6.0bpw-h6-exl2 (quantized)"
+        ],
+        "purpose": "Shared cache for large language models. Saves significant download time/bandwidth for multiple researchers.",
+        "owner": "akozlo",
+        "size_estimate": "100-200GB"
+      },
+      {
+        "id": "hf-cache",
+        "name": "Hugging Face Model Cache",
+        "path": "/project/jevans/hf-cache",
+        "type": "model_cache",
+        "contents": [
+          "meta-llama/Llama-3.1-70B-Instruct",
+          "meta-llama/Llama-3.1-8B-Instruct",
+          "facebook/bart-large",
+          "distilbert-base-uncased-finetuned-sst-2-english"
+        ],
+        "purpose": "Shared Hugging Face transformer model cache for multiple users.",
+        "owner": "jdwoon0523",
+        "size_estimate": "20-50GB"
+      },
+      {
+        "id": "ollama-models",
+        "name": "Ollama Model Cache",
+        "path": "/project/jevans/ollama_models",
+        "type": "model_cache",
+        "contents": ["model blobs", "manifests"],
+        "purpose": "Ollama model cache for running LLMs locally. World-writable for shared access.",
+        "owner": "qxlin",
+        "size_estimate": "10-50MB (metadata only)"
+      },
+      {
+        "id": "database-systems",
+        "name": "Database Software Installations",
+        "path": "/project/jevans/database",
+        "type": "database_infrastructure",
+        "contents": [
+          "nebula-graph-2.6.2 (graph database)",
+          "nebula-graph-3.3.0 (graph database)",
+          "mongodb",
+          "mysql"
+        ],
+        "purpose": "Database software installations for graph and relational databases.",
+        "owner": "hachicui94",
+        "size_estimate": "180MB",
+        "note": "Old versions from 2022-2023, may need updating"
+      },
+      {
+        "id": "mysql-system",
+        "name": "MySQL Database",
+        "path": "/project/jevans/Mysql",
+        "type": "database_infrastructure",
+        "contents": ["mysql installation and data"],
+        "purpose": "MySQL database system directory.",
+        "owner": "hachicui94"
+      },
+      {
+        "id": "apto-data-pipeline",
+        "name": "APTO Data Engineering Pipeline",
+        "path": "/project/jevans/apto_data_engineering",
+        "type": "data_pipeline",
+        "contents": [
+          "arxiv corpus data",
+          "biorxiv/medrxiv/chemrxiv/eartharxiv/engrxiv preprints",
+          "PatentsView with novelty embeddings",
+          "medical literature datasets",
+          "product factsheets",
+          "huggingface LLM information"
+        ],
+        "purpose": "Central data engineering repository aggregating multiple scientific preprint servers, patent data, and academic literature. Multi-researcher collaboration workspace.",
+        "owner": "nadavkunievsky",
+        "size_estimate": "~17GB",
+        "collaborators": ["Daniela", "Joyce", "gio", "callindai", "akozlo", "carina", "tzhang3", "dariomarino"]
+      }
+    ]
+  },
+
+  "researcher_directories": {
+    "_note": "Mapping researchers to their storage locations and research focus",
+    "_source": "midway_lab_directory_catalog.txt comprehensive listing",
+    "items": [
+      {
+        "id": "akozlo",
+        "username": "akozlo",
+        "directory_path": "/project/jevans/akozlo",
+        "size_estimate": "214GB",
+        "primary_focus": "AI psychometrics, digital doubles, Common Crawl processing, transformer models",
+        "active_projects": ["AI_Psychometrics", "digital_doubles"],
+        "assessment": "VALUABLE DATA AND ACTIVE RESEARCH - Major active research with 214GB"
+      },
+      {
+        "id": "esposito",
+        "username": "cresposito",
+        "directory_path": "/project/jevans/esposito",
+        "size_estimate": "695GB",
+        "primary_focus": "Patent analysis, creative destruction, knowledge integration",
+        "active_projects": ["CreativeDestruction", "KnowledgeIntegration", "AgeDeaths"],
+        "assessment": "VALUABLE DATA - EXTREMELY LARGE COMPUTATION - Irreplaceable patent similarity matrices"
+      },
+      {
+        "id": "haiziyu",
+        "username": "haiziyu",
+        "directory_path": "/project/jevans/haiziyu",
+        "size_estimate": "122GB",
+        "primary_focus": "PMI word statistics, MAG abstract analysis, author embeddings",
+        "active_projects": ["MAG PMI analysis", "MAG_AuthorEmbeddingsJC"],
+        "assessment": "VALUABLE DATA - MAJOR COMPUTATION - Longitudinal linguistic statistics"
+      },
+      {
+        "id": "ningzili",
+        "username": "ningzi",
+        "directory_path": "/project/jevans/ningzili",
+        "size_estimate": "174GB",
+        "primary_focus": "Ambiguity analysis, semantic uncertainty",
+        "active_projects": ["ambiguity analysis"],
+        "assessment": "VALUABLE DATA - Large-scale temporal ambiguity analysis"
+      },
+      {
+        "id": "nwrim",
+        "username": "nwrim",
+        "directory_path": "/project/jevans/nwrim",
+        "size_estimate": "175GB",
+        "primary_focus": "Psychology, behavioral game theory, social technology",
+        "active_projects": ["psych_perspectives", "social_technology_demo"],
+        "assessment": "VALUABLE DATA - MASSIVE PSYCHOLOGY DATASET"
+      },
+      {
+        "id": "hachi",
+        "username": "hachicui94",
+        "directory_path": "/project/jevans/hachi",
+        "size_estimate": "166GB",
+        "primary_focus": "Bibliometrics, physics (APS), computational linguistics (ACL), author careers",
+        "active_projects": ["APS_code", "acl-arc", "CO2"],
+        "assessment": "VALUABLE DATA - Large-scale career trajectory and field classification data"
+      },
+      {
+        "id": "daniela",
+        "username": "danqingchen",
+        "directory_path": "/project/jevans/Daniela",
+        "size_estimate": "54GB",
+        "primary_focus": "Concept co-occurrence, author-concept relationships, bibliometrics",
+        "active_projects": ["concept pair analysis", "author_concepts"],
+        "assessment": "VALUABLE DATA AND ACTIVE RESEARCH"
+      },
+      {
+        "id": "hongkai",
+        "username": "hongkai",
+        "directory_path": "/project/jevans/hongkai",
+        "size_estimate": "50GB",
+        "primary_focus": "Reddit data, LLM social simulation, stance detection",
+        "active_projects": ["llm_social_simul", "LLM_Stances_Private", "Evolution_thesis"],
+        "assessment": "VALUABLE DATA - Extensive Reddit collection with millions of entries"
+      },
+      {
+        "id": "hyunkukwon",
+        "username": "hyunkukwon",
+        "directory_path": "/project/jevans/hyunkukwon",
+        "size_estimate": "43GB",
+        "primary_focus": "Political NLP, conservative/liberal text classification",
+        "active_projects": ["political text corpora", "GPT-generated political content"],
+        "assessment": "VALUABLE DATA - Political text corpora including human and AI-generated"
+      },
+      {
+        "id": "nadav",
+        "username": "nadavkunievsky",
+        "directory_path": "/project/jevans/nadav",
+        "size_estimate": "1-5GB",
+        "primary_focus": "Interdisciplinary - AI methodology, economics, social science, bibliometrics",
+        "active_projects": ["Info-Flows-LLMs", "generating_science", "IncomePrediction_hypgen", "FundingIV", "integratingMinorityPerspectives"],
+        "assessment": "ACTIVE RESEARCH - HIGHLY PRODUCTIVE - 38 projects spanning multiple domains"
+      },
+      {
+        "id": "donghyun",
+        "username": "kangd",
+        "directory_path": "/project/jevans/donghyun",
+        "size_estimate": "1-5GB",
+        "primary_focus": "Bibliometric analysis, concept hierarchies, Cochrane systematic reviews, conference analysis",
+        "active_projects": ["Assembly_Tree", "Cochrane_ASR_Revision", "Concept_Tree_Preliminary", "DBLP_2025_04"],
+        "assessment": "ACTIVE RESEARCH - Extensive bibliometric methodology work"
+      },
+      {
+        "id": "jamshid",
+        "username": "jsourati",
+        "directory_path": "/project/jevans/jamshid",
+        "size_estimate": "1-5GB",
+        "primary_focus": "Computational discovery, abductive reasoning, embeddings, materials science",
+        "active_projects": ["abductive-discovery", "compositional_discovery", "Leverhulme", "mat2vec", "crystals"],
+        "assessment": "ACTIVE RESEARCH - METHODOLOGICAL FOCUS - Deep expertise in representation learning"
+      },
+      {
+        "id": "jerryluo8",
+        "username": "jerryluo8",
+        "directory_path": "/project/jevans/jerryluo8",
+        "size_estimate": "100-500MB",
+        "primary_focus": "Embeddings (OpenAlex, patents, MeSH), patent analysis, persistent homology",
+        "active_projects": ["openalex_embeddings", "patent_embeddings", "mesh_embeddings", "patent"],
+        "assessment": "ACTIVE RESEARCH - Major patent analysis project with sophisticated mathematical methods"
+      },
+      {
+        "id": "gio",
+        "username": "giochoi",
+        "directory_path": "/project/jevans/gio",
+        "size_estimate": "100-500MB",
+        "primary_focus": "Scientific integrity (dishonesty), publication patterns, causal inference",
+        "active_projects": ["dishonesty", "bready", "causal_inference", "hypotheses"],
+        "assessment": "ACTIVE RESEARCH - Focus on research integrity and publication behavior"
+      },
+      {
+        "id": "honglin-bao",
+        "username": "honglinbao",
+        "directory_path": "/project/jevans/Honglin_Bao",
+        "size_estimate": "50-200MB",
+        "primary_focus": "AI methodology, hypothesis discovery, patent analysis, LLM fine-tuning",
+        "active_projects": ["hypo_discovery", "patent", "attention inequality", "finetune_llm_reviewer", "chain_of_hints"],
+        "assessment": "ACTIVE RESEARCH - Diverse AI methodology portfolio"
+      },
+      {
+        "id": "shiyang",
+        "username": "shiyanglai",
+        "directory_path": "/project/jevans/shiyang",
+        "size_estimate": "1-5GB",
+        "primary_focus": "AI bias, AI society, neural superposition, belief elicitation",
+        "active_projects": ["ai-biases", "ai-society", "superposition-neurons"],
+        "assessment": "ACTIVE RESEARCH - AI safety, interpretability, and social impact"
+      },
+      {
+        "id": "zhenzhang",
+        "username": "zhenzhang",
+        "directory_path": "/project/jevans/zhenzhang",
+        "size_estimate": "2-10GB",
+        "primary_focus": "Citation patterns, paper acceptance, bibliometric analysis",
+        "active_projects": ["cs_openalex", "award_paper", "accept_delay", "cited_by_5_citing_5"],
+        "assessment": "ACTIVE RESEARCH - PUBLICATION-FOCUSED - High-quality visualizations with CIs"
+      },
+      {
+        "id": "junsol",
+        "username": "junsol",
+        "directory_path": "/project/jevans/junsol",
+        "size_estimate": "13GB",
+        "primary_focus": "LLM benchmarking, OpenAlex IGO analysis, community notes",
+        "active_projects": ["LLM benchmarking (DeepSeek, Llama, Qwen, QwQ)", "communitynotes"],
+        "assessment": "ACTIVE RESEARCH - Comprehensive LLM benchmarking across cutting-edge models"
+      },
+      {
+        "id": "maxzhuyt",
+        "username": "maxzhuyt",
+        "directory_path": "/project/jevans/maxzhuyt",
+        "size_estimate": "500MB-1GB",
+        "primary_focus": "Political science, neural network interpretability, ideology representation",
+        "active_projects": ["ANES analysis", "CHES analysis", "Manifesto Project", "activations_cache"],
+        "assessment": "ACTIVE RESEARCH - Political ideology analysis using AI interpretability"
+      },
+      {
+        "id": "likun",
+        "username": "lkcao",
+        "directory_path": "/project/jevans/likun",
+        "size_estimate": "3-5GB",
+        "primary_focus": "Cognitive science, depth vs breadth, emergence phenomena",
+        "active_projects": ["depth_breadth_retraining", "cognitive_project_visualization", "emergence"],
+        "assessment": "ACTIVE RESEARCH - Cognitive science and emergent AI capabilities"
+      },
+      {
+        "id": "dawoon",
+        "username": "jdwoon0523",
+        "directory_path": "/project/jevans/Dawoon",
+        "size_estimate": "50-100MB",
+        "primary_focus": "Embedding spaces, curvature analysis, multiple data domains",
+        "active_projects": ["Embedding Space", "Curvature", "GSMArena", "AmazonReview", "Dimensions", "OpenAlex"],
+        "assessment": "ACTIVE RESEARCH - Diverse portfolio with geometric analysis of representations"
+      },
+      {
+        "id": "cassietang",
+        "username": "cassietang",
+        "directory_path": "/project/jevans/cassietang",
+        "size_estimate": "3.5GB",
+        "primary_focus": "NLP, sentiment analysis, Word2Vec, atypical combinations",
+        "active_projects": ["Klabpaper", "sentiment analysis", "atypical combination"],
+        "assessment": "VALUABLE DATA AND CODE - Substantial NLP resources and cleaned datasets"
+      },
+      {
+        "id": "jacdals",
+        "username": "jacdals",
+        "directory_path": "/project/jevans/jacdals",
+        "size_estimate": "16GB",
+        "primary_focus": "Medical bibliometrics, WoS data, funding inequality, FAIR data",
+        "active_projects": ["InequalityPercolationScienceFunding", "fair_accelerate", "conference_bandits"],
+        "assessment": "VALUABLE DATA AND ACTIVE RESEARCH - Medical/pharmaceutical bibliometrics"
+      },
+      {
+        "id": "interp-group",
+        "username": "akozlo (shared)",
+        "directory_path": "/project/jevans/interp_group",
+        "size_estimate": "50-100MB",
+        "primary_focus": "AI interpretability, mechanistic understanding of LLMs",
+        "active_projects": ["prompt builder", "vector pipeline", "feature extraction"],
+        "assessment": "ACTIVE RESEARCH - Collaborative group on AI interpretability",
+        "collaborators": ["Avital", "Austin", "Callin", "Madison"]
+      },
+      {
+        "id": "tip-project",
+        "username": "jlockhart",
+        "directory_path": "/project/jevans/tip",
+        "size_estimate": "1-10GB",
+        "primary_focus": "Topic modeling, scientific trend prediction, network analysis",
+        "active_projects": ["model1_medline", "model11_2023", "model12_all_oa", "network_model", "disruption"],
+        "assessment": "MAJOR PROJECT - Central lab project on predictive modeling of scientific trends"
+      }
+    ]
+  },
+
+  "summary": {
+    "total_estimated_storage_tb": "3-5+",
+    "major_data_assets_over_40gb": [
+      {"name": "esposito (Patent similarity matrices)", "size_gb": 695},
+      {"name": "nwrim (Psychology datasets)", "size_gb": 175},
+      {"name": "ningzili (Ambiguity analysis)", "size_gb": 174},
+      {"name": "hachi (Bibliometric data)", "size_gb": 166},
+      {"name": "PKG_v2_2023 (PubMed Knowledge Graph)", "size_gb": 144},
+      {"name": "haiziyu (PMI word statistics)", "size_gb": 122},
+      {"name": "PATSTAT (Global patent data)", "size_gb": 64},
+      {"name": "Daniela (Concept co-occurrence)", "size_gb": 54},
+      {"name": "S2AG_Dec_2024 (Semantic Scholar)", "size_gb": 50},
+      {"name": "hyunkukwon (Political text corpora)", "size_gb": 43},
+      {"name": "iCite (NIH citation data)", "size_gb": 41},
+      {"name": "semantic_scholar_Jan31_2025", "size_gb": 39}
+    ],
+    "irreplaceable_assets": [
+      "esposito patent similarity matrices (months/years of computation)",
+      "MAG_Dec_2021 snapshot (historical, discontinued)",
+      "haiziyu PMI statistics (extensive computation on full MAG)"
+    ],
+    "research_themes": [
+      "Bibliometrics & Science of Science (20+ projects)",
+      "AI/LLM Research & Interpretability (15+ projects)",
+      "Patent & Innovation Analysis (10+ projects)",
+      "Political & Social Media Analysis (8+ projects)",
+      "Biomedical & Medical Research (8+ projects)",
+      "Embedding & Representation Learning (6+ projects)",
+      "Computational Social Science (6+ projects)"
+    ],
+    "recommended_actions": {
+      "preserve_at_all_costs": ["esposito patent matrices", "MAG_Dec_2021"],
+      "update_periodically": ["OpenAlex", "Semantic Scholar", "DBLP", "Papers with Code"],
+      "can_redownload_if_needed": ["LLM model caches (LLMs/, hf-cache/, ollama_models/)"]
+    }
+  }
+}
