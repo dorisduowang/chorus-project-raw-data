@@ -168,9 +168,6 @@ def load_document_panel(
         edge_author_ids = list(dict.fromkeys(edge.get("agents", []) or []))
         profile_owner_ids = sorted(owner_lookup.get(key, set()))
 
-        # Keep both links. Edge authors come from the hypergraph builder; profile
-        # owners preserve the raw OpenAlex profile source. The union is useful
-        # for role-aware diagnostics, while both components stay visible.
         lab_link_ids = list(dict.fromkeys(edge_author_ids + profile_owner_ids))
         linked_people = [people[p] for p in lab_link_ids if p in people]
         roles = [p.get("role", "") for p in linked_people]
@@ -590,7 +587,12 @@ def write_plain_language_summary(summary: dict[str, Any], output_dir: Path) -> N
         "",
         summary["memo9_note"],
         "",
-        "The score columns are transparent proxies because the original Memo 9 embedding and perplexity artifacts were not present in the recovered folder. Citations are used only as an audit outcome, not as an input to the two proxy scores.",
+        (
+            "The score columns are transparent proxies because the original Memo 9 "
+            "embedding and perplexity artifacts were not present in the recovered "
+            "folder. Citations are used only as an audit outcome, not as an input "
+            "to the two proxy scores."
+        ),
         "",
         "The result should be read as a diagnostic audit of ranking risk, not as a final estimate of scientific value.",
     ]
