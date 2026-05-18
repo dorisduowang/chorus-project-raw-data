@@ -3,12 +3,12 @@
 - Analysis documents: 467
 - Registry people: 71
 - Profile-publication rows: 482
-- Hidden Gem vs False Positive citation ratio: 1.99x
+- Hidden Gem vs False Positive citation ratio: 2.25x
 
 ## Reconstruction Note
 
-Memo 9 described a 443-paper audit sample. The current raw folder contains 467 hypergraph
-document nodes; the code keeps the current raw-data sample visible rather than silently
+Memo 9 used an earlier audit sample. The recovered repository currently contains 467
+hypergraph document nodes; the code keeps the current raw-data sample visible rather than
 forcing the old N.
 
 The score columns are transparent proxies because the original Memo 9 embedding and perplexity

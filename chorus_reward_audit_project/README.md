@@ -3,7 +3,7 @@
 This folder contains an independent research project built from the recovered
 CHORUS raw data. The project asks whether an AI research assistant can
 misallocate attention when its reward signal treats surface textual surprise as
-a proxy for intellectual value.
+a proxy for external evidence of influence.
 
 The project is designed to stand on its own. It is not framed as a package for
 one lab. Its connection to AI advice, entrepreneurial learning, and heterogeneous
@@ -56,15 +56,26 @@ From the workspace root, run:
 python3 chorus_reward_audit_project/code/rebuild_chorus_audit.py
 ```
 
-The script reads the registry and hypergraph files from the recovered CHORUS raw
-data folder and writes all outputs into `chorus_reward_audit_project/output/`.
+The script reads `Data/lab_registry.json` and `Data/hypergraph.json` from the
+repository root and writes all outputs into `chorus_reward_audit_project/output/`.
+The code uses `numpy`, `pandas`, and `matplotlib`; these are listed in
+`chorus_reward_audit_project/requirements.txt`.
+
+If the data files live elsewhere, pass them explicitly:
+
+```bash
+python3 chorus_reward_audit_project/code/rebuild_chorus_audit.py \
+  --registry path/to/lab_registry.json \
+  --hypergraph path/to/hypergraph.json \
+  --output chorus_reward_audit_project/output
+```
 
 ## Reconstruction Note
 
-Memo 9 described a 443 paper audit sample. The current raw folder contains 467
-hypergraph document nodes and 482 profile publication rows. The rebuilt code
-keeps the current raw data sample visible rather than forcing the old sample
-size.
+Memo 9 used an earlier audit sample. The recovered repository currently
+contains 467 hypergraph document nodes and 482 profile publication rows. The
+rebuilt code keeps the current raw data sample visible rather than forcing an
+older sample size.
 
 The original text perplexity and embedding files were not present. The script
 therefore rebuilds transparent proxy scores and keeps citations as an audit

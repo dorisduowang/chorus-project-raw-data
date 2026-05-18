@@ -1,22 +1,16 @@
 #!/usr/bin/env python3
 """
-Rebuild the CHORUS reward-signal audit from the raw project folder.
+Rebuild the CHORUS reward-signal audit from recovered project data.
 
-This script is a clean-room reconstruction of the code that likely produced
-the Memo 9 audit figures. The original embedding and perplexity files are not in
-the folder, so two scores are rebuilt as transparent proxies:
+The original Memo 9 analysis referred to language-model perplexity and
+representation-contrast measures, but the corresponding model artifacts were
+not present in the recovered folder. This script therefore builds a transparent
+reconstruction: it creates a paper-level panel, defines clearly labeled proxy
+scores, and uses citation counts only as an external audit outcome.
 
-1. text_surprise_score
-   A title-verbosity proxy for the text-only reward that Chorus was using.
-
-2. representation_contrast_proxy
-   A pre-outcome proxy for the "quiet text, strong cross-context signal" idea
-   described in Memo 9. It deliberately avoids citation counts; citations are
-   held out as the outcome used to audit whether the proxy is sensible.
-
-The goal is not to pretend the missing model artifacts still exist. The goal is
-to make the project reproducible, readable, and easy for another RA to extend
-with true embeddings or founder advice logs.
+The goal is not to reproduce the original model scores exactly. The goal is to
+make the audit logic inspectable and easy to extend once true perplexity scores
+or embeddings become available.
 """
 
 from __future__ import annotations
@@ -34,17 +28,16 @@ from typing import Any
 
 WORKSPACE = Path(__file__).resolve().parents[2]
 PACKAGE_DIR = WORKSPACE / "chorus_reward_audit_project"
-RAW_DIR = WORKSPACE / "chorus project raw data"
-DEFAULT_REGISTRY = RAW_DIR / "Data" / "lab_registry.json"
-DEFAULT_HYPERGRAPH = RAW_DIR / "Data" / "hypergraph.json"
+DEFAULT_REGISTRY = WORKSPACE / "Data" / "lab_registry.json"
+DEFAULT_HYPERGRAPH = WORKSPACE / "Data" / "hypergraph.json"
 DEFAULT_OUTPUT = PACKAGE_DIR / "output"
 
-# Matplotlib tries to write a cache under the user's home directory on macOS.
-# Put it inside the package so the script runs in a sandboxed workspace.
+# Set the Matplotlib cache inside the project folder so the script can run
+# cleanly in temporary or sandboxed environments.
 os.environ.setdefault("MPLCONFIGDIR", str(PACKAGE_DIR / ".matplotlib"))
 Path(os.environ["MPLCONFIGDIR"]).mkdir(parents=True, exist_ok=True)
 
-import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt  # noqa: E402
 import numpy as np
 import pandas as pd
 
@@ -68,7 +61,7 @@ HIGH_SIGNAL_VENUES = (
 
 
 def stable_float(text: str, low: float = -0.02, high: float = 0.02) -> float:
-    """Return a deterministic small jitter for plotting/scoring ties."""
+    """Return deterministic jitter for plotting points with similar positions."""
     digest = hashlib.md5(text.encode("utf-8")).hexdigest()
     unit = int(digest[:8], 16) / 0xFFFFFFFF
     return low + (high - low) * unit
@@ -89,6 +82,25 @@ def count_title_words(title: str) -> int:
 
 def compact_list(values: list[str]) -> str:
     return "; ".join(v for v in values if v)
+
+
+def safe_relative_path(path: Path, base: Path = WORKSPACE) -> str:
+    """Return a project-relative path when possible."""
+    try:
+        return str(path.resolve().relative_to(base.resolve()))
+    except ValueError:
+        return path.name
+
+
+def validate_inputs(registry_path: Path, hypergraph_path: Path) -> None:
+    """Fail early with a readable message if input files are missing."""
+    missing = [str(p) for p in (registry_path, hypergraph_path) if not p.exists()]
+    if missing:
+        raise FileNotFoundError(
+            "Missing required input file(s):\n"
+            + "\n".join(missing)
+            + "\nRun from the repository root or pass --registry and --hypergraph."
+        )
 
 
 def load_people(registry: dict[str, Any]) -> dict[str, dict[str, Any]]:
@@ -185,6 +197,8 @@ def load_document_panel(
                 "lab_author_names": compact_list(names),
                 "lab_author_roles": compact_list(roles),
                 "topic_count": len(topics),
+                "profile_link_count": len(profile_owner_ids),
+                "lab_link_count": len(lab_link_ids),
                 "topics": compact_list(topics[:12]),
             }
         )
@@ -198,8 +212,8 @@ def load_document_panel(
         ),
         "hypergraph_documents": len(df),
         "hypergraph_edges": len(graph.get("edges", [])),
-        "source_registry": str(registry_path),
-        "source_hypergraph": str(hypergraph_path),
+        "source_registry": safe_relative_path(registry_path),
+        "source_hypergraph": safe_relative_path(hypergraph_path),
     }
     return df.reset_index(drop=True), meta
 
@@ -218,7 +232,13 @@ def add_title_bins(df: pd.DataFrame) -> pd.DataFrame:
 
 
 def add_proxy_scores(df: pd.DataFrame) -> pd.DataFrame:
-    """Create transparent stand-ins for the missing Memo 9 model artifacts."""
+    """
+    Create transparent stand-ins for the missing model artifacts.
+
+    The contrast proxy avoids citation counts and does not mechanically use
+    the inverse of the text-surprise score, so the quadrant comparison is not
+    generated by title length alone.
+    """
     df = df.copy()
     word_count = df["title_word_count"].astype(float)
     wc_low = max(1, float(word_count.quantile(0.05)))
@@ -236,7 +256,6 @@ def add_proxy_scores(df: pd.DataFrame) -> pd.DataFrame:
     df["text_surprise_score"] = (
         0.84 * verbosity
         + 0.16 * punctuation
-        + df["paper_key"].map(lambda x: stable_float(x, -0.015, 0.015))
     ).clip(0, 1)
 
     topic_breadth = (df["topic_count"].astype(float) / 12).clip(0, 1)
@@ -246,19 +265,19 @@ def add_proxy_scores(df: pd.DataFrame) -> pd.DataFrame:
     venue_signal = df["venue"].fillna("").str.lower().map(
         lambda venue: 1.0 if any(marker in venue for marker in HIGH_SIGNAL_VENUES) else 0.0
     )
+    linked_profile_signal = (df["profile_link_count"].astype(float) / 3).clip(0, 1)
 
     df["representation_contrast_proxy"] = (
-        0.62 * (1 - df["text_surprise_score"])
-        + 0.18 * topic_breadth
-        + 0.12 * role_diversity
-        + 0.08 * venue_signal
-        + df["paper_key"].map(lambda x: stable_float("contrast:" + x, -0.025, 0.025))
+        0.45 * topic_breadth
+        + 0.25 * role_diversity
+        + 0.20 * venue_signal
+        + 0.10 * linked_profile_signal
     ).clip(0, 1)
 
     df["role_aware_reward"] = (
-        0.45 * df["representation_contrast_proxy"]
-        + 0.35 * (1 - df["text_surprise_score"])
-        + 0.20 * role_diversity
+        0.60 * df["representation_contrast_proxy"]
+        + 0.25 * role_diversity
+        + 0.15 * linked_profile_signal
     ).clip(0, 1)
     return df
 
@@ -335,9 +354,9 @@ def summarize(df: pd.DataFrame, meta: dict[str, Any]) -> dict[str, Any]:
         "meta": meta,
         "analysis_documents": int(len(df)),
         "memo9_note": (
-            "Memo 9 described a 443-paper audit sample. The current raw folder "
-            f"contains {len(df)} hypergraph document nodes; the code keeps the "
-            "current raw-data sample visible rather than silently forcing the old N."
+            "Memo 9 used an earlier audit sample. The recovered repository "
+            f"currently contains {len(df)} hypergraph document nodes; the code "
+            "keeps the current raw-data sample visible rather than forcing the old N."
         ),
         "title_bins": title_bins.to_dict(orient="records"),
         "reward_quadrants": quadrants.to_dict(orient="records"),
@@ -420,7 +439,7 @@ def plot_title_gradient(df: pd.DataFrame, output_dir: Path) -> None:
     ax.set_xlabel("Title word-count bin")
     ax.grid(axis="y")
     ax.set_title(
-        "Figure 1. Title brevity predicts citation impact in the CHORUS raw-data audit\n"
+        "Figure 1. Title-length bins and external uptake in the CHORUS audit\n"
         f"Current rebuild uses {len(df)} hypergraph document nodes"
     )
     fig.tight_layout()
@@ -497,7 +516,7 @@ def plot_quadrants(df: pd.DataFrame, output_dir: Path) -> None:
     ax.set_xlabel("Text surprise score (title-verbosity proxy)")
     ax.set_ylabel("Representation contrast proxy")
     ax.set_title(
-        "Figure 2. Reward quadrant audit: where a text-only signal points attention"
+        "Figure 2. Audit groups from text-surprise and contrast proxies"
     )
     ax.grid(alpha=0.6)
     fig.tight_layout()
@@ -550,7 +569,7 @@ def plot_author_composition(df: pd.DataFrame, output_dir: Path) -> None:
     axes[0].set_yticks(y)
     axes[0].set_yticklabels(agg.index)
     axes[0].invert_yaxis()
-    fig.suptitle("Figure 3. Role-aware audit of who is surfaced or buried", fontsize=14, weight="bold")
+    fig.suptitle("Figure 3. Citation and contrast patterns by linked author role", fontsize=14, weight="bold")
     fig.tight_layout()
     fig.savefig(output_dir / "figure3_author_composition.png")
     plt.close(fig)
@@ -578,13 +597,17 @@ def write_plain_language_summary(summary: dict[str, Any], output_dir: Path) -> N
     (output_dir / "summary.md").write_text("\n".join(lines) + "\n")
 
 
-def main() -> None:
+def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Rebuild the CHORUS Memo 9 audit package.")
     parser.add_argument("--registry", type=Path, default=DEFAULT_REGISTRY)
     parser.add_argument("--hypergraph", type=Path, default=DEFAULT_HYPERGRAPH)
     parser.add_argument("--output", type=Path, default=DEFAULT_OUTPUT)
-    args = parser.parse_args()
+    return parser.parse_args()
 
+
+def main() -> None:
+    args = parse_args()
+    validate_inputs(args.registry, args.hypergraph)
     args.output.mkdir(parents=True, exist_ok=True)
     df, meta = load_document_panel(args.registry, args.hypergraph)
     df = add_title_bins(df)

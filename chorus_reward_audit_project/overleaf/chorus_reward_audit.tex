@@ -21,8 +21,8 @@
 \setlength{\parskip}{0.65em}
 \setlength{\parindent}{0pt}
 
-\title{\vspace{-1.3cm}When an AI Assistant Learns the Wrong Signal:\\
-A Reproducible Audit of Attention Allocation in CHORUS}
+\title{\vspace{-1.3cm}Auditing a Text-Based Ranking Proxy in CHORUS:\\
+A Reproducible Reward-Signal Reconstruction}
 \author{Doris Wang\\
 M.A. Computational Social Science, Economics Specialization\\
 University of Chicago}
@@ -32,32 +32,30 @@ University of Chicago}
 \maketitle
 
 \begin{abstract}
-This project studies a small but consequential failure mode in AI assisted
-knowledge work. CHORUS is a research assistant built for a scientific lab. It
-uses structured registry data, semantic retrieval, and a directed hypergraph to
-surface papers, people, projects, and computational resources. The system is
-useful only if its ranking signal sends attention toward the right objects. I
-audit what happens when a system treats textual surprise as a proxy for
-intellectual value. The recovered project folder contained raw registry and
-hypergraph data, but the original analysis code for the Memo 9 audit was
-missing. I rebuilt the analysis from the raw data, created a reproducible
-paper level panel, and regenerated three diagnostic figures. The audit shows
-that a text focused reward can prefer papers that look complex on the surface
-while ranking quieter papers with stronger empirical signals too low. The larger
-point is not about one lab or one retrieval tool. It is about a general problem
-in AI advice systems. An AI assistant does not only answer questions. It also
-decides what becomes visible, what remains buried, and which users are best
-positioned to act on the signal.
+This project audits a small but important problem in AI assisted knowledge
+work. CHORUS is a research assistant built around structured registry data,
+semantic retrieval, and a directed hypergraph of people, papers, topics, venues,
+projects, and computational resources. The recovered project folder contained
+the registry and hypergraph data, but not the original code or model artifacts
+for a previous Memo 9 reward audit. I therefore rebuilt the analysis as a
+transparent reconstruction. The project creates a paper level panel, defines
+clearly labeled proxy scores, and uses citation counts only as an external
+uptake measure. The rebuilt audit suggests a directional ranking risk. A text
+focused proxy can push attention toward papers that look complex in title form
+while making quieter papers with stronger external uptake less visible. The
+larger point is not about one retrieval tool. It is about a general problem in
+AI advice systems. An AI assistant does not only answer questions. It also
+changes which options users notice, compare, and act on.
 \end{abstract}
 
 \section{Research Question}
 
-The project asks whether an AI assistant can misallocate attention when it uses
-a convenient textual proxy as the reward signal for ranking. The practical
-version of the question is simple. If CHORUS is asked to surface interesting
-scientific work, does it actually surface work with stronger evidence of
-scientific importance, or does it surface work whose titles merely look
-surprising?
+This project asks whether an AI assistant can misallocate attention when it
+uses a convenient textual proxy as the reward signal for ranking. The practical
+version of the question is simple. If CHORUS is asked to surface papers that
+may deserve attention, does a title based surprise proxy align with external
+evidence of influence, or does it mainly surface papers whose titles look
+complex?
 
 The conceptual question is broader. Many AI systems that support decision
 making operate through ranking, recommendation, triage, or advice. They rarely
@@ -70,12 +68,13 @@ mechanism is not simply whether the AI produces text. The important mechanism
 is whether the signal helps the user select the right object for attention and
 implementation.
 
-This project treats CHORUS as a test case for that mechanism. The system is not
-an entrepreneurship product, but the analytic structure is similar to AI advice
-in entrepreneurial settings. A user faces many possible actions. The AI system
-compresses the choice set. The user then selects from the compressed set and
-decides what to do. If the compression is governed by a weak proxy, the AI can
-increase confidence while reducing judgment quality.
+The same audit logic applies outside scientific retrieval. In an AI advice
+setting, a user may receive many possible recommendations and then decide which
+one to implement. The relevant empirical question is not only whether the model
+can generate plausible text. It is whether the ranking or framing signal helps
+the user notice options that fit the user's actual decision environment. If the
+compression is governed by an imperfect proxy, the AI can make weak options
+more visible and useful options less visible.
 
 \section{System Background}
 
@@ -96,20 +95,19 @@ without being scientifically central. A highly cited or institutionally
 important paper can have a short title that does not announce its importance.
 
 This creates a measurement problem. The system claims to reward intellectual
-surprise, but it may actually reward title verbosity. If so, the failure is not
-just noisy ranking. It is a systematic inversion of attention. The system would
-look active and discriminating while selecting the wrong part of the research
-space.
+surprise, but it may partly reward title verbosity. If so, the problem is not
+only noisy ranking. It is a directional ranking risk. The system can look active
+and discriminating while shifting attention toward a less useful part of the
+research space.
 
 \section{Data Rebuild}
 
 The original Memo 9 document and figures were present, but the code that
 produced the figures was missing. I reconstructed the analysis from the raw
 folder. The rebuild uses the current raw data snapshot rather than forcing the
-older Memo 9 sample size. Memo 9 described 443 papers. The recovered hypergraph
-contains 467 document nodes. The registry contains 482 profile publication rows
-because some publications appear in more than one profile before document
-consolidation.
+older Memo 9 sample size. The recovered hypergraph contains 467 document nodes.
+The registry contains 482 profile publication rows because some publications
+appear in more than one profile before document consolidation.
 
 \begin{table}[H]
 \centering
@@ -146,7 +144,7 @@ than pretend those artifacts still existed, I rebuilt transparent proxy scores.
 The text surprise proxy is based on title length and title syntax. Long titles,
 titles with colons, and titles with multiple clauses receive higher scores. This
 is not meant to be a perfect language model measure. It is meant to represent
-the kind of surface textual feature that a weak reward signal can overvalue.
+the kind of surface textual feature that a weak reward signal can overweight.
 
 The representation contrast proxy uses information that is available before
 looking at the outcome. It combines inverse text surprise, topic breadth, role
@@ -180,14 +178,15 @@ citations. Papers with twenty or more words average 21 citations.}
 \end{figure}
 
 The first result is deliberately basic. Papers are divided into title word
-count bins. If title verbosity were a reasonable stand in for scientific value,
+count bins. If title verbosity were a reasonable stand in for external uptake,
 the long title bins should not be sharply worse on a simple impact measure. The
-rebuild shows the opposite. Papers with six or fewer title words average 152
+rebuild suggests the opposite. Papers with six or fewer title words average 152
 citations. Papers with twenty or more words average 21 citations. The ratio is
 7.3 to 1 in favor of the shorter title bin.
 
-This does not mean every short title is valuable or every long title is weak.
-It also does not mean citations are a complete measure of intellectual value.
+This does not mean every short title has stronger influence or every long title
+is weak. It also does not mean citations are a complete measure of intellectual
+importance.
 The interpretation is more precise. A reward signal that uses textual
 complexity as a proxy for surprise is exposed to a clear failure mode. It can
 reward the form of surprise rather than the substance of surprise. The system
@@ -206,7 +205,7 @@ model internals.
 \centering
 \includegraphics[width=\linewidth]{figure2_reward_quadrants.png}
 \caption{The quadrant audit separates quiet high contrast papers from verbose
-false positives. Hidden Gems average 103 citations, compared with 52 for False
+false positives. Hidden Gems average 97 citations, compared with 43 for False
 Positives in the rebuilt sample.}
 \end{figure}
 
@@ -219,12 +218,14 @@ lower right quadrant contains papers that are high on textual surprise but low
 on contrast. I label these papers False Positives because they are exactly the
 kind of paper a text only reward may over rank.
 
-The citation pattern supports the concern. Hidden Gems average 103 citations.
-False Positives average 52 citations. The gap is about 2.0 to 1. The result is
-smaller than the old Memo 9 figure because the recovered data snapshot is not
-identical to the earlier 443 paper sample, but the direction is the same. The
-text heavy signal is not merely adding noise. It is shifting attention toward a
-different region of the research space.
+The citation pattern supports the concern in directional terms. Hidden Gems
+average 97 citations. False Positives average 43 citations. The gap is about
+2.25 to 1. The result is not a claim that the upper left quadrant is the only
+valuable part of the corpus. The routine quadrant also contains influential
+papers. The narrower point is that the text heavy, low contrast quadrant looks
+weaker on external uptake than the quiet high contrast quadrant. The signal is
+therefore shifting attention toward a different region of the research space,
+not simply adding random noise.
 
 This matters because ranking systems change what users believe is worth
 investigating. A researcher who sees the False Positive quadrant first may spend
@@ -246,7 +247,7 @@ the rebuilt sample, compared with 69 for solo faculty linked papers.}
 
 The third result asks whether the signal is neutral across author groups. I
 group papers by the role composition of their linked authors. The rebuilt sample
-shows that solo PhD linked papers average 117 citations, while solo faculty
+suggests that solo PhD linked papers average 117 citations, while solo faculty
 linked papers average 69 citations. Mixed faculty and PhD papers average 89
 citations. Papers without a core linked author average 20 citations.
 
@@ -287,7 +288,7 @@ them. The outcome depends on the full chain.
 The connection is also clear in work on mapping AI into production. Firms may
 have access to the same tools and training, yet differ in their ability to
 discover where AI creates value \citep{kim2026mapping}. That discovery problem
-is a search problem. The CHORUS audit shows a parallel search problem inside a
+is a search problem. The CHORUS audit provides a parallel search problem inside a
 research lab. The assistant must search across papers and concepts. A founder
 must search across possible uses of AI in the firm. In both cases, the quality
 of the mapping depends on the signal that guides attention.
@@ -357,13 +358,13 @@ provenance, and testable claims.
 
 \section{Conclusion}
 
-The CHORUS audit shows how an AI assistant can fail even when it is technically
-useful. The failure is not that the system cannot retrieve papers. The failure
-is that the reward signal can learn the wrong definition of what deserves
-attention. In the rebuilt data, short titled papers have much higher average
-citations than long titled papers, quiet high contrast papers outperform
-verbose false positives, and author role composition changes how the signal
-should be interpreted.
+The CHORUS audit suggests how an AI assistant can create ranking risk even when
+it is technically useful. The issue is not that the system cannot retrieve
+papers. The issue is that the reward signal may use an imperfect proxy for what
+deserves attention. In the rebuilt data, short titled papers have much higher
+average citations than long titled papers, quiet high contrast papers have
+higher average citations than verbose false positives, and author role
+composition changes how the signal should be interpreted.
 
 The broader implication is that AI advice should be evaluated as a selection
 system. Access to AI matters, but access alone does not determine value. Value
