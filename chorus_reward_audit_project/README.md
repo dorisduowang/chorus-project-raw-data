@@ -12,11 +12,6 @@ proxy scores rather than claiming to recover the original model outputs.
 Citation counts are used only as an external audit outcome, not as inputs to the
 reconstructed scores.
 
-The expected recovered data files are `Data/lab_registry.json` and
-`Data/hypergraph.json` in the repository root.
-
-All text files in this package are stored as plain text with LF line endings.
-
 ## What this code does
 
 The script builds a paper-level panel, reconstructs simple proxy measures,

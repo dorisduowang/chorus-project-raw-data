@@ -34,8 +34,8 @@ DEFAULT_REGISTRY = WORKSPACE / "Data" / "lab_registry.json"
 DEFAULT_HYPERGRAPH = WORKSPACE / "Data" / "hypergraph.json"
 DEFAULT_OUTPUT = PACKAGE_DIR / "output"
 
-# Set the Matplotlib cache inside the project folder so the script can run
-# cleanly in temporary or sandboxed environments.
+# Put Matplotlib's cache inside the project folder so the script can run
+# cleanly in temporary environments.
 os.environ.setdefault("MPLCONFIGDIR", str(PACKAGE_DIR / ".matplotlib"))
 Path(os.environ["MPLCONFIGDIR"]).mkdir(parents=True, exist_ok=True)
 
