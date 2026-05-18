@@ -39,6 +39,12 @@ Install dependencies with:
 pip install -r chorus_reward_audit_project/requirements.txt
 ```
 
+Before sharing or extending the package, I check that the script parses:
+
+```bash
+python3 -m py_compile chorus_reward_audit_project/code/rebuild_chorus_audit.py
+```
+
 ## Reconstruction note
 
 Memo 9 used an earlier audit sample. The recovered repository currently
