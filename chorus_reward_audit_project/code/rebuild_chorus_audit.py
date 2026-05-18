@@ -25,6 +25,8 @@ import textwrap
 from pathlib import Path
 from typing import Any
 
+import numpy as np
+import pandas as pd
 
 WORKSPACE = Path(__file__).resolve().parents[2]
 PACKAGE_DIR = WORKSPACE / "chorus_reward_audit_project"
@@ -38,8 +40,6 @@ os.environ.setdefault("MPLCONFIGDIR", str(PACKAGE_DIR / ".matplotlib"))
 Path(os.environ["MPLCONFIGDIR"]).mkdir(parents=True, exist_ok=True)
 
 import matplotlib.pyplot as plt  # noqa: E402
-import numpy as np
-import pandas as pd
 
 
 TITLE_WORD_RE = re.compile(r"[A-Za-z0-9]+(?:[-'][A-Za-z0-9]+)?")
@@ -586,13 +586,16 @@ def write_plain_language_summary(summary: dict[str, Any], output_dir: Path) -> N
         f"- Profile-publication rows: {summary['meta']['profile_publication_rows']}",
         f"- Hidden Gem vs False Positive citation ratio: {ratio_text}",
         "",
-        "## Reconstruction Note",
+        "## Reconstruction note",
         "",
         textwrap.fill(summary["memo9_note"], width=92),
         "",
         "The score columns are transparent proxies because the original Memo 9 embedding and perplexity",
         "artifacts were not present in the recovered folder. Citations are used only as an audit",
         "outcome, not as an input to the two proxy scores.",
+        "",
+        "The result should be read as a diagnostic audit of ranking risk, not as a final estimate",
+        "of scientific value.",
     ]
     (output_dir / "summary.md").write_text("\n".join(lines) + "\n")
 

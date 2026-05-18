@@ -1,89 +1,74 @@
-# CHORUS Reward Audit Project
+# CHORUS Reward Signal Audit
 
-This folder contains an independent research project built from the recovered
-CHORUS raw data. The project asks whether an AI research assistant can
-misallocate attention when its reward signal treats surface textual surprise as
-a proxy for external evidence of influence.
+This folder contains a small reproducible audit of a text-based ranking signal
+in the CHORUS project. The question is whether a text-focused ranking proxy can
+shift attention toward papers that look complex in title form rather than papers
+with stronger external uptake.
 
-The project is designed to stand on its own. It is not framed as a package for
-one lab. Its connection to AI advice, entrepreneurial learning, and heterogeneous
-AI effects appears in the research memo as a substantive extension of the
-mechanism studied here.
+The project rebuilds a paper-level audit panel from recovered CHORUS registry
+and hypergraph data. Because the original perplexity scores and embedding
+artifacts were not preserved in the recovered folder, the code uses transparent
+proxy scores rather than claiming to recover the original model outputs.
+Citation counts are used only as an external audit outcome, not as inputs to the
+reconstructed scores.
 
-## Project Contents
+## What this code does
 
-1. `code/rebuild_chorus_audit.py`
+The script builds a paper-level panel, reconstructs simple proxy measures,
+assigns papers to audit groups, and writes summary files and diagnostic figures.
+The purpose is to make the audit logic inspectable and easy to extend once true
+perplexity scores or embeddings are available.
 
-   Rebuilds the paper level audit panel from the raw CHORUS registry and
-   hypergraph data. The script reconstructs transparent proxy measures because
-   the original perplexity and embedding artifacts were not present in the
-   recovered folder.
+## Project contents
 
-2. `output/chorus_audit_panel.csv`
-
-   Generated analysis panel with one row per hypergraph document node. The file
-   includes title metadata, citation counts, author links, role composition,
-   topic counts, reconstructed scores, and quadrant labels.
-
-3. `output/summary_stats.json` and `output/summary.md`
-
-   Machine readable and human readable summaries of the rebuild.
-
-4. `output/figure1_title_gradient.png`
-
-   Diagnostic figure showing the relationship between title word count and
-   citation impact.
-
-5. `output/figure2_reward_quadrants.png`
-
-   Diagnostic figure comparing quiet high contrast papers with verbose false
-   positives.
-
-6. `output/figure3_author_composition.png`
-
-   Diagnostic figure showing how role composition changes the interpretation of
-   the ranking signal.
-
-7. `overleaf/chorus_reward_audit.tex` and `overleaf/references.bib`
-
-   Overleaf ready research memo and bibliography.
-
-## How to Run the Project
-
-From the workspace root, run:
-
-```bash
-python3 chorus_reward_audit_project/code/rebuild_chorus_audit.py
+```text
+chorus_reward_audit_project/
+  README.md
+  requirements.txt
+  .gitignore
+  code/
+    rebuild_chorus_audit.py
+  output/
+    chorus_audit_panel.csv
+    summary.md
+    summary_stats.json
+    figure1_title_gradient.png
+    figure2_reward_quadrants.png
+    figure3_author_composition.png
+  overleaf/
+    chorus_reward_audit.tex
+    references.bib
 ```
 
-The script reads `Data/lab_registry.json` and `Data/hypergraph.json` from the
-repository root and writes all outputs into `chorus_reward_audit_project/output/`.
-The code uses `numpy`, `pandas`, and `matplotlib`; these are listed in
-`chorus_reward_audit_project/requirements.txt`.
+## How to run
 
-If the data files live elsewhere, pass them explicitly:
+From the repository root:
 
 ```bash
 python3 chorus_reward_audit_project/code/rebuild_chorus_audit.py \
-  --registry path/to/lab_registry.json \
-  --hypergraph path/to/hypergraph.json \
+  --registry Data/lab_registry.json \
+  --hypergraph Data/hypergraph.json \
   --output chorus_reward_audit_project/output
 ```
 
-## Reconstruction Note
+If the files are somewhere else, pass their paths explicitly with `--registry`
+and `--hypergraph`.
+
+## Reconstruction note
 
 Memo 9 used an earlier audit sample. The recovered repository currently
-contains 467 hypergraph document nodes and 482 profile publication rows. The
-rebuilt code keeps the current raw data sample visible rather than forcing an
-older sample size.
+contains 467 hypergraph document nodes and 482 profile-publication rows. This
+rebuild keeps the current recovered sample visible rather than forcing the older
+sample size.
 
-The original text perplexity and embedding files were not present. The script
-therefore rebuilds transparent proxy scores and keeps citations as an audit
-outcome. Citations are not used as inputs to the proxy scores.
+The score columns are transparent proxies. They should not be read as the
+original CHORUS perplexity or embedding outputs. The purpose of the rebuild is
+to show the audit logic clearly, not to claim exact recovery of the original
+analysis.
 
-## Overleaf Note
+## Main limitation
 
-Upload `overleaf/chorus_reward_audit.tex`, `overleaf/references.bib`, and the
-PNG files from `output/` to Overleaf. The TeX file currently assumes the figures
-remain in an output folder. If Overleaf places every file in one flat folder,
-change the graphics path in the TeX source to the current folder.
+Citation counts are an imperfect measure of scientific value. I use them here
+as an available external uptake measure. The results should therefore be read
+as evidence of possible directional ranking risk, not as a definitive measure
+of intellectual value.
