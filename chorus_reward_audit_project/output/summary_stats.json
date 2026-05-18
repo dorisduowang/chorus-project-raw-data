@@ -1,0 +1,112 @@
+{
+  "meta": {
+    "registry_people": 71,
+    "profile_publication_rows": 482,
+    "hypergraph_documents": 467,
+    "hypergraph_edges": 594,
+    "source_registry": "/Users/dorisduowang/Desktop/chorus project/chorus project raw data/Data/lab_registry.json",
+    "source_hypergraph": "/Users/dorisduowang/Desktop/chorus project/chorus project raw data/Data/hypergraph.json"
+  },
+  "analysis_documents": 467,
+  "memo9_note": "Memo 9 described a 443-paper audit sample. The current raw folder contains 467 hypergraph document nodes; the code keeps the current raw-data sample visible rather than silently forcing the old N.",
+  "title_bins": [
+    {
+      "title_bin": "11-14 words",
+      "n": 161,
+      "mean_citations": 38.2111801242236
+    },
+    {
+      "title_bin": "15-19 words",
+      "n": 98,
+      "mean_citations": 69.45918367346938
+    },
+    {
+      "title_bin": "7-10 words",
+      "n": 136,
+      "mean_citations": 100.16911764705883
+    },
+    {
+      "title_bin": "<= 6 words",
+      "n": 49,
+      "mean_citations": 152.3673469387755
+    },
+    {
+      "title_bin": ">= 20 words",
+      "n": 23,
+      "mean_citations": 20.91304347826087
+    }
+  ],
+  "reward_quadrants": [
+    {
+      "reward_quadrant": "Aligned Surprise",
+      "n": 34,
+      "mean_citations": 34.55882352941177,
+      "median_citations": 4.5,
+      "mean_text_surprise": 0.4955116714031586,
+      "mean_contrast": 0.5961047804264938
+    },
+    {
+      "reward_quadrant": "False Positive",
+      "n": 199,
+      "mean_citations": 51.663316582914575,
+      "median_citations": 3.0,
+      "mean_text_surprise": 0.680210229824387,
+      "mean_contrast": 0.36897545114687585
+    },
+    {
+      "reward_quadrant": "Hidden Gem",
+      "n": 199,
+      "mean_citations": 102.70854271356784,
+      "median_citations": 4.0,
+      "mean_text_surprise": 0.20406607307507627,
+      "mean_contrast": 0.6878996837841488
+    },
+    {
+      "reward_quadrant": "Routine",
+      "n": 35,
+      "mean_citations": 75.25714285714285,
+      "median_citations": 0.0,
+      "mean_text_surprise": 0.3737001385367775,
+      "mean_contrast": 0.4958687827769248
+    }
+  ],
+  "author_composition": [
+    {
+      "author_composition": "Faculty + Faculty",
+      "n": 66,
+      "mean_citations": 65.31818181818181,
+      "mean_contrast": 0.6124132708124103
+    },
+    {
+      "author_composition": "Mixed (faculty + PhD)",
+      "n": 84,
+      "mean_citations": 88.67857142857143,
+      "mean_contrast": 0.6169681206138403
+    },
+    {
+      "author_composition": "No KLab core author",
+      "n": 73,
+      "mean_citations": 20.34246575342466,
+      "mean_contrast": 0.42635727217566627
+    },
+    {
+      "author_composition": "Other KLab author config",
+      "n": 30,
+      "mean_citations": 57.36666666666667,
+      "mean_contrast": 0.5043252367532545
+    },
+    {
+      "author_composition": "Solo PhD student",
+      "n": 102,
+      "mean_citations": 116.54901960784314,
+      "mean_contrast": 0.4963176002450673
+    },
+    {
+      "author_composition": "Solo faculty",
+      "n": 112,
+      "mean_citations": 68.52678571428571,
+      "mean_contrast": 0.5251633087622076
+    }
+  ],
+  "hidden_vs_false_positive_citation_ratio": 1.9880361832506563
+}

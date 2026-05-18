@@ -1,0 +1,378 @@
+\documentclass[11pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{hyperref}
+\usepackage{natbib}
+\usepackage{xcolor}
+\usepackage{float}
+
+\graphicspath{{../output/}}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue,
+  citecolor=blue,
+  urlcolor=blue
+}
+
+\setlength{\parskip}{0.65em}
+\setlength{\parindent}{0pt}
+
+\title{\vspace{-1.3cm}When an AI Assistant Learns the Wrong Signal:\\
+A Reproducible Audit of Attention Allocation in CHORUS}
+\author{Doris Wang\\
+M.A. Computational Social Science, Economics Specialization\\
+University of Chicago}
+\date{May 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+This project studies a small but consequential failure mode in AI assisted
+knowledge work. CHORUS is a research assistant built for a scientific lab. It
+uses structured registry data, semantic retrieval, and a directed hypergraph to
+surface papers, people, projects, and computational resources. The system is
+useful only if its ranking signal sends attention toward the right objects. I
+audit what happens when a system treats textual surprise as a proxy for
+intellectual value. The recovered project folder contained raw registry and
+hypergraph data, but the original analysis code for the Memo 9 audit was
+missing. I rebuilt the analysis from the raw data, created a reproducible
+paper level panel, and regenerated three diagnostic figures. The audit shows
+that a text focused reward can prefer papers that look complex on the surface
+while ranking quieter papers with stronger empirical signals too low. The larger
+point is not about one lab or one retrieval tool. It is about a general problem
+in AI advice systems. An AI assistant does not only answer questions. It also
+decides what becomes visible, what remains buried, and which users are best
+positioned to act on the signal.
+\end{abstract}
+
+\section{Research Question}
+
+The project asks whether an AI assistant can misallocate attention when it uses
+a convenient textual proxy as the reward signal for ranking. The practical
+version of the question is simple. If CHORUS is asked to surface interesting
+scientific work, does it actually surface work with stronger evidence of
+scientific importance, or does it surface work whose titles merely look
+surprising?
+
+The conceptual question is broader. Many AI systems that support decision
+making operate through ranking, recommendation, triage, or advice. They rarely
+make a final decision by themselves. Instead, they reshape the information
+environment in which people make decisions. A founder may receive several
+business suggestions from an AI mentor. A manager may receive a ranked list of
+tasks where AI could improve production. A researcher may receive a set of
+papers that the assistant labels as surprising. In each case, the important
+mechanism is not simply whether the AI produces text. The important mechanism
+is whether the signal helps the user select the right object for attention and
+implementation.
+
+This project treats CHORUS as a test case for that mechanism. The system is not
+an entrepreneurship product, but the analytic structure is similar to AI advice
+in entrepreneurial settings. A user faces many possible actions. The AI system
+compresses the choice set. The user then selects from the compressed set and
+decides what to do. If the compression is governed by a weak proxy, the AI can
+increase confidence while reducing judgment quality.
+
+\section{System Background}
+
+CHORUS was built as a knowledge assistant for the University of Chicago
+Knowledge Lab. The raw folder contains a registry of people, research topics,
+projects, datasets, publications, and computational resources. It also contains
+a hypergraph representation that connects people to documents, concepts,
+venues, datasets, and other institutional objects. The system is meant to make
+the lab searchable as a living research environment rather than as a static
+folder of files.
+
+The relevant design problem is the reward signal. A retrieval system has to
+decide which objects deserve to be surfaced. One possible reward is text
+surprise. A paper with a long title, multiple clauses, and unusual terms may
+receive a high textual surprise score. That choice is tempting because text is
+available and easy to process. It is also dangerous. A title can sound complex
+without being scientifically central. A highly cited or institutionally
+important paper can have a short title that does not announce its importance.
+
+This creates a measurement problem. The system claims to reward intellectual
+surprise, but it may actually reward title verbosity. If so, the failure is not
+just noisy ranking. It is a systematic inversion of attention. The system would
+look active and discriminating while selecting the wrong part of the research
+space.
+
+\section{Data Rebuild}
+
+The original Memo 9 document and figures were present, but the code that
+produced the figures was missing. I reconstructed the analysis from the raw
+folder. The rebuild uses the current raw data snapshot rather than forcing the
+older Memo 9 sample size. Memo 9 described 443 papers. The recovered hypergraph
+contains 467 document nodes. The registry contains 482 profile publication rows
+because some publications appear in more than one profile before document
+consolidation.
+
+\begin{table}[H]
+\centering
+\begin{tabular}{lrp{8.0cm}}
+\toprule
+Object & Count & Role in the rebuilt project \\
+\midrule
+People in registry & 71 & Used to attach names, roles, institutions, and topic labels to documents. \\
+Profile publication rows & 482 & Used as the raw profile source before document consolidation. \\
+Hypergraph document nodes & 467 & Used as the main paper level analysis sample. \\
+Hypergraph edges & 594 & Used to recover links among publications, authors, topics, venues, and other objects. \\
+\bottomrule
+\end{tabular}
+\caption{Raw CHORUS data used in the rebuilt audit.}
+\end{table}
+
+The rebuild creates one row per document node. Each row contains the title,
+publication year, venue, citation count, title word count, linked lab authors,
+author roles, topic count, and reconstructed scores. The code preserves both
+sources of author information. The first source is the publication edge in the
+hypergraph. The second source is the profile in which the publication appeared.
+Keeping both sources visible matters because the registry is a constructed
+research object, not a clean survey file. A reproducible audit should expose
+that provenance rather than hide it.
+
+\section{Measurement Strategy}
+
+Two original model artifacts were absent from the recovered folder. The first
+was the text surprise score, likely based on a language model perplexity
+measure. The second was the representation contrast score, described in Memo 9
+as a measure of how much a paper differed across representational views. Rather
+than pretend those artifacts still existed, I rebuilt transparent proxy scores.
+
+The text surprise proxy is based on title length and title syntax. Long titles,
+titles with colons, and titles with multiple clauses receive higher scores. This
+is not meant to be a perfect language model measure. It is meant to represent
+the kind of surface textual feature that a weak reward signal can overvalue.
+
+The representation contrast proxy uses information that is available before
+looking at the outcome. It combines inverse text surprise, topic breadth, role
+diversity, and a small venue signal. Citation counts are held out as the audit
+outcome. This is important because the project is not building a citation
+prediction model. The project is testing whether a ranking signal that claims
+to capture scientific interest is aligned with an external measure of uptake.
+
+The analysis then creates three diagnostics.
+
+\begin{enumerate}
+  \item The title length diagnostic asks whether papers that look less
+  surprising in title form are actually less influential.
+  \item The quadrant diagnostic compares four regions of the score space:
+  quiet high contrast papers, verbose high contrast papers, quiet low contrast
+  papers, and verbose low contrast papers.
+  \item The role diagnostic asks whether the signal reallocates attention
+  across author groups. In this setting, the groups are based on lab role. In
+  other settings, the same logic could be applied to founder experience,
+  baseline firm performance, market type, geography, or digital skill.
+\end{enumerate}
+
+\section{Result 1. Title Verbosity Is a Risky Proxy}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\linewidth]{figure1_title_gradient.png}
+\caption{Shorter titles are associated with higher citation impact in the
+rebuilt CHORUS sample. Papers with six or fewer title words average 152
+citations. Papers with twenty or more words average 21 citations.}
+\end{figure}
+
+The first result is deliberately basic. Papers are divided into title word
+count bins. If title verbosity were a reasonable stand in for scientific value,
+the long title bins should not be sharply worse on a simple impact measure. The
+rebuild shows the opposite. Papers with six or fewer title words average 152
+citations. Papers with twenty or more words average 21 citations. The ratio is
+7.3 to 1 in favor of the shorter title bin.
+
+This does not mean every short title is valuable or every long title is weak.
+It also does not mean citations are a complete measure of intellectual value.
+The interpretation is more precise. A reward signal that uses textual
+complexity as a proxy for surprise is exposed to a clear failure mode. It can
+reward the form of surprise rather than the substance of surprise. The system
+may learn to rank papers that sound unusual, not papers that changed a field or
+opened an important research path.
+
+The result also illustrates why proxy audits should begin with simple plots.
+The problem is visible before any complex model is introduced. That is useful
+for applied research work because teams often need diagnostics that can be
+explained, reproduced, and challenged by collaborators who do not work on the
+model internals.
+
+\section{Result 2. The Important Papers Are Often Quiet}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\linewidth]{figure2_reward_quadrants.png}
+\caption{The quadrant audit separates quiet high contrast papers from verbose
+false positives. Hidden Gems average 103 citations, compared with 52 for False
+Positives in the rebuilt sample.}
+\end{figure}
+
+The second result places each paper in a two dimensional audit space. The
+horizontal axis is the text surprise proxy. The vertical axis is the
+representation contrast proxy. The upper left quadrant contains papers that
+are quiet in title form but stronger on the contrast proxy. I label these
+papers Hidden Gems because they are easy for a title based reward to miss. The
+lower right quadrant contains papers that are high on textual surprise but low
+on contrast. I label these papers False Positives because they are exactly the
+kind of paper a text only reward may over rank.
+
+The citation pattern supports the concern. Hidden Gems average 103 citations.
+False Positives average 52 citations. The gap is about 2.0 to 1. The result is
+smaller than the old Memo 9 figure because the recovered data snapshot is not
+identical to the earlier 443 paper sample, but the direction is the same. The
+text heavy signal is not merely adding noise. It is shifting attention toward a
+different region of the research space.
+
+This matters because ranking systems change what users believe is worth
+investigating. A researcher who sees the False Positive quadrant first may spend
+time on papers whose titles are elaborate but whose broader signals are weaker.
+A founder who receives generic but confident AI advice may spend scarce
+resources implementing an action that sounds plausible but does not match the
+actual constraint facing the business. In both cases, the failure lives between
+the AI output and the human decision.
+
+\section{Result 3. A Role Aware Audit Reveals Who Gets Surfaced}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\linewidth]{figure3_author_composition.png}
+\caption{A role aware audit checks whether the ranking signal reallocates
+attention across author groups. Solo PhD linked papers average 117 citations in
+the rebuilt sample, compared with 69 for solo faculty linked papers.}
+\end{figure}
+
+The third result asks whether the signal is neutral across author groups. I
+group papers by the role composition of their linked authors. The rebuilt sample
+shows that solo PhD linked papers average 117 citations, while solo faculty
+linked papers average 69 citations. Mixed faculty and PhD papers average 89
+citations. Papers without a core linked author average 20 citations.
+
+This figure should not be read as a claim that student papers are always better
+than faculty papers. The data construction is imperfect, and author links come
+from a registry rather than from a hand verified authorship file. The useful
+point is diagnostic. A reward signal can appear neutral while changing whose
+work is visible. If the system ignores role composition, seniority, team type,
+or the position of a paper in the lab network, it cannot answer whether its
+ranking behavior systematically favors one group of cases.
+
+That diagnostic structure travels well. In an AI advice setting for
+entrepreneurs, the equivalent groups might be high performing firms and low
+performing firms, experienced founders and first time founders, urban and
+non urban firms, or users with different levels of digital fluency. The
+question is not whether the AI gives everyone access to text. The question is
+whether the AI helps each group select advice that is useful for its actual
+decision environment.
+
+\section{Connection to AI Advice and Entrepreneurial Learning}
+
+This project is independent of any entrepreneurship field experiment, but it is
+closely related to recent work on AI advice. In the Kenya AI mentor experiment,
+average treatment effects hid large differences across entrepreneurs.
+Higher performing entrepreneurs benefited from the AI assistant, while lower
+performing entrepreneurs did worse in some analyses. The proposed mechanism was
+not simply differential usage. It involved how entrepreneurs selected from and
+implemented the advice they received \citep{otis2023uneven}.
+
+The CHORUS audit studies the same kind of mechanism at an earlier stage in the
+decision chain. Before a user can implement advice, the user must decide which
+signal to trust. A weak ranking signal can make poor options more visible and
+better options less visible. That is why AI advice should be studied not only
+as generated text, but also as a selection environment. The model generates
+candidate actions. The system ranks or frames them. The user selects among
+them. The outcome depends on the full chain.
+
+The connection is also clear in work on mapping AI into production. Firms may
+have access to the same tools and training, yet differ in their ability to
+discover where AI creates value \citep{kim2026mapping}. That discovery problem
+is a search problem. The CHORUS audit shows a parallel search problem inside a
+research lab. The assistant must search across papers and concepts. A founder
+must search across possible uses of AI in the firm. In both cases, the quality
+of the mapping depends on the signal that guides attention.
+
+The project therefore suggests a broader empirical template for AI advice
+research.
+
+\begin{enumerate}
+  \item Measure the content of AI advice. Record whether suggestions are
+  specific, costly, risky, generic, operational, strategic, or matched to the
+  user's stated constraint.
+  \item Measure user selection. Record which suggestions users choose to
+  implement and which suggestions they ignore.
+  \item Measure fit between advice and context. Link the chosen advice to
+  baseline performance, resource constraints, market conditions, and prior
+  user experience.
+  \item Estimate heterogeneous effects. Test whether the same AI access helps
+  some users because they choose better advice, while harming others because
+  they choose advice that is plausible but poorly matched.
+\end{enumerate}
+
+This is the part of the project that would be most natural to extend with
+field data. The CHORUS setting provides the audit logic. Entrepreneurial AI
+advice provides the high stakes setting where that logic matters for firm
+learning, growth, and inequality.
+
+\section{What the Code Demonstrates}
+
+The code is designed as a reproducible research artifact rather than a polished
+demo. It performs five tasks. First, it reads the raw registry and hypergraph
+files. Second, it constructs a paper level panel with visible provenance. Third,
+it rebuilds proxy measures while clearly labeling them as proxies. Fourth, it
+generates summary statistics and figures from the rebuilt panel. Fifth, it
+writes outputs that can be inspected without rerunning the full pipeline.
+
+The most important design choice is transparency. The original model scores
+were missing. Instead of filling that gap with opaque assumptions, the code
+keeps the missingness visible. It distinguishes raw data from reconstructed
+measures and reconstructed measures from outcome variables. That makes the
+project easier to criticize and easier to extend. A future version could
+replace the title based text surprise proxy with true language model perplexity.
+It could replace the contrast proxy with embeddings from abstracts, figures,
+or full text. It could also replace citations with downstream measures such as
+which papers users choose to read, cite, or connect to new projects.
+
+\section{Limitations}
+
+The audit has three main limitations. First, citation count is an imperfect
+outcome. It reflects age, field size, venue, and many forms of visibility that
+are not the same as intellectual value. I use it as an external audit signal,
+not as the final definition of quality.
+
+Second, the reconstructed scores are proxies. They are useful because they make
+the missing code recoverable and the logic inspectable. They are not a
+substitute for the original language model and embedding artifacts.
+
+Third, the author composition analysis depends on registry links. Those links
+are sufficient for a diagnostic audit, but a publication quality version would
+require hand verification of author identities and roles.
+
+These limitations are not incidental. They are part of the research lesson. AI
+systems often operate in exactly this kind of data environment: useful but
+incomplete, structured but imperfect, rich enough to guide action but risky
+enough to require audits. The purpose of the project is to show how I would
+turn such a folder into an empirical object with clear assumptions, visible
+provenance, and testable claims.
+
+\section{Conclusion}
+
+The CHORUS audit shows how an AI assistant can fail even when it is technically
+useful. The failure is not that the system cannot retrieve papers. The failure
+is that the reward signal can learn the wrong definition of what deserves
+attention. In the rebuilt data, short titled papers have much higher average
+citations than long titled papers, quiet high contrast papers outperform
+verbose false positives, and author role composition changes how the signal
+should be interpreted.
+
+The broader implication is that AI advice should be evaluated as a selection
+system. Access to AI matters, but access alone does not determine value. Value
+depends on what the AI makes visible, what the user selects, and whether the
+selected advice fits the user's actual environment. That is the bridge from
+this research lab case to entrepreneurship, firm learning, and the uneven
+effects of AI support.
+
+\bibliographystyle{apalike}
+\bibliography{references}
+
+\end{document}
