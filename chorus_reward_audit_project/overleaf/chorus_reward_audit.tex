@@ -94,10 +94,7 @@ research space.
 
 \section{Data Rebuild}
 
-The original Memo 9 document and figures were present, but the code that
-produced the figures was missing. I reconstructed the analysis from the raw
-folder. The rebuild uses the current raw data snapshot rather than forcing the
-older Memo 9 sample size. The recovered hypergraph contains 467 document nodes.
+The recovered folder contained registry and hypergraph files, but not the model artifacts needed to reproduce the earlier scoring pipeline exactly. I reconstructed the audit from the available raw data. The rebuild uses the current recovered data snapshot. The recovered hypergraph contains 467 document nodes.
 The registry contains 482 profile publication rows because some publications
 appear in more than one profile before document consolidation.
 
@@ -129,8 +126,7 @@ that provenance rather than hide it.
 
 Two original model artifacts were absent from the recovered folder. The first
 was the text surprise score, likely based on a language model perplexity
-measure. The second was the representation contrast score, described in Memo 9
-as a measure of how much a paper differed across representational views. Rather
+measure. The second was the representation contrast score, which measures how much a paper differs across representational views. Rather
 than pretend those artifacts still existed, I rebuilt transparent proxy scores.
 
 The text surprise proxy is based on title length and title syntax. Long titles,

@@ -8,38 +8,49 @@
     "source_hypergraph": "Data/hypergraph.json"
   },
   "analysis_documents": 467,
-  "memo9_note": "Memo 9 used an earlier audit sample. The recovered repository currently contains 467 hypergraph document nodes; the code keeps the current raw-data sample visible rather than forcing the old N.",
+  "reconstruction_note": "The recovered repository currently contains 467 hypergraph document nodes. The code keeps the current recovered sample visible rather than forcing an earlier sample size.",
   "title_bins": [
     {
       "title_bin": "11-14 words",
       "n": 161,
-      "mean_citations": 38.2111801242236
+      "n_with_citations": 161,
+      "mean_citations": 38.2111801242236,
+      "median_citations": 2.0
     },
     {
       "title_bin": "15-19 words",
       "n": 98,
-      "mean_citations": 69.45918367346938
+      "n_with_citations": 98,
+      "mean_citations": 69.45918367346938,
+      "median_citations": 4.0
     },
     {
       "title_bin": "7-10 words",
       "n": 136,
-      "mean_citations": 100.16911764705883
+      "n_with_citations": 136,
+      "mean_citations": 100.16911764705883,
+      "median_citations": 2.0
     },
     {
       "title_bin": "<= 6 words",
       "n": 49,
-      "mean_citations": 152.3673469387755
+      "n_with_citations": 49,
+      "mean_citations": 152.3673469387755,
+      "median_citations": 31.0
     },
     {
       "title_bin": ">= 20 words",
       "n": 23,
-      "mean_citations": 20.91304347826087
+      "n_with_citations": 23,
+      "mean_citations": 20.91304347826087,
+      "median_citations": 7.0
     }
   ],
   "reward_quadrants": [
     {
       "reward_quadrant": "Aligned Surprise",
       "n": 106,
+      "n_with_citations": 106,
       "mean_citations": 55.10377358490566,
       "median_citations": 4.0,
       "mean_text_surprise": 0.645811320754717,
@@ -48,6 +59,7 @@
     {
       "reward_quadrant": "False Positive",
       "n": 127,
+      "n_with_citations": 127,
       "mean_citations": 43.2992125984252,
       "median_citations": 2.0,
       "mean_text_surprise": 0.6595485564304462,
@@ -56,6 +68,7 @@
     {
       "reward_quadrant": "Hidden Gem",
       "n": 102,
+      "n_with_citations": 102,
       "mean_citations": 97.30392156862744,
       "median_citations": 4.5,
       "mean_text_surprise": 0.22749019607843138,
@@ -64,6 +77,7 @@
     {
       "reward_quadrant": "Routine",
       "n": 132,
+      "n_with_citations": 132,
       "mean_citations": 100.48484848484848,
       "median_citations": 2.0,
       "mean_text_surprise": 0.23044444444444445,
@@ -74,37 +88,49 @@
     {
       "author_composition": "Faculty + Faculty",
       "n": 66,
+      "n_with_citations": 66,
       "mean_citations": 65.31818181818181,
+      "median_citations": 5.5,
       "mean_contrast": 0.5662247474747474
     },
     {
       "author_composition": "Mixed (faculty + PhD)",
       "n": 84,
+      "n_with_citations": 84,
       "mean_citations": 88.67857142857143,
+      "median_citations": 2.5,
       "mean_contrast": 0.6518849206349207
     },
     {
       "author_composition": "No KLab core author",
       "n": 73,
+      "n_with_citations": 73,
       "mean_citations": 20.34246575342466,
+      "median_citations": 4.0,
       "mean_contrast": 0.35764840182648405
     },
     {
       "author_composition": "Other KLab author config",
       "n": 30,
+      "n_with_citations": 30,
       "mean_citations": 57.36666666666667,
+      "median_citations": 8.5,
       "mean_contrast": 0.5762499999999999
     },
     {
       "author_composition": "Solo PhD student",
       "n": 102,
+      "n_with_citations": 102,
       "mean_citations": 116.54901960784314,
+      "median_citations": 5.0,
       "mean_contrast": 0.439828431372549
     },
     {
       "author_composition": "Solo faculty",
       "n": 112,
+      "n_with_citations": 112,
       "mean_citations": 68.52678571428571,
+      "median_citations": 1.0,
       "mean_contrast": 0.37295386904761907
     }
   ],
