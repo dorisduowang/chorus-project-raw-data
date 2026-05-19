@@ -588,6 +588,20 @@ def write_plain_language_summary(summary: dict[str, Any], output_dir: Path) -> N
     ratio = summary.get("hidden_vs_false_positive_citation_ratio")
     ratio_text = "not available" if ratio is None else f"{ratio:.2f}x"
 
+    title_stats = {row["title_bin"]: row for row in summary["title_bins"]}
+    quadrant_stats = {row["reward_quadrant"]: row for row in summary["reward_quadrants"]}
+    author_stats = {row["author_composition"]: row for row in summary["author_composition"]}
+
+    short_mean = title_stats.get("<= 6 words", {}).get("mean_citations")
+    long_mean = title_stats.get(">= 20 words", {}).get("mean_citations")
+    hidden_mean = quadrant_stats.get("Hidden Gem", {}).get("mean_citations")
+    false_mean = quadrant_stats.get("False Positive", {}).get("mean_citations")
+    phd_mean = author_stats.get("Solo PhD student", {}).get("mean_citations")
+    faculty_mean = author_stats.get("Solo faculty", {}).get("mean_citations")
+
+    def mean_text(value: Any) -> str:
+        return "not available" if value is None or pd.isna(value) else f"{value:.0f}"
+
     lines = [
         "# CHORUS Audit Rebuild Summary",
         "",
@@ -596,12 +610,19 @@ def write_plain_language_summary(summary: dict[str, Any], output_dir: Path) -> N
         f"- Analysis documents: {summary['analysis_documents']}",
         f"- Registry people: {summary['meta']['registry_people']}",
         f"- Profile-publication rows: {summary['meta']['profile_publication_rows']}",
+        f"- Hypergraph edges: {summary['meta']['hypergraph_edges']}",
         f"- Source registry: `{summary['meta']['source_registry']}`",
         f"- Source hypergraph: `{summary['meta']['source_hypergraph']}`",
         "",
-        "## Main diagnostic comparison",
+        "## Main rebuilt patterns",
         "",
+        f"- Papers with six or fewer title words average {mean_text(short_mean)} citations.",
+        f"- Papers with twenty or more title words average {mean_text(long_mean)} citations.",
+        f"- Hidden Gem papers average {mean_text(hidden_mean)} citations.",
+        f"- False Positive papers average {mean_text(false_mean)} citations.",
         f"- Hidden Gem vs False Positive citation ratio: {ratio_text}",
+        f"- Solo PhD linked papers average {mean_text(phd_mean)} citations.",
+        f"- Solo faculty linked papers average {mean_text(faculty_mean)} citations.",
         "",
         "## What the script does",
         "",

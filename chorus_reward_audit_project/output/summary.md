@@ -5,12 +5,19 @@
 - Analysis documents: 467
 - Registry people: 71
 - Profile-publication rows: 482
+- Hypergraph edges: 594
 - Source registry: `Data/lab_registry.json`
 - Source hypergraph: `Data/hypergraph.json`
 
-## Main diagnostic comparison
+## Main rebuilt patterns
 
+- Papers with six or fewer title words average 152 citations.
+- Papers with twenty or more title words average 21 citations.
+- Hidden Gem papers average 97 citations.
+- False Positive papers average 43 citations.
 - Hidden Gem vs False Positive citation ratio: 2.25x
+- Solo PhD linked papers average 117 citations.
+- Solo faculty linked papers average 69 citations.
 
 ## What the script does
 

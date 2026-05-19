@@ -53,3 +53,4 @@ python3 chorus_reward_audit_project/code/rebuild_chorus_audit.py \
   --registry Data/lab_registry.json \
   --hypergraph Data/hypergraph.json \
   --output chorus_reward_audit_project/output
+```
