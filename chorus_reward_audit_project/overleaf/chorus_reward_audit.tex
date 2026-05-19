@@ -35,12 +35,7 @@ University of Chicago}
 This project audits a small but important problem in AI assisted knowledge
 work. CHORUS is a research assistant built around structured registry data,
 semantic retrieval, and a directed hypergraph of people, papers, topics, venues,
-projects, and computational resources. The recovered project folder contained
-the registry and hypergraph data, but not the original code or model artifacts
-for a previous Memo 9 reward audit. I therefore rebuilt the analysis as a
-transparent reconstruction. The project creates a paper level panel, defines
-clearly labeled proxy scores, and uses citation counts only as an external
-uptake measure. The rebuilt audit suggests a directional ranking risk. A text
+projects, and computational resources. The recovered project folder contained the registry and hypergraph data, but not the model artifacts needed to reproduce the original text-surprise and representation-contrast scores exactly. I therefore rebuilt the analysis as a transparent reconstruction. The project creates a paper-level panel, defines clearly labeled proxy scores, and uses citation counts only as an external uptake measure. The rebuilt audit suggests a directional ranking risk. A text
 focused proxy can push attention toward papers that look complex in title form
 while making quieter papers with stronger external uptake less visible. The
 larger point is not about one retrieval tool. It is about a general problem in
@@ -359,9 +354,7 @@ provenance, and testable claims.
 \section{Conclusion}
 
 The CHORUS audit suggests how an AI assistant can create ranking risk even when
-it is technically useful. The issue is not that the system cannot retrieve
-papers. The issue is that the reward signal may use an imperfect proxy for what
-deserves attention. In the rebuilt data, short titled papers have much higher
+it is technically useful. The issue is not that the system cannot retrieve papers. The issue is that a convenient ranking proxy can quietly decide what becomes visible to the user. In the rebuilt data, short titled papers have much higher
 average citations than long titled papers, quiet high contrast papers have
 higher average citations than verbose false positives, and author role
 composition changes how the signal should be interpreted.
