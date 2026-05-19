@@ -32,13 +32,9 @@ University of Chicago}
 \maketitle
 
 \begin{abstract}
-This project audits a small but important problem in AI assisted knowledge
-work. CHORUS is a research assistant built around structured registry data,
-semantic retrieval, and a directed hypergraph of people, papers, topics, venues,
-projects, and computational resources. The recovered project folder contained the registry and hypergraph data, but not the model artifacts needed to reproduce the original text-surprise and representation-contrast scores exactly. I therefore rebuilt the analysis as a transparent reconstruction. The project creates a paper-level panel, defines clearly labeled proxy scores, and uses citation counts only as an external uptake measure. The rebuilt audit suggests a directional ranking risk. A text
-focused proxy can push attention toward papers that look complex in title form
-while making quieter papers with stronger external uptake less visible. This is why I treat the CHORUS case as a small audit of a broader design problem. AI systems often do not make the final decision, but they shape which options become visible before a person decides. An AI assistant does not only answer questions. It also
-changes which options users notice, compare, and act on.
+This project audits how an AI research assistant can create ranking risk when a convenient textual signal is used as a proxy for intellectual value. CHORUS organizes a research lab through registry data and a directed hypergraph linking people, papers, topics, venues, projects, and computational resources. The recovered project folder contained the registry and hypergraph data, but not the original model artifacts needed to reproduce the earlier text-surprise and representation-contrast scores exactly. I therefore rebuild the audit as a transparent reconstruction rather than as a claimed recovery of the original scoring pipeline.
+
+The rebuilt project creates a paper-level panel, defines clearly labeled proxy scores, and uses citation counts only as an external measure of uptake. The results suggest a directional selection problem. A text-focused ranking proxy can make papers with more complex titles more visible, while quieter papers with stronger external uptake may become easier to miss. The point is not that citations fully define scientific value, or that textual surprise is useless. The point is that an AI assistant should be audited for what it makes visible. In CHORUS, the object being ranked is a paper. In other AI-assisted decision environments, the object may be advice, actions, opportunities, or recommendations. In each case, the system does not only answer questions. It shapes what users notice, compare, and choose before they act.
 \end{abstract}
 
 \section{Research Question}
@@ -125,7 +121,7 @@ was the text surprise score, likely based on a language model perplexity
 measure. The second was the representation contrast score, which measures how much a paper differs across representational views. Rather
 than pretend those artifacts still existed, I rebuilt transparent proxy scores.
 
-The text surprise proxy is based on title length and title syntax. Long titles,
+The text surprise proxy is based on title length and title syntax. This proxy is deliberately simple because the original language-model perplexity scores were not preserved. It should be read as a transparent stress test of a surface-text reward, not as a replacement for true perplexity. Long titles,
 titles with colons, and titles with multiple clauses receive higher scores. This
 is not meant to be a perfect language model measure. It is meant to represent
 the kind of surface textual feature that a weak reward signal can overweight.
@@ -254,52 +250,21 @@ question is not whether the AI gives everyone access to text. The question is
 whether the AI helps each group select advice that is useful for its actual
 decision environment.
 
-\section{Connection to AI Advice and Entrepreneurial Learning}
+\section{Why This Is an Alignment Audit}
 
-This project is independent of any entrepreneurship field experiment, but it is
-closely related to recent work on AI advice. In the Kenya AI mentor experiment,
-average treatment effects hid large differences across entrepreneurs.
-Higher performing entrepreneurs benefited from the AI assistant, while lower
-performing entrepreneurs did worse in some analyses. The proposed mechanism was
-not simply differential usage. It involved how entrepreneurs selected from and
-implemented the advice they received \citep{otis2023uneven}.
+The project began from a simple alignment concern. A system can be useful at retrieval while still being poorly aligned in what it chooses to surface. In Russell's language, the problem is not that the system lacks capability. The problem is that a capable system can optimize a misspecified proxy and fail most clearly on the cases where the proxy is least reliable \citep{russell2021human}.
 
-The CHORUS audit studies the same kind of mechanism at an earlier stage in the
-decision chain. Before a user can implement advice, the user must decide which
-signal to trust. A weak ranking signal can make poor options more visible and
-better options less visible. That is why AI advice should be studied not only
-as generated text, but also as a selection environment. The model generates
-candidate actions. The system ranks or frames them. The user selects among
-them. The outcome depends on the full chain.
+In CHORUS, the convenient proxy is textual surprise. A paper with a long, multi-clause title can look more surprising than a short paper that is central to the lab's research history. That does not mean language-model surprise is useless. Recent work on scientific surprise suggests that perplexity can contain meaningful information about unconventional or transformative research \citep{zhang2025perplexity}. The audit question is therefore more specific: when a text-based surprise signal is used as a ranking proxy, does it still align with external evidence of uptake in this particular corpus?
 
-The connection is also clear in work on mapping AI into production. Firms may
-have access to the same tools and training, yet differ in their ability to
-discover where AI creates value \citep{kim2026mapping}. That discovery problem
-is a search problem. The CHORUS audit provides a parallel search problem inside a
-research lab. In CHORUS, the search problem is across papers and concepts. In entrepreneurial AI advice, the search problem is across possible actions, constraints, and uses of AI inside the firm. In both cases, the quality
-of the mapping depends on the signal that guides attention.
+This is where the representation argument matters. A ranking system may appear to reward intellectual novelty while actually rewarding a surface feature of the text. Work on representation engineering motivates this distinction between what a model appears to express and what its internal or representational signal may be tracking \citep{zou2023representation}. The rebuilt audit keeps that distinction visible by separating a title-based text-surprise proxy from a representation-contrast proxy. This is also why citation counts are held out as an outcome rather than used as an input to the proxy scores.
 
-The project therefore suggests a broader empirical template for AI advice
-research.
+The current rebuild should be read as a diagnostic audit rather than a final estimate of scientific value. The recovered folder contains 467 hypergraph document nodes, not the earlier 443-paper draft sample. The original perplexity and embedding artifacts were not preserved, so the code reconstructs transparent proxy scores. Under this rebuilt specification, papers with six or fewer title words average 152 citations, while papers with twenty or more title words average 21 citations. Hidden Gem papers average 97 citations, compared with 43 for False Positives. These gaps do not prove that short titles or Hidden Gem status define quality. They show that a text-heavy ranking proxy can direct attention toward a weaker region of the corpus.
 
-\begin{enumerate}
-  \item Measure the content of AI advice. Record whether suggestions are
-  specific, costly, risky, generic, operational, strategic, or matched to the
-  user's stated constraint.
-  \item Measure user selection. Record which suggestions users choose to
-  implement and which suggestions they ignore.
-  \item Measure fit between advice and context. Link the chosen advice to
-  baseline performance, resource constraints, market conditions, and prior
-  user experience.
-  \item Estimate heterogeneous effects. Test whether the same AI access helps
-  some users because they choose better advice, while harming others because
-  they choose advice that is plausible but poorly matched.
-\end{enumerate}
+This is also a system-level problem rather than only an item-level prediction problem. Work on AI agents argues that AI systems should be evaluated not only by isolated outputs, but by the distribution of cases they make visible and the institutional behavior they induce \citep{gabriel2025ethics,tomasev2025distributional}. In the CHORUS setting, that means asking which papers become salient to users. In other AI advice settings, it would mean asking which recommendations, actions, or opportunities become salient before a human decides.
 
-This is the part of the project that would be most natural to extend with
-field data. The CHORUS setting provides the audit logic. Entrepreneurial AI
-advice provides the high stakes setting where that logic matters for firm
-learning, growth, and inequality.
+The role-composition audit follows the same logic. A ranking rule can look neutral while changing whose work is surfaced. In the current rebuild, solo PhD linked papers average 117 citations, while solo faculty linked papers average 69 citations. This should not be interpreted as a claim that student work is generally better than faculty work. The point is that a reward signal should be audited across groups that matter for the institution. Adaptive guardrail work makes a related point: safety checks need to adapt to the agent's environment and history, rather than applying the same static check everywhere \citep{luo2025agrail}. For CHORUS, a role-aware audit is one way to make that environment visible.
+
+The same selection logic can travel to AI advice systems more broadly. A research assistant ranks papers; an AI advisor may rank possible actions; a manager or founder may then choose which suggestion to implement. The key empirical question is not only whether the AI can generate plausible text. It is whether the system helps users select options that fit their actual decision environment. In that sense, CHORUS is a small but concrete example of a broader alignment problem: AI value depends not only on access to generated outputs, but on what the system makes visible, what the user selects, and whether that selected option is actually useful.
 
 \section{What the Code Demonstrates}
 
@@ -350,12 +315,7 @@ average citations than long titled papers, quiet high contrast papers have
 higher average citations than verbose false positives, and author role
 composition changes how the signal should be interpreted.
 
-The broader implication is that AI advice should be evaluated as a selection
-system. Access to AI matters, but access alone does not determine value. Value
-depends on what the AI makes visible, what the user selects, and whether the
-selected advice fits the user's actual environment. That is the bridge from
-this research lab case to entrepreneurship, firm learning, and the uneven
-effects of AI support.
+The broader implication is that AI advice should be evaluated as a selection system. Access to AI matters, but access alone does not determine value. Value depends on what the AI makes visible, what the user selects, and whether the selected option fits the user's actual environment. The CHORUS case studies this mechanism in a research lab, but the same audit logic can apply to other settings where AI systems rank papers, recommendations, actions, or opportunities before humans decide.
 
 \bibliographystyle{apalike}
 \bibliography{references}
