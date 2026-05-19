@@ -37,9 +37,7 @@ work. CHORUS is a research assistant built around structured registry data,
 semantic retrieval, and a directed hypergraph of people, papers, topics, venues,
 projects, and computational resources. The recovered project folder contained the registry and hypergraph data, but not the model artifacts needed to reproduce the original text-surprise and representation-contrast scores exactly. I therefore rebuilt the analysis as a transparent reconstruction. The project creates a paper-level panel, defines clearly labeled proxy scores, and uses citation counts only as an external uptake measure. The rebuilt audit suggests a directional ranking risk. A text
 focused proxy can push attention toward papers that look complex in title form
-while making quieter papers with stronger external uptake less visible. The
-larger point is not about one retrieval tool. It is about a general problem in
-AI advice systems. An AI assistant does not only answer questions. It also
+while making quieter papers with stronger external uptake less visible. This is why I treat the CHORUS case as a small audit of a broader design problem. AI systems often do not make the final decision, but they shape which options become visible before a person decides. An AI assistant does not only answer questions. It also
 changes which options users notice, compare, and act on.
 \end{abstract}
 
@@ -88,9 +86,7 @@ important paper can have a short title that does not announce its importance.
 
 This creates a measurement problem. The system claims to reward intellectual
 surprise, but it may partly reward title verbosity. If so, the problem is not
-only noisy ranking. It is a directional ranking risk. The system can look active
-and discriminating while shifting attention toward a less useful part of the
-research space.
+only noisy ranking. It is a directional ranking risk. A system can appear to be ranking carefully while still directing attention toward papers that are textually elaborate rather than substantively useful.
 
 \section{Data Rebuild}
 
@@ -280,8 +276,7 @@ The connection is also clear in work on mapping AI into production. Firms may
 have access to the same tools and training, yet differ in their ability to
 discover where AI creates value \citep{kim2026mapping}. That discovery problem
 is a search problem. The CHORUS audit provides a parallel search problem inside a
-research lab. The assistant must search across papers and concepts. A founder
-must search across possible uses of AI in the firm. In both cases, the quality
+research lab. In CHORUS, the search problem is across papers and concepts. In entrepreneurial AI advice, the search problem is across possible actions, constraints, and uses of AI inside the firm. In both cases, the quality
 of the mapping depends on the signal that guides attention.
 
 The project therefore suggests a broader empirical template for AI advice
