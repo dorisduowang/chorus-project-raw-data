@@ -2,15 +2,16 @@
 """
 Rebuild the CHORUS reward-signal audit from recovered project data.
 
-The original Memo 9 analysis referred to language-model perplexity and
-representation-contrast measures, but the corresponding model artifacts were
-not present in the recovered folder. This script therefore builds a transparent
-reconstruction: it creates a paper-level panel, defines clearly labeled proxy
-scores, and uses citation counts only as an external audit outcome.
+The recovered folder contains registry and hypergraph data, but not the
+model artifacts needed to reproduce the original text-surprise and
+representation-contrast scores exactly. This script therefore builds a
+transparent reconstruction: it creates a paper-level panel, defines clearly
+labeled proxy scores, and uses citation counts only as an external audit
+outcome.
 
-The goal is not to reproduce the original model scores exactly. The goal is to
-make the audit logic inspectable and easy to extend once true perplexity scores
-or embeddings become available.
+The goal is not to claim exact recovery of the original model pipeline. The
+goal is to make the audit logic inspectable and easy to extend once true
+perplexity scores, embeddings, or user-level attention data are available.
 """
 
 from __future__ import annotations
@@ -35,7 +36,7 @@ DEFAULT_HYPERGRAPH = WORKSPACE / "Data" / "hypergraph.json"
 DEFAULT_OUTPUT = PACKAGE_DIR / "output"
 
 # Put Matplotlib's cache inside the project folder so the script can run
-# cleanly in temporary environments.
+# cleanly in temporary or sandboxed environments.
 os.environ.setdefault("MPLCONFIGDIR", str(PACKAGE_DIR / ".matplotlib"))
 Path(os.environ["MPLCONFIGDIR"]).mkdir(parents=True, exist_ok=True)
 
@@ -174,8 +175,15 @@ def load_document_panel(
         names = [p.get("name", "") for p in linked_people]
         topics = sorted({t for p in linked_people for t in p.get("topics", [])})
 
-        citation_count = attrs.get("citation_count")
-        citation_count = 0 if citation_count in (None, "") else int(citation_count)
+        raw_citation = attrs.get("citation_count")
+        citation_missing = raw_citation in (None, "")
+
+        if citation_missing:
+            citation_count = np.nan
+            log1p_citations = np.nan
+        else:
+            citation_count = int(raw_citation)
+            log1p_citations = math.log1p(citation_count)
 
         rows.append(
             {
@@ -185,8 +193,9 @@ def load_document_panel(
                 "doi": attrs.get("doi") or "",
                 "year": attrs.get("year"),
                 "venue": attrs.get("venue") or "",
+                "citation_missing": citation_missing,
                 "citation_count": citation_count,
-                "log1p_citations": math.log1p(citation_count),
+                "log1p_citations": log1p_citations,
                 "title_word_count": count_title_words(title),
                 "edge_author_ids": compact_list(edge_author_ids),
                 "profile_owner_ids": compact_list(profile_owner_ids),
@@ -312,28 +321,36 @@ def add_quadrants_and_groups(df: pd.DataFrame) -> pd.DataFrame:
 def summarize(df: pd.DataFrame, meta: dict[str, Any]) -> dict[str, Any]:
     title_bins = (
         df.groupby("title_bin", observed=True)
-        .agg(n=("title", "size"), mean_citations=("citation_count", "mean"))
+        .agg(
+            n=("title", "size"),
+            n_with_citations=("citation_count", "count"),
+            mean_citations=("citation_count", "mean"),
+            median_citations=("citation_count", "median"),
+        )
         .reset_index()
     )
     quadrants = (
         df.groupby("reward_quadrant", observed=True)
         .agg(
             n=("title", "size"),
+            n_with_citations=("citation_count", "count"),
             mean_citations=("citation_count", "mean"),
             median_citations=("citation_count", "median"),
             mean_text_surprise=("text_surprise_score", "mean"),
             mean_contrast=("representation_contrast_proxy", "mean"),
-        )
-        .reset_index()
+         )
+         .reset_index()
     )
     author_groups = (
         df.groupby("author_composition", observed=True)
         .agg(
             n=("title", "size"),
+            n_with_citations=("citation_count", "count"),
             mean_citations=("citation_count", "mean"),
+            median_citations=("citation_count", "median"),
             mean_contrast=("representation_contrast_proxy", "mean"),
-        )
-        .reset_index()
+         )
+         .reset_index()
     )
 
     hidden = quadrants.loc[quadrants["reward_quadrant"] == "Hidden Gem", "mean_citations"]
@@ -345,10 +362,10 @@ def summarize(df: pd.DataFrame, meta: dict[str, Any]) -> dict[str, Any]:
     return {
         "meta": meta,
         "analysis_documents": int(len(df)),
-        "memo9_note": (
-            "Memo 9 used an earlier audit sample. The recovered repository "
-            f"currently contains {len(df)} hypergraph document nodes; the code "
-            "keeps the current raw-data sample visible rather than forcing the old N."
+        "reconstruction_note": (
+            "The recovered repository currently contains "
+            f"{len(df)} hypergraph document nodes. The code keeps the current "
+            "recovered sample visible rather than forcing an earlier sample size."
         ),
         "title_bins": title_bins.to_dict(orient="records"),
         "reward_quadrants": quadrants.to_dict(orient="records"),
@@ -570,32 +587,54 @@ def plot_author_composition(df: pd.DataFrame, output_dir: Path) -> None:
 def write_plain_language_summary(summary: dict[str, Any], output_dir: Path) -> None:
     ratio = summary.get("hidden_vs_false_positive_citation_ratio")
     ratio_text = "not available" if ratio is None else f"{ratio:.2f}x"
+
     lines = [
         "# CHORUS Audit Rebuild Summary",
+        "",
+        "## Inputs",
         "",
         f"- Analysis documents: {summary['analysis_documents']}",
         f"- Registry people: {summary['meta']['registry_people']}",
         f"- Profile-publication rows: {summary['meta']['profile_publication_rows']}",
+        f"- Source registry: `{summary['meta']['source_registry']}`",
+        f"- Source hypergraph: `{summary['meta']['source_hypergraph']}`",
+        "",
+        "## Main diagnostic comparison",
+        "",
         f"- Hidden Gem vs False Positive citation ratio: {ratio_text}",
+        "",
+        "## What the script does",
+        "",
+        "1. Builds a paper-level panel from recovered registry and hypergraph data.",
+        "2. Preserves document provenance and linked author/profile information.",
+        "3. Constructs transparent proxy scores for text surprise and representation contrast.",
+        "4. Uses citation counts only as an external audit outcome.",
+        "5. Writes a panel, summary files, and diagnostic figures.",
         "",
         "## Reconstruction note",
         "",
-        summary["memo9_note"],
+        summary["reconstruction_note"],
         "",
         (
-            "The score columns are transparent proxies because the original Memo 9 "
-            "embedding and perplexity artifacts were not present in the recovered "
-            "folder. Citations are used only as an audit outcome, not as an input "
+            "The score columns are transparent proxies because the original "
+            "perplexity and embedding artifacts were not present in the recovered "
+            "folder. Citations are used only as an audit outcome, not as inputs "
             "to the two proxy scores."
         ),
         "",
-        "The result should be read as a diagnostic audit of ranking risk, not as a final estimate of scientific value.",
+        (
+            "The result should be read as a diagnostic audit of ranking risk, "
+            "not as a final estimate of scientific value."
+        ),
     ]
+
     (output_dir / "summary.md").write_text("\n".join(lines) + "\n")
 
 
 def parse_args() -> argparse.Namespace:
-    parser = argparse.ArgumentParser(description="Rebuild the CHORUS Memo 9 audit package.")
+    parser = argparse.ArgumentParser(
+        description="Rebuild the CHORUS reward-signal audit package."
+    )
     parser.add_argument("--registry", type=Path, default=DEFAULT_REGISTRY)
     parser.add_argument("--hypergraph", type=Path, default=DEFAULT_HYPERGRAPH)
     parser.add_argument("--output", type=Path, default=DEFAULT_OUTPUT)
